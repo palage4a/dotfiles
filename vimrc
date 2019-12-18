@@ -1,4 +1,3 @@
-
 "Syntax
 set nocompatible
 syntax enable
