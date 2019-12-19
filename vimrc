@@ -32,3 +32,6 @@ set number
 set hlsearch
 set ruler
 highlight Comment ctermfg=green
+
+set laststatus=2
+set statusline=%F
