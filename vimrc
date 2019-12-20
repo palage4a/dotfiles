@@ -31,6 +31,7 @@ set si
 set number
 set hlsearch
 set incsearch
+set ignorecase
 set ruler
 highlight Comment ctermfg=green
 
