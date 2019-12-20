@@ -30,6 +30,7 @@ set expandtab
 set si
 set number
 set hlsearch
+set incsearch
 set ruler
 highlight Comment ctermfg=green
 
