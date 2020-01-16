@@ -58,3 +58,5 @@ Plug 'mileszs/ack.vim'
 call plug#end()
 noreabbrev Ack Ack!
 nnoremap <Leader>a :Ack!<Space>
+nnoremap <Leader>f :Files<CR>
+nnoremap <Leader>b :Buffers<CR>
