@@ -46,7 +46,13 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+if empty(glob('~/.local/bin/ack'))
+  silent !curl -fLo ~/.local/bin/ack --create-dirs
+    \ https://beyondgrep.com/ack-v3.3.1 && chmod 0755 ~/.local/bin/ack
+endif
+
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'mileszs/ack.vim'
 call plug#end()
