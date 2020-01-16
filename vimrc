@@ -56,3 +56,5 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
 call plug#end()
+noreabbrev Ack Ack!
+nnoremap <Leader>a :Ack!<Space>
