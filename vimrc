@@ -71,3 +71,4 @@ nmap k gk
 
 nmap <C-m> :NERDTreeFind<CR>
 nmap <silent> <leader><leader> :NERDTreeToggle<CR>
+unmap <CR>
