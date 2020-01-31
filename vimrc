@@ -58,11 +58,16 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
 Plug 'honza/vim-snippets'
+Plug 'scrooloose/nerdtree'
 call plug#end()
 
 noreabbrev Ack Ack!
 nnoremap <Leader>a :Ack!<Space>
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>b :Buffers<CR>
+
 nmap j gj
 nmap k gk
+
+nmap <C-m> :NERDTreeFind<CR>
+nmap <silent> <leader><leader> :NERDTreeToggle<CR>
