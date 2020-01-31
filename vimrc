@@ -10,7 +10,6 @@ set wildmenu
 " Tags
 command! MakeTags !ctags -R .
 
-" Explorer setting
 let g:netrw_banner=0        " disable annoying banner
 let g:netrw_browse_split=4  " open in prior window
 let g:netrw_altv=1          " open splits to the right
@@ -18,12 +17,12 @@ let g:netrw_liststyle=3     " tree view
 let g:netrw_list_hide=netrw_gitignore#Hide()
 let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 
-" Turn backup off, since most stuff is in SVN, git et.c anyway...
 set nobackup
 set nowritebackup
 set nowb
 set noswapfile
-
+set ttyfast
+set lazyredraw
 set tabstop=2
 set shiftwidth=2
 set expandtab
@@ -31,8 +30,11 @@ set si
 set number
 set hlsearch
 set incsearch
+set smartcase
 set ignorecase
 set ruler
+set cursorline
+set showcmd
 highlight Comment ctermfg=green
 
 set laststatus=2
@@ -55,8 +57,12 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
+Plug 'honza/vim-snippets'
 call plug#end()
+
 noreabbrev Ack Ack!
 nnoremap <Leader>a :Ack!<Space>
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>b :Buffers<CR>
+nmap j gj
+nmap k gk
