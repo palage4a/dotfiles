@@ -41,9 +41,7 @@ bindsym $mod+q kill
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 
-bindsym $mod+d exec --no-startup-id "rofi -show drun"
-bindsym $mod+w exec --no-startup-id "rofi -show window"
-# bindsym $mod+d exec --no-startup-id  krunner
+bindsym $mod+d exec --no-startup-id "rofi -combi-modi window,drun -show combi -modi combi"
 
 # change focus
 bindsym $mod+h focus left
@@ -106,7 +104,6 @@ set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "Chats"
-set $ws10 "10"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -117,8 +114,8 @@ bindsym $mod+5 workspace $ws5
 bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
-
 bindsym $mod+9 workspace $ws9
+
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
@@ -129,7 +126,6 @@ bindsym $mod+Shift+6 move container to workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -175,19 +171,10 @@ bindsym $mod+s scratchpad show
 
 # Try to kill the wallpaper set by Plasma (it takes up the entire workspace
 # and hides everythiing)
-exec --no-startup-id wmctrl -c Plasma
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id setxkbmap -model pc105 -layout us,ru -option caps:super,grp:win_space_toggle,ctrl:swap_lalt_lctl
 exec --no-startup-id compton --vsync opengl
 for_window [title="Desktop — Plasma"] kill; floating enable; border none
-
-# Avoid tiling popups, dropdown windows from plasma
-for_window [class="plasmashell"] floating enable
-for_window [class="Plasma"] floating enable
-for_window [class="krunner"] floating enable
-for_window [class="Kmix"] floating enable
-for_window [class="Klipper"] floating enable
-for_window [class="Plasmoidviewer"] floating enable
 
 # >>> Window Rules <<<
 
