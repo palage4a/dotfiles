@@ -30,7 +30,7 @@ font pango:hack 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal -e tmux
+bindsym $mod+Return exec i3-sensible-terminal -e tmux -c /usr/bin/fish
 
 # kill focused window
 bindsym $mod+q kill
@@ -178,6 +178,7 @@ bindsym $mod+s scratchpad show
 exec --no-startup-id wmctrl -c Plasma
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id setxkbmap -model pc105 -layout us,ru -option caps:super,grp:win_space_toggle,ctrl:swap_lalt_lctl
+exec --no-startup-id xrandr --dpi 144
 exec --no-startup-id compton --vsync opengl
 for_window [title="Desktop — Plasma"] kill; floating enable; border none
 
