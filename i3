@@ -30,7 +30,7 @@ font pango:hack 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal -e tmux
+bindsym $mod+Return exec i3-sensible-terminal -e tmux -c /usr/bin/fish
 
 # kill focused window
 bindsym $mod+q kill
