@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:hack 10
+font pango:hack 9
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -30,7 +30,7 @@ font pango:hack 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal -e tmux -c /usr/bin/fish
+bindsym $mod+Return exec i3-sensible-terminal -e "tmux new-session"
 
 # kill focused window
 bindsym $mod+q kill
