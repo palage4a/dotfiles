@@ -60,6 +60,8 @@ Plug 'mileszs/ack.vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'scrooloose/nerdtree'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-scripts/Wombat'
 call plug#end()
 
 let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
@@ -76,3 +78,4 @@ nmap k gk
 nmap <C-m> :NERDTreeFind<CR>
 nmap <silent> <leader><leader> :NERDTreeToggle<CR>
 unmap <CR>
+colorscheme wombat
