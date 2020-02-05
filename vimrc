@@ -62,6 +62,7 @@ Plug 'honza/vim-snippets'
 Plug 'scrooloose/nerdtree'
 call plug#end()
 
+let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
 noreabbrev Ack Ack!
 nnoremap <Leader>a :Ack!<Space>
 nnoremap <Leader>f :Files<CR>
