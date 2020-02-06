@@ -1,0 +1,12 @@
+snippet ifd "if_debug"
+	<?php
+	 if($_REQUEST['dev']) {
+		 ${1:code};$0
+	 }
+	?>
+
+snippet preprint "pretty print"
+	 echo '<pre>';
+	 print_r(${1:var});$0
+	 echo '</pre>';
+	 die;
