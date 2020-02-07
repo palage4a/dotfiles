@@ -2,6 +2,7 @@
 set nocompatible
 syntax enable
 filetype plugin on
+set fileencodings=utf-8,cp1251
 
 "Fuzzy finding
 set path+=**
