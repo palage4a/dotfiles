@@ -1,5 +1,4 @@
 install:
-	ln -s $(PWD)/vimrc ~/.config/nvim/init.vim | true
 	ln -s $(PWD)/vimrc ~/.vimrc | true
 	ln -s $(PWD)/snippets ~/.vim/ | true
 	ln -s $(PWD)/tmux.conf ~/.tmux.conf | true
