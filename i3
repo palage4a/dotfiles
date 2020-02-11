@@ -189,24 +189,26 @@ for_window [window_type="menu"] floating enable
 
 workspace_layout tabbed
 
-# class                 border  backgr. text    indicator
-#client.focused          #859900 #859900 #fdf6e3 #2e9ef4
-#client.focused_inactive #268bd2 #268bd2 #fdf6e3 #484e50
-#client.unfocused        #333333 #93a1a1 #fdf6e3 #292d2e
+# class                 border  bground text    indicator child_border
+client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
 
+client.background       #F8F8F2
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-#
 bar {
-        # status_command i3status
         status_command i3blocks
         colors {
-            # solarized
-            #background #073642
-            #statusline #eee8d5
-            #focused_workspace #cb4b16 #cb4b16 #eee8d5
-            #active_workspace #cb4b16 #cb4b16 #eee8d5
-            #inactive_workspace #b58900 #b58900 #eee8d5
+	    background #282A36
+	    statusline #F8F8F2
+	    separator  #44475A
+
+	    focused_workspace  #44475A #44475A #F8F8F2
+	    active_workspace   #282A36 #44475A #F8F8F2
+	    inactive_workspace #282A36 #282A36 #BFBFBF
+	    urgent_workspace   #FF5555 #FF5555 #F8F8F2
+	    binding_mode       #FF5555 #FF5555 #F8F8F2
         }
 }

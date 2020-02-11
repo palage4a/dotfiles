@@ -19,6 +19,7 @@ Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-scripts/Wombat'
+Plug 'dracula/vim', { 'as': 'dracula' }
 call plug#end()
 
 
@@ -173,3 +174,4 @@ nmap k gk
 nmap <C-m> :NERDTreeFind<CR>
 nmap <silent> <leader><leader> :NERDTreeToggle<CR>
 unmap <CR>
+colorscheme dracula
