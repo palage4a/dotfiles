@@ -10,6 +10,7 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdtree'
+Plug 'dracula/vim'
 let g:coc_global_extensions = [
       \ 'coc-tsserver',
       \ 'coc-html',
@@ -25,6 +26,7 @@ let g:coc_global_extensions = [
       \ 'coc-diagnostic',
       \]
 call plug#end()
+colorscheme dracula
 
 
 let mapleader = "\<Space>"
