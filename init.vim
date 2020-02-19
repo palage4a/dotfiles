@@ -118,3 +118,24 @@ nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+set nobackup
+set nowritebackup
+set noswapfile
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set si
+set number
+set hlsearch
+set incsearch
+set smartcase
+set ignorecase
+
+set statusline=%F
+syntax enable
+filetype plugin on
+set path+=**
+set wildmenu
+set fileencodings=utf-8,cp1251
+set undofile
