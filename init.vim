@@ -11,6 +11,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdtree'
 Plug 'dracula/vim'
+Plug 'vim-airline/vim-airline'
 let g:coc_global_extensions = [
       \ 'coc-tsserver',
       \ 'coc-html',
