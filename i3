@@ -30,7 +30,7 @@ font pango:hack 9
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal -e "tmux new-session"
+bindsym $mod+Return exec kitty tmux new-session
 
 # kill focused window
 bindsym $mod+q kill
