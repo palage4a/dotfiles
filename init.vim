@@ -13,6 +13,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'dracula/vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'junegunn/fzf', { 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 let g:coc_global_extensions = [
       \ 'coc-tsserver',
