@@ -82,8 +82,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 nmap <leader>rn <Plug>(coc-rename)
 
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>cf  <Plug>(coc-format-selected)
+nmap <leader>cf  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -123,6 +123,10 @@ nnoremap <silent> <space>cs  :<C-u>CocList -I symbols<cr>
 nnoremap <silent> <space>cj  :<C-u>CocNext<CR>
 nnoremap <silent> <space>ck  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>cp  :<C-u>CocListResume<CR>
+
+nnoremap <silent> <space>ff  :Files<CR>
+nnoremap <silent> <space>fb  :Buffers<CR>
+nnoremap <silent> //  :nohls<CR>
 
 set nobackup
 set nowritebackup
