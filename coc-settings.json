@@ -1,3 +1,5 @@
 {
 	"python.jediEnabled": false,
+	"json.enable": true,
+	"json.format.enable": true
 }
