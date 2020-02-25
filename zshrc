@@ -1,5 +1,6 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=/snap/bin:$HOME/.local/bin:$PATH
+export PATH=$HOME/.local/go/bin:/snap/bin:$HOME/.local/bin:$PATH
+export GOPATH=$HOME/go
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -93,6 +94,7 @@ export EDITOR='nvim'
 # Example aliases
 alias vim=nvim
 alias zshconfig="vim ~/.zshrc"
+alias update="source ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 
 # ARCHIVES

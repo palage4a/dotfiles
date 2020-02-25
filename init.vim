@@ -30,6 +30,7 @@ let g:coc_global_extensions = [
       \ 'coc-highlight',
       \ 'coc-snippets',
       \ 'coc-diagnostic',
+      \ 'coc-go',
       \]
 call plug#end()
 colorscheme dracula
