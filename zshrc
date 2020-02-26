@@ -94,8 +94,10 @@ export EDITOR='nvim'
 # Example aliases
 alias vim=nvim
 alias zshconfig="vim ~/.zshrc"
-alias update="source ~/.zshrc"
+alias update="cd ~/portable_conf; git pull; cd; source ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
+
+alias python3="python3.8"
 
 # ARCHIVES
 alias -s gz='tar -xzvf'
