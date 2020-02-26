@@ -69,7 +69,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions)
+plugins=(git zsh-autosuggestions vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -94,7 +94,7 @@ export EDITOR='nvim'
 # Example aliases
 alias vim=nvim
 alias zshconfig="vim ~/.zshrc"
-alias update="cd ~/portable_conf; git pull; cd; source ~/.zshrc"
+alias update="cd ~/portable_conf; git pull; source ~/.zshrc; cd -;"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 
 alias python3="python3.8"
