@@ -80,7 +80,9 @@ bindsym $mod+v split v
 # change container layout (stacked, tabbed, toggle split)
 # bindsym $mod+s layout stacking
 bindsym $mod+t layout tabbed
+bindsym $mod+s layout stacked
 bindsym $mod+e layout toggle split
+workspace_layout stacked
 
 # toggle tiling / floating
 bindsym $mod+Ctrl+f floating toggle
@@ -176,7 +178,6 @@ exec --no-startup-id nitrogen --restore
 exec --no-startup-id setxkbmap -model pc105 -layout us,ru -option caps:super,grp:win_space_toggle,ctrl:swap_lalt_lctl
 exec --no-startup-id compton --vsync opengl
 
-workspace_layout tabbed
 
 # class                 border  bground text    indicator child_border
 client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
