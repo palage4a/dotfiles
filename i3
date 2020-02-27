@@ -95,15 +95,15 @@ bindsym $mod+c focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.  set $ws1 "1"
-set $ws1 "Main 1"
-set $ws2 "Main 2"
-set $ws3 "Add 1"
-set $ws4 "Add 2"
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "1"
+set $ws4 "2"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
-set $ws9 "Chats"
+set $ws9 "9"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -162,10 +162,9 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Make the currently focused window a scratchpad
-bindsym $mod+Shift+s move scratchpad
-
+bindsym $mod+Ctrl+backslash move scratchpad
 # Show the first scratchpad window
-bindsym $mod+s scratchpad show
+bindsym $mod+backslash scratchpad show
 
 # >>> Plasma Integration <<<
 
@@ -174,18 +173,6 @@ bindsym $mod+s scratchpad show
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id setxkbmap -model pc105 -layout us,ru -option caps:super,grp:win_space_toggle,ctrl:swap_lalt_lctl
 exec --no-startup-id compton --vsync opengl
-for_window [title="Desktop — Plasma"] kill; floating enable; border none
-
-# >>> Window Rules <<<
-
-# >>> Avoid tiling for non-Plasma stuff <<<
-for_window [window_role="pop-up"] floating enable
-for_window [window_role="bubble"] floating enable
-for_window [window_role="task_dialog"] floating enable
-for_window [window_role="Preferences"] floating enable
-for_window [window_role="About"] floating enable
-for_window [window_type="dialog"] floating enable
-for_window [window_type="menu"] floating enable
 
 workspace_layout tabbed
 
@@ -199,16 +186,15 @@ client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
 client.background       #F8F8F2
 
 bar {
-        status_command i3blocks
-        colors {
-	    background #282A36
-	    statusline #F8F8F2
-	    separator  #44475A
-
-	    focused_workspace  #44475A #44475A #F8F8F2
-	    active_workspace   #282A36 #44475A #F8F8F2
-	    inactive_workspace #282A36 #282A36 #BFBFBF
-	    urgent_workspace   #FF5555 #FF5555 #F8F8F2
-	    binding_mode       #FF5555 #FF5555 #F8F8F2
-        }
+  status_command i3blocks
+    colors {
+      background #282A36
+        statusline #F8F8F2
+        separator  #44475A
+        focused_workspace  #44475A #44475A #F8F8F2
+        active_workspace   #282A36 #44475A #F8F8F2
+        inactive_workspace #282A36 #282A36 #BFBFBF
+        urgent_workspace   #FF5555 #FF5555 #F8F8F2
+        binding_mode       #FF5555 #FF5555 #F8F8F2
+    }
 }

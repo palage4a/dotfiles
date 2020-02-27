@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/.local/go/bin:/snap/bin:$HOME/.local/bin:$PATH
+export PATH=$HOME/go/bin:$HOME/.local/go/bin:/snap/bin:$HOME/.local/bin:$PATH
 export GOPATH=$HOME/go
 
 # Path to your oh-my-zsh installation.
