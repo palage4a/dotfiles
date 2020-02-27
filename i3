@@ -180,15 +180,15 @@ exec --no-startup-id compton --vsync opengl
 
 
 # class                 border  bground text    indicator child_border
-client.focused          #ffffff #ffaf00 #1c1c1c #ffffff   #ffffff
-client.focused_inactive #f8f8f2 #0087ff #f8f8f2 #f8f8f2   #f8f8f2
+client.focused          #ffaf00 #ffaf00 #1c1c1c #ffffff   #ffffff
+client.focused_inactive #0087ff #0087ff #f8f8f2 #f8f8f2   #f8f8f2
 client.unfocused        #f8f8f2 #f8f8f2 #5c5c5c #f8f8f2   #f8f8f2
-client.urgent           #f8f8f2 #FF5555 #1c1c1c #FF5555   #FF5555
+client.urgent           #FF5555 #FF5555 #1c1c1c #FF5555   #FF5555
 client.placeholder      #f8f8f2 #f8f8f2 #1c1c1c #f8f8f2   #f8f8f2
 
 client.background       #ffffff
 
-for_window [class="^.*"] border pixel 0
+#for_window [class="^.*"] border pixel 0
 
 bar {
   status_command i3blocks
