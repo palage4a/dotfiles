@@ -1,7 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/go/bin:$HOME/.local/go/bin:/snap/bin:$HOME/.local/bin:$PATH
 export GOPATH=$HOME/go
-export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/snapd/desktop/"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -110,3 +109,5 @@ alias -s xz='tar -xf'
 # SCRIPTS
 alias -s sh='bash'
 alias -s py='python3'
+
+emulate sh -c 'source /etc/profile.d/apps-bin-path.sh'
