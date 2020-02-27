@@ -98,6 +98,11 @@ alias zshconfig="vim ~/.zshrc"
 alias update="cd ~/portable_conf; git pull; source ~/.zshrc; cd -;"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 
+
+alias ta="tmux attach"
+alias td="tmux detach"
+alias tls="tmux ls"
+
 # ARCHIVES
 alias -s gz='tar -xzvf'
 alias -s tgz='tar -xzvf'
