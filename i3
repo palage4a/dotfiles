@@ -180,24 +180,26 @@ exec --no-startup-id compton --vsync opengl
 
 
 # class                 border  bground text    indicator child_border
-client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
-client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
-client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
-client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
-client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+client.focused          #ffffff #ffaf00 #1c1c1c #ffffff   #ffffff
+client.focused_inactive #f8f8f2 #0087ff #f8f8f2 #f8f8f2   #f8f8f2
+client.unfocused        #f8f8f2 #f8f8f2 #5c5c5c #f8f8f2   #f8f8f2
+client.urgent           #f8f8f2 #FF5555 #1c1c1c #FF5555   #FF5555
+client.placeholder      #f8f8f2 #f8f8f2 #1c1c1c #f8f8f2   #f8f8f2
 
-client.background       #F8F8F2
+client.background       #ffffff
+
+for_window [class="^.*"] border pixel 0
 
 bar {
   status_command i3blocks
     colors {
-      background #282A36
-        statusline #F8F8F2
-        separator  #44475A
-        focused_workspace  #44475A #44475A #F8F8F2
-        active_workspace   #282A36 #44475A #F8F8F2
-        inactive_workspace #282A36 #282A36 #BFBFBF
-        urgent_workspace   #FF5555 #FF5555 #F8F8F2
-        binding_mode       #FF5555 #FF5555 #F8F8F2
+      background #f8f8f2
+        statusline #5c5c5c
+        separator  #ffaf00
+        focused_workspace  #f8f8f2 #ffaf00 #000000
+        active_workspace   #f8f8f2 #0087ff #f8f8f2
+        inactive_workspace #f8f8f2 #f8f8f2 #BFBFBF
+        urgent_workspace   #FF5555 #FF5555 #ffffff
+        binding_mode       #FF5555 #FF5555 #ffffff
     }
 }
