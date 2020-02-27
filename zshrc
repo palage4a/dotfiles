@@ -95,7 +95,7 @@ export EDITOR='nvim'
 alias vim=nvim
 alias pw="sudo poweroff"
 alias zshconfig="vim ~/.zshrc"
-alias update="cd ~/portable_conf; git pull; source ~/.zshrc; cd -;"
+alias update="cd ~/portable_conf;gup;source ~/.zshrc;cd -;"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 
 
