@@ -111,18 +111,28 @@ bindsym $mod+c workspace number $ws3
 bindsym $mod+o workspace number $ws4
 bindsym $mod+slash workspace number $terminal
 
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $terminal
+
 # move focused container to workspace
 bindsym $mod+Ctrl+i move container to workspace number $ws1
 bindsym $mod+Ctrl+w move container to workspace number $ws2
 bindsym $mod+Ctrl+c move container to workspace number $ws3
 bindsym $mod+Ctrl+o move container to workspace number $ws4
 
+bindsym $mod+Ctrl+1 move container to workspace number $ws1
+bindsym $mod+Ctrl+2 move container to workspace number $ws2
+bindsym $mod+Ctrl+3 move container to workspace number $ws3
+bindsym $mod+Ctrl+4 move container to workspace number $ws4
+bindsym $mod+Ctrl+5 move container to workspace number $terminal
+
 workspace_auto_back_and_forth yes
 
 #for_window [class="kitty-full"] fullscreen enable
-assign [class="kitty-full"] number $kitty
-
-exec --no-startup-id kitty --class="kitty-full"
+#
 #set $ws1 "1"
 #set $ws2 "2"
 #set $ws3 "1"
