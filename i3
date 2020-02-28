@@ -91,51 +91,76 @@ bindsym $mod+Ctrl+f floating toggle
 bindsym $mod+f focus mode_toggle
 
 # focus the parent container
-bindsym $mod+p focus parent
+#bindsym $mod+p focus parent
 
 # focus the child container
-bindsym $mod+c focus child
+#bindsym $mod+c focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.  set $ws1 "1"
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "1"
-set $ws4 "2"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
+set $ws1 "1: ide"
+set $ws2 "2: web"
+set $ws3 "3: chat"
+set $ws4 "4: other"
+set $terminal "5"
 
 # switch to workspace
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
+bindsym $mod+i workspace number $ws1
+bindsym $mod+w workspace number $ws2
+bindsym $mod+c workspace number $ws3
+bindsym $mod+o workspace number $ws4
+bindsym $mod+slash workspace number $terminal
 
 # move focused container to workspace
-bindsym $mod+Ctrl+1 move container to workspace $ws1
-bindsym $mod+Ctrl+2 move container to workspace $ws2
-bindsym $mod+Ctrl+3 move container to workspace $ws3
-bindsym $mod+Ctrl+4 move container to workspace $ws4
-bindsym $mod+Ctrl+5 move container to workspace $ws5
-bindsym $mod+Ctrl+6 move container to workspace $ws6
-bindsym $mod+Ctrl+7 move container to workspace $ws7
-bindsym $mod+Ctrl+8 move container to workspace $ws8
-bindsym $mod+Ctrl+9 move container to workspace $ws9
+bindsym $mod+Ctrl+i move container to workspace number $ws1
+bindsym $mod+Ctrl+w move container to workspace number $ws2
+bindsym $mod+Ctrl+c move container to workspace number $ws3
+bindsym $mod+Ctrl+o move container to workspace number $ws4
+
+workspace_auto_back_and_forth yes
+
+#for_window [class="kitty-full"] fullscreen enable
+assign [class="kitty-full"] number $kitty
+
+exec --no-startup-id kitty --class="kitty-full"
+#set $ws1 "1"
+#set $ws2 "2"
+#set $ws3 "1"
+#set $ws4 "2"
+#set $ws5 "5"
+#set $ws6 "6"
+#set $ws7 "7"
+#set $ws8 "8"
+#set $ws9 "9"
+#
+## switch to workspace
+#bindsym $mod+1 workspace $ws1
+#bindsym $mod+2 workspace $ws2
+#bindsym $mod+3 workspace $ws3
+#bindsym $mod+4 workspace $ws4
+#bindsym $mod+5 workspace $ws5
+#bindsym $mod+6 workspace $ws6
+#bindsym $mod+7 workspace $ws7
+#bindsym $mod+8 workspace $ws8
+#bindsym $mod+9 workspace $ws9
+#
+## move focused container to workspace
+#bindsym $mod+Ctrl+1 move container to workspace $ws1
+#bindsym $mod+Ctrl+2 move container to workspace $ws2
+#bindsym $mod+Ctrl+3 move container to workspace $ws3
+#bindsym $mod+Ctrl+4 move container to workspace $ws4
+#bindsym $mod+Ctrl+5 move container to workspace $ws5
+#bindsym $mod+Ctrl+6 move container to workspace $ws6
+#bindsym $mod+Ctrl+7 move container to workspace $ws7
+#bindsym $mod+Ctrl+8 move container to workspace $ws8
+#bindsym $mod+Ctrl+9 move container to workspace $ws9
 
 # reload the configuration file
-bindsym $mod+Ctrl+c reload
+bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Ctrl+r restart
+bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Ctrl+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -203,3 +228,4 @@ bar {
         binding_mode       #FF5555 #FF5555 #ffffff
     }
 }
+
