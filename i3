@@ -122,6 +122,7 @@ bindsym $mod+Ctrl+i move container to workspace number $ws1
 bindsym $mod+Ctrl+w move container to workspace number $ws2
 bindsym $mod+Ctrl+c move container to workspace number $ws3
 bindsym $mod+Ctrl+o move container to workspace number $ws4
+bindsym $mod+Ctrl+slash move container to workspace number $ws4
 
 bindsym $mod+Ctrl+1 move container to workspace number $ws1
 bindsym $mod+Ctrl+2 move container to workspace number $ws2

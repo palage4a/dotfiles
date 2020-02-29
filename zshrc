@@ -99,10 +99,6 @@ alias update="cd ~/portable_conf;gup;source ~/.zshrc;cd -;"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 
 
-alias ta="tmux attach"
-alias td="tmux detach"
-alias tls="tmux ls"
-
 # ARCHIVES
 alias -s gz='tar -xzvf'
 alias -s tgz='tar -xzvf'
@@ -115,4 +111,4 @@ alias -s xz='tar -xf'
 alias -s sh='bash'
 alias -s py='python3'
 
-emulate sh -c 'source /etc/profile.d/apps-bin-path.sh'
+source /etc/profile.d/apps-bin-path.sh
