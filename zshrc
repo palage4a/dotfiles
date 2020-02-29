@@ -112,3 +112,4 @@ alias -s sh='bash'
 alias -s py='python3'
 
 source /etc/profile.d/apps-bin-path.sh
+alias sudo='sudo env PATH=$PATH'
