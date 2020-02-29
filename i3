@@ -122,7 +122,7 @@ bindsym $mod+Ctrl+i move container to workspace number $ws1
 bindsym $mod+Ctrl+w move container to workspace number $ws2
 bindsym $mod+Ctrl+c move container to workspace number $ws3
 bindsym $mod+Ctrl+o move container to workspace number $ws4
-bindsym $mod+Ctrl+slash move container to workspace number $ws4
+bindsym $mod+Ctrl+slash move container to workspace number $terminal
 
 bindsym $mod+Ctrl+1 move container to workspace number $ws1
 bindsym $mod+Ctrl+2 move container to workspace number $ws2
@@ -216,27 +216,27 @@ exec --no-startup-id compton --vsync opengl
 
 
 # class                 border  bground text    indicator child_border
-client.focused          #ffaf00 #ffaf00 #1c1c1c #ffffff   #ffffff
-client.focused_inactive #0087ff #0087ff #f8f8f2 #f8f8f2   #f8f8f2
-client.unfocused        #f8f8f2 #f8f8f2 #5c5c5c #f8f8f2   #f8f8f2
-client.urgent           #FF5555 #FF5555 #1c1c1c #FF5555   #FF5555
-client.placeholder      #f8f8f2 #f8f8f2 #1c1c1c #f8f8f2   #f8f8f2
+client.focused          #ffaf00 #ffaf00 #f8f8f8 #5c5c5c   #5c5c5c
+client.focused_inactive #0087ff #0087ff #f8f8f8 #5c5c5c   #5c5c5c
+client.unfocused        #5c5c5c #5c5c5c #5c5c5c #5c5c5c   #5c5c5c
+client.urgent           #FF5555 #FF5555 #f8f8f8 #FF5555   #FF5555
+client.placeholder      #5c5c5c #5c5c5c #f8f8f8 #5c5c5c   #5c5c5c
 
-client.background       #ffffff
+client.background       #5c5c5c
 
 #for_window [class="^.*"] border pixel 0
 
 bar {
   status_command i3blocks
     colors {
-      background #f8f8f2
-        statusline #5c5c5c
+      background #5c5c5c
+        statusline #f8f8f8
         separator  #ffaf00
-        focused_workspace  #f8f8f2 #ffaf00 #000000
-        active_workspace   #f8f8f2 #0087ff #f8f8f2
-        inactive_workspace #f8f8f2 #f8f8f2 #BFBFBF
-        urgent_workspace   #FF5555 #FF5555 #ffffff
-        binding_mode       #FF5555 #FF5555 #ffffff
+        focused_workspace  #5c5c5c #ffaf00 #5c5c5c
+        active_workspace   #5c5c5c #0087ff #5c5c5c
+        inactive_workspace #5c5c5c #5c5c5c #BFBFBF
+        urgent_workspace   #FF5555 #FF5555 #5c5c5c
+        binding_mode       #FF5555 #FF5555 #5c5c5c
     }
 }
 
