@@ -1,5 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/go/bin:$HOME/.local/go/bin:/snap/bin:$HOME/.local/bin:$PATH
+
 export GOPATH=$HOME/go
 
 # Path to your oh-my-zsh installation.
@@ -112,4 +113,11 @@ alias -s sh='bash'
 alias -s py='python3'
 
 source /etc/profile.d/apps-bin-path.sh
-alias sudo='sudo env PATH=$PATH'
+#alias sudo='sudo env PATH=$PATH'
+#
+# Preserve MANPATH if you already defined it somewhere in your config.
+# Otherwise, fall back to `manpath` so we can inherit from `/etc/manpath`.
+# FOR NPM
+NPM_PACKAGES="${HOME}/.npm-packages"
+export PATH="$PATH:$NPM_PACKAGES/bin"
+export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
