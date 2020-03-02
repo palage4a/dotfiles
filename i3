@@ -75,7 +75,7 @@ bindsym $mod+g split h
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-# bindsym $mod+f fullscreen toggle
+bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 # bindsym $mod+s layout stacking
@@ -85,10 +85,10 @@ bindsym $mod+e layout toggle split
 workspace_layout stacked
 
 # toggle tiling / floating
-bindsym $mod+Ctrl+f floating toggle
+#bindsym $mod+Ctrl+f floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+f focus mode_toggle
+#bindsym $mod+f focus mode_toggle
 
 # focus the parent container
 #bindsym $mod+p focus parent
