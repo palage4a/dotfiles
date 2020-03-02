@@ -42,7 +42,7 @@ bindsym $mod+q kill
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 
-bindsym $mod+d exec --no-startup-id "rofi -combi-modi window,drun -show combi -modi combi"
+bindsym $mod+d exec --no-startup-id "rofi -combi-modi window,drun -font 'hack 30' -show combi"
 
 # change focus
 bindsym $mod+h focus left
@@ -218,7 +218,7 @@ exec --no-startup-id compton --vsync opengl
 # class                 border  bground text    indicator child_border
 client.focused          #ffaf00 #ffaf00 #f8f8f8 #5c5c5c   #5c5c5c
 client.focused_inactive #0087ff #0087ff #f8f8f8 #5c5c5c   #5c5c5c
-client.unfocused        #5c5c5c #5c5c5c #5c5c5c #5c5c5c   #5c5c5c
+client.unfocused        #5c5c5c #5c5c5c #f8f8f8 #5c5c5c   #5c5c5c
 client.urgent           #FF5555 #FF5555 #f8f8f8 #FF5555   #FF5555
 client.placeholder      #5c5c5c #5c5c5c #f8f8f8 #5c5c5c   #5c5c5c
 
