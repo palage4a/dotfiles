@@ -34,7 +34,7 @@ let g:coc_global_extensions = [
       \]
 call plug#end()
 set termguicolors     " enable true colors support
-let ayucolor="mirage"  " for light version of theme
+let ayucolor="light"  " for light version of theme
 colorscheme ayu
 let g:airline#extensions#tabline#enabled = 1
 

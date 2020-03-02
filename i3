@@ -98,73 +98,39 @@ workspace_layout stacked
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.  set $ws1 "1"
-set $ws1 "1: ide"
-set $ws2 "2: web"
-set $ws3 "3: chat"
-set $ws4 "4: other"
-set $terminal "5"
+set $ide "1: ide"
+set $web "2: web"
+set $term "3: terminal"
+set $other "4: other"
+set $chat "5:chat"
 
 # switch to workspace
-bindsym $mod+i workspace number $ws1
-bindsym $mod+w workspace number $ws2
-bindsym $mod+c workspace number $ws3
-bindsym $mod+o workspace number $ws4
-bindsym $mod+slash workspace number $terminal
+bindsym $mod+i workspace number $ide
+bindsym $mod+w workspace number $web
+bindsym $mod+slash workspace number $term
+bindsym $mod+o workspace number $other
+bindsym $mod+c workspace number $chat
 
-bindsym $mod+1 workspace number $ws1
-bindsym $mod+2 workspace number $ws2
-bindsym $mod+3 workspace number $ws3
-bindsym $mod+4 workspace number $ws4
-bindsym $mod+5 workspace number $terminal
+bindsym $mod+1 workspace number $ide
+bindsym $mod+2 workspace number $web
+bindsym $mod+3 workspace number $term
+bindsym $mod+4 workspace number $other
+bindsym $mod+5 workspace number $chat
 
 # move focused container to workspace
-bindsym $mod+Ctrl+i move container to workspace number $ws1
-bindsym $mod+Ctrl+w move container to workspace number $ws2
-bindsym $mod+Ctrl+c move container to workspace number $ws3
-bindsym $mod+Ctrl+o move container to workspace number $ws4
-bindsym $mod+Ctrl+slash move container to workspace number $terminal
+bindsym $mod+Ctrl+i move container to workspace number $ide
+bindsym $mod+Ctrl+w move container to workspace number $web
+bindsym $mod+Ctrl+slas move container to workspace number $term
+bindsym $mod+Ctrl+o move container to workspace number $other
+bindsym $mod+Ctrl+c move container to workspace number $chat
 
-bindsym $mod+Ctrl+1 move container to workspace number $ws1
-bindsym $mod+Ctrl+2 move container to workspace number $ws2
-bindsym $mod+Ctrl+3 move container to workspace number $ws3
-bindsym $mod+Ctrl+4 move container to workspace number $ws4
-bindsym $mod+Ctrl+5 move container to workspace number $terminal
+bindsym $mod+Ctrl+1 move container to workspace number $ide
+bindsym $mod+Ctrl+2 move container to workspace number $web
+bindsym $mod+Ctrl+3 move container to workspace number $term
+bindsym $mod+Ctrl+4 move container to workspace number $other
+bindsym $mod+Ctrl+5 move container to workspace number $chat
 
 workspace_auto_back_and_forth yes
-
-#for_window [class="kitty-full"] fullscreen enable
-#
-#set $ws1 "1"
-#set $ws2 "2"
-#set $ws3 "1"
-#set $ws4 "2"
-#set $ws5 "5"
-#set $ws6 "6"
-#set $ws7 "7"
-#set $ws8 "8"
-#set $ws9 "9"
-#
-## switch to workspace
-#bindsym $mod+1 workspace $ws1
-#bindsym $mod+2 workspace $ws2
-#bindsym $mod+3 workspace $ws3
-#bindsym $mod+4 workspace $ws4
-#bindsym $mod+5 workspace $ws5
-#bindsym $mod+6 workspace $ws6
-#bindsym $mod+7 workspace $ws7
-#bindsym $mod+8 workspace $ws8
-#bindsym $mod+9 workspace $ws9
-#
-## move focused container to workspace
-#bindsym $mod+Ctrl+1 move container to workspace $ws1
-#bindsym $mod+Ctrl+2 move container to workspace $ws2
-#bindsym $mod+Ctrl+3 move container to workspace $ws3
-#bindsym $mod+Ctrl+4 move container to workspace $ws4
-#bindsym $mod+Ctrl+5 move container to workspace $ws5
-#bindsym $mod+Ctrl+6 move container to workspace $ws6
-#bindsym $mod+Ctrl+7 move container to workspace $ws7
-#bindsym $mod+Ctrl+8 move container to workspace $ws8
-#bindsym $mod+Ctrl+9 move container to workspace $ws9
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
