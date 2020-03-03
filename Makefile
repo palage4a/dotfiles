@@ -11,4 +11,5 @@ install:
 	#I3WM
 	ln -s $(PWD)/i3 ~/.config/i3/config | true
 	#ZSHRC
+	ln -s $(PWD)/zprofile ~/.zprofile | true
 	ln -s $(PWD)/zshrc ~/.zshrc | true

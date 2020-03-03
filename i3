@@ -82,7 +82,7 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+t layout tabbed
 bindsym $mod+s layout stacked
 bindsym $mod+e layout toggle split
-workspace_layout stacked
+workspace_layout tabbed
 
 # toggle tiling / floating
 #bindsym $mod+Ctrl+f floating toggle
@@ -120,7 +120,7 @@ bindsym $mod+5 workspace number $chat
 # move focused container to workspace
 bindsym $mod+Ctrl+i move container to workspace number $ide
 bindsym $mod+Ctrl+w move container to workspace number $web
-bindsym $mod+Ctrl+slas move container to workspace number $term
+bindsym $mod+Ctrl+slash move container to workspace number $term
 bindsym $mod+Ctrl+o move container to workspace number $other
 bindsym $mod+Ctrl+c move container to workspace number $chat
 

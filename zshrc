@@ -112,7 +112,6 @@ alias -s xz='tar -xf'
 alias -s sh='bash'
 alias -s py='python3'
 
-source /etc/profile.d/apps-bin-path.sh
 #alias sudo='sudo env PATH=$PATH'
 #
 # Preserve MANPATH if you already defined it somewhere in your config.
