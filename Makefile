@@ -1,4 +1,9 @@
-install:
+portable:
+	#VIM
+	ln -s $(PWD)/vimrc ~/.vimrc | true
+	#TMUX
+	ln -s $(PWD)/tmux.conf ~/.tmux.conf | true
+full:
 	#VIM
 	ln -s $(PWD)/vimrc ~/.vimrc | true
 	#NVIM
@@ -13,3 +18,6 @@ install:
 	#ZSHRC
 	ln -s $(PWD)/zprofile ~/.zprofile | true
 	ln -s $(PWD)/zshrc ~/.zshrc | true
+	#VSCODE
+	ln -s $(PWD)/vscode/settings.json ~/.config/Code/User/settings.json | true
+	ln -s $(PWD)/vscode/keybindings.json ~/.config/Code/User/keybindings.json | true

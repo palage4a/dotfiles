@@ -178,8 +178,9 @@ bindsym $mod+backslash scratchpad show
 
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id setxkbmap -model pc105 -layout us,ru -option caps:super,grp:win_space_toggle,ctrl:swap_lalt_lctl
-exec --no-startup-id compton --vsync opengl
-
+#input * xkb_layout "us,ru"
+#input * xkb_options "caps:super,grp:win_space_toggle,ctrl:swap_lalt_lctl"
+#input * xkb_model "pc105"
 
 # class                 border  bground text    indicator child_border
 client.focused          #ffaf00 #ffaf00 #f8f8f8 #5c5c5c   #5c5c5c
