@@ -152,3 +152,4 @@ set path+=**
 set wildmenu
 set fileencodings=utf-8,cp1251
 set undofile
+set mouse=a

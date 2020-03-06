@@ -174,6 +174,8 @@ bindsym $mod+backslash scratchpad show
 input * xkb_layout "us,ru"
 input * xkb_options "caps:super,grp:win_space_toggle,ctrl:swap_lalt_lctl"
 input * xkb_model "pc105"
+output HDMI1 pos 0 0 res 1920x1080
+output eDP1 pos 1920 0 res 1600x900
 
 # class                 border  bground text    indicator child_border
 client.focused          #ffaf00 #ffaf00 #f8f8f8 #5c5c5c   #5c5c5c
