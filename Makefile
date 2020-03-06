@@ -15,6 +15,8 @@ full:
 	ln -s $(PWD)/tmux.conf ~/.tmux.conf | true
 	#I3WM
 	ln -s $(PWD)/i3 ~/.config/i3/config | true
+	#SWAY
+	ln -s $(PWD)/sway ~/.config/sway/config | true
 	#ZSHRC
 	ln -s $(PWD)/zprofile ~/.zprofile | true
 	ln -s $(PWD)/zshrc ~/.zshrc | true
