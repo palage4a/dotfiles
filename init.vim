@@ -12,10 +12,13 @@ Plug 'scrooloose/nerdtree'
 Plug 'ayu-theme/ayu-vim' " or other package manager
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-commentary'
+Plug 'kkoomen/vim-doge'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
+Plug 'chrisbra/csv.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
       \ 'coc-tsserver',
@@ -97,6 +100,7 @@ augroup mygroup
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
+
 xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-selected)
 
@@ -153,3 +157,6 @@ set wildmenu
 set fileencodings=utf-8,cp1251
 set undofile
 set mouse=a
+
+" example for addition comment functional to undefined filetype
+" autocmd FileType apache setlocal commentstring=#\ %s<Paste>

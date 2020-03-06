@@ -1,5 +1,6 @@
 {
 	"python.jediEnabled": false,
 	"json.enable": true,
-	"json.format.enable": true
+	"json.format.enable": true,
+  "phpls.enable": true
 }
