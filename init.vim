@@ -42,7 +42,7 @@ colorscheme ayu
 let g:airline#extensions#tabline#enabled = 1
 
 
-let mapleader = "\<Space>"
+let mapleader = "\<space>"
 nmap <leader><leader> :NERDTreeToggle<CR>
 set hidden
 set number
@@ -123,17 +123,20 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
-nnoremap <silent> <space>ca  :<C-u>CocList diagnostics<cr>
-nnoremap <silent> <space>ce  :<C-u>CocList extensions<cr>
-nnoremap <silent> <space>cc  :<C-u>CocList commands<cr>
-nnoremap <silent> <space>co  :<C-u>CocList outline<cr>
-nnoremap <silent> <space>cs  :<C-u>CocList -I symbols<cr>
-nnoremap <silent> <space>cj  :<C-u>CocNext<CR>
-nnoremap <silent> <space>ck  :<C-u>CocPrev<CR>
-nnoremap <silent> <space>cp  :<C-u>CocListResume<CR>
+nnoremap <silent> <leader>ca  :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <leader>ce  :<C-u>CocList extensions<cr>
+nnoremap <silent> <leader>cc  :<C-u>CocList commands<cr>
+nnoremap <silent> <leader>co  :<C-u>CocList outline<cr>
+nnoremap <silent> <leader>cs  :<C-u>CocList -I symbols<cr>
+nnoremap <silent> <leader>cj  :<C-u>CocNext<CR>
+nnoremap <silent> <leader>ck  :<C-u>CocPrev<CR>
+nnoremap <silent> <leader>cp  :<C-u>CocListResume<CR>
 
-nnoremap <silent> <space>ff  :Files<CR>
-nnoremap <silent> <space>fb  :Buffers<CR>
+nnoremap <silent> <leader>ff  :Files<CR>
+nnoremap <silent> <leader>fb  :Buffers<CR>
+nnoremap <silent> <leader>fc  :Commands<CR>
+
+nnoremap <silent> <leader>rr  :source ~/.config/nvim/init.vim<CR>
 nnoremap <silent> //  :nohls<CR>
 
 set nobackup
@@ -156,7 +159,6 @@ set path+=**
 set wildmenu
 set fileencodings=utf-8,cp1251
 set undofile
-set mouse=a
 
 " example for addition comment functional to undefined filetype
 " autocmd FileType apache setlocal commentstring=#\ %s<Paste>
