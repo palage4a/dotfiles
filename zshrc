@@ -94,26 +94,11 @@ export EDITOR='nvim'
 #
 # Example aliases
 alias vim=nvim
-alias pw="sudo poweroff"
+alias pw="poweroff"
 alias zshconfig="vim ~/.zshrc"
 alias update="cd ~/portable_conf;gup;source ~/.zshrc;cd -;"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 
-
-# ARCHIVES
-alias -s gz='tar -xzvf'
-alias -s tgz='tar -xzvf'
-alias -s zip='unzip'
-alias -s bz2='tar -xjvf'
-alias -s xz='tar -xf'
-
-
-# SCRIPTS
-alias -s sh='bash'
-alias -s py='python3'
-
-#alias sudo='sudo env PATH=$PATH'
-#
 # Preserve MANPATH if you already defined it somewhere in your config.
 # Otherwise, fall back to `manpath` so we can inherit from `/etc/manpath`.
 # FOR NPM
