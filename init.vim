@@ -50,6 +50,8 @@ set nobackup
 set nowritebackup
 set cmdheight=1
 set updatetime=300
+set timeoutlen=1000 
+set ttimeoutlen=0
 set shortmess+=c
 set signcolumn=yes
 inoremap <silent><expr> <TAB>
@@ -137,6 +139,9 @@ nnoremap <silent> <leader>fb  :Buffers<CR>
 nnoremap <silent> <leader>fc  :Commands<CR>
 nnoremap <silent> <leader>rw  :Rg <C-r><C-w><CR>
 nnoremap <silent> <leader>rr  :Rg<CR>
+
+nnoremap <silent> <leader>n  :bn<CR>
+nnoremap <silent> <leader>p  :bp<CR>
 
 nnoremap <silent> <leader>rc  :source ~/.config/nvim/init.vim<CR>
 nnoremap <silent> //  :nohls<CR>
