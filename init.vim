@@ -37,7 +37,7 @@ let g:coc_global_extensions = [
       \]
 call plug#end()
 set termguicolors     " enable true colors support
-let ayucolor="light"  " for light version of theme
+let ayucolor="mirage" " for light version of theme
 colorscheme ayu
 let g:airline#extensions#tabline#enabled = 1
 
@@ -135,8 +135,10 @@ nnoremap <silent> <leader>cp  :<C-u>CocListResume<CR>
 nnoremap <silent> <leader>ff  :Files<CR>
 nnoremap <silent> <leader>fb  :Buffers<CR>
 nnoremap <silent> <leader>fc  :Commands<CR>
+nnoremap <silent> <leader>rw  :Rg <C-r><C-w><CR>
+nnoremap <silent> <leader>rr  :Rg<CR>
 
-nnoremap <silent> <leader>rr  :source ~/.config/nvim/init.vim<CR>
+nnoremap <silent> <leader>rc  :source ~/.config/nvim/init.vim<CR>
 nnoremap <silent> //  :nohls<CR>
 
 set nobackup
@@ -159,6 +161,7 @@ set path+=**
 set wildmenu
 set fileencodings=utf-8,cp1251
 set undofile
+set nowrap
 
 " example for addition comment functional to undefined filetype
 " autocmd FileType apache setlocal commentstring=#\ %s<Paste>
