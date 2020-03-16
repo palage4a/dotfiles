@@ -135,6 +135,7 @@ nnoremap <silent> <leader>ck  :<C-u>CocPrev<CR>
 nnoremap <silent> <leader>cp  :<C-u>CocListResume<CR>
 
 nnoremap <silent> <leader>ff  :Files<CR>
+nnoremap <silent> <leader>ft  :Tags<CR>
 nnoremap <silent> <leader>fb  :Buffers<CR>
 nnoremap <silent> <leader>fc  :Commands<CR>
 nnoremap <silent> <leader>rw  :Rg <C-r><C-w><CR>
