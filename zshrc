@@ -95,9 +95,6 @@ export EDITOR='nvim'
 # Example aliases
 alias vim=nvim
 alias pw="poweroff"
-alias zshconfig="vim ~/.zshrc"
-alias update="cd ~/portable_conf;gup;source ~/.zshrc;cd -;"
-alias ohmyzsh="vim ~/.oh-my-zsh"
 
 # Preserve MANPATH if you already defined it somewhere in your config.
 # Otherwise, fall back to `manpath` so we can inherit from `/etc/manpath`.
