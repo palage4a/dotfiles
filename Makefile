@@ -44,7 +44,7 @@ dark-scheme:
 	ln -s $(PWD)/dark/kitty.conf ~/.config/kitty/kitty.conf | true
 create-new-workspace:
 	sudo apt update; sudo apt full-upgrade -y | true
-	sudo apt install git tmux neovim python3-pip zsh compton curl | true
+	sudo apt install git tmux neovim python3-pip zsh compton curl ctags | true
 	sudo pip3 install pipenv neovim
 	ln -s $(PWD)/gitconfig ~/.gitconfig | true
 	sudo snap install code --classic | true
