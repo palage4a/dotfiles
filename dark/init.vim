@@ -151,6 +151,9 @@ nnoremap <silent> <leader>p  :bp<CR>
 nnoremap <silent> <leader>rc  :source ~/.config/nvim/init.vim<CR>
 nnoremap <silent> //  :nohls<CR>
 
+nnoremap <silent> <leader>\  :vsp<CR>
+nnoremap <silent> <leader>-  :sp<CR>
+
 
 function! s:config_easyfuzzymotion(...) abort
   return extend(copy({
