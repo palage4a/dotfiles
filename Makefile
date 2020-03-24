@@ -1,10 +1,13 @@
-vim-tmux:
+emacs-vim-tmux:
 	#VIM
 	rm ~/.vimrc -f | true
 	ln -s $(PWD)/vimrc ~/.vimrc | true
 	#TMUX
 	rm ~/.tmux.conf -f | true
 	ln -s $(PWD)/tmux.conf ~/.tmux.conf | true
+	#EMACS
+	rm ~/.emacs -f | true
+	ln -s $(PWD)/emacs ~/.emacs | true
 coc-i3-code:
 	#COC NVIM
 	rm ~/.config/nvim/coc-settings.json | true
