@@ -6,8 +6,8 @@ emacs-vim-tmux:
 	rm ~/.tmux.conf -f | true
 	ln -s $(PWD)/tmux.conf ~/.tmux.conf | true
 	#EMACS
-	rm ~/.emacs -f | true
-	ln -s $(PWD)/emacs ~/.emacs | true
+	rm ~/.spacemacs -f | true
+	ln -s $(PWD)/spacemacs ~/.spacemacs | true
 coc-i3-code:
 	#COC NVIM
 	rm ~/.config/nvim/coc-settings.json | true
