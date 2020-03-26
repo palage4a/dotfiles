@@ -55,7 +55,7 @@ create-new-workspace:
 	sudo snap install code --classic | true
 	sudo snap install telegram-desktop --classic | true
 	sudo snap install node --classic --channel 12 | true
-  sudo npm i -g neovim | true
+	sudo npm i -g neovim | true
 	sudo snap install ripgrep --classic | true
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)";
 	git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions;
