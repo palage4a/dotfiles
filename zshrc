@@ -94,6 +94,7 @@ export EDITOR='nvim'
 #
 # Example aliases
 alias vim=nvim
+alias emacs=emacs -nw
 alias pw="poweroff"
 
 # Preserve MANPATH if you already defined it somewhere in your config.
