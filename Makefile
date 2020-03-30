@@ -6,9 +6,9 @@ remote-machine:
 	rm ~/.tmux.conf -f | true
 	ln -s $(PWD)/tmux.conf ~/.tmux.conf | true
 main-machine:
-#SPACEMACS
-	rm ~/.spacemacs -f | true
-	ln -s $(PWD)/spacemacs ~/.spacemacs | true
+#DOOM
+	rm ~/.doom.d -f | true
+	ln -s $(PWD)/doom.d ~/.doom.d | true
 #COC NVIM
 	rm ~/.config/nvim/coc-settings.json | true
 	mkdir ~/.config/nvim | true
@@ -47,7 +47,7 @@ dark-scheme:
 	ln -s $(PWD)/dark/kitty.conf ~/.config/kitty/kitty.conf | true
 create-new-workspace:
 	sudo apt update; sudo apt full-upgrade -y | true
-	sudo apt install git tmux kitty python3-pip zsh compton curl ctags scrot | true
+	sudo apt install git tmux kitty python3-pip zsh compton curl scrot | true
 	sudo apt install neovim
 	sudo pip3 install pipenv
 	sudo pip3 install neovim
@@ -59,4 +59,5 @@ create-new-workspace:
 	sudo snap install ripgrep --classic | true
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)";
 	git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions;
-	git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+	git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
+	~/.emacs.d/bin/doom install
