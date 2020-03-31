@@ -57,3 +57,6 @@
 (setq tab-width 2)
 (setq-default indent-tabs-mode nil)
 
+(add-hook! python-mode lsp)
+(add-hook! css-mode lsp)
+(add-hook! web-mode lsp)
