@@ -56,6 +56,8 @@
 (setq c-default-style "linux")
 (setq tab-width 2)
 (setq-default indent-tabs-mode nil)
+(setq lsp-idle-delay 0.500)
+(setq lsp-prefer-capf t)
 
 (add-hook! python-mode lsp)
 (add-hook! css-mode lsp)
