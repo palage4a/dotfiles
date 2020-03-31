@@ -51,3 +51,9 @@
 ;;
 ;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
 ;; they are implemented.
+
+(setq c-basic-indent 2)
+(setq c-default-style "linux")
+(setq tab-width 2)
+(setq-default indent-tabs-mode nil)
+

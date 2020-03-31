@@ -19,7 +19,8 @@
        ;;japanese
 
        :completion
-       company           ; the ultimate code completion backend
+       (company
+          +childframe)          ; the ultimate code completion backend
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
        (ivy +fuzzy)               ; a search engine for love and life
@@ -102,7 +103,7 @@
        ;;upload            ; map local to remote projects via ssh/ftp
 
        :lang
-       ;;agda              ; types of types of types of types...
+       ;;agda  
        ;;assembly          ; assembly for fun or debugging
        ;;cc                ; C/C++/Obj-C madness
        ;;clojure           ; java with a lisp
@@ -147,7 +148,7 @@
        php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
-       (python +lsp)            ; beautiful is better than ugly
+       python            ; beautiful is better than ugly
        ;;qt                ; the 'cutest' gui framework ever
        ;;racket            ; a DSL for DSLs
        ;;rest              ; Emacs as a REST client
@@ -176,3 +177,4 @@
        :config
        ;;literate
        (default +bindings +smartparens))
+
