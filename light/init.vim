@@ -27,6 +27,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
       \ 'coc-tsserver',
       \ 'coc-html',
+      \ 'coc-emmet',
       \ 'coc-lists',
       \ 'coc-phpls',
       \ 'coc-sh',
