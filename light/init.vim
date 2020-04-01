@@ -153,6 +153,7 @@ nnoremap <silent> //  :nohls<CR>
 
 nnoremap <silent> <leader>\  :vsp<CR>
 nnoremap <silent> <leader>-  :sp<CR>
+nnoremap ; :
 
 function! s:config_easyfuzzymotion(...) abort
   return extend(copy({
