@@ -171,8 +171,8 @@ noremap <silent><expr> <leader>/ incsearch#go(<SID>config_easyfuzzymotion())
 set nobackup
 set nowritebackup
 set noswapfile
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set expandtab
 set si
 set number
