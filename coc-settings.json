@@ -1,6 +1,13 @@
 {
-	"python.jediEnabled": false,
-	"json.enable": true,
-	"json.format.enable": true,
-  "phpls.enable": true
+    "python.jediEnabled": false,
+    "json.enable": true,
+    "json.format.enable": true,
+    "phpls.enable": true,
+    "tsserver.npm": "/snap/bin/npm",
+    "vetur.dev.vlsPath": "/home/ivan/.config/yarn/global/node_modules/vls",
+    "vetur.trace.server":"verbose",
+    "eslint.filetypes": [
+        "javascript",
+        "vue"
+    ]
 }

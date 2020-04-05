@@ -20,11 +20,13 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
+Plug 'posva/vim-vue'
 Plug 'chrisbra/csv.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
       \ 'coc-tsserver',
       \ 'coc-vetur',
+      \ 'coc-eslint',
       \ 'coc-html',
       \ 'coc-emmet',
       \ 'coc-lists',
@@ -181,3 +183,4 @@ set nowrap
 
 " example for addition comment functional to undefined filetype
 " autocmd FileType apache setlocal commentstring=#\ %s<Paste>
+autocmd BufRead,BufNewFile *.vue setfiletype vue

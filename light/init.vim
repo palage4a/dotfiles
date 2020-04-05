@@ -22,9 +22,11 @@ Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'chrisbra/csv.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'posva/vim-vue'
 let g:coc_global_extensions = [
       \ 'coc-tsserver',
       \ 'coc-vetur',
+      \ 'coc-eslint',
       \ 'coc-html',
       \ 'coc-emmet',
       \ 'coc-lists',
@@ -105,6 +107,8 @@ augroup mygroup
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
+autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+
 
 xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-selected)
@@ -181,3 +185,5 @@ set nowrap
 
 " example for addition comment functional to undefined filetype
 " autocmd FileType apache setlocal commentstring=#\ %s<Paste>
+" autocmd FileType apache setlocal commentstring=#\ %s<Paste>
+autocmd BufRead,BufNewFile *.vue setfiletype vue
