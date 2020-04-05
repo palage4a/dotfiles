@@ -24,6 +24,7 @@ Plug 'chrisbra/csv.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
       \ 'coc-tsserver',
+      \ 'coc-vetur',
       \ 'coc-html',
       \ 'coc-emmet',
       \ 'coc-lists',
