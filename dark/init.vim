@@ -36,7 +36,6 @@ let g:coc_global_extensions = [
       \ 'coc-vimlsp',
       \ 'coc-json',
       \ 'coc-python',
-      \ 'coc-highlight',
       \ 'coc-snippets',
       \ 'coc-diagnostic',
       \ 'coc-go',
@@ -173,8 +172,8 @@ noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
 set nobackup
 set nowritebackup
 set noswapfile
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set expandtab
 set si
 set number
