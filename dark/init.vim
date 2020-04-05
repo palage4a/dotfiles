@@ -13,6 +13,7 @@ Plug 'ayu-theme/ayu-vim' " or other package manager
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
 Plug 'kkoomen/vim-doge'
 Plug 'easymotion/vim-easymotion'
 Plug 'haya14busa/incsearch.vim'
