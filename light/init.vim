@@ -22,10 +22,11 @@ Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'chrisbra/csv.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'posva/vim-vue'
+Plug 'sheerun/vim-polyglot'
 let g:coc_global_extensions = [
       \ 'coc-tsserver',
       \ 'coc-vetur',
+      \ 'coc-svelte',
       \ 'coc-eslint',
       \ 'coc-html',
       \ 'coc-emmet',
@@ -142,7 +143,7 @@ nnoremap <silent> <leader>ck  :<C-u>CocPrev<CR>
 nnoremap <silent> <leader>cp  :<C-u>CocListResume<CR>
 
 nnoremap <silent> <leader>ff  :Files<CR>
-nnoremap <silent> <leader>ft  :Tags<CR>
+nnoremap <silent> <leader>ft  :Filetypes<CR>
 nnoremap <silent> <leader>fb  :Buffers<CR>
 nnoremap <silent> <leader>fc  :Commands<CR>
 

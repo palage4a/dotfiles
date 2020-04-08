@@ -5,6 +5,7 @@
     "phpls.enable": true,
     "tsserver.npm": "/snap/bin/npm",
     "vetur.dev.vlsPath": "/home/ivan/.config/yarn/global/node_modules/vls",
+    "npm.binPath": "npm",
     "vetur.trace.server":"verbose",
     "eslint.filetypes": [
         "javascript",
