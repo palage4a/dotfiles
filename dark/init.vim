@@ -149,6 +149,7 @@ nnoremap <silent> <leader>gg :G<CR>
 
 nnoremap <silent> <leader>rw  :Rg <C-r><C-w><CR>
 nnoremap <silent> <leader>rr  :Rg<CR>
+vnoremap <silent> <leader>rv  y:Rg <C-f>p<CR>
 
 nnoremap <silent> <leader>n  :bn<CR>
 nnoremap <silent> <leader>p  :bp<CR>
