@@ -9,12 +9,14 @@ antigen use oh-my-zsh
 antigen bundle z
 antigen bundle git
 antigen bundle tmux
+antigen bundle npm
 antigen bundle extract
 antigen bundle command-not-found
 
 # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle g-plane/zsh-yarn-autocompletions
 
 # Load the theme.
 antigen theme robbyrussell
