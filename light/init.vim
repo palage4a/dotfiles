@@ -10,6 +10,7 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'ayu-theme/ayu-vim' " or other package manager
+Plug 'chrisbra/NrrwRgn'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
@@ -183,6 +184,7 @@ set wildmenu
 set fileencodings=utf-8,cp1251
 set undofile
 set nowrap
+set magic
 
 " example for addition comment functional to undefined filetype
 " autocmd FileType apache setlocal commentstring=#\ %s<Paste>
