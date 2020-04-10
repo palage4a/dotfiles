@@ -6,9 +6,6 @@ remote-machine:
 	rm ~/.tmux.conf -f | true
 	ln -s $(PWD)/tmux.conf ~/.tmux.conf | true
 main-machine:
-#DOOM
-	rm ~/.doom.d -f | true
-	ln -s $(PWD)/doom.d ~/.doom.d | true
 #COC NVIM
 	rm ~/.config/nvim/coc-settings.json | true
 	mkdir ~/.config/nvim | true
@@ -57,7 +54,5 @@ create-new-workspace:
 	sudo snap install node --classic --channel 12 | true
 	sudo npm i -g neovim | true
 	sudo snap install ripgrep --classic | true
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)";
-	git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions;
-	git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
-	~/.emacs.d/bin/doom install
+	mkdir ~/.cofnig/antigen/antigen.zsh
+	curl -L git.io/antigen > ~/.config/antigen/antigen.zsh
