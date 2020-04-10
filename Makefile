@@ -54,5 +54,5 @@ create-new-workspace:
 	sudo snap install node --classic --channel 12 | true
 	sudo npm i -g neovim | true
 	sudo snap install ripgrep --classic | true
-	mkdir ~/.cofnig/antigen/antigen.zsh
+	mkdir ~/.config/antigen
 	curl -L git.io/antigen > ~/.config/antigen/antigen.zsh
