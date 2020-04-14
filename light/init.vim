@@ -24,7 +24,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'chrisbra/csv.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
-Plug 'yuttie/comfortable-motion.vim'
 let g:coc_global_extensions = [
       \ 'coc-tsserver',
       \ 'coc-vetur',
@@ -48,7 +47,6 @@ set termguicolors     " enable true colors support
 let ayucolor="light" " for light version of theme
 colorscheme ayu
 let g:airline#extensions#tabline#enabled = 1
-
 
 let mapleader = "\<space>"
 nmap <leader><leader> :NERDTreeToggle<CR>
