@@ -159,14 +159,12 @@ exec --no-startup-id xinput --disable 14
 
 # class                 border  bground text    indicator child_border
 client.focused          #ffaf00 #ffaf00 #f8f8f8 #5c5c5c   #5c5c5c
-client.focused_inactive #0087ff #0087ff #f8f8f8 #5c5c5c   #5c5c5c
-client.unfocused        #5c5c5c #5c5c5c #f8f8f8 #5c5c5c   #5c5c5c
+client.focused_inactive #5c5c5c #0087ff #f8f8f8 #5c5c5c   #5c5c5c
+client.unfocused        #ffaf00 #5c5c5c #f8f8f8 #5c5c5c   #5c5c5c
 client.urgent           #FF5555 #FF5555 #f8f8f8 #FF5555   #FF5555
 client.placeholder      #5c5c5c #5c5c5c #f8f8f8 #5c5c5c   #5c5c5c
 
 client.background       #5c5c5c
-
-#for_window [class="^.*"] border pixel 0
 
 bar {
   status_command i3blocks
