@@ -59,8 +59,6 @@ bindsym $mod+g split h
 # split in vertical orientation
 bindsym $mod+v split v
 
-# enter fullscreen mode for the focused container
-bindsym $mod+Ctrl+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 # bindsym $mod+s layout stacking
@@ -94,15 +92,11 @@ bindsym $mod+3 workspace number $other
 # move focused container to workspace
 bindsym $mod+Ctrl+i move container to workspace number $ide
 bindsym $mod+Ctrl+w move container to workspace number $web
-bindsym $mod+Ctrl+slash move container to workspace number $term
 bindsym $mod+Ctrl+o move container to workspace number $other
-bindsym $mod+Ctrl+c move container to workspace number $chat
 
 bindsym $mod+Ctrl+1 move container to workspace number $ide
 bindsym $mod+Ctrl+2 move container to workspace number $web
-bindsym $mod+Ctrl+3 move container to workspace number $term
-bindsym $mod+Ctrl+4 move container to workspace number $other
-bindsym $mod+Ctrl+5 move container to workspace number $chat
+bindsym $mod+Ctrl+3 move container to workspace number $other
 
 workspace_auto_back_and_forth yes
 
@@ -141,14 +135,17 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Make the currently focused window a scratchpad
-bindsym $mod+Ctrl+backslash move scratchpad
+bindsym $mod+Ctrl+slash move scratchpad
 # Show the first scratchpad window
-bindsym $mod+backslash scratchpad show
+bindsym $mod+slash scratchpad show
+
+# enter fullscreen mode for the focused container
+# bindsym $mod+Ctrl+f fullscreen toggle
 
 # toggle tiling / floating
 bindsym $mod+f floating toggle
 # change focus between tiling / floating windows
-bindsym $mod+Shift+f focus mode_toggle
+# bindsym $mod+Shift+f focus mode_toggle
 
 # >>> Plasma Integration <<<
 
