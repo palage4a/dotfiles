@@ -69,37 +69,27 @@ bindsym $mod+s layout stacked
 bindsym $mod+e layout toggle split
 # workspace_layout tabbed
 
-# toggle tiling / floating
-bindsym $mod+f floating toggle
-# change focus between tiling / floating windows
-bindsym $mod+Shift+f focus mode_toggle
 
 # focus the parent container
-#bindsym $mod+p focus parent
+bindsym $mod+p focus parent
 
 # focus the child container
-#bindsym $mod+c focus child
+bindsym $mod+c focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.  set $ws1 "1"
 set $ide "1: ide"
 set $web "2: web"
-set $term "3: terminal"
-set $other "4: other"
-set $chat "5:chat"
+set $other "3: chat"
 
 # switch to workspace
 bindsym $mod+i workspace number $ide
 bindsym $mod+w workspace number $web
-bindsym $mod+slash workspace number $term
 bindsym $mod+o workspace number $other
-bindsym $mod+c workspace number $chat
 
 bindsym $mod+1 workspace number $ide
 bindsym $mod+2 workspace number $web
-bindsym $mod+3 workspace number $term
-bindsym $mod+4 workspace number $other
-bindsym $mod+5 workspace number $chat
+bindsym $mod+3 workspace number $other
 
 # move focused container to workspace
 bindsym $mod+Ctrl+i move container to workspace number $ide
@@ -154,6 +144,11 @@ bindsym $mod+r mode "resize"
 bindsym $mod+Ctrl+backslash move scratchpad
 # Show the first scratchpad window
 bindsym $mod+backslash scratchpad show
+
+# toggle tiling / floating
+bindsym $mod+f floating toggle
+# change focus between tiling / floating windows
+bindsym $mod+Shift+f focus mode_toggle
 
 # >>> Plasma Integration <<<
 
