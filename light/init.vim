@@ -21,6 +21,7 @@ Plug 'junegunn/fzf', { 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'chrisbra/csv.vim'
+Plug 'antoinemadec/coc-fzf'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
 let g:coc_global_extensions = [
@@ -122,8 +123,8 @@ xmap af <Plug>(coc-funcobj-a)
 omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
 
-"nmap <silent> <TAB> <Plug>(coc-range-select)
-"xmap <silent> <TAB> <Plug>(coc-range-select)
+nmap <silent> <TAB> <Plug>(coc-range-select)
+xmap <silent> <TAB> <Plug>(coc-range-select)
 
 command! -nargs=0 Format :call CocAction('format')
 
@@ -133,22 +134,29 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
-nnoremap <silent> <leader>ca  :<C-u>CocList diagnostics<cr>
-nnoremap <silent> <leader>ce  :<C-u>CocList extensions<cr>
-nnoremap <silent> <leader>cc  :<C-u>CocList commands<cr>
-nnoremap <silent> <leader>co  :<C-u>CocList outline<cr>
-nnoremap <silent> <leader>cs  :<C-u>CocList -I symbols<cr>
-nnoremap <silent> <leader>cj  :<C-u>CocNext<CR>
-nnoremap <silent> <leader>ck  :<C-u>CocPrev<CR>
-nnoremap <silent> <leader>cp  :<C-u>CocListResume<CR>
 
+" COC FZF
+nnoremap <silent> <leader>ca  :<C-u>CocFzfList diagnostics<CR>
+nnoremap <silent> <leader>cb  :<C-u>CocFzfList diagnostics --current-buf<CR>
+nnoremap <silent> <leader>cc  :<C-u>CocFzfList commands<CR>
+nnoremap <silent> <leader>ce  :<C-u>CocFzfList extensions<CR>
+nnoremap <silent> <leader>cl  :<C-u>CocFzfList location<CR>
+nnoremap <silent> <leader>co  :<C-u>CocFzfList outline<CR>
+nnoremap <silent> <leader>cs  :<C-u>CocFzfList symbols<CR>
+nnoremap <silent> <leader>cS  :<C-u>CocFzfList services<CR>
+nnoremap <silent> <leader>cp  :<C-u>CocFzfListResume<CR>
+
+" FZF
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 nnoremap <silent> <leader>ff  :Files<CR>
 nnoremap <silent> <leader>ft  :Filetypes<CR>
 nnoremap <silent> <leader>fb  :Buffers<CR>
 nnoremap <silent> <leader>fc  :Commands<CR>
 
+" GIT
 nnoremap <silent> <leader>gg :G<CR>
 
+"RG
 nnoremap <silent> <leader>rw  :Rg <C-r><C-w><CR>
 nnoremap <silent> <leader>rr  :Rg<CR>
 vnoremap <silent> <leader>rv  y:Rg <C-f>p<CR>
