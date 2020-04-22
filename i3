@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:hack 9
+font pango:hack 12
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -81,22 +81,22 @@ set $web "2: web"
 set $other "3: chat"
 
 # switch to workspace
-bindsym $mod+i workspace number $ide
-bindsym $mod+w workspace number $web
-bindsym $mod+o workspace number $other
+bindsym $mod+i workspace $ide
+bindsym $mod+w workspace $web
+bindsym $mod+o workspace $other
 
-bindsym $mod+1 workspace number $ide
-bindsym $mod+2 workspace number $web
-bindsym $mod+3 workspace number $other
+bindsym $mod+1 workspace $ide
+bindsym $mod+2 workspace $web
+bindsym $mod+3 workspace $other
 
 # move focused container to workspace
-bindsym $mod+Ctrl+i move container to workspace number $ide
-bindsym $mod+Ctrl+w move container to workspace number $web
-bindsym $mod+Ctrl+o move container to workspace number $other
+bindsym $mod+Ctrl+i move container to workspace $ide
+bindsym $mod+Ctrl+w move container to workspace $web
+bindsym $mod+Ctrl+o move container to workspace $other
 
-bindsym $mod+Ctrl+1 move container to workspace number $ide
-bindsym $mod+Ctrl+2 move container to workspace number $web
-bindsym $mod+Ctrl+3 move container to workspace number $other
+bindsym $mod+Ctrl+1 move container to workspace $ide
+bindsym $mod+Ctrl+2 move container to workspace $web
+bindsym $mod+Ctrl+3 move container to workspace $other
 
 workspace_auto_back_and_forth yes
 

@@ -185,6 +185,7 @@ set fileencodings=utf-8,cp1251
 set undofile
 set nowrap
 set magic
+set mouse=a
 
 " example for addition comment functional to undefined filetype
 " autocmd FileType apache setlocal commentstring=#\ %s<Paste>
