@@ -9,7 +9,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
-Plug 'ayu-theme/ayu-vim' " or other package manager
+Plug 'morhetz/gruvbox'
 Plug 'chrisbra/NrrwRgn'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
@@ -43,8 +43,9 @@ let g:coc_global_extensions = [
       \]
 call plug#end()
 set termguicolors     " enable true colors support
-let ayucolor="light" " for light version of theme
-colorscheme ayu
+
+set background=light
+colorscheme gruvbox
 let g:airline#extensions#tabline#enabled = 1
 
 let mapleader = "\<space>"
