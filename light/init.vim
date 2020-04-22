@@ -162,6 +162,7 @@ nnoremap <silent> //  :nohls<CR>
 nnoremap <silent> <leader>\  :vsp<CR>
 nnoremap <silent> <leader>-  :sp<CR>
 nnoremap ; :
+tnoremap jj <C-\><C-n>
 
 set nobackup
 set nowritebackup
