@@ -44,7 +44,7 @@ let g:coc_global_extensions = [
 call plug#end()
 set termguicolors     " enable true colors support
 
-set background=light
+set background=dark
 colorscheme gruvbox
 let g:airline#extensions#tabline#enabled = 1
 
