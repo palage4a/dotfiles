@@ -152,6 +152,7 @@ nnoremap <silent> <leader>ff  :Files<CR>
 nnoremap <silent> <leader>ft  :Filetypes<CR>
 nnoremap <silent> <leader>fb  :Buffers<CR>
 nnoremap <silent> <leader>fc  :Commands<CR>
+nnoremap <silent> <leader>fw  :Windows<CR>
 
 " GIT
 nnoremap <silent> <leader>gg :G<CR>
