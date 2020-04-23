@@ -43,5 +43,9 @@
         "<C-b>": false,
         "<C-t>": false,
         "<C-v>": false
-    }
+    },
+    "vsicons.dontShowNewVersionMessage": true,
+    "git.confirmSync": false,
+    "workbench.activityBar.visible": true,
+    "workbench.sideBar.location": "left"
 }
