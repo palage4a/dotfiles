@@ -28,6 +28,7 @@ main-machine:
 	mkdir ~/.config/Code/User/ -p | true
 	ln -s $(PWD)/vscode/settings.json ~/.config/Code/User/settings.json | true
 	ln -s $(PWD)/vscode/keybindings.json ~/.config/Code/User/keybindings.json | true
+
 light-scheme:
 #NVIM
 	rm ~/.config/nvim/init.vim -f | true
@@ -35,13 +36,6 @@ light-scheme:
 #KITTY COLOR SCHEME LIGHT
 	rm ~/.config/kitty/kitty.conf -f | true
 	ln -s $(PWD)/light/kitty.conf ~/.config/kitty/kitty.conf | true
-dark-scheme:
-#NVIM
-	rm ~/.config/nvim/init.vim -f | true
-	ln -s $(PWD)/dark/init.vim ~/.config/nvim/init.vim | true
-#KITTY COLOR SCHEME LIGHT
-	rm ~/.config/kitty/kitty.conf -f | true
-	ln -s $(PWD)/dark/kitty.conf ~/.config/kitty/kitty.conf | true
 create-new-workspace:
 	sudo apt update; sudo apt full-upgrade -y | true
 	sudo apt install git tmux kitty python3-pip zsh compton curl scrot | true
