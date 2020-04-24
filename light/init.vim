@@ -21,27 +21,29 @@ Plug 'junegunn/fzf', { 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'chrisbra/csv.vim'
-Plug 'antoinemadec/coc-fzf'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'skanehira/docker-compose.vim'
 Plug 'sheerun/vim-polyglot'
-let g:coc_global_extensions = [
-      \ 'coc-tsserver',
-      \ 'coc-vetur',
-      \ 'coc-svelte',
-      \ 'coc-eslint',
-      \ 'coc-html',
-      \ 'coc-emmet',
-      \ 'coc-lists',
-      \ 'coc-phpls',
-      \ 'coc-sh',
-      \ 'coc-stylelint',
-      \ 'coc-vimlsp',
-      \ 'coc-json',
-      \ 'coc-python',
-      \ 'coc-snippets',
-      \ 'coc-diagnostic',
-      \ 'coc-go',
-      \]
+
+Plug 'antoinemadec/coc-fzf'
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install()}}
+Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-vetur', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-emmet', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-lists', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-stylelint', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-vimlsp', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
+
+Plug 'josa42/coc-sh', {'do': 'yarn install --frozen-lockfile'}
+Plug 'coc-extensions/coc-svelte', {'do': 'yarn install --frozen-lockfile'}
+Plug 'iamcco/coc-vimlsp', {'do': 'yarn install --frozen-lockfile'}
+Plug 'iamcco/coc-diagnostic', {'do': 'yarn install --frozen-lockfile'}
+Plug 'marlonfan/coc-phpls', {'do': 'yarn install --frozen-lockfile'}
+
 call plug#end()
 set termguicolors     " enable true colors support
 
