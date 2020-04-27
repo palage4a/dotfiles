@@ -2,7 +2,7 @@
     "workbench.iconTheme": "vscode-icons",
     "php.validate.executablePath": "/usr/bin/php",
     "git.autofetch": true,
-    "workbench.colorTheme": "Ayu Mirage Bordered",
+    "workbench.colorTheme": "Gruvbox Dark Soft",
     "editor.largeFileOptimizations": false,
     "window.zoomLevel": 0,
     "vim.enableNeovim": true,

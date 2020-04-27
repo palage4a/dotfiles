@@ -20,12 +20,17 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'chrisbra/csv.vim'
 Plug 'skanehira/docker-compose.vim'
 Plug 'sheerun/vim-polyglot'
+Plug 'voldikss/vim-floaterm'
+
 
 Plug 'antoinemadec/coc-fzf'
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install()}}
+
+" REFACTOR
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-vetur', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
@@ -37,6 +42,7 @@ Plug 'neoclide/coc-vimlsp', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
 
 Plug 'josa42/coc-sh', {'do': 'yarn install --frozen-lockfile'}
 Plug 'coc-extensions/coc-svelte', {'do': 'yarn install --frozen-lockfile'}
@@ -50,6 +56,10 @@ set termguicolors     " enable true colors support
 set background=dark
 colorscheme gruvbox
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = "unique_tail_improved"
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline_powerline_fonts = '1'
 
 let mapleader = "\<space>"
 nmap <leader><leader> :NERDTreeToggle<CR>
@@ -159,6 +169,14 @@ nnoremap <silent> <leader>fw  :Windows<CR>
 " GIT
 nnoremap <silent> <leader>gg :G<CR>
 
+" TERMINAL
+noremap  <leader>//  :FloatermToggle<CR>
+noremap  <leader>/c  :FloatermNew<CR>
+noremap  <leader>/n  :FloatermNext<CR>
+noremap  <leader>/p  :FloatermPrev<CR>
+noremap! <leader>/t <Esc>:FloatermToggle<CR>
+tnoremap <leader>/t <C-\><C-n>:FloatermToggle<CR>
+
 "RG
 nnoremap <silent> <leader>rw  :Rg <C-r><C-w><CR>
 nnoremap <silent> <leader>rr  :Rg<CR>
@@ -188,7 +206,7 @@ set incsearch
 set smartcase
 set ignorecase
 
-set statusline=%F
+" set statusline=%F
 syntax enable
 filetype plugin on
 set path+=**
