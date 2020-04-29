@@ -176,10 +176,12 @@ noremap  <leader>//  :FloatermToggle<CR>
 noremap  <leader>/c  :FloatermNew<CR>
 noremap  <leader>/n  :FloatermNext<CR>
 noremap  <leader>/p  :FloatermPrev<CR>
-noremap! <leader>/t <Esc>:FloatermToggle<CR>
-tnoremap <leader>/t <C-\><C-n>:FloatermToggle<CR>
-tnoremap jj <silent> <C-\><C-n>
-tnoremap ii <silent> <C-\><C-n>:FloatermToggle<CR>
+
+tnoremap <silent> <leader>// <C-\><C-n>:FloatermToggle<CR>
+tnoremap <silent> <leader>/c <C-\><C-n>:FloatermNew<CR>
+tnoremap <silent> <leader>/n  <C-\><C-n>:FloatermNext<CR>
+tnoremap <silent> <leader>/p  <C-\><C-n>:FloatermPrev<CR>
+tnoremap <silent> jj <C-\><C-n>
 
 
 "RG
