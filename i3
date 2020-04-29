@@ -99,6 +99,7 @@ bindsym $mod+Ctrl+2 move container to workspace $web
 bindsym $mod+Ctrl+3 move container to workspace $other
 
 for_window [class="Gnome-system-monitor"] floating enable
+for_window [class="Org.gnome.Nautilus"] floating enable
 for_window [class="Google-chrome"] move container to workspace $web
 for_window [title=".*WhatsApp.*"] move container to workspace $other
 for_window [class="TelegramDesktop"] move container to workspace $other

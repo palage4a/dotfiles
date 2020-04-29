@@ -178,6 +178,9 @@ noremap  <leader>/n  :FloatermNext<CR>
 noremap  <leader>/p  :FloatermPrev<CR>
 noremap! <leader>/t <Esc>:FloatermToggle<CR>
 tnoremap <leader>/t <C-\><C-n>:FloatermToggle<CR>
+tnoremap jj <silent> <C-\><C-n>
+tnoremap ii <silent> <C-\><C-n>:FloatermToggle<CR>
+
 
 "RG
 nnoremap <silent> <leader>rw  :Rg <C-r><C-w><CR>
@@ -194,7 +197,6 @@ nnoremap <silent> //  :nohls<CR>
 nnoremap <silent> <leader>\  :vsp<CR>
 nnoremap <silent> <leader>-  :sp<CR>
 nnoremap ; :
-tnoremap jj <C-\><C-n>
 
 set nobackup
 set nowritebackup
