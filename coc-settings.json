@@ -6,5 +6,6 @@
     "tsserver.npm": "/snap/bin/npm",
     "vetur.dev.vlsPath": "/home/ivan/.config/yarn/global/node_modules/vls",
     "npm.binPath": "npm",
+    "javascript.showUnused": false,
     "vetur.trace.server":"verbose"
 }

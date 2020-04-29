@@ -22,7 +22,7 @@ floating_modifier $mod
 bindsym $mod+Return exec kitty
 
 # kill focused window
-bindsym $mod+q kill
+bindsym $mod+Ctrl+q kill
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
 bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
 bindsym XF86AudioMute exec amixer -q set Master toggle
@@ -135,9 +135,9 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Make the currently focused window a scratchpad
-bindsym $mod+Ctrl+slash move scratchpad
+bindsym $mod+Shift+q move scratchpad
 # Show the first scratchpad window
-bindsym $mod+slash scratchpad show
+bindsym $mod+q scratchpad show
 
 # enter fullscreen mode for the focused container
 # bindsym $mod+Ctrl+f fullscreen toggle
