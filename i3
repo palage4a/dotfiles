@@ -98,6 +98,14 @@ bindsym $mod+Ctrl+1 move container to workspace $ide
 bindsym $mod+Ctrl+2 move container to workspace $web
 bindsym $mod+Ctrl+3 move container to workspace $other
 
+for_window [class="Gnome-system-monitor"] floating enable
+for_window [class="Google-chrome"] move container to workspace $web
+for_window [title=".*WhatsApp.*"] move container to workspace $other
+for_window [class="TelegramDesktop"] move container to workspace $other
+
+assign [class="TelegramDesktop"] $other
+assign [class="Google-chrome"]  $web
+
 workspace_auto_back_and_forth yes
 
 # reload the configuration file
@@ -157,6 +165,7 @@ exec --no-startup-id setxkbmap -model pc105 -layout us,ru -option caps:super,grp
 exec --no-startup-id compton -b
 exec --no-startup-id xinput --disable 14
 
+
 # class                 border  bground text    indicator child_border
 client.focused          #ffaf00 #ffaf00 #f8f8f8 #5c5c5c   #5c5c5c
 client.focused_inactive #5c5c5c #0087ff #f8f8f8 #5c5c5c   #5c5c5c
@@ -165,8 +174,10 @@ client.urgent           #FF5555 #FF5555 #f8f8f8 #FF5555   #FF5555
 client.placeholder      #5c5c5c #5c5c5c #f8f8f8 #5c5c5c   #5c5c5c
 
 client.background       #5c5c5c
+title_align center
 
 bar {
+  position top
   status_command i3blocks
     colors {
       background #5c5c5c
