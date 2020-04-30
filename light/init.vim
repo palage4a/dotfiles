@@ -10,6 +10,7 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'morhetz/gruvbox'
+Plug 'nanotech/jellybeans.vim'
 Plug 'chrisbra/NrrwRgn'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
@@ -31,30 +32,31 @@ Plug 'antoinemadec/coc-fzf'
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install()}}
 
 " REFACTOR
-Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-vetur', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-emmet', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-lists', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-stylelint', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-vimlsp', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile && yarn build'}
+Plug 'neoclide/coc-vetur', {'do': 'yarn install --frozen-lockfile && yarn build'}
+Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile && yarn build'}
+Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile && yarn build'}
+Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile && yarn build'}
+Plug 'neoclide/coc-emmet', {'do': 'yarn install --frozen-lockfile && yarn build'}
+Plug 'neoclide/coc-lists', {'do': 'yarn install --frozen-lockfile && yarn build'}
+Plug 'neoclide/coc-stylelint', {'do': 'yarn install --frozen-lockfile && yarn build'}
+Plug 'neoclide/coc-vimlsp', {'do': 'yarn install --frozen-lockfile && yarn build'}
+Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile && yarn build'}
+Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile && yarn build'}
+Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile && yarn build'}
 
-Plug 'josa42/coc-sh', {'do': 'yarn install --frozen-lockfile'}
-Plug 'coc-extensions/coc-svelte', {'do': 'yarn install --frozen-lockfile'}
-Plug 'iamcco/coc-vimlsp', {'do': 'yarn install --frozen-lockfile'}
-Plug 'iamcco/coc-diagnostic', {'do': 'yarn install --frozen-lockfile'}
-Plug 'marlonfan/coc-phpls', {'do': 'yarn install --frozen-lockfile'}
+Plug 'josa42/coc-sh', {'do': 'yarn install --frozen-lockfile && yarn build'}
+Plug 'coc-extensions/coc-svelte', {'do': 'yarn install --frozen-lockfile && yarn build'}
+Plug 'iamcco/coc-vimlsp', {'do': 'yarn install --frozen-lockfile && yarn build'}
+Plug 'iamcco/coc-diagnostic', {'do': 'yarn install --frozen-lockfile && yarn build'}
+Plug 'marlonfan/coc-phpls', {'do': 'yarn install --frozen-lockfile && yarn build'}
 
 call plug#end()
 set termguicolors     " enable true colors support
 
 set background=dark
-colorscheme gruvbox
+" colorscheme gruvbox
+colorscheme jellybeans
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = "unique_tail_improved"
 let g:airline#extensions#tabline#left_sep = ' '

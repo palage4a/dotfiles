@@ -100,12 +100,10 @@ bindsym $mod+Ctrl+3 move container to workspace $other
 
 for_window [class="Gnome-system-monitor"] floating enable
 for_window [class="Org.gnome.Nautilus"] floating enable
-for_window [class="Google-chrome"] move container to workspace $web
-for_window [title=".*WhatsApp.*"] move container to workspace $other
-for_window [class="TelegramDesktop"] move container to workspace $other
-
-assign [class="TelegramDesktop"] $other
-assign [class="Google-chrome"]  $web
+for_window [class="Google-chrome"] move --no-auto-back-and-forth container to workspace $web
+for_window [title=".*WhatsApp.*"] move --no-auto-back-and-forth container to workspace $other
+for_window [title=".*YouTube Music.*"] move --no-auto-back-and-forth container to workspace $other
+for_window [class="TelegramDesktop"] move --no-auto-back-and-forth container to workspace $other
 
 workspace_auto_back_and_forth yes
 
