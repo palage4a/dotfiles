@@ -100,6 +100,7 @@ bindsym $mod+Ctrl+3 move container to workspace $other
 
 for_window [class="Gnome-system-monitor"] floating enable
 for_window [class="Org.gnome.Nautilus"] floating enable
+for_window [window_role="pop-up"] floating enable
 
 for_window [class="kitty"] layout tabbed
 

@@ -25,6 +25,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'chrisbra/csv.vim'
 Plug 'skanehira/docker-compose.vim'
 Plug 'sheerun/vim-polyglot'
+Plug 'mboughaba/i3config.vim'
 Plug 'voldikss/vim-floaterm'
 
 
