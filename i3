@@ -100,12 +100,15 @@ bindsym $mod+Ctrl+3 move container to workspace $other
 
 for_window [class="Gnome-system-monitor"] floating enable
 for_window [class="Org.gnome.Nautilus"] floating enable
-for_window [class="Google-chrome"] move --no-auto-back-and-forth container to workspace $web
-for_window [title=".*WhatsApp.*"] move --no-auto-back-and-forth container to workspace $other
-for_window [title=".*YouTube Music.*"] move --no-auto-back-and-forth scratchpad
-for_window [class="TelegramDesktop"] move --no-auto-back-and-forth container to workspace $other
+for_window [window_role="pop-up"] floating enable
 
-exec --no-startup-id telegram-desktop
+for_window [class="kitty"] layout tabbed
+
+for_window [class="Google-chrome"] move --no-auto-back-and-forth container to workspace $web; layout tabbed
+for_window [title=".*YouTube Music.*"] move scratchpad
+
+for_window [title=".*WhatsApp.*"] move --no-auto-back-and-forth container to workspace $other
+for_window [class="TelegramDesktop"] move --no-auto-back-and-forth container to workspace $other; layout tabbed
 
 workspace_auto_back_and_forth yes
 
@@ -124,16 +127,16 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 100 px or 100 ppt
+        bindsym j resize grow height 100 px or 100 ppt
+        bindsym k resize shrink height 100 px or 100 ppt
+        bindsym l resize grow width 100 px or 100 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 100 px or 100 ppt
+        bindsym Down resize grow height 100 px or 100 ppt
+        bindsym Up resize shrink height 100 px or 100 ppt
+        bindsym Right resize grow width 100 px or 100 ppt
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
@@ -163,7 +166,7 @@ bindsym $mod+f floating toggle
 
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id setxkbmap -model pc105 -layout us,ru -option caps:super,grp:win_space_toggle,ctrl:swap_lalt_lctl
-exec --no-startup-id compton -b
+exec --no-startup-id compton -b --config ~/.config/compton/compton.conf
 exec --no-startup-id xinput --disable 14
 
 

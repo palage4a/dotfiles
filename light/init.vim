@@ -10,6 +10,7 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'morhetz/gruvbox'
+Plug 'nanotech/jellybeans.vim'
 Plug 'chrisbra/NrrwRgn'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
@@ -24,6 +25,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'chrisbra/csv.vim'
 Plug 'skanehira/docker-compose.vim'
 Plug 'sheerun/vim-polyglot'
+Plug 'mboughaba/i3config.vim'
 Plug 'voldikss/vim-floaterm'
 
 
@@ -35,6 +37,7 @@ Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile && yarn bui
 Plug 'neoclide/coc-vetur', {'do': 'yarn install --frozen-lockfile && yarn build'}
 Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile && yarn build'}
 Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile && yarn build'}
+Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile && yarn build'}
 Plug 'neoclide/coc-emmet', {'do': 'yarn install --frozen-lockfile && yarn build'}
 Plug 'neoclide/coc-lists', {'do': 'yarn install --frozen-lockfile && yarn build'}
 Plug 'neoclide/coc-stylelint', {'do': 'yarn install --frozen-lockfile && yarn build'}
@@ -42,7 +45,6 @@ Plug 'neoclide/coc-vimlsp', {'do': 'yarn install --frozen-lockfile && yarn build
 Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile && yarn build'}
 Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile && yarn build'}
 Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile && yarn build'}
-Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile && yarn build'}
 
 Plug 'josa42/coc-sh', {'do': 'yarn install --frozen-lockfile && yarn build'}
 Plug 'coc-extensions/coc-svelte', {'do': 'yarn install --frozen-lockfile && yarn build'}
@@ -54,7 +56,8 @@ call plug#end()
 set termguicolors     " enable true colors support
 
 set background=dark
-colorscheme gruvbox
+" colorscheme gruvbox
+colorscheme jellybeans
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = "unique_tail_improved"
 let g:airline#extensions#tabline#left_sep = ' '
@@ -200,6 +203,9 @@ nnoremap <silent> <leader>\  :vsp<CR>
 nnoremap <silent> <leader>-  :sp<CR>
 nnoremap ; :
 
+nmap j gj
+nmap k gk
+
 set nobackup
 set nowritebackup
 set noswapfile
@@ -220,7 +226,7 @@ set path+=**
 set wildmenu
 set fileencodings=utf-8,cp1251
 set undofile
-set nowrap
+set wrap
 set magic
 set mouse=a
 

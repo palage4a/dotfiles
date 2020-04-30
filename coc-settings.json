@@ -3,7 +3,7 @@
     "json.enable": true,
     "json.format.enable": true,
     "phpls.enable": true,
-    "tsserver.npm": "/snap/bin/npm",
+    "tsserver.npm": "npm",
     "vetur.dev.vlsPath": "/home/ivan/.config/yarn/global/node_modules/vls",
     "npm.binPath": "npm",
     "javascript.showUnused": false,

@@ -7,13 +7,14 @@ remote-machine:
 	ln -s $(PWD)/tmux.conf ~/.tmux.conf | true
 main-machine:
 #COC NVIM
-	rm ~/.config/nvim/coc-settings.json | true
-	mkdir ~/.config/nvim | true
+	rm ~/.config/nvim/coc-settings.json | true mkdir ~/.config/nvim | true
 	ln -s $(PWD)/coc-settings.json ~/.config/nvim/coc-settings.json | true
 #I3WM
 	rm ~/.Xresources -rf | true
 	rm ~/.config/i3/config | true
+	rm ~/.config/compton/compton.conf | true
 	mkdir ~/.config/i3 | true
+	mkdir ~/.config/compton | true
 	ln -s $(PWD)/i3 ~/.config/i3/config | true
 	ln -s $(PWD)/compton.conf ~/.config/compton/compton.conf | true
 	ln -s $(PWD)/Xresources ~/.Xresources | true
