@@ -202,6 +202,9 @@ nnoremap <silent> <leader>\  :vsp<CR>
 nnoremap <silent> <leader>-  :sp<CR>
 nnoremap ; :
 
+nmap j gj
+nmap k gk
+
 set nobackup
 set nowritebackup
 set noswapfile
@@ -222,7 +225,7 @@ set path+=**
 set wildmenu
 set fileencodings=utf-8,cp1251
 set undofile
-set nowrap
+set wrap
 set magic
 set mouse=a
 
