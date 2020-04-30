@@ -100,10 +100,12 @@ bindsym $mod+Ctrl+3 move container to workspace $other
 
 for_window [class="Gnome-system-monitor"] floating enable
 for_window [class="Org.gnome.Nautilus"] floating enable
-for_window [class="Google-chrome"] move --no-auto-back-and-forth container to workspace $web
+
+for_window [class="Google-chrome"] move --no-auto-back-and-forth container to workspace $web; layout tabbed
+for_window [title=".*YouTube Music.*"] move scratchpad
+
 for_window [title=".*WhatsApp.*"] move --no-auto-back-and-forth container to workspace $other
-for_window [title=".*YouTube Music.*"] move --no-auto-back-and-forth container to workspace $other
-for_window [class="TelegramDesktop"] move --no-auto-back-and-forth container to workspace $other
+for_window [class="TelegramDesktop"] move --no-auto-back-and-forth container to workspace $other; layout tabbed
 
 workspace_auto_back_and_forth yes
 
