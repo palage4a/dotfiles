@@ -101,6 +101,8 @@ bindsym $mod+Ctrl+3 move container to workspace $other
 for_window [class="Gnome-system-monitor"] floating enable
 for_window [class="Org.gnome.Nautilus"] floating enable
 
+for_window [class="kitty"] layout tabbed
+
 for_window [class="Google-chrome"] move --no-auto-back-and-forth container to workspace $web; layout tabbed
 for_window [title=".*YouTube Music.*"] move scratchpad
 
@@ -124,16 +126,16 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 100 px or 100 ppt
+        bindsym j resize grow height 100 px or 100 ppt
+        bindsym k resize shrink height 100 px or 100 ppt
+        bindsym l resize grow width 100 px or 100 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 100 px or 100 ppt
+        bindsym Down resize grow height 100 px or 100 ppt
+        bindsym Up resize shrink height 100 px or 100 ppt
+        bindsym Right resize grow width 100 px or 100 ppt
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
