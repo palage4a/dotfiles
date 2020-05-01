@@ -100,6 +100,7 @@ bindsym $mod+Ctrl+3 move container to workspace $other
 
 for_window [class="Gnome-system-monitor"] floating enable
 for_window [class="Org.gnome.Nautilus"] floating enable
+for_window [class="Gedit"] floating enable
 for_window [window_role="pop-up"] floating enable
 
 for_window [class="kitty"] layout tabbed
@@ -108,7 +109,9 @@ for_window [class="Google-chrome"] move --no-auto-back-and-forth container to wo
 for_window [title=".*YouTube Music.*"] move scratchpad
 
 for_window [title=".*WhatsApp.*"] move --no-auto-back-and-forth container to workspace $other
-for_window [class="TelegramDesktop"] move --no-auto-back-and-forth container to workspace $other; layout tabbed
+for_window [class="TelegramDesktop"] move --no-auto-back-and-forth container to workspace $other
+
+exec --no-startup-id telegram-desktop
 
 workspace_auto_back_and_forth yes
 
