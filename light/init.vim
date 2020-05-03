@@ -11,7 +11,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'morhetz/gruvbox'
 Plug 'nanotech/jellybeans.vim'
-Plug 'chrisbra/NrrwRgn'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
@@ -23,13 +22,10 @@ Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'chrisbra/csv.vim'
-Plug 'skanehira/docker-compose.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'mboughaba/i3config.vim'
-Plug 'voldikss/vim-floaterm'
 
 
-Plug 'antoinemadec/coc-fzf'
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install()}}
 
 " REFACTOR
@@ -151,18 +147,18 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 
 " COC FZF
-nnoremap <silent> <leader>ca  :<C-u>CocFzfList diagnostics<CR>
-nnoremap <silent> <leader>cb  :<C-u>CocFzfList diagnostics --current-buf<CR>
-nnoremap <silent> <leader>cc  :<C-u>CocFzfList commands<CR>
-nnoremap <silent> <leader>ce  :<C-u>CocFzfList extensions<CR>
-nnoremap <silent> <leader>cl  :<C-u>CocFzfList location<CR>
-nnoremap <silent> <leader>co  :<C-u>CocFzfList outline<CR>
-nnoremap <silent> <leader>cs  :<C-u>CocFzfList symbols<CR>
-nnoremap <silent> <leader>cS  :<C-u>CocFzfList services<CR>
-nnoremap <silent> <leader>cp  :<C-u>CocFzfListResume<CR>
+nnoremap <silent> <leader>ca  :<C-u>CocList diagnostics<CR>
+nnoremap <silent> <leader>cb  :<C-u>CocList diagnostics --current-buf<CR>
+nnoremap <silent> <leader>cc  :<C-u>CocList commands<CR>
+nnoremap <silent> <leader>ce  :<C-u>CocList extensions<CR>
+nnoremap <silent> <leader>cl  :<C-u>CocList location<CR>
+nnoremap <silent> <leader>co  :<C-u>CocList outline<CR>
+nnoremap <silent> <leader>cs  :<C-u>CocList symbols<CR>
+nnoremap <silent> <leader>cS  :<C-u>CocList services<CR>
+nnoremap <silent> <leader>cp  :<C-u>CocListResume<CR>
 
 " FZF
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+" let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 nnoremap <silent> <leader>ff  :GitFiles<CR>
 nnoremap <silent> <leader>fg  :Files<CR>
 nnoremap <silent> <leader>fT  :Filetypes<CR>
@@ -173,19 +169,6 @@ nnoremap <silent> <leader>fw  :Windows<CR>
 
 " GIT
 nnoremap <silent> <leader>gg :G<CR>
-
-" TERMINAL
-noremap  <leader>//  :FloatermToggle<CR>
-noremap  <leader>/c  :FloatermNew<CR>
-noremap  <leader>/n  :FloatermNext<CR>
-noremap  <leader>/p  :FloatermPrev<CR>
-
-tnoremap <silent> <leader>// <C-\><C-n>:FloatermToggle<CR>
-tnoremap <silent> <leader>/c <C-\><C-n>:FloatermNew<CR>
-tnoremap <silent> <leader>/n  <C-\><C-n>:FloatermNext<CR>
-tnoremap <silent> <leader>/p  <C-\><C-n>:FloatermPrev<CR>
-tnoremap <silent> jj <C-\><C-n>
-
 
 "RG
 nnoremap <silent> <leader>rw  :Rg <C-r><C-w><CR>
