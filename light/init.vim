@@ -24,6 +24,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'chrisbra/csv.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'mboughaba/i3config.vim'
+Plug 'dusans/vim-hardmode'
 
 
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install()}}
@@ -179,8 +180,6 @@ vnoremap <silent> <leader>rv  y:Rg <C-f>p<CR>
 nnoremap <silent> <leader>rc  :source ~/.config/nvim/init.vim<CR>
 nnoremap <silent> //  :nohls<CR>
 
-nnoremap ; :
-
 nmap j gj
 nmap k gk
 
@@ -191,6 +190,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set si
+" set relativenumber
 set number
 set hlsearch
 set incsearch
@@ -212,3 +212,4 @@ set mouse=a
 " autocmd FileType apache setlocal commentstring=#\ %s<Paste>
 " autocmd FileType apache setlocal commentstring=#\ %s<Paste>
 autocmd BufRead,BufNewFile *.vue setfiletype vue
+autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
