@@ -23,9 +23,10 @@ bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
-bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
-bindsym XF86AudioMute exec amixer -q set Master toggle
+set $sink `pactl list short sinks | grep RUNNING | cut -f1`
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $sink +10%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $sink -10%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $sink toggle
 
 bindsym $mod+d exec --no-startup-id "rofi -combi-modi window,drun -font 'hack 30' -show combi"
 
