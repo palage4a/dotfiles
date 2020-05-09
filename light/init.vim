@@ -24,8 +24,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'chrisbra/csv.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'mboughaba/i3config.vim'
-Plug 'dusans/vim-hardmode'
-
 
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install()}}
 
@@ -212,4 +210,3 @@ set mouse=a
 " autocmd FileType apache setlocal commentstring=#\ %s<Paste>
 " autocmd FileType apache setlocal commentstring=#\ %s<Paste>
 autocmd BufRead,BufNewFile *.vue setfiletype vue
-autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
