@@ -159,8 +159,7 @@ nnoremap <silent> <leader>cp  :<C-u>CocListResume<CR>
 " let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 nnoremap <silent> <leader>ff  :GitFiles<CR>
 nnoremap <silent> <leader>fg  :Files<CR>
-nnoremap <silent> <leader>fT  :Filetypes<CR>
-nnoremap <silent> <leader>ft  :Tags<CR>
+nnoremap <silent> <leader>ft  :Filetypes<CR>
 nnoremap <silent> <leader>fb  :Buffers<CR>
 nnoremap <silent> <leader>fc  :Commands<CR>
 nnoremap <silent> <leader>fw  :Windows<CR>
