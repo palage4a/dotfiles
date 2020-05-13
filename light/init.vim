@@ -48,6 +48,7 @@ Plug 'iamcco/coc-diagnostic', {'do': 'yarn install --frozen-lockfile && yarn bui
 Plug 'marlonfan/coc-phpls', {'do': 'yarn install --frozen-lockfile && yarn build'}
 
 call plug#end()
+let g:vista_default_executive = 'coc'
 set termguicolors     " enable true colors support
 
 set background=dark
@@ -156,7 +157,7 @@ nnoremap <silent> <leader>cs  :<C-u>CocList symbols<CR>
 nnoremap <silent> <leader>cS  :<C-u>CocList services<CR>
 nnoremap <silent> <leader>cp  :<C-u>CocListResume<CR>
 
-nnoremap <silent> <leader>cv  :Vista coc<CR>
+nnoremap <silent> <leader>\  :Vista!!<CR>
 
 " FZF
 " let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
