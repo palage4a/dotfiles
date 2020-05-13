@@ -22,6 +22,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'chrisbra/csv.vim'
 Plug 'sheerun/vim-polyglot'
+Plug 'liuchengxu/vista.vim'
 Plug 'mboughaba/i3config.vim'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install()}}
@@ -154,6 +155,8 @@ nnoremap <silent> <leader>co  :<C-u>CocList outline<CR>
 nnoremap <silent> <leader>cs  :<C-u>CocList symbols<CR>
 nnoremap <silent> <leader>cS  :<C-u>CocList services<CR>
 nnoremap <silent> <leader>cp  :<C-u>CocListResume<CR>
+
+nnoremap <silent> <leader>cv  :Vista coc<CR>
 
 " FZF
 " let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
