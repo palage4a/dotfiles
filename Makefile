@@ -5,6 +5,8 @@ remote-machine:
 #TMUX
 	rm ~/.tmux.conf -f | true
 	ln -s $(PWD)/tmux.conf ~/.tmux.conf | true
+	rm ~/.tmuxtheme -f | true
+	ln -s $(PWD)/tmuxtheme ~/.tmuxtheme | true
 main-machine:
 #COC NVIM
 	rm ~/.config/nvim/coc-settings.json | true mkdir ~/.config/nvim | true
