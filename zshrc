@@ -19,7 +19,7 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle g-plane/zsh-yarn-autocompletions
 
 # Load the theme.
-antigen theme robbyrussell
+antigen theme amuse
 
 # Tell Antigen that you're done.
 antigen apply

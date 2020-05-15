@@ -9,8 +9,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
-Plug 'morhetz/gruvbox'
-Plug 'nanotech/jellybeans.vim'
+Plug 'sonph/onehalf', { 'rtp': 'vim/' }
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
@@ -40,6 +39,7 @@ Plug 'neoclide/coc-vimlsp', {'do': 'yarn install --frozen-lockfile && yarn build
 Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile && yarn build'}
 Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile && yarn build'}
 Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile && yarn build'}
+Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile && yarn build'}
 
 Plug 'josa42/coc-sh', {'do': 'yarn install --frozen-lockfile && yarn build'}
 Plug 'coc-extensions/coc-svelte', {'do': 'yarn install --frozen-lockfile && yarn build'}
@@ -51,9 +51,7 @@ call plug#end()
 let g:vista_default_executive = 'coc'
 set termguicolors     " enable true colors support
 
-set background=dark
-" colorscheme gruvbox
-colorscheme jellybeans
+colorscheme onehalflight
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = "unique_tail_improved"
 let g:airline#extensions#tabline#left_sep = ' '
@@ -208,7 +206,4 @@ set wrap
 set magic
 set mouse=a
 
-" example for addition comment functional to undefined filetype
-" autocmd FileType apache setlocal commentstring=#\ %s<Paste>
-" autocmd FileType apache setlocal commentstring=#\ %s<Paste>
-autocmd BufRead,BufNewFile *.vue setfiletype vue
+autocmd CursorHold * silent call CocActionAsync('highlight')
