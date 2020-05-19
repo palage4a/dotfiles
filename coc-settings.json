@@ -8,5 +8,28 @@
     "npm.binPath": "npm",
     "javascript.showUnused": false,
     "svelte.plugin.typescript.diagnostics.enable": false,
-    "vetur.trace.server":"verbose"
+    "vetur.trace.server":"verbose",
+    "languageserver": {
+        "ccls": {
+            "command": "ccls",
+            "filetypes": [
+                "c",
+                "cpp",
+                "objc",
+                "objcpp"
+            ],
+            "rootPatterns": [
+                ".ccls",
+                "compile_commands.json",
+                ".vim/",
+                ".git/",
+                ".hg/"
+            ],
+            "initializationOptions": {
+                "cache": {
+                    "directory": "/tmp/ccls"
+                }
+            }
+        }
+    }
 }
