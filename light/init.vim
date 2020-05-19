@@ -207,3 +207,7 @@ set magic
 set mouse=a
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" TERMINAL REG ENABLE
+tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
+
