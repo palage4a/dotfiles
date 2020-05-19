@@ -23,6 +23,7 @@ Plug 'chrisbra/csv.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'liuchengxu/vista.vim'
 Plug 'mboughaba/i3config.vim'
+Plug 'shime/vim-livedown'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install()}}
 
@@ -210,4 +211,4 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " TERMINAL REG ENABLE
 tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
-
+nnoremap <leader>ld :LivedownToggle<CR>
