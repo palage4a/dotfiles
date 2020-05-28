@@ -53,10 +53,8 @@ let g:vista_default_executive = 'coc'
 set termguicolors     " enable true colors support
 
 colorscheme onehalflight
+let g:airline_theme='onehalfdark'
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = "unique_tail_improved"
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_powerline_fonts = '1'
 
 let mapleader = "\<space>"
@@ -145,14 +143,15 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 
-" COC FZF
-nnoremap <silent> <leader>ca  :<C-u>CocList diagnostics<CR>
-nnoremap <silent> <leader>cb  :<C-u>CocList diagnostics --current-buf<CR>
+" COC LISTS
+nnoremap <silent> <leader>co  :<C-u>CocList -A outline<CR>
+nnoremap <silent> <leader>cs  :<C-u>CocList -I -A symbols<CR>
+
+nnoremap <silent> <leader>ca  :<C-u>CocList -A diagnostics<CR>
+nnoremap <silent> <leader>cb  :<C-u>CocList -A diagnostics --current-buf<CR>
 nnoremap <silent> <leader>cc  :<C-u>CocList commands<CR>
 nnoremap <silent> <leader>ce  :<C-u>CocList extensions<CR>
 nnoremap <silent> <leader>cl  :<C-u>CocList location<CR>
-nnoremap <silent> <leader>co  :<C-u>CocList outline<CR>
-nnoremap <silent> <leader>cs  :<C-u>CocList symbols<CR>
 nnoremap <silent> <leader>cS  :<C-u>CocList services<CR>
 nnoremap <silent> <leader>cp  :<C-u>CocListResume<CR>
 
@@ -165,6 +164,7 @@ nnoremap <silent> <leader>fg  :Files<CR>
 nnoremap <silent> <leader>ft  :Filetypes<CR>
 nnoremap <silent> <leader>fb  :Buffers<CR>
 nnoremap <silent> <leader>fc  :Commands<CR>
+nnoremap <silent> <leader>fm  :Maps<CR>
 nnoremap <silent> <leader>fw  :Windows<CR>
 
 " GIT
