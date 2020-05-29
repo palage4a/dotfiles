@@ -24,10 +24,10 @@ Plug 'sheerun/vim-polyglot'
 Plug 'liuchengxu/vista.vim'
 Plug 'mboughaba/i3config.vim'
 Plug 'shime/vim-livedown'
+Plug 'jpalardy/vim-slime'
 
+"COC PLUGINS
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install()}}
-
-" REFACTOR
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile && yarn build'}
 Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile && yarn build'}
 Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile && yarn build'}
@@ -36,36 +36,25 @@ Plug 'neoclide/coc-lists', {'do': 'yarn install --frozen-lockfile && yarn build'
 Plug 'neoclide/coc-stylelint', {'do': 'yarn install --frozen-lockfile && yarn build'}
 Plug 'neoclide/coc-vimlsp', {'do': 'yarn install --frozen-lockfile && yarn build'}
 Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile && yarn build'}
-Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile && yarn build'}
-Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile && yarn build'}
-
+Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile && yarn build'} Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile && yarn build'}
 Plug 'josa42/coc-sh', {'do': 'yarn install --frozen-lockfile && yarn build'}
 Plug 'coc-extensions/coc-svelte', {'do': 'yarn install --frozen-lockfile && yarn build'}
 Plug 'iamcco/coc-vimlsp', {'do': 'yarn install --frozen-lockfile && yarn build'}
 Plug 'iamcco/coc-diagnostic', {'do': 'yarn install --frozen-lockfile && yarn build'}
 Plug 'marlonfan/coc-phpls', {'do': 'yarn install --frozen-lockfile && yarn build'}
-
 call plug#end()
-let g:vista_default_executive = 'coc'
-set termguicolors     " enable true colors support
 
+" COLORS
+set termguicolors     " enable true colors support
 colorscheme onehalflight
 let g:airline_theme='onehalfdark'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = '1'
 
 let mapleader = "\<space>"
+
+"COC-RELATED CONFIG
 nmap <leader><leader> :NERDTreeToggle<CR>
-set hidden
-set number
-set nobackup
-set nowritebackup
-set cmdheight=1
-set updatetime=300
-set timeoutlen=1000 
-set ttimeoutlen=0
-set shortmess+=c
-set signcolumn=yes
 " inoremap <silent><expr> <TAB>
 "       \ pumvisible() ? "\<C-n>" :
 "       \ <SID>check_back_space() ? "\<TAB>" :
@@ -108,9 +97,7 @@ nmap <leader>cf  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
-  " Setup formatexpr specified filetype(s).
   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
@@ -128,22 +115,17 @@ xmap af <Plug>(coc-funcobj-a)
 omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
 
-" nmap <silent> <TAB> <Plug>(coc-range-select)
-" xmap <silent> <TAB> <Plug>(coc-range-select)
-
 command! -nargs=0 Format :call CocAction('format')
-
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
+
+"" MAPPINGS
 
 " COC LISTS
 nnoremap <silent> <leader>co  :<C-u>CocList -A outline<CR>
 nnoremap <silent> <leader>cs  :<C-u>CocList -I -A symbols<CR>
-
 nnoremap <silent> <leader>ca  :<C-u>CocList -A diagnostics<CR>
 nnoremap <silent> <leader>cb  :<C-u>CocList -A diagnostics --current-buf<CR>
 nnoremap <silent> <leader>cc  :<C-u>CocList commands<CR>
@@ -152,10 +134,9 @@ nnoremap <silent> <leader>cl  :<C-u>CocList location<CR>
 nnoremap <silent> <leader>cS  :<C-u>CocList services<CR>
 nnoremap <silent> <leader>cp  :<C-u>CocListResume<CR>
 
+"VISTA
 nnoremap <silent> <leader>\  :Vista!!<CR>
-
 " FZF
-" let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 nnoremap <silent> <leader>ff  :GitFiles<CR>
 nnoremap <silent> <leader>fg  :Files<CR>
 nnoremap <silent> <leader>ft  :Filetypes<CR>
@@ -163,22 +144,26 @@ nnoremap <silent> <leader>fb  :Buffers<CR>
 nnoremap <silent> <leader>fc  :Commands<CR>
 nnoremap <silent> <leader>fm  :Maps<CR>
 nnoremap <silent> <leader>fw  :Windows<CR>
-
 " GIT
 nnoremap <silent> <leader>gg :G<CR>
-
 "RG
 nnoremap <silent> <leader>rw  :Rg <C-r><C-w><CR>
 nnoremap <silent> <leader>rr  :Rg<CR>
 nnoremap <silent> <leader>r'  :Rg<CR>'
-vnoremap <silent> <leader>rv  y:Rg <C-f>p<CR>
-
-nnoremap <silent> <leader>rc  :source ~/.config/nvim/init.vim<CR>
-nnoremap <silent> //  :nohls<CR>
 
 nmap j gj
 nmap k gk
 
+set hidden
+set number
+set nobackup
+set nowritebackup
+set cmdheight=1
+set updatetime=300
+set timeoutlen=1000 
+set ttimeoutlen=0
+set shortmess+=c
+set signcolumn=yes
 set nobackup
 set nowritebackup
 set noswapfile
@@ -186,17 +171,15 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set si
-" set relativenumber
 set number
 set hlsearch
 set incsearch
 set smartcase
 set ignorecase
 
-" set statusline=%F
 syntax enable
 filetype plugin on
-set path+=**
+set path=**
 set wildmenu
 set fileencodings=utf-8,cp1251
 set undofile
@@ -204,8 +187,10 @@ set wrap
 set magic
 set mouse=a
 
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
 " TERMINAL REG ENABLE
 tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 nnoremap <leader>ld :LivedownToggle<CR>
+
+" SLIME RELATED CONFIG
+let g:slime_target = "tmux"
+let g:slime_default_config = {"socket_name": "default", "target_pane": "{last}"}
