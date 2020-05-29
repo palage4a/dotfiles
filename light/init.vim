@@ -26,6 +26,7 @@ Plug 'mboughaba/i3config.vim'
 Plug 'shime/vim-livedown'
 Plug 'jpalardy/vim-slime'
 
+
 "COC PLUGINS
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install()}}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile && yarn build'}
@@ -36,7 +37,8 @@ Plug 'neoclide/coc-lists', {'do': 'yarn install --frozen-lockfile && yarn build'
 Plug 'neoclide/coc-stylelint', {'do': 'yarn install --frozen-lockfile && yarn build'}
 Plug 'neoclide/coc-vimlsp', {'do': 'yarn install --frozen-lockfile && yarn build'}
 Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile && yarn build'}
-Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile && yarn build'} Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile && yarn build'}
+Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile && yarn build'}
+Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile && yarn build'}
 Plug 'josa42/coc-sh', {'do': 'yarn install --frozen-lockfile && yarn build'}
 Plug 'coc-extensions/coc-svelte', {'do': 'yarn install --frozen-lockfile && yarn build'}
 Plug 'iamcco/coc-vimlsp', {'do': 'yarn install --frozen-lockfile && yarn build'}
@@ -190,7 +192,3 @@ set mouse=a
 " TERMINAL REG ENABLE
 tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 nnoremap <leader>ld :LivedownToggle<CR>
-
-" SLIME RELATED CONFIG
-let g:slime_target = "tmux"
-let g:slime_default_config = {"socket_name": "default", "target_pane": "{last}"}
