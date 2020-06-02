@@ -21,13 +21,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'chrisbra/csv.vim'
 Plug 'sheerun/vim-polyglot'
-Plug 'liuchengxu/vista.vim'
-Plug 'mboughaba/i3config.vim'
-Plug 'shime/vim-livedown'
-Plug 'jpalardy/vim-slime'
 
-
-"COC PLUGINS
+"COC
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install()}}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile && yarn build'}
 Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile && yarn build'}
@@ -57,11 +52,6 @@ let mapleader = "\<space>"
 
 "COC-RELATED CONFIG
 nmap <leader><leader> :NERDTreeToggle<CR>
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? "\<C-n>" :
-"       \ <SID>check_back_space() ? "\<TAB>" :
-"       \ coc#refresh()
-" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -122,9 +112,7 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
-
 "" MAPPINGS
-
 " COC LISTS
 nnoremap <silent> <leader>co  :<C-u>CocList -A outline<CR>
 nnoremap <silent> <leader>cs  :<C-u>CocList -I -A symbols<CR>
@@ -136,8 +124,6 @@ nnoremap <silent> <leader>cl  :<C-u>CocList location<CR>
 nnoremap <silent> <leader>cS  :<C-u>CocList services<CR>
 nnoremap <silent> <leader>cp  :<C-u>CocListResume<CR>
 
-"VISTA
-nnoremap <silent> <leader>\  :Vista!!<CR>
 " FZF
 nnoremap <silent> <leader>ff  :GitFiles<CR>
 nnoremap <silent> <leader>fg  :Files<CR>
@@ -146,6 +132,7 @@ nnoremap <silent> <leader>fb  :Buffers<CR>
 nnoremap <silent> <leader>fc  :Commands<CR>
 nnoremap <silent> <leader>fm  :Maps<CR>
 nnoremap <silent> <leader>fw  :Windows<CR>
+nnoremap <silent> <leader>fq  :History:<CR>
 " GIT
 nnoremap <silent> <leader>gg :G<CR>
 "RG
