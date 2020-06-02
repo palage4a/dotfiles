@@ -175,6 +175,7 @@ set undofile
 set wrap
 set magic
 set mouse=a
+set inccommand=split
 
 " TERMINAL REG ENABLE
 tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
