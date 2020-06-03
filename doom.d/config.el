@@ -53,8 +53,12 @@
 ;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
 ;; they are implemented.
 
+(defun svelte-server-activation (filename &optional _)
+  (string-match-p (rx (one-or-more anything) ".svelte" string-end) filename)
+  )
+
 (lsp-register-client
- (make-lsp-client :new-connection (lsp-stdio-connection '( "svelteserver" "--stdio" ))
+  (make-lsp-client :new-connection (lsp-stdio-connection '("svelteserver" "--stdio"))
                   :priority 1
-                  :major-modes '(web-mode)
+                  :activation-fn 'svelte-server-activation
                   :server-id 'svelteserver))
