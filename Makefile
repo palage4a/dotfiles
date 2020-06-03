@@ -1,6 +1,6 @@
 vim:
 	sudo apt install vim | true
-	rm ~/.vimrc -f | true
+	rm ~/.vimrc -rf | true
 	ln -s $(PWD)/vimrc ~/.vimrc | true
 neovim:
 	sudo apt install neovim | true
@@ -14,26 +14,26 @@ neovim:
 zsh:
 	mkdir ~/.config/antigen
 	curl -L git.io/antigen > ~/.config/antigen/antigen.zsh
-	rm ~/.zshrc -f | true
-	rm ~/.zprofile -f | true
+	rm ~/.zshrc -rf | true
+	rm ~/.zprofile -rf | true
 	ln -s $(PWD)/zprofile ~/.zprofile | true
 	ln -s $(PWD)/zshrc ~/.zshrc | true
 kitty:
 	sudo apt install kitty | true
-	rm ~/.config/kitty/kitty.conf -f | true
+	rm ~/.config/kitty/kitty.conf -rf | true
 	ln -s $(PWD)/light/kitty.conf ~/.config/kitty/kitty.conf | true
 tmux:
 	sudo apt install tmux | true
-	rm ~/.tmux.conf -f | true
+	rm ~/.tmux.conf -rf | true
 	ln -s $(PWD)/tmux.conf ~/.tmux.conf | true
-	rm ~/.tmuxtheme -f | true
+	rm ~/.tmuxtheme -rf | true
 	ln -s $(PWD)/tmuxtheme ~/.tmuxtheme | true
 
 doom-emacs:
 	sudo apt install emacs | true
 	git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d | true
 	~/.emacs.d/bin/doom install | true
-	rm ~/.doom.d -f | true
+	rm ~/.doom.d -rf | true
 	ln -s $(PWD)/doom.d ~/.doom.d | true
 
 git:
