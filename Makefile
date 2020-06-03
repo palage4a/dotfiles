@@ -1,55 +1,61 @@
-remote-machine:
-#VIM
+vim:
+	sudo apt install vim | true
 	rm ~/.vimrc -f | true
 	ln -s $(PWD)/vimrc ~/.vimrc | true
-#TMUX
-	rm ~/.tmux.conf -f | true
-	ln -s $(PWD)/tmux.conf ~/.tmux.conf | true
-	rm ~/.tmuxtheme -f | true
-	ln -s $(PWD)/tmuxtheme ~/.tmuxtheme | true
-main-machine:
-#COC NVIM
-	rm ~/.config/nvim/coc-settings.json | true mkdir ~/.config/nvim | true
+neovim:
+	sudo apt install neovim | true
+	sudo pip3 install neovim | true
+	sudo npm i -g neovim | true
+	rm ~/.config/nvim | true
+	ln -s $(PWD)/light/init.vim ~/.config/nvim/init.vim | true
+
+	rm ~/.config/nvim/coc-settings.json | true
 	ln -s $(PWD)/coc-settings.json ~/.config/nvim/coc-settings.json | true
-#I3WM
-	rm ~/.Xresources -rf | true
-	rm ~/.config/i3/config | true
-	rm ~/.config/compton/compton.conf | true
-	mkdir ~/.config/i3 | true
-	mkdir ~/.config/compton | true
-	ln -s $(PWD)/i3 ~/.config/i3/config | true
-	ln -s $(PWD)/compton.conf ~/.config/compton/compton.conf | true
-	ln -s $(PWD)/Xresources ~/.Xresources | true
-#ZSHRC
+zsh:
+	mkdir ~/.config/antigen
+	curl -L git.io/antigen > ~/.config/antigen/antigen.zsh
 	rm ~/.zshrc -f | true
 	rm ~/.zprofile -f | true
 	ln -s $(PWD)/zprofile ~/.zprofile | true
 	ln -s $(PWD)/zshrc ~/.zshrc | true
-#VSCODE
-	rm ~/.config/Code/User/settings.json -f | true
-	rm ~/.config/Code/User/keybindings.json -f | true
-	mkdir ~/.config/Code/User/ -p | true
-	ln -s $(PWD)/vscode/settings.json ~/.config/Code/User/settings.json | true
-	ln -s $(PWD)/vscode/keybindings.json ~/.config/Code/User/keybindings.json | true
-
-light-scheme:
-#NVIM
-	rm ~/.config/nvim/init.vim -f | true
-	ln -s $(PWD)/light/init.vim ~/.config/nvim/init.vim | true
-#KITTY COLOR SCHEME LIGHT
+kitty:
+	sudo apt install kitty | true
 	rm ~/.config/kitty/kitty.conf -f | true
 	ln -s $(PWD)/light/kitty.conf ~/.config/kitty/kitty.conf | true
-create-new-workspace:
-	sudo apt update; sudo apt full-upgrade -y | true
-	sudo apt install git tmux kitty python3-pip zsh compton curl scrot | true
-	sudo apt install neovim
-	sudo pip3 install pipenv
-	sudo pip3 install neovim
+tmux:
+	sudo apt install tmux | true
+	rm ~/.tmux.conf -f | true
+	ln -s $(PWD)/tmux.conf ~/.tmux.conf | true
+	rm ~/.tmuxtheme -f | true
+	ln -s $(PWD)/tmuxtheme ~/.tmuxtheme | true
+
+doom-emacs:
+	sudo apt install emacs | true
+	git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d | true
+	~/.emacs.d/bin/doom install | true
+	rm ~/.doom.d -f | true
+	ln -s $(PWD)/doom.d ~/.doom.d | true
+
+git:
+	sudo apt install git | true
+	rm -rf ~/.gitconfig | true
 	ln -s $(PWD)/gitconfig ~/.gitconfig | true
+full-upgrade:
+	sudo apt update; sudo apt full-upgrade -y | true
+
+python:
+	sudo apt install python3 | true
+	sudo apt install python3-pip | true
+	sudo pip3 install pipenv | true
+
+snaps:
+	sudo snap install node --classic --channel 12 | true
 	sudo snap install code --classic | true
 	sudo snap install telegram-desktop --classic | true
-	sudo snap install node --classic --channel 12 | true
-	sudo npm i -g neovim | true
 	sudo snap install ripgrep --classic | true
-	mkdir ~/.config/antigen
-	curl -L git.io/antigen > ~/.config/antigen/antigen.zsh
+
+
+# HIGH-LEVEL INSTALL
+remote-machine: full-upgrade vim tmux
+
+main-machine: remote-machine snaps git zsh doom-emacs kitty python neovim
