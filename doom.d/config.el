@@ -57,8 +57,10 @@
   (string-match-p (rx (one-or-more anything) ".svelte" string-end) filename)
   )
 
-(lsp-register-client
-  (make-lsp-client :new-connection (lsp-stdio-connection '("svelteserver" "--stdio"))
-                  :priority 1
-                  :activation-fn 'svelte-server-activation
-                  :server-id 'svelteserver))
+(after! lsp-mode
+  (lsp-register-client
+    (make-lsp-client :new-connection (lsp-stdio-connection '("svelteserver" "--stdio"))
+                    :priority 1
+                    :activation-fn 'svelte-server-activation
+                    :server-id 'svelteserver))
+  )
