@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/go/bin:$HOME/.local/go/bin:/snap/bin:$HOME/bin:$PATH
+export PATH=/snap/bin:$HOME/bin:$PATH
 source ~/.config/antigen/antigen.zsh
 
 # Load the oh-my-zsh's library.
