@@ -10,6 +10,7 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'sonph/onehalf', { 'rtp': 'vim/' }
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
@@ -44,7 +45,8 @@ call plug#end()
 " COLORS
 set termguicolors     " enable true colors support
 colorscheme onehalflight
-let g:airline_theme='onehalfdark'
+colorscheme dracula
+" let g:airline_theme='onehalfdark'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = '1'
 
