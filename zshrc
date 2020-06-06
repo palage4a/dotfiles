@@ -11,6 +11,7 @@ antigen bundle command-not-found
 # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle pawel-slowik/zsh-term-title
 # Load the theme.
 antigen theme amuse
 # Tell Antigen that you're done.
