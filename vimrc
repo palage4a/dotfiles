@@ -5,6 +5,7 @@ set tabstop=4
 set shiftwidth=4
 set si
 set number
+set hidden
 set hlsearch
 set incsearch
 set smartcase
