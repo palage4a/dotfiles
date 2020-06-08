@@ -4,11 +4,9 @@
     "json.format.enable": true,
     "phpls.enable": true,
     "tsserver.npm": "npm",
-    "vetur.dev.vlsPath": "/home/ivan/.config/yarn/global/node_modules/vls",
     "npm.binPath": "npm",
     "javascript.showUnused": false,
     "svelte.plugin.typescript.diagnostics.enable": false,
-    "vetur.trace.server":"verbose",
     "languageserver": {
         "ccls": {
             "command": "ccls",
