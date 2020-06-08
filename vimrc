@@ -17,6 +17,7 @@ syntax enable
 filetype plugin on
 set path+=**
 set wildmenu
+set mouse=a
 set fileencodings=utf-8,cp1251
 
 if !has('nvim')
