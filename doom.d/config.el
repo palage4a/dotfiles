@@ -64,3 +64,5 @@
                     :activation-fn 'svelte-server-activation
                     :server-id 'svelteserver))
   )
+
+(menu-bar-mode t)

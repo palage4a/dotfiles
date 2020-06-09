@@ -24,7 +24,7 @@ Plug 'chrisbra/csv.vim'
 Plug 'sheerun/vim-polyglot'
 
 "COC
-Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile && yarn build'}
 Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile && yarn build'}
 Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile && yarn build'}
