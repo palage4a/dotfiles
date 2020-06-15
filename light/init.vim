@@ -18,10 +18,10 @@ endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -30,6 +30,7 @@ Plug 'vim-airline/vim-airline-themes'
 let g:airline#extensions#tabline#enabled = 1
 
 if has('nvim')
+    Plug 'tpope/vim-fugitive'
     Plug 'chrisbra/csv.vim'
     Plug 'sheerun/vim-polyglot'
     "COC
@@ -51,6 +52,7 @@ if has('nvim')
     Plug 'marlonfan/coc-phpls', {'do': 'yarn install --frozen-lockfile && yarn build'}
 endif
 call plug#end()
+colorscheme dracula
 let mapleader = "\<space>"
 nmap <leader><leader> :NERDTreeToggle<CR>
 if has('nvim')
