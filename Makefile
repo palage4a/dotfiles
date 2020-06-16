@@ -1,13 +1,13 @@
 vim:
 	sudo apt install vim | true
 	rm ~/.vimrc -rf | true
-	ln -s $(PWD)/vimrc ~/.vimrc | true
+	ln -s $(PWD)/init.vim ~/.vimrc | true
 neovim:
 	sudo apt install neovim | true
 	sudo pip3 install neovim | true
 	sudo npm i -g neovim | true
 	rm ~/.config/nvim | true
-	ln -s $(PWD)/light/init.vim ~/.config/nvim/init.vim | true
+	ln -s $(PWD)/init.vim ~/.config/nvim/init.vim | true
 
 	rm ~/.config/nvim/coc-settings.json | true
 	ln -s $(PWD)/coc-settings.json ~/.config/nvim/coc-settings.json | true
@@ -21,7 +21,7 @@ zsh:
 kitty:
 	sudo apt install kitty | true
 	rm ~/.config/kitty/kitty.conf -rf | true
-	ln -s $(PWD)/light/kitty.conf ~/.config/kitty/kitty.conf | true
+	ln -s $(PWD)/kitty.conf ~/.config/kitty/kitty.conf | true
 tmux:
 	sudo apt install tmux | true
 	rm ~/.tmux.conf -rf | true
@@ -56,6 +56,5 @@ snaps:
 
 
 # HIGH-LEVEL INSTALL
-remote-machine: full-upgrade vim tmux
-
-main-machine: remote-machine snaps git zsh doom-emacs kitty python neovim
+remote-machine: full-upgrade vim
+main-machine: remote-machine tmux snaps git zsh doom-emacs kitty python neovim
