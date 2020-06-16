@@ -1,5 +1,6 @@
 vim:
 	mv ~/.vimrc ~/.vimrc.backup | true
+	ln -s $(PWD)/rg ~/bin/rg | true
 	ln -s $(PWD)/init.vim ~/.vimrc | true
 neovim:
 	sudo apt install neovim | true
