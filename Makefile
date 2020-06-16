@@ -1,6 +1,5 @@
 vim:
-	sudo apt install vim | true
-	rm ~/.vimrc -rf | true
+	mv ~/.vimrc ~/.vimrc.backup | true
 	ln -s $(PWD)/init.vim ~/.vimrc | true
 neovim:
 	sudo apt install neovim | true
