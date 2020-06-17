@@ -1,36 +1,53 @@
-remote-vim:
+vim-config:
 	mv ~/.vimrc ~/.vimrc.backup | true
-	ln -s $(PWD)/rg ~/bin/rg | true
 	echo 'export PATH=$$HOME/bin:$$PATH' >> ~/.profile
+	ln -s $(PWD)/rg ~/bin/rg | true
 	ln -s $(PWD)/init.vim ~/.vimrc | true
-install-neovim:
-	sudo apt install neovim | true
-	sudo pip3 install neovim | true
-	sudo npm i -g neovim | true
-config-vim:
+
+neovim-config:
 	rm ~/.config/nvim/init.vim -f | true
 	rm ~/.config/nvim/coc-settings.json -f | true
 	ln -s $(PWD)/init.vim ~/.config/nvim/init.vim | true
 	ln -s $(PWD)/coc-settings.json ~/.config/nvim/coc-settings.json | true
-zsh:
-	mkdir ~/.config/antigen
-	curl -L git.io/antigen > ~/.config/antigen/antigen.zsh
+neovim-install:
+	sudo apt install neovim | true
+	sudo pip3 install neovim | true
+	sudo npm i -g neovim | true
+neovim: neovim-install neovim-config
+
+zsh-config:
 	rm ~/.zshrc -rf | true
 	rm ~/.zprofile -rf | true
 	ln -s $(PWD)/zprofile ~/.zprofile | true
 	ln -s $(PWD)/zshrc ~/.zshrc | true
-kitty:
-	sudo apt install kitty | true
+zsh-install:
+	sudo apt install zsh
+	mkdir ~/.config/antigen
+	curl -L git.io/antigen > ~/.config/antigen/antigen.zsh
+zsh: zsh-install zsh-config
+
+kitty-config:
 	rm ~/.config/kitty/kitty.conf -rf | true
 	ln -s $(PWD)/kitty.conf ~/.config/kitty/kitty.conf | true
-tmux:
+kitty-intall:
+	sudo apt install kitty
+kitty: kitty-install kitty-config
+
+tmux-config:
+	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+	rm ~/.tmux.conf -rf
+	ln -s $(PWD)/tmux.conf ~/.tmux.conf
+tmux-install: 
 	sudo apt install tmux | true
-	rm ~/.tmux.conf -rf | true
-	ln -s $(PWD)/tmux.conf ~/.tmux.conf | true
-git:
+tmux: tmux-install tmux-config
+
+git-install:
 	sudo apt install git | true
+git-config:
 	rm -rf ~/.gitconfig | true
 	ln -s $(PWD)/gitconfig ~/.gitconfig | true
+git: git-install git-config
+
 full-upgrade:
 	sudo apt update; sudo apt full-upgrade -y | true
 python:
@@ -44,5 +61,5 @@ snaps:
 	sudo snap install ripgrep --classic | true
 
 # HIGH-LEVEL INSTALL
-remote-machine: full-upgrade vim
-main-machine: remote-machine tmux snaps git zsh doom-emacs kitty python neovim
+remote-machine: vim-config
+main-machine: neovim tmux snaps git zsh doom-emacs kitty python neovim
