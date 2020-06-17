@@ -3,13 +3,14 @@ remote-vim:
 	ln -s $(PWD)/rg ~/bin/rg | true
 	echo 'export PATH=$$HOME/bin:$$PATH' >> ~/.profile
 	ln -s $(PWD)/init.vim ~/.vimrc | true
-neovim:
+install-neovim:
 	sudo apt install neovim | true
 	sudo pip3 install neovim | true
 	sudo npm i -g neovim | true
-	rm ~/.config/nvim | true
+config-vim:
+	rm ~/.config/nvim/init.vim -f | true
+	rm ~/.config/nvim/coc-settings.json -f | true
 	ln -s $(PWD)/init.vim ~/.config/nvim/init.vim | true
-	rm ~/.config/nvim/coc-settings.json | true
 	ln -s $(PWD)/coc-settings.json ~/.config/nvim/coc-settings.json | true
 zsh:
 	mkdir ~/.config/antigen
