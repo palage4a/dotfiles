@@ -159,6 +159,7 @@ set hlsearch
 set incsearch
 set smartcase
 set ignorecase
+set noundofile
 
 syntax enable
 filetype plugin on
