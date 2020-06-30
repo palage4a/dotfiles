@@ -4,34 +4,17 @@ vim-config:
 	ln -s $(PWD)/rg ~/bin/rg | true
 	ln -s $(PWD)/init.vim ~/.vimrc | true
 
-neovim-config:
-	rm ~/.config/nvim/init.vim -f | true
-	rm ~/.config/nvim/coc-settings.json -f | true
-	ln -s $(PWD)/init.vim ~/.config/nvim/init.vim | true
-	ln -s $(PWD)/coc-settings.json ~/.config/nvim/coc-settings.json | true
-neovim-install:
-	sudo apt install neovim | true
-	sudo pip3 install neovim | true
-	sudo npm i -g neovim | true
-neovim: neovim-install neovim-config
-
 zsh-config:
 	rm ~/.zshrc -rf | true
 	rm ~/.zprofile -rf | true
 	ln -s $(PWD)/zprofile ~/.zprofile | true
 	ln -s $(PWD)/zshrc ~/.zshrc | true
+
 zsh-install:
 	sudo apt install zsh
 	mkdir ~/.config/antigen
 	curl -L git.io/antigen > ~/.config/antigen/antigen.zsh
 zsh: zsh-install zsh-config
-
-kitty-config:
-	rm ~/.config/kitty/kitty.conf -rf | true
-	ln -s $(PWD)/kitty.conf ~/.config/kitty/kitty.conf | true
-kitty-intall:
-	sudo apt install kitty
-kitty: kitty-install kitty-config
 
 tmux-config:
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -62,4 +45,4 @@ snaps:
 
 # HIGH-LEVEL INSTALL
 remote-machine: vim-config
-main-machine: neovim tmux snaps git zsh doom-emacs kitty python neovim
+main-machine: remote-machine tmux snaps git zsh python 
