@@ -44,9 +44,26 @@ tmux: tmux-install tmux-config
 
 
 
+chrome-install:
+	curl -sSL https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - \
+		&& echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list \
+		&& sudo apt update \
+		&& sudo apt install google-chrome-stable \
+		&& true
+chrome: chrome-install
 
 
 
+
+vscode-install:
+	curl -sSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg \
+		&& sudo install -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/ \
+		&& sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list' \
+		&& sudo apt install apt-transport-https \
+		&& sudo apt update \
+		&& sudo apt install code \
+		&& true
+vscode: vscode-install
 
 
 git-install:
@@ -72,17 +89,13 @@ python:
 	sudo pip3 install pipenv
 
 
+telegram-install:
+	sudo apt install telegram-desktop
 
-
-snaps:
-	sudo snap install node --classic --channel 12
-	sudo snap install code --classic
-	sudo snap install telegram-desktop --classic
-	sudo snap install ripgrep --classic
-
+telegram: telegram-install
 
 
 
 # HIGH-LEVEL INSTALL
 remote-machine: remote-vim-config
-main-machine:  vim tmux zsh git python snaps
+main-machine:  vim tmux zsh git python chrome vscode
