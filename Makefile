@@ -7,12 +7,19 @@ remote-vim-config:
 	ln -s $(PWD)/rg ~/bin/rg
 	ln -s $(PWD)/init.vim ~/.vimrc
 vim-install:
-	sudo apt install vim-gtk3
+	sudo dnf install gvim
 
 
 
 
 
+kitty-conf:
+	rm ~/.config/kitty/kitty.conf -rf
+	ln -s $(PWD)/kitty.conf ~/.config/kitty/kitty.conf
+
+kitty-install:
+	sudo dnf install kityy
+kitty:kitty-install kitty-conf
 
 vim: vim-install main-vim-config
 
@@ -22,12 +29,18 @@ zsh-config:
 	ln -s $(PWD)/zprofile ~/.zprofile
 	ln -s $(PWD)/zshrc ~/.zshrc
 zsh-install:
-	sudo apt install zsh 
+	sudo dnf install zsh 
 	mkdir ~/.config/antigen 
 	curl -L git.io/antigen > ~/.config/antigen/antigen.zsh 
 zsh: zsh-install zsh-config
 
 
+
+vscode-install:
+	sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+	sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+	sudo dnf install code
+vscode: vscode-install
 
 
 
@@ -37,37 +50,19 @@ tmux-config:
 	rm ~/.tmux.conf -rf 
 	ln -s $(PWD)/tmux.conf ~/.tmux.conf 
 tmux-install: 
-	sudo apt install tmux
+	sudo dnf install tmux
 tmux: tmux-install tmux-config
 
 
 
 
 
-chrome-install:
-	curl -sSL https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - \
-		&& echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list \
-		&& sudo apt update \
-		&& sudo apt install google-chrome-stable \
-		&& true
-chrome: chrome-install
 
 
-
-
-vscode-install:
-	curl -sSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg \
-		&& sudo install -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/ \
-		&& sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list' \
-		&& sudo apt install apt-transport-https \
-		&& sudo apt update \
-		&& sudo apt install code \
-		&& true
-vscode: vscode-install
 
 
 git-install:
-	sudo apt install git
+	sudo dnf install git
 git-config:
 	rm -rf ~/.gitconfig
 	ln -s $(PWD)/gitconfig ~/.gitconfig
@@ -84,13 +79,13 @@ full-upgrade:
 
 
 python:
-	sudo apt install python3
-	sudo apt install python3-pip
+	sudo dnf install python3
+	sudo dnf install python3-pip
 	sudo pip3 install pipenv
 
 
 telegram-install:
-	sudo apt install telegram-desktop
+	sudo dnf install telegram-desktop
 
 telegram: telegram-install
 
@@ -98,4 +93,4 @@ telegram: telegram-install
 
 # HIGH-LEVEL INSTALL
 remote-machine: remote-vim-config
-main-machine:  vim tmux zsh git python chrome vscode
+main-machine:  vim tmux zsh git python telegram-desktop

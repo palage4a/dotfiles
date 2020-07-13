@@ -20,8 +20,10 @@ antigen apply
 
 export PATH=/snap/bin:$HOME/bin:$PATH
 
-export EDITOR='vim'
 alias pw="poweroff"
+alias vim="gvim -v"
+
+export EDITOR='vim'
 
 # FOR NPM
 NPM_PACKAGES="${HOME}/.npm-packages"
