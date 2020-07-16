@@ -3,11 +3,11 @@ main-vim-config:
 	rm ~/.config/nvim/init.vim -rf
 	ln -s $(PWD)/init.vim ~/.config/nvim/init.vim
 remote-vim-config:
-	mv ~/.vimrc ~/.vimrc.backup
-	mkdir ~/bin
+	mv ~/.vimrc ~/.vimrc.backup | true
+	mkdir ~/bin | true
 	echo 'export PATH=$$HOME/bin:$$PATH' >> ~/.profile
-	ln -s $(PWD)/rg ~/bin/rg
-	ln -s $(PWD)/init.vim ~/.vimrc
+	ln -s $(PWD)/rg ~/bin/rg | true
+	ln -s $(PWD)/init.vim ~/.vimrc | true
 vim-install:
 	sudo dnf install neovim
 vim: vim-install main-vim-config
