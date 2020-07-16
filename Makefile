@@ -1,3 +1,4 @@
+########## VIM ##############
 main-vim-config:
 	rm ~/.config/nvim/init.vim -rf
 	ln -s $(PWD)/init.vim ~/.config/nvim/init.vim
@@ -14,7 +15,7 @@ vim: vim-install main-vim-config
 
 
 
-
+########## KITTY ##############
 kitty-conf:
 	rm ~/.config/kitty/kitty.conf -rf
 	mkdir ~/.config/kitty | true
@@ -24,6 +25,7 @@ kitty-install:
 kitty:kitty-install kitty-conf
 
 
+########## ZSH ##############
 zsh-config:
 	rm ~/.zshrc -rf
 	rm ~/.zprofile -rf
@@ -36,14 +38,7 @@ zsh-install:
 zsh: zsh-install zsh-config
 
 
-
-vscode-install:
-	sudo snap install code --classic
-vscode: vscode-install
-
-
-
-
+########## TMUX ##############
 tmux-config:
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm 
 	rm ~/.tmux.conf -rf 
@@ -55,13 +50,7 @@ tmux-install:
 tmux: tmux-install tmux-config
 
 
-
-
-
-
-
-
-
+########## GIT ##############
 git-config:
 	rm -rf ~/.gitconfig
 	ln -s $(PWD)/gitconfig ~/.gitconfig
@@ -70,30 +59,34 @@ git-install:
 git: git-install git-config
 
 
-
-
+########## PYTHON 3 ##############
 python:
 	sudo dnf install python3
 	sudo dnf install python3-pip
 	sudo pip3 install pipenv
 
 
-
+########## TELEGRAM ##############
 telegram-install:
-	sudo dnf install telegram-desktop
+	sudo snap install telegram-desktop --classic
 
 telegram: telegram-install
 	
 
+
+########## IDE'S ##############
 pycharm:
 	sudo snap install pycharm-professional --edge --classic
 webstorm:
 	sudo snap install webstorm --edge --classic
 phpstorm:
 	sudo snap install phpstorm --edge --classic
-ides: webstorm pycharm phpstorm
+code:
+	sudo snap install code --classic
+ides: code webstorm pycharm phpstorm
 
 
+########## DOCKER ##############
 docker-install:
 	sudo dnf install docker docker-compose -y
 	sudo systemctl enable docker
@@ -102,12 +95,13 @@ docker-config:
 	sudo usermod -aG docker $(USER) | true
 	sudo systemctl restart docker
 	sudo newgrp docker | true
-	sudo sed -i 's/FirewallBackend=nftables/FirewallBackend=iptables/g' /etc/firewalld/firewalld.conf
-	sudo systemctl restart firewalld docker
+	sudo grubby --update-kernel=ALL --args="systemd.unified_cgroup_hierarchy=0" | true
+	sudo sed -i 's/FirewallBackend=nftables/FirewallBackend=iptables/g' /etc/firewalld/firewalld.conf | true
+	sudo systemctl restart firewalld docker | true
 docker: docker-install docker-config
 
 
-
+########## SNAPD ##############
 snap-install:
 	sudo dnf install snapd -y | true
 snap-config:
@@ -115,6 +109,8 @@ snap-config:
 snap: snap-install snap-config
 
 
-# HIGH-LEVEL INSTALL
+###############################
+########## HIGHLEVEL ##########
+###############################
 remote-machine: remote-vim-config
-main-machine:  git vim tmux zsh python telegram vscode kitty snap ides docker
+main-machine:  git vim tmux zsh python telegram kitty snap ides docker
