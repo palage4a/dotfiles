@@ -96,10 +96,14 @@ ides: webstorm pycharm phpstorm
 
 docker-install:
 	sudo dnf install docker docker-compose -y
+	sudo systemctl enable docker
 docker-config:
 	sudo groupadd docker | true
 	sudo usermod -aG docker $(USER) | true
+	sudo systemctl restart docker
 	sudo newgrp docker | true
+	sudo sed -i 's/FirewallBackend=nftables/FirewallBackend=iptables/g' /etc/firewalld/firewalld.conf
+	sudo systemctl restart firewalld docker
 docker: docker-install docker-config
 
 
