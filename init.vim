@@ -36,6 +36,14 @@ colorscheme dracula
 let mapleader = "\<space>"
 nmap <leader><leader> :NERDTreeToggle<CR>
 let g:fzf_preview_window = ''
+
+if has("clipboard")
+  set clipboard=unnamed " copy to the system clipboard
+
+  if has("unnamedplus") " X11 support
+    set clipboard+=unnamedplus
+  endif
+endif
 "
 " FZF
 nnoremap <silent> <leader>ff  :GitFiles<CR>
