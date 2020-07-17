@@ -9,6 +9,7 @@ remote-vim-config:
 	ln -s $(PWD)/rg ~/bin/rg | true
 	ln -s $(PWD)/init.vim ~/.vimrc | true
 vim-install:
+	sudo dnf install ripgrep
 	sudo dnf install neovim
 vim: vim-install main-vim-config
 
