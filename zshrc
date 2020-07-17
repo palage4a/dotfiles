@@ -24,7 +24,6 @@ alias pw="poweroff"
 alias vim="nvim" 
 
 export EDITOR='vim'
-export PIPENV_VENV_IN_PROJECT=1
 
 # FOR NPM
 NPM_PACKAGES="${HOME}/.npm-packages"
