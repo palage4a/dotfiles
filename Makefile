@@ -83,9 +83,13 @@ webstorm:
 phpstorm:
 	sudo snap install phpstorm --edge --classic
 code:
-	sudo snap install code --classic
+	sudo snap install code --classic	
 ides: code webstorm pycharm phpstorm
 
+
+node-install:
+	sudo snap install node --channel=12 --classic
+node: node-install
 
 ########## DOCKER ##############
 docker-install:
@@ -114,4 +118,4 @@ snap: snap-install snap-config
 ########## HIGHLEVEL ##########
 ###############################
 remote-machine: remote-vim-config
-main-machine:  git vim tmux zsh python telegram kitty snap ides docker
+main-machine:  git vim tmux zsh python telegram kitty snap ides docker node
