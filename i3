@@ -138,9 +138,9 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Make the currently focused window a scratchpad
-bindsym $mod+Ctrl+q move scratchpad
+# bindsym $mod+Ctrl+q move scratchpad
 # Show the first scratchpad window
-bindsym $mod+q scratchpad show
+# bindsym $mod+q scratchpad show
 
 # enter fullscreen mode for the focused container
 # bindsym $mod+Ctrl+f fullscreen toggle
@@ -151,9 +151,7 @@ bindsym $mod+f floating toggle
 # bindsym $mod+Shift+f focus mode_toggle
 
 exec --no-startup-id nitrogen --restore
-exec --no-startup-id setxkbmap -model pc105 -layout us,ru -option caps:super,grp:win_space_toggle,ctrl:swap_lalt_lctl
-exec --no-startup-id compton -b --config ~/.config/compton/compton.conf
-exec --no-startup-id xinput --disable 14
+exec --no-startup-id setxkbmap -model pc105 -layout us,ru -option caps:super,grp:win_space_toggle
 
 
 # class                 border  bground text    indicator child_border
