@@ -73,6 +73,10 @@ telegram-install:
 
 telegram: telegram-install
 	
+########## I3 ##############
+i3-config:
+	rm -rf ~/.config/i3
+	ln -s $(PWD)/i3 ~/.config/i3/config
 
 
 ########## IDE'S ##############
