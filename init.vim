@@ -29,6 +29,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/fzf.vim'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'beeender/Comrade'
+  let g:deoplete#enable_at_startup = 1
   let g:airline#extensions#tabline#enabled = 1
 call plug#end()
 colorscheme dracula
