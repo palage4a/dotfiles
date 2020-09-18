@@ -74,10 +74,21 @@ telegram-install:
 telegram: telegram-install
 	
 ########## I3 ##############
+i3-install:
+	sudo dnf install i3 i3status rofi nitrogen dmenu
 i3-config:
-	rm -rf ~/.config/i3
+	rm -rf ~/.config/i3/config
 	ln -s $(PWD)/i3 ~/.config/i3/config
+i3: i3-install i3-config
 
+
+awesome-install:
+	sudo dnf install awesome
+awesome-config:
+	rm -rf ~/.config/awesome
+	mkdir ~/.config/awesome
+	ln -s $(PWD)/rc.lua ~/.config/awesome/rc.lua
+awesome: awesome-install awesome-config
 
 ########## IDE'S ##############
 pycharm:

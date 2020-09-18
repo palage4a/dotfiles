@@ -19,6 +19,7 @@ endif
 call plug#begin('~/.vim/plugged')
   Plug 'scrooloose/nerdtree'
   Plug 'dracula/vim', { 'as': 'dracula' }
+  Plug 'joshdick/onedark.vim'
   Plug 'sheerun/vim-polyglot'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-repeat'
@@ -34,7 +35,7 @@ call plug#begin('~/.vim/plugged')
   let g:deoplete#enable_at_startup = 1
   let g:airline#extensions#tabline#enabled = 1
 call plug#end()
-colorscheme dracula
+colorscheme onedark
 
 let mapleader = "\<space>"
 nmap <leader><leader> :NERDTreeToggle<CR>

@@ -166,7 +166,7 @@ title_align center
 
 bar {
   position top
-  status_command i3blocks
+  status_command i3status
     colors {
       background #5c5c5c
         statusline #f8f8f8
@@ -178,4 +178,3 @@ bar {
         binding_mode       #FF5555 #FF5555 #5c5c5c
     }
 }
-e
