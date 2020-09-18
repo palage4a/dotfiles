@@ -17,6 +17,7 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
+os.execute("sleep 1 && setxkbmap -model pc105 -layout us,ru -option caps:super,grp:win_space_toggle")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
