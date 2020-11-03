@@ -14,16 +14,16 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle pawel-slowik/zsh-term-title
 # Load the theme.
-antigen theme amuse
+antigen theme robbyrussell
 # Tell Antigen that you're done.
 antigen apply
 
 export PATH=/snap/bin:$HOME/bin:$PATH
 
 alias pw="poweroff"
-alias vim="nvim" 
+# alias vim="nvim" 
 
-export EDITOR='vim'
+export EDITOR='nvim'
 
 # FOR NPM
 NPM_PACKAGES="${HOME}/.npm-packages"

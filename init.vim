@@ -2,6 +2,7 @@ setglobal nocompatible
 setglobal pastetoggle=<F2>
 
 set t_Co=256
+
 if has('nvim')
     if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
       silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
@@ -60,6 +61,10 @@ nnoremap <silent> <leader>fc  :Commands<CR>
 nnoremap <silent> <leader>rw  :Rg <C-r><C-w><CR>
 nnoremap <silent> <leader>rr  :Rg<CR>
 nnoremap <silent> <leader>r'  :Rg<CR>'
+
+nnoremap <leader>gd :Gvdiffsplit!<CR>
+nnoremap gdh :diffget //2<CR>
+nnoremap gdl :diffget //3<CR>
 
 set hidden
 set number
