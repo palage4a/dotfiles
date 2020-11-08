@@ -4,11 +4,12 @@
     "workbench.iconTheme": "material-icon-theme",
     "workbench.colorTheme": "Material Theme Darker High Contrast",
     "window.zoomLevel": 1,
-    "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "workbench.editor.showTabs": false,
-    "window.menuBarVisibility": "toggle",
+    "window.menuBarVisibility": "",
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[vue]": {
+        "editor.defaultFormatter": "octref.vetur"
     }
 }
