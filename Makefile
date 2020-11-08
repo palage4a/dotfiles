@@ -90,6 +90,18 @@ awesome-config:
 	ln -s $(PWD)/rc.lua ~/.config/awesome/rc.lua
 awesome: awesome-install awesome-config
 
+
+code-config:
+	rm -rf ~/.config/Code/User/keybindings.json
+	rm -rf ~/.config/Code/User/settings.json
+	ln -s $(PWD)/vscode/keybindings.json ~/.config/Code/User/keybindings.json
+	ln -s $(PWD)/vscode/settings.json ~/.config/Code/User/settings.json
+
+code-install:
+	sudo snap install code --classic	
+
+code: code-install code-config
+
 ########## IDE'S ##############
 pycharm:
 	sudo snap install pycharm-professional --edge --classic
@@ -97,8 +109,6 @@ webstorm:
 	sudo snap install webstorm --edge --classic
 phpstorm:
 	sudo snap install phpstorm --edge --classic
-code:
-	sudo snap install code --classic	
 ides: code webstorm pycharm phpstorm
 
 
