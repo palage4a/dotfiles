@@ -1,15 +1,18 @@
 {
     "python.languageServer": "Pylance",
     "git.autofetch": true,
-    "workbench.iconTheme": "material-icon-theme",
-    "workbench.colorTheme": "Material Theme Darker High Contrast",
-    "window.zoomLevel": 1,
+    "workbench.iconTheme": "vscode-icons",
+    "window.zoomLevel": 0,
     "workbench.editor.showTabs": false,
-    "window.menuBarVisibility": "",
+    "window.menuBarVisibility": "hidden",
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[vue]": {
-        "editor.defaultFormatter": "octref.vetur"
-    }
+        "editor.defaultFormatter": "octref.vetur",
+    },
+    "vetur.validation.template": false,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "workbench.colorTheme": "Default Light+"
 }

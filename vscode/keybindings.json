@@ -5,11 +5,11 @@
         "command": "search.action.openNewEditor"
     },
     {
-        "key": "alt+l",
+        "key": "alt+right",
         "command": "workbench.action.terminal.focusNext",
         "when": "terminalFocus"
     },{
-        "key": "alt+h",
+        "key": "alt+left",
         "command": "workbench.action.terminal.focusPrevious",
         "when": "terminalFocus"
     },
@@ -21,6 +21,20 @@
     {
         "key": "ctrl+l",
         "command": "workbench.action.terminal.clear"
+    },
+    {
+        "key": "alt+k alt+t",
+        "command": "workbench.action.quickOpenTerm"
+    },
+    {
+        "key": "ctrl+k t",
+        "command": "-notebook.cell.collapseCellOutput",
+        "when": "notebookCellHasOutputs && notebookCellListFocused && !inputFocus && !notebookCellOutputIsCollapsed"
+    },
+    {
+        "key": "ctrl+k t",
+        "command": "-notebook.cell.expandCellOutput",
+        "when": "notebookCellListFocused && notebookCellOutputIsCollapsed"
     },
 
 ]
