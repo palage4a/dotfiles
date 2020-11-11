@@ -91,16 +91,10 @@ awesome-config:
 awesome: awesome-install awesome-config
 
 
-code-config:
-	rm -rf ~/.config/Code/User/keybindings.json
-	rm -rf ~/.config/Code/User/settings.json
-	ln -s $(PWD)/vscode/keybindings.json ~/.config/Code/User/keybindings.json
-	ln -s $(PWD)/vscode/settings.json ~/.config/Code/User/settings.json
-
 code-install:
 	sudo snap install code --classic	
 
-code: code-install code-config
+code: code-install
 
 ########## IDE'S ##############
 pycharm:

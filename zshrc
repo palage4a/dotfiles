@@ -19,6 +19,7 @@ antigen theme robbyrussell
 antigen apply
 
 export PATH=/snap/bin:$HOME/bin:$PATH
+export GOPATH=$HOME/go
 
 alias pw="poweroff"
 # alias vim="nvim" 
