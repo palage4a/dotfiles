@@ -70,7 +70,6 @@ python:
 	sudo apt install python3-pip
 	sudo pip3 install pipenv
 
-######### GO ###########
 ########## TELEGRAM ##############
 telegram-install:
 	sudo snap install telegram-desktop --classic
