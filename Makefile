@@ -1,6 +1,7 @@
 ########## VIM ##############
 main-vim-config:
-	rm ~/.config/nvim/init.vim -rf
+	rm ~/.config/nvim -rf
+	mkdir ~/.config/nvim
 	ln -s $(PWD)/init.vim ~/.config/nvim/init.vim
 remote-vim-config:
 	mv ~/.vimrc ~/.vimrc.backup | true
@@ -34,15 +35,18 @@ zsh-config:
 	ln -s $(PWD)/zshrc ~/.zshrc
 zsh-install:
 	sudo apt install zsh 
+	rm ~/.config/antigen -rf
 	mkdir ~/.config/antigen 
-	curl -L git.io/antigen > ~/.config/antigen/antigen.zsh 
+	curl -L git.io/antigen > ~/.config/antigen/antigen.zsh
+	sudo chsh -s /usr/bin/zsh
 zsh: zsh-install zsh-config
 
 
 ########## TMUX ##############
 tmux-config:
-	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm 
 	rm ~/.tmux.conf -rf 
+	rm ~/.tmux/plugins -rf
+	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm 
 	ln -s $(PWD)/tmux.conf ~/.tmux.conf 
 	export TMUX_PLUGIN_MANAGER=$(HOME)/.tmux/plugins
 	~/.tmux/plugins/tpm/bin/install_plugins
@@ -106,7 +110,10 @@ code:
 	sudo apt install code # or code-insiders
 
 
-########## IDE'S ##############
+########## TOOLLBOX ##############
+toolbox:
+	./jetbrains-toolbox.sh
+	jetbrains-toolbox
 
 
 node-install:
@@ -115,7 +122,7 @@ node: node-install
 
 ########## DOCKER ##############
 docker-install:
-	sudo apt-get remove docker docker-engine docker.io containerd runc
+	sudo apt-get remove docker docker-engine docker.io containerd runc | true
 	sudo apt-get install \
 		apt-transport-https \
 		ca-certificates \
@@ -129,8 +136,9 @@ docker-install:
    		$(lsb_release -cs) \
    		stable"
 	sudo apt-get update
- 	sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose
+	sudo apt-get install docker-ce docker-ce-cli containerd.io docker.io
 	sudo apt install docker-compose -y
+	
 docker-config:
 	sudo groupadd docker
 	sudo usermod -aG docker $USER
@@ -151,9 +159,11 @@ snap-config:
 	sudo ln -s /var/lib/snapd/snap/ /snap | true
 snap: snap-install snap-config
 
-
+####### PRE ######
+pre:
+	sudo apt install curl
 ###############################
 ########## HIGHLEVEL ##########
 ###############################
 remote-machine: remote-vim-config
-main-machine:  git vim tmux zsh python telegram code chrome snap docker node gcc
+main-machine:  pre git vim zsh python telegram code chrome snap docker node gcc
