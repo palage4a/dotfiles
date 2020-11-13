@@ -15,8 +15,6 @@ vim-install:
 vim: vim-install main-vim-config
 
 
-
-
 ########## KITTY ##############
 kitty-conf:
 	rm ~/.config/kitty/kitty.conf -rf
@@ -84,7 +82,7 @@ i3-config:
 	ln -s $(PWD)/i3 ~/.config/i3/config
 i3: i3-install i3-config
 
-
+########## AWESOME WM ##############
 awesome-install:
 	sudo apt install awesome
 awesome-config:
@@ -93,13 +91,14 @@ awesome-config:
 	ln -s $(PWD)/rc.lua ~/.config/awesome/rc.lua
 awesome: awesome-install awesome-config
 
-
+########## GOOGLE CRHOME ##############
 chrome:
 	wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 	sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
 	sudo apt update
 	sudo apt install google-chrome-stable
 
+########## VS CODE ##############
 code:
 	wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
 	sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
@@ -115,8 +114,9 @@ toolbox:
 	jetbrains-toolbox
 
 
+######### NODE ####################
 node-install:
-	sudo snap install node --channel=12 --classic
+	sudo snap install node --channel=14 --classic
 node: node-install
 
 ########## DOCKER ##############
@@ -137,7 +137,6 @@ docker-install:
 	sudo apt-get update
 	sudo apt-get install docker-ce docker-ce-cli containerd.io docker.io
 	sudo apt install docker-compose -y
-	
 docker-config:
 	sudo groupadd docker
 	sudo usermod -aG docker $USER
@@ -147,8 +146,9 @@ docker-config:
 docker: docker-install docker-config
 
 
+###### GCC #######
 gcc-install:
-	sudo apt install gcc-c++
+	sudo apt install gcc
 gcc: gcc-install
 
 ########## SNAPD ##############
@@ -161,8 +161,10 @@ snap: snap-install snap-config
 ####### PRE ######
 pre:
 	sudo apt install curl
+
+
 ###############################
 ########## HIGHLEVEL ##########
 ###############################
 remote-machine: remote-vim-config
-main-machine:  pre git vim zsh python telegram code chrome snap docker node gcc
+main-machine:  pre git vim zsh python telegram code chrome snap docker node gcc toolbox
