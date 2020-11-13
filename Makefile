@@ -10,8 +10,7 @@ remote-vim-config:
 	ln -s $(PWD)/rg ~/bin/rg | true
 	ln -s $(PWD)/init.vim ~/.vimrc | true
 vim-install:
-	sudo apt install ripgrep
-	sudo apt install neovim
+	sudo apt install ripgrep neovim -y
 vim: vim-install main-vim-config
 
 
@@ -21,7 +20,7 @@ kitty-conf:
 	mkdir ~/.config/kitty | true
 	ln -s $(PWD)/kitty.conf ~/.config/kitty/kitty.conf
 kitty-install:
-	sudo apt install kitty
+	sudo apt install kitty -y
 kitty:kitty-install kitty-conf
 
 
@@ -32,11 +31,12 @@ zsh-config:
 	ln -s $(PWD)/zprofile ~/.zprofile
 	ln -s $(PWD)/zshrc ~/.zshrc
 zsh-install:
-	sudo apt install zsh 
+	sudo apt install zsh -y
 	rm ~/.config/antigen -rf
 	mkdir ~/.config/antigen 
 	curl -L git.io/antigen > ~/.config/antigen/antigen.zsh
 	sudo chsh -s /usr/bin/zsh
+	chsh -s /usr/bin/zsh
 zsh: zsh-install zsh-config
 
 
@@ -49,7 +49,7 @@ tmux-config:
 	export TMUX_PLUGIN_MANAGER=$(HOME)/.tmux/plugins
 	~/.tmux/plugins/tpm/bin/install_plugins
 tmux-install: 
-	sudo apt install tmux
+	sudo apt install tmux -y
 tmux: tmux-install tmux-config
 
 
@@ -58,14 +58,13 @@ git-config:
 	rm -rf ~/.gitconfig
 	ln -s $(PWD)/gitconfig ~/.gitconfig
 git-install:
-	sudo apt install git
+	sudo apt install git -y
 git: git-install git-config
 
 
 ########## PYTHON 3 ##############
 python:
-	sudo apt install python3
-	sudo apt install python3-pip
+	sudo apt install python3 python3-pip -y
 	sudo pip3 install pipenv
 
 ########## TELEGRAM ##############
@@ -76,7 +75,7 @@ telegram: telegram-install
 	
 ########## I3 ##############
 i3-install:
-	sudo apt install i3 i3status rofi nitrogen dmenu
+	sudo apt install i3 i3status rofi nitrogen dmenu -y
 i3-config:
 	rm -rf ~/.config/i3/config
 	ln -s $(PWD)/i3 ~/.config/i3/config
@@ -84,7 +83,7 @@ i3: i3-install i3-config
 
 ########## AWESOME WM ##############
 awesome-install:
-	sudo apt install awesome
+	sudo apt install awesome -y
 awesome-config:
 	rm -rf ~/.config/awesome
 	mkdir ~/.config/awesome
@@ -96,7 +95,7 @@ chrome:
 	wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 	sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
 	sudo apt update
-	sudo apt install google-chrome-stable
+	sudo apt install google-chrome-stable -y
 
 ########## VS CODE ##############
 code:
@@ -105,7 +104,7 @@ code:
 	sudo sh -c 'echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 	sudo apt install apt-transport-https
 	sudo apt update
-	sudo apt install code # or code-insiders
+	sudo apt install code -y # or code-insiders
 
 
 ########## TOOLLBOX ##############
@@ -121,13 +120,13 @@ node: node-install
 
 ########## DOCKER ##############
 docker-install:
-	sudo apt-get remove docker docker-engine docker.io containerd runc | true
+	sudo apt-get remove docker docker-engine docker.io containerd runc -y | true
 	sudo apt-get install \
 		apt-transport-https \
 		ca-certificates \
 		curl \
 		gnupg-agent \
-		software-properties-common
+		software-properties-common -y
 	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 	sudo apt-key fingerprint 0EBFCD88
 	sudo add-apt-repository \
@@ -135,7 +134,7 @@ docker-install:
    		$(lsb_release -cs) \
    		stable"
 	sudo apt-get update
-	sudo apt-get install docker-ce docker-ce-cli containerd.io docker.io
+	sudo apt-get install docker-ce docker-ce-cli containerd.io docker.io -y
 	sudo apt install docker-compose -y
 docker-config:
 	sudo groupadd docker
@@ -148,7 +147,7 @@ docker: docker-install docker-config
 
 ###### GCC #######
 gcc-install:
-	sudo apt install gcc
+	sudo apt install gcc -y
 gcc: gcc-install
 
 ########## SNAPD ##############
@@ -160,7 +159,7 @@ snap: snap-install snap-config
 
 ####### PRE ######
 pre:
-	sudo apt install curl
+	sudo apt install curl -y
 
 
 ###############################
