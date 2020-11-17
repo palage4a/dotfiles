@@ -3,8 +3,9 @@ source ~/.config/antigen/antigen.zsh
 antigen use oh-my-zsh
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
 antigen bundle z
+antigen bundle zmv
 antigen bundle git
-antigen bundle tmux
+# antigen bundle tmux
 antigen bundle npm
 antigen bundle extract
 antigen bundle docker
