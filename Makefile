@@ -163,7 +163,11 @@ pre:
 	touch ~/.config/kwinrc | true
 	sed -i 's/BorderlessMaximizedWindows=false/BorderlessMaximizedWindows=true/g' ~/.config/kwinrc | true
 	### need run `kwin --replace` from krunner
+custom-bin:
+	rm ~/bin -rf | true
+	ln -s  $(PWD)/bin $(HOME)/bin | true
 
+	
 ###############################
 ########## HIGHLEVEL ##########
 ###############################
