@@ -121,27 +121,13 @@ node: node-install
 ########## DOCKER ##############
 docker-install:
 	sudo apt-get remove docker docker-engine docker.io containerd runc -y | true
-	sudo apt-get install \
-		apt-transport-https \
-		ca-certificates \
-		curl \
-		gnupg-agent \
-		software-properties-common -y
-	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-	sudo apt-key fingerprint 0EBFCD88
-	sudo add-apt-repository \
-   		"deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   		$(lsb_release -cs) \
-   		stable"
-	sudo apt-get update
-	sudo apt-get install docker-ce docker-ce-cli containerd.io docker.io -y
-	sudo apt install docker-compose -y
+	sudo apt-get install docker docker-compose -y
 docker-config:
-	sudo groupadd docker
-	sudo usermod -aG docker $USER
-	sudo newgrp docker
+	sudo groupadd docker | true
+	sudo usermod -aG docker $(USER) | true
+	sudo newgrp docker | true
 	docker run hello-world
-	sudo systemctl enable docker
+	sudo systemctl enable docker | true
 docker: docker-install docker-config
 
 
