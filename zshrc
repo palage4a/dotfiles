@@ -22,6 +22,7 @@ antigen apply
 export PATH=/snap/bin:$HOME/bin:$PATH
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH
 
 alias pw="poweroff"
 # alias vim="nvim" 
