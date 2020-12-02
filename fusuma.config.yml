@@ -1,66 +1,35 @@
 swipe:
   3:
     left:
-      command: 'xdotool key alt+Right' # History forward
+      sendkey: 'LEFTALT+RIGHT'
     right:
-      command: 'xdotool key alt+Left' # History back
+      sendkey: 'LEFTALT+LEFT'
     up:
-      command: 'xdotool key ctrl+t' # Open new tab
-      keypress:
-        LEFTSHIFT:
-          command: 'xdotool key --clearmodifiers ctrl+shift+t' # Open last closed tab
+      sendkey: 'LEFTCTRL+T'
     down:
-      command: 'xdotool key ctrl+w' # Close tab
-  4:
-    left:
-      workspace: 'next' # Switch to next workspace
-      keypress:
-        LEFTSHIFT: 
-          window: 'next' # Move window to next workspace
-        LEFTMETA:
-          command: 'xdotool key --clearmodifiers super+ctrl+Left' # Move window to left side
-    right:
-      workspace: 'prev' # Switch to previous workspace
-      keypress:
-        LEFTSHIFT: 
-          window: 'prev' # Move window to previous workspace
-        LEFTMETA:
-          command: 'xdotool key --clearmodifiers super+ctrl+Right'  # Move window to right side
-    up:
-      command: 'xdotool key Control_L+F10' # Workspace overview
-      keypress:
-        LEFTMETA:
-          window:
-            maximized: 'toggle' # Toggle Maximize/Unmaximize Window
-    down:
-      command: 'xdotool key Shift_L+Alt_L+Tab' #aaaaa
-      keypress:
-        LEFTMETA:
-          window: 'close' # Close window
-
+      sendkey: 'LEFTCTRL+W'
 pinch:
   2:
     in:
-      command: 'xdotool keydown ctrl click 4 keyup ctrl' # Zoom in
+      sendkey: 'LEFTCTRL+EQUAL'
+      threshold: 0.1
     out:
-      command: 'xdotool keydown ctrl click 5 keyup ctrl' # Zoom out
+      sendkey: 'LEFTCTRL+MINUS'
+      threshold: 0.1
   4:
     in:
-      command: 'xdotool key super+a' # Window overview
+      command: "dbus-send --session --type=method_call --dest=org.gnome.Shell /org/gnome/Shell org.gnome.Shell.Eval string:'if (Main.overview.visible && Main.overview.viewSelector._showAppsButton.checked) { Main.overview.hide();Main.overview.viewSelector._showAppsButton.checked=false;} else {Main.overview.show()}'"
+      threshold: 1
+      interval: 2
     out:
-      command: 'xdotool key super+s' # Workspace overview
+      command: "dbus-send --session --type=method_call --dest=org.gnome.Shell /org/gnome/Shell org.gnome.Shell.Eval string:'if (Main.overview.visible && !Main.overview.viewSelector._showAppsButton.checked) {Main.overview.hide()} else { Main.overview.viewSelector._showAppsButton.checked = true;Main.overview.show();}'"
+      threshold: 1
+      interval: 2
+      
+threshold:
+  swipe: 0.3
+  pinch: 1
 
-rotate:
-  3:
-    clockwise:
-      command: 'xdotool key XF86MonBrightnessUp' # Brightness up
-    counterclockwise:
-      command: 'xdotool key XF86MonBrightnessDown' # Brightness down
-
-plugin: 
-  inputs:
-    libinput_command_input: # options for lib/plugin/inputs/libinput_command_input
-      enable-tap: true # click to tap
-      enable-dwt: true # disable tap while typing
-      show-keycodes: true # https://github.com/iberianpig/fusuma-plugin-keypress#add-show-keycode-option
-
+interval:
+  swipe: 1
+  pinch: 1
