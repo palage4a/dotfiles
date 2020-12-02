@@ -154,7 +154,7 @@ custom-bin:
 	ln -s  $(PWD)/bin $(HOME)/bin | true
 
 
-gesttures:
+gestures:
 	rm ~/.config/libinput-gestures.conf -rf | true
 	ln -s  $(PWD)/gestures.conf $(HOME)/.config/libinput-gestures.conf | true
 	
