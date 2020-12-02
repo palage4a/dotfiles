@@ -153,6 +153,10 @@ custom-bin:
 	rm ~/bin -rf | true
 	ln -s  $(PWD)/bin $(HOME)/bin | true
 
+
+gesttures:
+	rm ~/.config/libinput-gestures.conf -rf | true
+	ln -s  $(PWD)/gestures.conf $(HOME)/.config/libinput-gestures.conf | true
 	
 ###############################
 ########## HIGHLEVEL ##########
