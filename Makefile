@@ -46,7 +46,7 @@ tmux-config:
 	rm ~/.tmux/plugins -rf
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm 
 	ln -s $(PWD)/tmux.conf ~/.tmux.conf 
-	export TMUX_PLUGIN_MANAGER=$(HOME)/.tmux/plugins
+	export TMUX_PLUGIN_MANAGER_PATH=$(HOME)/.tmux/plugins
 	~/.tmux/plugins/tpm/bin/install_plugins
 tmux-install: 
 	sudo apt install tmux -y

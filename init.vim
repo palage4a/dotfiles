@@ -21,6 +21,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'scrooloose/nerdtree'
   Plug 'sheerun/vim-polyglot'
   Plug 'tpope/vim-surround'
+  Plug 'morhetz/gruvbox'
+  Plug 'mattn/vim-goimports'
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-commentary'
@@ -31,9 +33,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-airline/vim-airline-themes'
   let g:airline#extensions#tabline#enabled = 1
 call plug#end()
-" colorscheme gruvbox
-set bg=light
 
+colorscheme gruvbox
 let mapleader = "\<space>"
 nmap <leader><leader> :NERDTreeToggle<CR>
 let g:fzf_preview_window = ''
@@ -58,6 +59,7 @@ nnoremap <silent> <leader>rw  :Rg <C-r><C-w><CR>
 nnoremap <silent> <leader>rr  :Rg<CR>
 nnoremap <silent> <leader>r'  :Rg<CR>'
 
+nnoremap <leader>pf :let @+ = expand("%")<CR>
 nnoremap <leader>gd :Gvdiffsplit!<CR>
 nnoremap gdh :diffget //2<CR>
 nnoremap gdl :diffget //3<CR>

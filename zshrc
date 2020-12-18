@@ -5,7 +5,7 @@ antigen use oh-my-zsh
 antigen bundle z
 antigen bundle zmv
 antigen bundle git
-# antigen bundle tmux
+antigen bundle tmux
 antigen bundle npm
 antigen bundle extract
 antigen bundle docker
@@ -22,7 +22,7 @@ antigen apply
 export PATH=/snap/bin:$HOME/bin:$PATH
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH
+export PATH=$PATH:$GOPATH/bin
 
 alias pw="poweroff"
 # alias vim="nvim" 
