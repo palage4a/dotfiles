@@ -1,4 +1,0 @@
-#!/usr/bin/bash
-export DOCKER_HOST=ssh://palage4a@192.168.1.53;
-$1;
-unset DOCKER_HOST;

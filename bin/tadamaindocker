@@ -1,3 +1,0 @@
-#!/usr/bin/bash
-rsync -arq --exclude="volumes" --exclude="front/var_www_front" ~/IdeaProjects/tada_back/ palage4a@mainhost:~/IdeaProjects/tada_back/ 
-maindocker "$1"
