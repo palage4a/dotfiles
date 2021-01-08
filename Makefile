@@ -46,8 +46,6 @@ tmux-config:
 	rm ~/.tmux/plugins -rf
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm 
 	ln -s $(PWD)/tmux.conf ~/.tmux.conf 
-	export TMUX_PLUGIN_MANAGER_PATH=$(HOME)/.tmux/plugins
-	~/.tmux/plugins/tpm/bin/install_plugins
 tmux-install: 
 	sudo apt install tmux -y
 tmux: tmux-install tmux-config
@@ -163,3 +161,4 @@ gestures:
 ###############################
 remote-machine: remote-vim-config
 main-machine:  pre git vim zsh python telegram code chrome snap docker node gcc toolbox
+windows: vim zsh tmux
