@@ -1,5 +1,5 @@
 ########## VIM ##############
-main-vim-config:
+main-vim-config: 
 	rm ~/.config/nvim -rf
 	mkdir ~/.config/nvim
 	ln -s $(PWD)/init.vim ~/.config/nvim/init.vim
@@ -118,8 +118,22 @@ node: node-install
 
 ########## DOCKER ##############
 docker-install:
-	sudo apt-get remove docker docker-engine docker.io containerd runc -y | true
-	sudo apt-get install docker docker-compose -y
+	sudo apt update -y
+	sudo apt-get install -y \
+			apt-transport-https \
+			ca-certificates \
+			curl \
+			software-properties-common
+	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+	sudo apt-key fingerprint 0EBFCD88
+	sudo add-apt-repository \
+		 "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+		 $(lsb_release -cs) \
+		 stable"
+	sudo apt-get update -y
+	sudo apt-get install -y docker-ce
+	sudo apt-get install -y python3 python3-pip
+	sudo pip3 install docker-compose
 docker-config:
 	sudo groupadd docker | true
 	sudo usermod -aG docker $(USER) | true
@@ -151,7 +165,6 @@ custom-bin:
 	rm ~/bin -rf | true
 	ln -s  $(PWD)/bin $(HOME)/bin | true
 
-
 gestures:
 	rm ~/.config/libinput-gestures.conf -rf | true
 	ln -s  $(PWD)/gestures.conf $(HOME)/.config/libinput-gestures.conf | true
@@ -161,4 +174,4 @@ gestures:
 ###############################
 remote-machine: remote-vim-config
 main-machine:  pre git vim zsh python telegram code chrome snap docker node gcc toolbox
-windows: vim zsh tmux
+windows: vim tmux
