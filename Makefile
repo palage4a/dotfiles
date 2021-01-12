@@ -173,5 +173,5 @@ gestures:
 ########## HIGHLEVEL ##########
 ###############################
 remote-machine: remote-vim-config
-main-machine:  pre git vim zsh python telegram code chrome snap docker node gcc toolbox
+main-machine:  pre git vim zsh python telegram code chrome snap docker node gcc toolbox tmux kitty
 windows: vim tmux
