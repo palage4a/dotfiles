@@ -158,8 +158,9 @@ snap: snap-install snap-config
 ####### PRE ######
 pre:
 	sudo apt install curl -y
-	touch ~/.config/kwinrc | true
-	sed -i 's/BorderlessMaximizedWindows=false/BorderlessMaximizedWindows=true/g' ~/.config/kwinrc | true
+	xrandr --output eDP-1 --scale 0.75x0.75
+	# touch ~/.config/kwinrc | true
+	# sed -i 's/BorderlessMaximizedWindows=false/BorderlessMaximizedWindows=true/g' ~/.config/kwinrc | true
 	### need run `kwin --replace` from krunner
 custom-bin:
 	rm ~/bin -rf | true
