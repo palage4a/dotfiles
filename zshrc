@@ -25,7 +25,7 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
 alias pw="poweroff"
-# alias vim="nvim" 
+alias vi="nvim -u ~/.clean.vim" 
 
 export EDITOR='nvim'
 
