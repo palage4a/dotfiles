@@ -34,7 +34,7 @@ call plug#begin('~/.vim/plugged')
   let g:airline#extensions#tabline#enabled = 1
 call plug#end()
 
-colorscheme gruvbox
+" colorscheme gruvbox
 let mapleader = "\<space>"
 nmap <leader><leader> :NERDTreeToggle<CR>
 let g:fzf_preview_window = ''
