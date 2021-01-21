@@ -21,7 +21,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'scrooloose/nerdtree'
   Plug 'sheerun/vim-polyglot'
   Plug 'tpope/vim-surround'
-  Plug 'morhetz/gruvbox'
+  Plug 'chriskempson/base16-vim'
   Plug 'mattn/vim-goimports'
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-fugitive'
@@ -35,6 +35,10 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 
 " colorscheme gruvbox
+let base16colorspace=256  " Access colors present in 256 colorspace
+colorscheme base16-onedark
+set termguicolors
+
 let mapleader = "\<space>"
 nmap <leader><leader> :NERDTreeToggle<CR>
 let g:fzf_preview_window = ''
