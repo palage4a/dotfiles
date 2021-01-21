@@ -98,3 +98,11 @@ set fileencodings=utf-8,cp1251
 set wrap
 set magic
 set mouse=a
+
+let g:kite_supported_languages = ['*']
+set completeopt+=menuone
+set completeopt+=noselect
+
+"
+" set completeopt+=preview
+
