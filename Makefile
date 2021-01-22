@@ -43,8 +43,8 @@ zsh: zsh-install zsh-config
 ########## TMUX ##############
 tmux-config:
 	rm ~/.tmux.conf -rf 
-	rm ~/.tmux/plugins -rf
-	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm 
+	# rm ~/.tmux/plugins -rf
+	# git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm 
 	ln -s $(PWD)/tmux.conf ~/.tmux.conf 
 tmux-install: 
 	sudo apt install tmux -y
