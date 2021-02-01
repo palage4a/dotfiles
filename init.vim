@@ -34,10 +34,7 @@ call plug#begin('~/.vim/plugged')
   let g:airline#extensions#tabline#enabled = 1
 call plug#end()
 
-" colorscheme gruvbox
-let base16colorspace=256  " Access colors present in 256 colorspace
 colorscheme base16-onedark
-set termguicolors
 
 let mapleader = "\<space>"
 nmap <leader><leader> :NERDTreeToggle<CR>
