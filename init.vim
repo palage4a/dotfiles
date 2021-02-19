@@ -31,6 +31,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/fzf.vim'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
   let g:airline#extensions#tabline#enabled = 1
 call plug#end()
 
@@ -58,7 +59,7 @@ nnoremap <silent> <leader>fc  :Commands<CR>
 "RG
 nnoremap <silent> <leader>rw  :Rg <C-r><C-w><CR>
 nnoremap <silent> <leader>rr  :Rg<CR>
-nnoremap <silent> <leader>r'  :Rg<CR>'
+nnoremap <silent> <leader>rl  :BLines<CR>
 
 nnoremap <leader>pf :let @+ = expand("%")<CR>
 nnoremap <leader>gd :Gvdiffsplit!<CR>
@@ -96,10 +97,5 @@ set wrap
 set magic
 set mouse=a
 
-let g:kite_supported_languages = ['*']
-set completeopt+=menuone
-set completeopt+=noselect
-
-"
-" set completeopt+=preview
+so ~/.config/nvim/coc.vim
 

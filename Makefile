@@ -3,6 +3,8 @@ main-vim-config:
 	rm ~/.config/nvim -rf
 	mkdir ~/.config/nvim
 	ln -s $(PWD)/init.vim ~/.config/nvim/init.vim
+	ln -s $(PWD)/coc.vim ~/.config/nvim/coc.vim
+	ln -s $(PWD)/coc-settings.json ~/.config/nvim/coc-settings.vim
 remote-vim-config:
 	mv ~/.vimrc ~/.vimrc.backup | true
 	mkdir ~/bin | true
