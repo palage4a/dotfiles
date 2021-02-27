@@ -35,7 +35,10 @@ call plug#begin('~/.vim/plugged')
   let g:airline#extensions#tabline#enabled = 1
 call plug#end()
 
-colorscheme base16-onedark
+set t_Co=256
+set termguicolors
+
+colorscheme base16-one-light
 
 let mapleader = "\<space>"
 nmap <leader><leader> :NERDTreeToggle<CR>
