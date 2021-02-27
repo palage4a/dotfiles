@@ -27,6 +27,10 @@ export PATH=$PATH:$GOPATH/bin
 alias pw="poweroff"
 alias vi="nvim -u ~/.clean.vim" 
 
+vimft() {
+    vim -c "set ft=$1"
+}
+
 export EDITOR='nvim'
 
 # FOR NPM
