@@ -98,15 +98,20 @@ chrome:
 	sudo apt install google-chrome-stable -y
 
 ########## VS CODE ##############
-code:
+code-install:
 	wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
 	sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
 	sudo sh -c 'echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 	sudo apt install apt-transport-https
 	sudo apt update
 	sudo apt install code -y # or code-insiders
-
-
+code-config:
+	mkdir ~/.config/Code | true
+	rm -rf ~/.config/Code/keybindings.json | true
+	rm -rf ~/.config/Code/settings.json | true
+	ln -s $(PWD)/keybindings.json ~/.config/Code/keybindings.json
+	ln -s $(PWD)/settings.json ~/.config/Code/settings.json
+code: code-install code-config
 ########## TOOLLBOX ##############
 toolbox:
 	./jetbrains-toolbox.sh

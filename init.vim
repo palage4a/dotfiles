@@ -22,7 +22,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'sheerun/vim-polyglot'
   Plug 'tpope/vim-surround'
   Plug 'chriskempson/base16-vim'
-  Plug 'mattn/vim-goimports'
+  " Plug 'mattn/vim-goimports'
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-commentary'
