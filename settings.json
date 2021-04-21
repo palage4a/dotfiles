@@ -3,7 +3,6 @@
   "go.formatTool": "goimports",
   "go.useLanguageServer": true,
   "git.autofetch": true,
-  "workbench.colorTheme": "Default Light+",
   "[dart]": {
     "editor.formatOnSave": true,
     "editor.formatOnType": true,
@@ -29,7 +28,6 @@
   "workbench.iconTheme": "vscode-icons",
   "go.toolsManagement.autoUpdate": true,
   "editor.wordWrap": "on",
-
   "vim.incsearch": true,
   "vim.useSystemClipboard": true,
   "vim.useCtrlKeys": true,
@@ -63,15 +61,52 @@
       "commands": [
         ":nohl"
       ]
-    }
+    },
+    {
+      "before": [
+        "<C-o>",
+      ],
+      "commands": [
+        "workbench.action.navigateBack",
+      ]
+    },
+    {
+      "before": [
+        "<C-i>",
+      ],
+      "commands": [
+        "workbench.action.navigateForward",
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "r"
+      ],
+      "commands": [
+        "editor.action.goToReferences",
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "y"
+      ],
+      "commands": [
+        "editor.action.goToTypeDefinition",
+      ]
+    },
   ],
   "vim.leader": "<space>",
   "vim.handleKeys": {
+    "<C-t>": false,
     "<C-a>": false,
+    "<C-e>": false,
     "<C-c>": false,
     "<C-v>": false,
     "<C-f>": false,
     "<C-w>": false,
-    "<C-b>": false
-  }
+    "<C-b>": false,
+  },
+  "workbench.colorTheme": "GitHub Dark Dimmed"
 }

@@ -107,10 +107,10 @@ code-install:
 	sudo apt install code -y # or code-insiders
 code-config:
 	mkdir ~/.config/Code | true
-	rm -rf ~/.config/Code/keybindings.json | true
-	rm -rf ~/.config/Code/settings.json | true
-	ln -s $(PWD)/keybindings.json ~/.config/Code/keybindings.json
-	ln -s $(PWD)/settings.json ~/.config/Code/settings.json
+	rm -rf ~/.config/Code/User/keybindings.json | true
+	rm -rf ~/.config/Code/User/settings.json | true
+	ln -s $(PWD)/keybindings.json ~/.config/Code/User/keybindings.json
+	ln -s $(PWD)/settings.json ~/.config/Code/User/settings.json
 code: code-install code-config
 ########## TOOLLBOX ##############
 toolbox:

@@ -6,7 +6,7 @@
         "when": "editorTextFocus && !gitlens:disabled && config.gitlens.keymap == 'chorded'"
     },
     {
-        "key": "ctrl+shift+g c",
+        "key": "ctrl+g ctrl+c",
         "command": "git.checkout"
     },
     {
@@ -43,5 +43,30 @@
         "key": "ctrl+pageup",
         "command": "workbench.action.terminal.focusPrevious",
         "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+g ctrl+m",
+        "command": "git.merge"
+    },
+    {
+        "key": "ctrl+g ctrl+d",
+        "command": "gitlens.diffWithRevisionFrom"
+    },
+    {
+        "key": "ctrl+m ctrl+m",
+        "command": "workbench.action.toggleMaximizedPanel"
+    },
+    {
+        "key": "ctrl+g d",
+        "command": "git.openChange"
+    },
+    {
+        "key": "ctrl+g ctrl+p",
+        "command": "git.push"
+    },
+    {
+        "key": "ctrl+a",
+        "command": "git.stageAll",
+        "when": "activeViewlet == 'workbench.view.scm'"
     }
 ]
