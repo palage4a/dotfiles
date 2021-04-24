@@ -68,5 +68,22 @@
         "key": "ctrl+a",
         "command": "git.stageAll",
         "when": "activeViewlet == 'workbench.view.scm'"
+    },
+    {
+        "key": "ctrl+shift+alt+c",
+        "command": "copyRelativeFilePath"
+    },
+    {
+        "key": "ctrl+shift+alt+c",
+        "command": "-copyRelativeFilePath",
+        "when": "!editorFocus"
+    },
+    {
+        "key": "ctrl+g ctrl+l",
+        "command": "git.pull"
+    },
+    {
+        "key": "ctrl+e ctrl+d",
+        "command": "editor.action.duplicateSelection"
     }
 ]

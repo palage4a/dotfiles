@@ -108,5 +108,6 @@
     "<C-w>": false,
     "<C-b>": false,
   },
+  "files.autoSave": "onFocusChange",
   "workbench.colorTheme": "GitHub Dark Dimmed"
 }

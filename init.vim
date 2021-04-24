@@ -38,7 +38,7 @@ call plug#end()
 set t_Co=256
 set termguicolors
 
-colorscheme base16-one-light
+colorscheme base16-onedark
 
 let mapleader = "\<space>"
 nmap <leader><leader> :NERDTreeToggle<CR>
