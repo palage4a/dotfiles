@@ -3,3 +3,5 @@
 	name = Ivan Palage4a
 [diff]
 	tool = vimdiff
+[pull]
+	rebase = false

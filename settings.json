@@ -109,5 +109,5 @@
     "<C-b>": false,
   },
   "files.autoSave": "onFocusChange",
-  "workbench.colorTheme": "GitHub Dark Dimmed"
+  "workbench.colorTheme": "Default Light+",
 }
