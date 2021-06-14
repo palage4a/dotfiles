@@ -18,11 +18,8 @@ else
 endif
 
 call plug#begin('~/.vim/plugged')
-  Plug 'scrooloose/nerdtree'
   Plug 'sheerun/vim-polyglot'
   Plug 'tpope/vim-surround'
-  Plug 'chriskempson/base16-vim'
-  " Plug 'mattn/vim-goimports'
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-commentary'
@@ -32,16 +29,16 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'nanotech/jellybeans.vim'
   let g:airline#extensions#tabline#enabled = 1
 call plug#end()
 
 set t_Co=256
 set termguicolors
 
-colorscheme base16-onedark
+colorscheme jellybeans
 
 let mapleader = "\<space>"
-nmap <leader><leader> :NERDTreeToggle<CR>
 let g:fzf_preview_window = ''
 
 if has("clipboard")
@@ -105,4 +102,3 @@ set magic
 set mouse=a
 
 so ~/.config/nvim/coc.vim
-

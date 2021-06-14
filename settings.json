@@ -1,113 +1,66 @@
 {
-  "window.menuBarVisibility": "toggle",
-  "go.formatTool": "goimports",
-  "go.useLanguageServer": true,
-  "git.autofetch": true,
-  "[dart]": {
-    "editor.formatOnSave": true,
-    "editor.formatOnType": true,
-    "editor.rulers": [
-      80
-    ],
-    "editor.selectionHighlight": false,
-    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "git.autofetch": true,
     "editor.suggestSelection": "first",
-    "editor.tabCompletion": "onlySnippets",
-    "editor.wordBasedSuggestions": false
-  },
-  "editor.minimap.enabled": false,
-  "editor.suggestSelection": "first",
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-  "workbench.editorAssociations": [
-    {
-      "viewType": "jupyter.notebook.ipynb",
-      "filenamePattern": "*.ipynb"
-    }
-  ],
-  "python.languageServer": "Pylance",
-  "workbench.iconTheme": "vscode-icons",
-  "go.toolsManagement.autoUpdate": true,
-  "editor.wordWrap": "on",
-  "vim.incsearch": true,
-  "vim.useSystemClipboard": true,
-  "vim.useCtrlKeys": true,
-  "vim.hlsearch": true,
-  "vim.insertModeKeyBindings": [
-    {
-      "before": [
-        "j",
-        "j"
-      ],
-      "after": [
-        "<Esc>"
-      ]
-    }
-  ],
-  "vim.normalModeKeyBindingsNonRecursive": [
-    {
-      "before": [
-        "<leader>",
-        "d"
-      ],
-      "after": [
-        "d",
-        "d"
-      ]
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "workbench.iconTheme": "vscode-icons",
+    "editor.minimap.enabled": false,
+    "workbench.editorAssociations": {
+      "*.ipynb": "jupyter.notebook.ipynb"
     },
-    {
-      "before": [
-        "<C-n>"
-      ],
-      "commands": [
-        ":nohl"
-      ]
+    "terminal.external.osxExec": "iTerm.app",
+    "gitlens.views.searchAndCompare.files.layout": "tree",
+    "git.allowForcePush": true,
+    "git.inputValidationSubjectLength": null,
+    "dart.flutterSdkPath": "/Users/palage4a/flutter",
+    "gitlens.views.commits.files.layout": "tree",
+    "vim.useSystemClipboard": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+      {
+        "before": [
+          "<C-o>",
+        ],
+        "commands": [
+          "workbench.action.navigateBack",
+        ]
+      },
+      {
+        "before": [
+          "<C-i>",
+        ],
+        "commands": [
+          "workbench.action.navigateForward",
+        ]
+      },
+      {
+        "before": [
+          "g",
+          "r"
+        ],
+        "commands": [
+          "editor.action.goToReferences",
+        ]
+      },
+      {
+        "before": [
+          "g",
+          "y"
+        ],
+        "commands": [
+          "editor.action.goToTypeDefinition",
+        ]
+      },
+    ],
+    "vim.handleKeys": {
+      "<C-r>": false,
+      "<C-g>": false,
     },
-    {
-      "before": [
-        "<C-o>",
-      ],
-      "commands": [
-        "workbench.action.navigateBack",
-      ]
-    },
-    {
-      "before": [
-        "<C-i>",
-      ],
-      "commands": [
-        "workbench.action.navigateForward",
-      ]
-    },
-    {
-      "before": [
-        "g",
-        "r"
-      ],
-      "commands": [
-        "editor.action.goToReferences",
-      ]
-    },
-    {
-      "before": [
-        "g",
-        "y"
-      ],
-      "commands": [
-        "editor.action.goToTypeDefinition",
-      ]
-    },
-  ],
-  "vim.leader": "<space>",
-  "vim.handleKeys": {
-    "<C-t>": false,
-    "<C-a>": false,
-    "<C-e>": false,
-    "<C-c>": false,
-    "<C-v>": false,
-    "<C-f>": false,
-    "<C-w>": false,
-    "<C-b>": false,
-  },
-  "files.autoSave": "onFocusChange",
-  "workbench.colorTheme": "Default Light+",
-}
+    "window.autoDetectColorScheme": true,
+    "files.autoSave": "onFocusChange",
+    "go.toolsManagement.autoUpdate": true,
+    "vim.hlsearch": true,
+    "workbench.colorTheme": "GitHub Dark",
+    "workbench.activityBar.visible": false,
+    "zenMode.hideLineNumbers": false,
+    "zenMode.silentNotifications": false,
+    "zenMode.hideStatusBar": false,
+  }

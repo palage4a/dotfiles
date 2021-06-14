@@ -21,10 +21,14 @@ antigen apply
 
 export PATH=/snap/bin:$HOME/bin:$PATH
 export PATH=$PATH:/usr/local/go/bin
-export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
-alias pw="poweroff"
+export GOPATH=$HOME/go
+export GEM_HOME="$HOME/.gem"
+
+export DOCKER_CLIENT_TIMEOUT=120
+export COMPOSE_HTTP_TIMEOUT=120
+
 alias vi="nvim -u ~/.clean.vim" 
 
 vimft() {
@@ -38,15 +42,3 @@ NPM_PACKAGES="${HOME}/.npm-packages"
 export PATH="$PATH:$NPM_PACKAGES/bin"
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# This speeds up pasting w/ autosuggest
-# https://github.com/zsh-users/zsh-autosuggestions/issues/238
-pasteinit() {
-  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
-  zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
-}
-
-pastefinish() {
-  zle -N self-insert $OLD_SELF_INSERT
-}
-zstyle :bracketed-paste-magic paste-init pasteinit
-zstyle :bracketed-paste-magic paste-finish pastefinish
