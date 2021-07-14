@@ -19,6 +19,8 @@ antigen theme robbyrussell
 # Tell Antigen that you're done.
 antigen apply
 
+eval "$(rbenv init -)"
+
 export PATH=/snap/bin:$HOME/bin:$PATH
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$GOPATH/bin

@@ -1,66 +1,80 @@
 {
-    "git.autofetch": true,
-    "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "workbench.iconTheme": "vscode-icons",
-    "editor.minimap.enabled": false,
-    "workbench.editorAssociations": {
-      "*.ipynb": "jupyter.notebook.ipynb"
+  "git.autofetch": true,
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.minimap.enabled": false,
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter.notebook.ipynb"
+  },
+  "terminal.external.osxExec": "iTerm.app",
+  "gitlens.views.searchAndCompare.files.layout": "tree",
+  "git.allowForcePush": true,
+  "git.inputValidationSubjectLength": null,
+  "dart.flutterSdkPath": "/Users/palage4a/flutter",
+  "vim.useSystemClipboard": true,
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "<C-o>",
+      ],
+      "commands": [
+        "workbench.action.navigateBack",
+      ]
     },
-    "terminal.external.osxExec": "iTerm.app",
-    "gitlens.views.searchAndCompare.files.layout": "tree",
-    "git.allowForcePush": true,
-    "git.inputValidationSubjectLength": null,
-    "dart.flutterSdkPath": "/Users/palage4a/flutter",
-    "gitlens.views.commits.files.layout": "tree",
-    "vim.useSystemClipboard": true,
-    "vim.normalModeKeyBindingsNonRecursive": [
-      {
-        "before": [
-          "<C-o>",
-        ],
-        "commands": [
-          "workbench.action.navigateBack",
-        ]
-      },
-      {
-        "before": [
-          "<C-i>",
-        ],
-        "commands": [
-          "workbench.action.navigateForward",
-        ]
-      },
-      {
-        "before": [
-          "g",
-          "r"
-        ],
-        "commands": [
-          "editor.action.goToReferences",
-        ]
-      },
-      {
-        "before": [
-          "g",
-          "y"
-        ],
-        "commands": [
-          "editor.action.goToTypeDefinition",
-        ]
-      },
-    ],
-    "vim.handleKeys": {
-      "<C-r>": false,
-      "<C-g>": false,
+    {
+      "before": [
+        "<C-i>",
+      ],
+      "commands": [
+        "workbench.action.navigateForward",
+      ]
     },
-    "window.autoDetectColorScheme": true,
-    "files.autoSave": "onFocusChange",
-    "go.toolsManagement.autoUpdate": true,
-    "vim.hlsearch": true,
-    "workbench.colorTheme": "GitHub Dark",
-    "workbench.activityBar.visible": false,
-    "zenMode.hideLineNumbers": false,
-    "zenMode.silentNotifications": false,
-    "zenMode.hideStatusBar": false,
-  }
+    {
+      "before": [
+        "g",
+        "r"
+      ],
+      "commands": [
+        "editor.action.goToReferences",
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "y"
+      ],
+      "commands": [
+        "editor.action.goToTypeDefinition",
+      ]
+    },
+  ],
+  "vim.handleKeys": {
+    "<C-r>": false,
+    "<C-g>": false,
+  },
+  "window.autoDetectColorScheme": true,
+  "files.autoSave": "onFocusChange",
+  "go.toolsManagement.autoUpdate": true,
+  "vim.hlsearch": true,
+  "zenMode.hideLineNumbers": false,
+  "zenMode.silentNotifications": false,
+  "zenMode.hideStatusBar": false,
+  "workbench.colorTheme": "Visual Studio Light",
+  "todo-tree.general.tags": [
+    "BUG",
+    "HACK",
+    "FIXME",
+    "TODO",
+    "XXX",
+    "[ ]",
+    "[x]"
+  ],
+  "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
+  "ruby.useLanguageServer": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.suggestOnTriggerCharacters": false,
+  "editor.quickSuggestionsDelay": 100,
+  "editor.suggest.showStatusBar": true,
+  "editor.suggestSelection": "first",
+  "gitlens.views.commits.files.layout": "tree",
+}
