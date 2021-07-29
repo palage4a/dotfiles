@@ -6,6 +6,13 @@ vim-config:
 	ln -s $(PWD)/init.vim ~/.config/nvim/init.vim
 vim: vim-install main-vim-config
 
+rg-install:
+	brew install ripgrep
+rg-config:
+	rm -rf ~/.ripgreprc
+	ln -s $(PWD)/ripgreprc ~/.ripgreprc
+rg: rg-install rg-config
+
 zsh-config:
 	rm ~/.config/antigen -rf
 	mkdir ~/.config/antigen 
