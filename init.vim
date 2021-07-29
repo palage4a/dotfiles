@@ -1,20 +1,18 @@
 setglobal nocompatible
 setglobal pastetoggle=<F2>
 
-set t_Co=256
-
 if has('nvim')
-    if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-      silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-      autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-    endif
+  if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+    silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+          \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  endif
 else
-    if empty(glob('~/.vim/autoload/plug.vim'))
-      silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-      autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-    endif
+  if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+          \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  endif
 endif
 
 call plug#begin('~/.vim/plugged')
@@ -24,19 +22,12 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-commentary'
   Plug 'jiangmiao/auto-pairs'
-  Plug 'junegunn/fzf', { 'do': './install --all' }
+  Plug 'junegunn/fzf'
   Plug 'junegunn/fzf.vim'
   Plug 'vim-airline/vim-airline'
+  Plug 'mattn/vim-goimports'
   Plug 'vim-airline/vim-airline-themes'
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'nanotech/jellybeans.vim'
-  let g:airline#extensions#tabline#enabled = 1
 call plug#end()
-
-set t_Co=256
-set termguicolors
-
-colorscheme jellybeans
 
 let mapleader = "\<space>"
 let g:fzf_preview_window = ''
@@ -48,7 +39,8 @@ if has("clipboard")
     set clipboard+=unnamedplus
   endif
 endif
-"
+
+
 " FZF
 nnoremap <silent> <leader>ff  :GitFiles<CR>
 nnoremap <silent> <leader>fg  :Files<CR>
@@ -56,7 +48,7 @@ nnoremap <silent> <leader>ft  :Filetypes<CR>
 nnoremap <silent> <leader>fb  :Buffers<CR>
 nnoremap <silent> <leader>fc  :Commands<CR>
 
-"RG
+" RG
 nnoremap <silent> <leader>rw  :Rg <C-r><C-w><CR>
 nnoremap <silent> <leader>rr  :Rg<CR>
 nnoremap <silent> <leader>rl  :BLines<CR>
@@ -101,4 +93,4 @@ set wrap
 set magic
 set mouse=a
 
-so ~/.config/nvim/coc.vim
+let g:goimports = 1

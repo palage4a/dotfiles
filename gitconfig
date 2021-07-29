@@ -2,6 +2,8 @@
 	email = vvnvvplg@gmail.com
 	name = Ivan Palage4a
 [diff]
-	tool = vimdiff
+	tool = nvimdiff
 [pull]
 	rebase = false
+[difftool]
+	prompt = false

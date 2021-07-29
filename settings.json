@@ -4,7 +4,7 @@
   "workbench.iconTheme": "material-icon-theme",
   "editor.minimap.enabled": false,
   "workbench.editorAssociations": {
-    "*.ipynb": "jupyter.notebook.ipynb"
+    "*.ipynb": "jupyter-notebook"
   },
   "terminal.external.osxExec": "iTerm.app",
   "gitlens.views.searchAndCompare.files.layout": "tree",
@@ -14,43 +14,25 @@
   "vim.useSystemClipboard": true,
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": [
-        "<C-o>",
-      ],
-      "commands": [
-        "workbench.action.navigateBack",
-      ]
+      "before": ["<C-o>"],
+      "commands": ["workbench.action.navigateBack"]
     },
     {
-      "before": [
-        "<C-i>",
-      ],
-      "commands": [
-        "workbench.action.navigateForward",
-      ]
+      "before": ["<C-i>"],
+      "commands": ["workbench.action.navigateForward"]
     },
     {
-      "before": [
-        "g",
-        "r"
-      ],
-      "commands": [
-        "editor.action.goToReferences",
-      ]
+      "before": ["g", "r"],
+      "commands": ["editor.action.goToReferences"]
     },
     {
-      "before": [
-        "g",
-        "y"
-      ],
-      "commands": [
-        "editor.action.goToTypeDefinition",
-      ]
-    },
+      "before": ["g", "y"],
+      "commands": ["editor.action.goToTypeDefinition"]
+    }
   ],
   "vim.handleKeys": {
     "<C-r>": false,
-    "<C-g>": false,
+    "<C-g>": false
   },
   "window.autoDetectColorScheme": true,
   "files.autoSave": "onFocusChange",
@@ -59,7 +41,6 @@
   "zenMode.hideLineNumbers": false,
   "zenMode.silentNotifications": false,
   "zenMode.hideStatusBar": false,
-  "workbench.colorTheme": "Visual Studio Light",
   "todo-tree.general.tags": [
     "BUG",
     "HACK",
@@ -77,4 +58,25 @@
   "editor.suggest.showStatusBar": true,
   "editor.suggestSelection": "first",
   "gitlens.views.commits.files.layout": "tree",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "go.formatTool": "goimports",
+  "go.editorContextMenuCommands": {
+    "fillStruct": true
+  },
+  "[go]": {
+    "editor.defaultFormatter": "golang.go"
+  },
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  },
+  "diffEditor.ignoreTrimWhitespace": false,
+  "docker.containers.groupBy": "ContainerName",
 }

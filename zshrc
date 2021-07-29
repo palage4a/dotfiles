@@ -19,19 +19,13 @@ antigen theme robbyrussell
 # Tell Antigen that you're done.
 antigen apply
 
-eval "$(rbenv init -)"
-
-export PATH=/snap/bin:$HOME/bin:$PATH
-export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:$GOPATH/bin
-
 export GOPATH=$HOME/go
-export GEM_HOME="$HOME/.gem"
+export PATH=$PATH:$GOPATH/bin:/usr/local/go/bin
 
 export DOCKER_CLIENT_TIMEOUT=120
 export COMPOSE_HTTP_TIMEOUT=120
 
-alias vi="nvim -u ~/.clean.vim" 
+alias vim=nvim
 
 vimft() {
     vim -c "set ft=$1"
@@ -43,4 +37,11 @@ export EDITOR='nvim'
 NPM_PACKAGES="${HOME}/.npm-packages"
 export PATH="$PATH:$NPM_PACKAGES/bin"
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/palage4a/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/palage4a/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/palage4a/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/palage4a/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
