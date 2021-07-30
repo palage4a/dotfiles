@@ -13,6 +13,14 @@ rg-config:
 	ln -s $(PWD)/ripgreprc ~/.ripgreprc
 rg: rg-install rg-config
 
+tmux-install:
+	brew install tmux
+tmux-config:
+	rm -rf ~/.tmux.conf
+	ln -s $(PWD)/tmux.conf ~/.tmux.conf
+
+tmux: tmux-install tmux-config
+
 zsh-config:
 	rm ~/.config/antigen -rf
 	mkdir ~/.config/antigen 
@@ -26,15 +34,6 @@ zsh-config:
 zsh-install:
 	brew install zsh
 zsh: zsh-install zsh-config
-
-tmux-config:
-	rm ~/.tmux.conf -rf 
-	# rm ~/.tmux/plugins -rf
-	# git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm 
-	ln -s $(PWD)/tmux.conf ~/.tmux.conf 
-tmux-install: 
-	sudo apt install tmux -y
-tmux: tmux-install tmux-config
 
 code-config:
 	mkdir "$(HOME)/Library/Application Support/Code/User" -p | true

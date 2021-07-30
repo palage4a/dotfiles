@@ -46,3 +46,4 @@ if [ -f '/Users/palage4a/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Us
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/palage4a/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/palage4a/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+export PATH="/opt/homebrew/opt/openssl@1.1/bin:$PATH"
