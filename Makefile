@@ -1,5 +1,8 @@
+fonts:
+	brew tap homebrew/cask-fonts
+	brew install --cask font-hack-nerd-font
 vim-install:
-	brew install ripgrep neovim -y
+	brew install neovim
 vim-config: 
 	rm -rf ~/.config/nvim 
 	ln -s $(PWD)/nvim ~/.config/nvim
