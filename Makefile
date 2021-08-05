@@ -7,9 +7,6 @@ vim: vim-install main-vim-config
 
 rg-install:
 	brew install ripgrep
-rg-config:
-	rm -rf ~/.ripgreprc
-	ln -s $(PWD)/ripgreprc ~/.ripgreprc
 rg: rg-install rg-config
 
 tmux-install:
@@ -24,13 +21,11 @@ tmux-config:
 tmux: tmux-install tmux-config
 
 zsh-config:
-	rm ~/.config/antigen -rf
+	rm -rf ~/.config/antigen
 	mkdir ~/.config/antigen 
 	curl -L git.io/antigen > ~/.config/antigen/antigen.zsh
-	sudo chsh -s /usr/bin/zsh
-	chsh -s /usr/bin/zsh
-	rm ~/.zshrc -rf
-	rm ~/.zprofile -rf
+	rm -rf ~/.zshrc
+	rm -rf ~/.zprofile
 	ln -s $(PWD)/zprofile ~/.zprofile
 	ln -s $(PWD)/zshrc ~/.zshrc
 zsh-install:
