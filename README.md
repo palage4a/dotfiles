@@ -1,2 +1,2 @@
 # Dotfiles
-[Inspitration](https://github.com/craftzdog/dotfiles-public)
+[Inspiration](https://github.com/craftzdog/dotfiles-public)
