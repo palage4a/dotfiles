@@ -4,13 +4,13 @@ if (not status) then return end
 lualine.setup {
   options = {
     icons_enabled = false,
-    theme = 'solarized_dark',
-    disabled_filetypes = {}
+    theme = 'jellybeans',
   },
   sections = {
     lualine_a = {'mode'},
     lualine_b = {'branch'},
     lualine_c = {'filename'},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
     lualine_y = {'progress'},
     lualine_z = {'location'}
   },
