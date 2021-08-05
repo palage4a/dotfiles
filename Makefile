@@ -1,9 +1,8 @@
 vim-install:
 	brew install ripgrep neovim -y
 vim-config: 
-	rm ~/.config/nvim -rf
-	mkdir ~/.config/nvim
-	ln -s $(PWD)/init.vim ~/.config/nvim/init.vim
+	rm -rf ~/.config/nvim 
+	ln -s $(PWD)/nvim ~/.config/nvim
 vim: vim-install main-vim-config
 
 rg-install:
@@ -16,8 +15,11 @@ rg: rg-install rg-config
 tmux-install:
 	brew install tmux
 tmux-config:
-	rm -rf ~/.tmux.conf
-	ln -s $(PWD)/tmux.conf ~/.tmux.conf
+	rm -rf ~/.tmux.*
+	rm -rf ~/tmux.*
+	ln -s $(PWD)/tmux/tmux.conf ~/.tmux.conf
+	ln -s $(PWD)/tmux/tmux.powerline.conf ~/.tmux.powerline.conf
+	ln -s $(PWD)/tmux/tmux.osx.conf ~/.tmux.osx.conf
 
 tmux: tmux-install tmux-config
 

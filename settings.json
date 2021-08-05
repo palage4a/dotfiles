@@ -79,4 +79,8 @@
   },
   "diffEditor.ignoreTrimWhitespace": false,
   "docker.containers.groupBy": "ContainerName",
+  "[sql]": {
+    "editor.defaultFormatter": "mtxr.sqltools"
+  },
+  "workbench.colorTheme": "Default Light+",
 }
