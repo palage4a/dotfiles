@@ -3,10 +3,7 @@ if !exists('g:loaded_lspsaga') | finish | endif
 lua <<EOF
 local saga = require 'lspsaga'
 
-saga.init_lsp_saga {
-  max_preview_lines = 20,
-  border_style = "round",
-}
+saga.init_lsp_saga()
 EOF
 
 nnoremap <silent> <C-j> <Cmd>Lspsaga diagnostic_jump_next<CR>
