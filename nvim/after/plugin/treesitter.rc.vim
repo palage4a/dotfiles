@@ -10,7 +10,7 @@ require'nvim-treesitter.configs'.setup {
     disable = {},
   },
   indent = {
-    enable = false,
+    enable = true,
     disable = {},
   },
   ensure_installed = {
@@ -22,7 +22,18 @@ require'nvim-treesitter.configs'.setup {
     "yaml",
     "swift",
     "html",
-    "scss"
+    "scss",
+    "go",
+    "python",
+  },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "gnn",
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm",
+    },
   },
 }
 
