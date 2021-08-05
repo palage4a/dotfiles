@@ -58,17 +58,8 @@ nvim_lsp.flow.setup {
 
 nvim_lsp.gopls.setup {
   on_attach = on_attach,
-  autostart = true,
   filetypes = { "go" },
   cmd = {"gopls", "serve"},
-  settings = {
-    gopls = {
-      analyses = {
-        unusedparams = true,
-        },
-      staticcheck = true,
-    },
-  },
 }
 
 nvim_lsp.tsserver.setup {
