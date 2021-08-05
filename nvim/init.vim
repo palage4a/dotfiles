@@ -145,4 +145,5 @@ endif
 set exrc
 "}}}
 
+nnoremap <silent> <space>r <cmd>source $MYVIMRC<cr>
 " vim: set foldmethod=marker foldlevel=0:

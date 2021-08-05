@@ -16,7 +16,7 @@ require'nvim-treesitter.configs'.setup {
   ensure_installed = {
     "tsx",
     "toml",
-    "fish",
+    "bash",
     "php",
     "json",
     "yaml",
@@ -25,6 +25,7 @@ require'nvim-treesitter.configs'.setup {
     "scss",
     "go",
     "python",
+    "lua",
   },
   incremental_selection = {
     enable = true,
