@@ -12,6 +12,9 @@ local protocol = require'vim.lsp.protocol'
 
 -- Use an on_attach function to only map the following keys 
 -- after the language server attaches to the current buffer
+local capabilities = protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -52,12 +55,38 @@ local on_attach = function(client, bufnr)
   require'completion'.on_attach(client, bufnr)
 end
 
+nvim_lsp.html.setup {
+  on_attach = on_attach,
+  capabilities = capabilities
+}
+
+local configs = require'lspconfig/configs'    
+if not nvim_lsp.emmet_ls then    
+  configs.emmet_ls = {    
+    default_config = {    
+      cmd = {'emmet-ls', '--stdio'};
+      filetypes = {'html', 'css'};
+      root_dir = function(fname)    
+        return vim.loop.cwd()
+      end;    
+      settings = {};    
+    };    
+  }    
+end 
+
+nvim_lsp.emmet_ls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities
+}
+
 nvim_lsp.flow.setup {
-  on_attach = on_attach
+  on_attach = on_attach,
+  capabilities = capabilities
 }
 
 nvim_lsp.gopls.setup {
   on_attach = on_attach,
+  capabilities = capabilities,
   filetypes = { "go" },
   cmd = {"gopls", "serve"},
 }
