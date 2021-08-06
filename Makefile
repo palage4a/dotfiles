@@ -1,16 +1,17 @@
 fonts:
 	brew tap homebrew/cask-fonts
 	brew install --cask font-hack-nerd-font
+
 vim-install:
 	brew install neovim
 vim-config: 
 	rm -rf ~/.config/nvim 
 	ln -s $(PWD)/nvim ~/.config/nvim
-vim: vim-install main-vim-config
+vim: vim-install vim-config
 
 rg-install:
 	brew install ripgrep
-rg: rg-install rg-config
+rg: rg-install
 
 tmux-install:
 	brew install tmux
