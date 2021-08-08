@@ -55,6 +55,11 @@ local on_attach = function(client, bufnr)
   require'completion'.on_attach(client, bufnr)
 end
 
+nvim_lsp.pyright.setup {
+  on_attach = on_attach,
+  capabilities = capabilities
+}
+
 nvim_lsp.html.setup {
   on_attach = on_attach,
   capabilities = capabilities
