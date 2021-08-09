@@ -146,4 +146,9 @@ set exrc
 "}}}
 
 nnoremap <silent> <space>r <cmd>source $MYVIMRC<cr>
+
+set wrap
+nnoremap j gj
+nnoremap k gk
+
 " vim: set foldmethod=marker foldlevel=0:
