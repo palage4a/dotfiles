@@ -7,6 +7,7 @@ call plug#begin()
 Plug 'tpope/vim-fugitive'
 Plug 'cohama/lexima.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'nanotech/jellybeans.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
