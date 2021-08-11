@@ -20,8 +20,6 @@ export DOCKER_CLIENT_TIMEOUT=120
 export COMPOSE_HTTP_TIMEOUT=120
 export ZSH_THEME="amuse"
 
-alias vim=nvim
-
 export EDITOR='nvim'
 
 # FOR NPM
