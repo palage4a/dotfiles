@@ -66,4 +66,4 @@ syntax enable
 set termguicolors
 set background=dark
 
-colorscheme peachpuff
+colorscheme industry
