@@ -16,16 +16,11 @@ vim-config:
 	ln -s $(PWD)/vimrc ~/.vimrc
 vim: vim-install vim-config
 
-rg-install:
-	brew install ripgrep
-rg: rg-install
-
 tmux-install:
 	brew install tmux
 tmux-config:
 	rm -rf ~/.tmux.* ~/tmux.*
 	ln -s $(PWD)/tmux.conf ~/.tmux.conf
-
 tmux: tmux-install tmux-config
 
 zsh-config:
@@ -41,3 +36,9 @@ zsh: zsh-install zsh-config
 git-config:
 	rm -rf ~/.gitconfig
 	ln -s $(PWD)/gitconfig ~/.gitconfig
+
+code-config:
+	rm -rf "$(HOME)/Library/Application Support/Code/User/settings.json" "$(HOME)/Library/Application Support/Code/User/keybindings.json" | true
+	mkdir "$(HOME)/Library/Application Support/Code/User" -p | true
+	ln -s "$(PWD)/settings.json" "$(HOME)/Library/Application Support/Code/User/settings.json" | true
+	ln -s "$(PWD)/keybindings.json" "$(HOME)/Library/Application Support/Code/User/keybindings.json" | true
