@@ -65,5 +65,3 @@ nnoremap k gk
 syntax enable
 set termguicolors
 set background=dark
-
-colorscheme industry
