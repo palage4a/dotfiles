@@ -19,7 +19,7 @@ vim: vim-install vim-config
 tmux-install:
 	brew install tmux
 tmux-config:
-	rm -rf ~/.tmux.* ~/tmux.*
+	rm -rf ~/.tmux.conf
 	ln -s $(PWD)/tmux.conf ~/.tmux.conf
 tmux: tmux-install tmux-config
 
