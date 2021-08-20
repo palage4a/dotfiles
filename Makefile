@@ -29,6 +29,7 @@ zsh-config:
 	curl -L git.io/antigen > ~/.config/antigen/antigen.zsh
 	ln -s $(PWD)/zprofile ~/.zprofile
 	ln -s $(PWD)/zshrc ~/.zshrc
+
 zsh-install:
 	brew install zsh
 zsh: zsh-install zsh-config
@@ -42,3 +43,5 @@ code-config:
 	mkdir "$(HOME)/Library/Application Support/Code/User" -p | true
 	ln -s "$(PWD)/settings.json" "$(HOME)/Library/Application Support/Code/User/settings.json" | true
 	ln -s "$(PWD)/keybindings.json" "$(HOME)/Library/Application Support/Code/User/keybindings.json" | true
+
+remote: nvim-config tmux-config
