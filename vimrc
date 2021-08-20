@@ -2,12 +2,10 @@ scriptencoding utf-8
 
 set nocompatible
 set number
-syntax enable
 set fileencodings=utf-8,latin
 set encoding=utf-8
 set title
 set autoindent
-set background=dark
 set nobackup
 set hlsearch
 set incsearch
@@ -28,6 +26,7 @@ set showmatch
 set ignorecase
 " Be smart when using tabs ;)
 set smarttab
+"
 " indents
 filetype plugin indent on
 set shiftwidth=2
@@ -39,12 +38,6 @@ set backspace=start,eol,indent
 " Finding files - Search down into subfolders
 set path+=**
 set wildignore+=*/node_modules/*
-
-" Turn off paste mode when leaving insert
-autocmd InsertLeave * set nopaste
-
-" Add asterisks in block comments
-set formatoptions+=r
 
 " JavaScript
 au BufNewFile,BufRead *.es6 setf javascript
