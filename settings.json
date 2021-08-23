@@ -55,9 +55,8 @@
 	"workbench.editorAssociations": {
 		"*.ipynb": "jupyter-notebook"
 	},
-	"workbench.iconTheme": "material-icon-theme",
-	"workbench.colorTheme": "Default Light+",
 	"[jsonc]": {
 		"editor.defaultFormatter": "vscode.json-language-features"
-	}
+	},
+	"workbench.iconTheme": "vscode-icons"
 }
