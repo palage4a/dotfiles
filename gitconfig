@@ -2,10 +2,10 @@
 	email = vvnvvplg@gmail.com
 	name = palage4a
 [diff]
-	tool = nvimdiff
-[pull]
-	rebase = false
+	tool = vimdiff
+[merge]
+	tool = vimdiff
 [difftool]
 	prompt = false
-[merge]
-	tool = nvimdiff
+[pull]
+	rebase = false
