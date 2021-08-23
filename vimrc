@@ -14,6 +14,8 @@ set ai
 set number
 set hlsearch
 set ruler
+set ignorecase
+set smartcase
 highlight Comment ctermfg=green
 set background=dark
 
