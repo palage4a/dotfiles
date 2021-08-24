@@ -19,3 +19,4 @@ set smartcase
 highlight Comment ctermfg=green
 set background=dark
 
+colorscheme peachpuff
