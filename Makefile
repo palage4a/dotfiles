@@ -6,6 +6,10 @@ nvim:
 	rm -rf ~/.config/nvim 
 	ln -s $(PWD)/nvim ~/.config/nvim
 
+fzf:
+	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+	~/.fzf/install
+
 vim:
 	rm -rf ~/.vimrc
 	ln -s $(PWD)/vimrc ~/.vimrc

@@ -11,7 +11,6 @@ call plug#begin()
 
 Plug 'tpope/vim-fugitive'
 Plug 'cohama/lexima.vim'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
