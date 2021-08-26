@@ -3,9 +3,9 @@
 	name = palage4a
 [diff]
 	tool = nvimdiff
+[merge]
+	tool = nvimdiff
 [pull]
 	rebase = false
 [difftool]
 	prompt = false
-[merge]
-	tool = nvimdiff

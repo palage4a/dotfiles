@@ -9,16 +9,17 @@ antigen bundle extract
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
 # Load the theme.
-antigen theme amuse
+antigen theme robbyrussell
 # Tell Antigen that you're done.
 antigen apply
 
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin:/usr/local/go/bin
+export PATH=$PATH:$HOME/dart/flutter/bin
 
 export DOCKER_CLIENT_TIMEOUT=120
 export COMPOSE_HTTP_TIMEOUT=120
-export ZSH_THEME="amuse"
+export ZSH_THEME="robbyrussell"
 
 export EDITOR='vim'
 
