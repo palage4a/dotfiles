@@ -137,7 +137,7 @@ if exists("&termguicolors") && exists("&winblend")
   set wildoptions=pum
   set pumblend=0
   set background=dark
-  colorscheme jellybeans
+  colorscheme dracula
 endif
 
 "}}}

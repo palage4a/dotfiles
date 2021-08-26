@@ -4,7 +4,7 @@ if (not status) then return end
 lualine.setup {
   options = {
     icons_enabled = false,
-    theme = 'jellybeans',
+    theme = 'dracula',
   },
   sections = {
     lualine_a = {'mode'},
