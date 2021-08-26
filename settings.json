@@ -1,0 +1,12 @@
+{
+    "files.autoSave": "onFocusChange",
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "editor.minimap.enabled": false,
+    "workbench.colorTheme": "Dracula Soft",
+    "workbench.editor.enablePreviewFromQuickOpen": true,
+    "workbench.editor.highlightModifiedTabs": true,
+    "workbench.editor.wrapTabs": true,
+    "search.mode": "newEditor",
+    "security.workspace.trust.untrustedFiles": "open"
+}

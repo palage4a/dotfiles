@@ -24,6 +24,14 @@ zsh:
 	ln -s $(PWD)/zprofile ~/.zprofile
 	ln -s $(PWD)/zshrc ~/.zshrc
 
-git-config:
+git:
 	rm -rf ~/.gitconfig
-	ln -s $(PWD)/gitconfig ~/.gitconfig
+	ln -s $(PWD)/gitconfig.nvim ~/.gitconfig
+
+code:
+	mkdir -p "$(HOME)/Library/Applicasion Support/Code/User" | true
+	rm -rf "$(HOME)/Library/Application Support/Code/User/settings.json" "$(HOME)/Library/Application Support/Code/User/keybindings.json" | true
+	ln -s "$(PWD)/settings.json" "$(HOME)/Library/Application Support/Code/User/settings.json" | true
+	ln -s "$(PWD)/keybindings.json" "$(HOME)/Library/Application Support/Code/User/keybindings.json" | true
+	rm -rf ~/.gitconfig
+	ln -s $(PWD)/gitconfig.code ~/.gitconfig
