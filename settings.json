@@ -3,12 +3,17 @@
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "editor.minimap.enabled": false,
-    "workbench.colorTheme": "Dracula Soft",
-    "workbench.editor.enablePreviewFromQuickOpen": true,
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.editor.wrapTabs": true,
     "search.mode": "newEditor",
     "security.workspace.trust.untrustedFiles": "open",
     "search.searchEditor.defaultNumberOfContextLines": 3,
-    "workbench.editor.tabSizing": "shrink"
+    "workbench.editor.tabSizing": "shrink",
+    "workbench.iconTheme": "vscode-icons",
+    "window.autoDetectColorScheme": true,
+    "git.allowForcePush": true,
+    "workbench.colorTheme": "GitHub Light Default",
+    "gitlens.views.searchAndCompare.files.layout": "list",
+    "workbench.preferredDarkColorTheme": "GitHub Dark Dimmed",
+    "workbench.preferredLightColorTheme": "GitHub Light Default"
 }
