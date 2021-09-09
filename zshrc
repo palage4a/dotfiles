@@ -13,6 +13,8 @@ antigen theme robbyrussell
 # Tell Antigen that you're done.
 antigen apply
 
+unsetopt auto_cd
+
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin:/usr/local/go/bin
 export PATH=$PATH:$HOME/dart/flutter/bin
