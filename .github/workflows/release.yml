@@ -10,4 +10,4 @@ jobs:
     steps:
       - name: 1
         run: |
-          echo 'Release'
+          echo 'Release ${{github.ref}}'
