@@ -12,6 +12,7 @@ set shiftwidth=4
 set expandtab
 set ai
 set number
+
 set hlsearch
 set ruler
 set ignorecase
