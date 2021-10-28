@@ -23,5 +23,6 @@
     "extensions.ignoreRecommendations": true,
     "terminal.integrated.macOptionIsMeta": true,
     "diffEditor.ignoreTrimWhitespace": false,
-    "diffEditor.renderSideBySide": false
+    "diffEditor.renderSideBySide": false,
+    "terminal.integrated.defaultLocation": "editor"
 }
