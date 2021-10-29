@@ -1,4 +1,5 @@
 source ~/.config/antigen/antigen.zsh
+eval $(/opt/homebrew/bin/brew shellenv)
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
