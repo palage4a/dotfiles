@@ -75,6 +75,7 @@ highlight Visual cterm=NONE ctermbg=236 ctermfg=NONE guibg=Grey40
 
 highlight LineNr cterm=none ctermfg=240 guifg=#2b506e guibg=#000000
 
+
 augroup BgHighlight
   autocmd!
   autocmd WinEnter * set cul
@@ -166,10 +167,6 @@ let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 15
-augroup ProjectDrawer
-  autocmd!
-  autocmd VimEnter * :Vexplore
-augroup END
 
 set mouse=n
 " vim: set foldmethod=marker foldlevel=0:
