@@ -1,0 +1,11 @@
+{
+	"local requrie": {
+		"prefix": [
+			"require", "local require"
+		],
+		"body": [
+			"local ${1:name} = require('${2:path}')"
+		],
+		"description": "require module"
+	}
+}
