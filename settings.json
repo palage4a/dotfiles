@@ -14,7 +14,7 @@
     "gitlens.views.searchAndCompare.files.layout": "list",
     "workbench.preferredDarkColorTheme": "GitHub Dark Dimmed",
     "workbench.preferredLightColorTheme": "GitHub Light Default",
-    "workbench.colorTheme": "GitHub Dark Dimmed",
+    "workbench.colorTheme": "GitHub Light Default",
     "git.autofetch": true,
     "task.problemMatchers.neverPrompt": {
         "shell": true
@@ -23,5 +23,7 @@
     "extensions.ignoreRecommendations": true,
     "terminal.integrated.macOptionIsMeta": true,
     "diffEditor.ignoreTrimWhitespace": false,
-    "diffEditor.renderSideBySide": false,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "emmet.triggerExpansionOnTab": true,
+    "workbench.startupEditor": "none"
 }
