@@ -7,5 +7,28 @@
 			"local ${1:name} = require('${2:path}')"
 		],
 		"description": "require module"
-	}
+	},
+	"create index": {
+		"prefix": [
+			"create index",
+			"create",
+			"index",
+		],
+		"body": [
+			"${1:space}:create_index('${2:primary}', {parts = {${3:parts}}, ${4:params}})"
+		],
+		"description": ""
+	},
+	"lua module" : {
+		"prefix": [
+			"module",
+			"local module",
+			"local",
+		],
+		"body": [
+			"local ${1:name} = {$2}",
+			"",
+			"return $1",
+		]
+	},
 }
