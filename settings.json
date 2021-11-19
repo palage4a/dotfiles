@@ -22,8 +22,17 @@
     "terminal.external.osxExec": "ITerm.app",
     "extensions.ignoreRecommendations": true,
     "terminal.integrated.macOptionIsMeta": true,
-    "diffEditor.ignoreTrimWhitespace": false,
     "javascript.updateImportsOnFileMove.enabled": "always",
     "emmet.triggerExpansionOnTab": true,
-    "workbench.startupEditor": "none"
+    "workbench.startupEditor": "none",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "Lua.hint.enable": true,
+    "Lua.hint.setType": true,
+    "Lua.workspace.ignoreSubmodules": false,
+    "Lua.workspace.library": [
+        ".rocks/share/tarantool"
+    ],
+    "Lua.workspace.useGitIgnore": false,
+    "Lua.completion.displayContext": 10,
+    "Lua.completion.workspaceWord": false
 }
