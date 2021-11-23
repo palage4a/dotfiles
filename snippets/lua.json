@@ -31,4 +31,20 @@
 			"return $1",
 		]
 	},
+	"log debug": {
+		"prefix": [
+			"debug",
+			"log"
+		],
+		"body": [
+			"local log = require('log')",
+			"log.info('debug')",
+			"log.info('debug')",
+			"log.info('debug')",
+			"log.info($1)",
+			"log.info('debug')",
+			"log.info('debug')",
+			"log.info('debug')"
+		]
+	}
 }
