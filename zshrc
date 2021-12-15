@@ -26,6 +26,8 @@ export ZSH_THEME="robbyrussell"
 
 export EDITOR='vim'
 
+alias rgh="rg -C10000"
+
 # FOR NPM
 NPM_PACKAGES="${HOME}/.npm-packages"
 export PATH="$PATH:$NPM_PACKAGES/bin"
