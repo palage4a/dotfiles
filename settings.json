@@ -34,5 +34,8 @@
     ],
     "Lua.workspace.useGitIgnore": false,
     "Lua.completion.displayContext": 10,
-    "Lua.completion.workspaceWord": false
+    "Lua.completion.workspaceWord": false,
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+    "vsicons.dontShowNewVersionMessage": true,
+    "csv-preview.separator": "\\t"
 }
