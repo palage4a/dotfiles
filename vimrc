@@ -15,5 +15,4 @@ set number
 set ruler
 set ignorecase
 set smartcase
-highlight Comment ctermfg=green
-set background=dark
+set modelines=1

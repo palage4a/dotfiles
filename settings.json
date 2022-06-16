@@ -14,7 +14,6 @@
     "gitlens.views.searchAndCompare.files.layout": "list",
     "workbench.preferredDarkColorTheme": "Visual Studio Dark",
     "workbench.preferredLightColorTheme": "Visual Studio Light",
-    "workbench.colorTheme": "Visual Studio Light",
     "git.autofetch": true,
     "task.problemMatchers.neverPrompt": {
         "shell": true
@@ -37,5 +36,11 @@
     "Lua.completion.workspaceWord": false,
     "editor.unicodeHighlight.ambiguousCharacters": false,
     "vsicons.dontShowNewVersionMessage": true,
-    "csv-preview.separator": "\\t"
+    "csv-preview.separator": "\\t",
+    "workbench.colorTheme": "Default Light+",
+    "git.confirmSync": false,
+    "go.lintOnSave": "off",
+    "Lua.runtime.version": "LuaJIT",
+    "Lua.telemetry.enable": false,
+    "window.zoomLevel": 2
 }

@@ -3,8 +3,8 @@ fonts:
 	brew install --cask font-hack-nerd-font
 
 .PHONY: nvim
-nvim: 
-	rm -rf ~/.config/nvim 
+nvim:
+	rm -rf ~/.config/nvim
 	ln -s $(PWD)/nvim ~/.config/nvim
 
 fzf:

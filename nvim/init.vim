@@ -15,7 +15,6 @@ set fileencodings=utf-8,sjis,euc-jp,latin
 set encoding=utf-8
 set title
 set autoindent
-set background=dark
 set nobackup
 set hlsearch
 set showcmd
@@ -72,7 +71,6 @@ set cursorline
 
 " Set cursor line color on visual mode
 highlight Visual cterm=NONE ctermbg=236 ctermfg=NONE guibg=Grey40
-
 highlight LineNr cterm=none ctermfg=240 guifg=#2b506e guibg=#000000
 
 
@@ -141,15 +139,13 @@ endif
 " ---------------------------------------------------------------------
 
 " true color
-if exists("&termguicolors") && exists("&winblend")
-  syntax enable
-  set termguicolors
-  set winblend=0
-  set wildoptions=pum
-  set pumblend=0
-  set background=dark
-  colorscheme dracula
-endif
+" if exists("&termguicolors") && exists("&winblend")
+"   syntax enable
+"   set termguicolors
+"   set winblend=0
+"   set wildoptions=pum
+"   set pumblend=0
+" endif
 
 "}}}
 
