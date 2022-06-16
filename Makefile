@@ -27,7 +27,7 @@ zsh:
 
 git:
 	rm -rf ~/.gitconfig
-	ln -s $(PWD)/gitconfig.nvim ~/.gitconfig
+	ln -s $(PWD)/gitconfig.vim ~/.gitconfig
 
 code:
 	mkdir -p "$(HOME)/Library/Applicasion Support/Code/User" | true
