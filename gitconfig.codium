@@ -3,15 +3,15 @@
 	name = palage4a
 	signingkey = 2CE656FB871A1BE16C4231DD411D7B559BE5B730
 [core]
-  editor = code --wait
+  editor = codium --wait
 [diff]
-  tool = vscode
-[difftool "vscode"]
-  cmd = code --wait --diff $LOCAL $REMOTE
+  tool = codium
+[difftool "codium"]
+  cmd = codium --wait --diff $LOCAL $REMOTE
 [merge]
-  tool = vscode
-[mergetool "vscode"]
-  cmd = code --wait $MERGED
+  tool = codium
+[mergetool "codium"]
+  cmd = codium --wait $MERGED
 [commit]
 	gpgsign = true
 [gpg]

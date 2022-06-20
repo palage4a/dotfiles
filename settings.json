@@ -1,7 +1,6 @@
 {
     "files.autoSave": "onFocusChange",
     "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "editor.minimap.enabled": false,
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.editor.wrapTabs": true,
@@ -35,11 +34,8 @@
     "Lua.completion.displayContext": 10,
     "Lua.completion.workspaceWord": false,
     "editor.unicodeHighlight.ambiguousCharacters": false,
-    "vsicons.dontShowNewVersionMessage": true,
-    "csv-preview.separator": "\\t",
-    "workbench.colorTheme": "Default Light+",
+    "workbench.colorTheme": "Visual Studio Light",
     "git.confirmSync": false,
-    "go.lintOnSave": "off",
     "Lua.runtime.version": "LuaJIT",
     "Lua.telemetry.enable": false,
     "window.zoomLevel": 1
