@@ -42,5 +42,5 @@
     "go.lintOnSave": "off",
     "Lua.runtime.version": "LuaJIT",
     "Lua.telemetry.enable": false,
-    "window.zoomLevel": 2
+    "window.zoomLevel": 1
 }
