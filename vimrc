@@ -16,3 +16,4 @@ set ruler
 set ignorecase
 set smartcase
 set modelines=1
+

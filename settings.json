@@ -4,7 +4,6 @@
     "editor.minimap.enabled": false,
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.editor.wrapTabs": true,
-    "search.mode": "newEditor",
     "security.workspace.trust.untrustedFiles": "open",
     "search.searchEditor.defaultNumberOfContextLines": 3,
     "workbench.editor.tabSizing": "shrink",
@@ -37,6 +36,5 @@
     "workbench.colorTheme": "Visual Studio Light",
     "git.confirmSync": false,
     "Lua.runtime.version": "LuaJIT",
-    "Lua.telemetry.enable": false,
-    "window.zoomLevel": 1
+    "Lua.telemetry.enable": false
 }
