@@ -1,0 +1,11 @@
+set-option -gu clock-mode-style
+set-option -gu pane-active-border-style
+set-option -gu pane-border-style
+set-option -gu message-style
+set-option -gu status-style
+set-option -gu status-left
+set-option -gu status-right
+set-window-option -gu window-status-current-format
+set-window-option -gu window-status-format
+set-window-option -gu window-status-activity-style
+set-window-option -gu window-status-bell-style

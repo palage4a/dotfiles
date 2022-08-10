@@ -55,6 +55,7 @@ set path+=**
 set wildignore+=*/node_modules/*
 set wildignore+=*/.rocks/*
 set wildignore+=*/sdk/*
+set wildignore+=*/tmp/*
 
 " Add asterisks in block comments
 set formatoptions+=r
@@ -142,7 +143,8 @@ if exists("&termguicolors") && exists("&winblend")
   set winblend=0
   set wildoptions=pum
   set pumblend=0
-  colorscheme dracula
+  set background=light
+  colorscheme sunbather
 endif
 
 "}}}

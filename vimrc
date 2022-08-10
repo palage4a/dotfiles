@@ -10,10 +10,17 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set hlsearch
-set ai
+set autoindent
+set autowrite
+set autoread
 set number
 set ruler
 set ignorecase
 set smartcase
 set modelines=1
 
+set wildignore+=*/node_modules/*
+set wildignore+=*/sdk/*
+set wildignore+=*/tmp/*
+
+colorscheme ron

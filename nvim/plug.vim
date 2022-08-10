@@ -12,6 +12,9 @@ call plug#begin()
 Plug 'tpope/vim-fugitive'
 Plug 'cohama/lexima.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'morhetz/gruvbox',
+Plug 'sonph/onehalf',
+Plug 'nikolvs/vim-sunbather',
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && node i'  }
