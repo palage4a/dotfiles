@@ -18,9 +18,15 @@ set ruler
 set ignorecase
 set smartcase
 set modelines=1
+set timeoutlen=0
 
 set wildignore+=*/node_modules/*
 set wildignore+=*/sdk/*
 set wildignore+=*/tmp/*
+
+noremap <silent> k gk
+noremap <silent> j gj
+noremap <silent> 0 g0
+noremap <silent> $ g$
 
 colorscheme ron
