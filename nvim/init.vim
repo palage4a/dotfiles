@@ -19,7 +19,7 @@ set nobackup
 set hlsearch
 set showcmd
 set cmdheight=1
-set laststatus=1
+set laststatus=2
 set scrolloff=10
 set expandtab
 "let loaded_matchparen = 1
@@ -65,7 +65,6 @@ set formatoptions+=r
 " Highlights "{{{
 " ---------------------------------------------------------------------
 set cursorline
-"set cursorcolumn
 
 " Set cursor line color on visual mode
 highlight Visual cterm=NONE ctermbg=236 ctermfg=NONE guibg=Grey40
@@ -143,14 +142,13 @@ if exists("&termguicolors") && exists("&winblend")
   set winblend=0
   set wildoptions=pum
   set pumblend=0
-  set background=light
-  colorscheme sunbather
+  set background=dark
+  colorscheme dracula
 endif
 
 "}}}
 
 set exrc
-"}}}
 
 nnoremap <silent> <space>r <cmd>source $MYVIMRC<cr>
 

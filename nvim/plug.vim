@@ -12,14 +12,9 @@ call plug#begin()
 Plug 'tpope/vim-fugitive'
 Plug 'cohama/lexima.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'morhetz/gruvbox',
-Plug 'sonph/onehalf',
-Plug 'nikolvs/vim-sunbather',
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && node i'  }
 Plug 'hoob3rt/lualine.nvim'
-Plug 'kyazdani42/nvim-web-devicons'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 call plug#end()
