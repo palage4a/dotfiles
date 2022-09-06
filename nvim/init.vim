@@ -142,8 +142,8 @@ if exists("&termguicolors") && exists("&winblend")
   set winblend=0
   set wildoptions=pum
   set pumblend=0
-  set background=dark
-  colorscheme dracula
+  set background=light
+  colorscheme gruvbox
 endif
 
 "}}}

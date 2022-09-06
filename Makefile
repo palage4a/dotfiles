@@ -1,6 +1,7 @@
 fonts:
 	brew tap homebrew/cask-fonts
 	brew install --cask font-hack-nerd-font
+
 .PHONY: nvim
 nvim:
 	rm -rf ~/.config/nvim
