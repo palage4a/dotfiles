@@ -138,12 +138,10 @@ endif
 " true color
 if exists("&termguicolors") && exists("&winblend")
   syntax enable
-  set termguicolors
+  " set termguicolors
   set winblend=0
   set wildoptions=pum
   set pumblend=0
-  set background=light
-  colorscheme gruvbox
 endif
 
 "}}}
@@ -161,6 +159,8 @@ let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 15
+
+let g:bg_tango = 1
 
 set mouse=n
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz

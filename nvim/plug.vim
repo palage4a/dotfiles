@@ -11,7 +11,6 @@ call plug#begin()
 
 Plug 'tpope/vim-fugitive'
 Plug 'cohama/lexima.vim'
-Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'hoob3rt/lualine.nvim'
