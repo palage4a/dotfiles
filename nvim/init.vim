@@ -163,4 +163,5 @@ let g:netrw_altv = 1
 let g:netrw_winsize = 15
 
 set mouse=n
+set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 " vim: set foldmethod=marker foldlevel=0:

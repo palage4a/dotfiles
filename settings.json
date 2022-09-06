@@ -37,5 +37,6 @@
     "Lua.runtime.version": "LuaJIT",
     "Lua.telemetry.enable": false,
     "workbench.colorTheme": "Visual Studio Light",
-    "git.ignoreRebaseWarning": true
+    "git.ignoreRebaseWarning": true,
+    "window.zoomLevel": 1
 }
