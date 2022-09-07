@@ -16,5 +16,6 @@ Plug 'tpope/vim-surround'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'habamax/vim-sugarlily'
 call plug#end()
 
