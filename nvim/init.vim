@@ -32,7 +32,7 @@ if has('nvim')
 endif
 
 
-set nosc nosm
+set nosc nosm nosmd
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
 "set showmatch
