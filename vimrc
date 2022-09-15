@@ -29,4 +29,5 @@ noremap <silent> j gj
 noremap <silent> 0 g0
 noremap <silent> $ g$
 
-colorscheme ron
+set bg=light
+" colorscheme ron
