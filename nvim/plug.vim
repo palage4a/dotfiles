@@ -8,7 +8,6 @@ endif
 let g:plug_home = stdpath('data') . '/plugged'
 
 call plug#begin()
-
 Plug 'tpope/vim-fugitive'
 Plug 'cohama/lexima.vim'
 Plug 'tpope/vim-commentary'
