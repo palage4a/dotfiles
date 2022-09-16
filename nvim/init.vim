@@ -1,6 +1,3 @@
-" Fundamentals "{{{
-" ---------------------------------------------------------------------
-
 " init autocmd
 autocmd!
 " set script encoding
@@ -59,64 +56,10 @@ set wildignore+=*/tmp/*
 " Add asterisks in block comments
 set formatoptions+=r
 
-"}}}
 
-" Highlights "{{{
-" ---------------------------------------------------------------------
 set cursorline
 
-" Set cursor line color on visual mode
-highlight Visual cterm=NONE ctermbg=236 ctermfg=NONE guibg=Grey40
-highlight LineNr cterm=none ctermfg=240 guifg=#2b506e guibg=#000000
 
-
-augroup BgHighlight
-  autocmd!
-  autocmd WinEnter * set cul
-  autocmd WinLeave * set nocul
-augroup END
-
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=236 guibg=Grey40
-highlight ExtraWhitespace ctermbg=236 guibg=Grey40
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-
-if &term =~ "screen"
-  autocmd BufEnter * if bufname("") !~ "^?[A-Za-z0-9?]*://" | silent! exe '!echo -n "\ek[`hostname`:`basename $PWD`/`basename %`]\e\\"' | endif
-  autocmd VimLeave * silent!  exe '!echo -n "\ek[`hostname`:`basename $PWD`]\e\\"'
-endif
-
-"}}}
-
-" File types "{{{
-" ---------------------------------------------------------------------
-" JavaScript
-au BufNewFile,BufRead *.es6 setf javascript
-" TypeScript
-au BufNewFile,BufRead *.tsx setf typescriptreact
-" Markdown
-au BufNewFile,BufRead *.md set filetype=markdown
-" Flow
-au BufNewFile,BufRead *.flow set filetype=javascript
-
-" Golang
-au BufNewFile,BufRead *.go set filetype=go
-
-" Python
-au BufNewFile,BufRead *.py set filetype=python
-
-set suffixesadd=.js,.es,.jsx,.json,.css,.less,.sass,.styl,.php,.py,.md,.go,.py
-
-autocmd FileType coffee setlocal shiftwidth=2 tabstop=2
-autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
-autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
-
-"}}}
-
-" Imports "{{{
-" ---------------------------------------------------------------------
 runtime ./plug.vim
 runtime ./scripts.vim
 
@@ -129,19 +72,14 @@ if has("unix")
 endif
 
 
-"}}}
 
-" Syntax theme "{{{
-" ---------------------------------------------------------------------
-
+set bg=light
 " true color
 if exists("&termguicolors") && exists("&winblend")
   syntax enable
-  set termguicolors
-  colorscheme default
+  " set termguicolors
+  " colorscheme sugarlily
 endif
-
-"}}}
 
 set exrc
 
@@ -157,8 +95,6 @@ let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 15
 
-let g:bg_tango = 1
-
 set mouse=n
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
-" vim: set foldmethod=marker foldlevel=0:
+
