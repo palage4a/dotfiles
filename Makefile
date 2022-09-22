@@ -5,14 +5,16 @@ fonts:
 .PHONY: nvim
 nvim:
 	rm -rf ~/.config/nvim
+	git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+		~/.local/share/nvim/site/pack/packer/start/packer.nvim
 	ln -s $(PWD)/nvim ~/.config/nvim
 fzf:
 	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 	~/.fzf/install
 vim:
 	rm -rf ~/.vimrc
-	ln -s $(PWD)/vimrc ~/.vimrc
 	rm -rf ~/.gitconfig
+	ln -s $(PWD)/vimrc ~/.vimrc
 	ln -s $(PWD)/gitconfig.vim ~/.gitconfig
 tmux:
 	rm -rf ~/.tmux.conf
