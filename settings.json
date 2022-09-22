@@ -3,13 +3,12 @@
     "editor.suggestSelection": "first",
     "editor.minimap.enabled": false,
     "workbench.editor.highlightModifiedTabs": true,
-    "workbench.editor.wrapTabs": true,
     "security.workspace.trust.untrustedFiles": "open",
     "search.searchEditor.defaultNumberOfContextLines": 3,
     "workbench.editor.tabSizing": "shrink",
     "window.autoDetectColorScheme": true,
     "git.allowForcePush": true,
-    "gitlens.views.searchAndCompare.files.layout": "list",
+    "gitlens.views.searchAndCompare.files.layout": "tree",
     "workbench.preferredDarkColorTheme": "Visual Studio Dark",
     "workbench.preferredLightColorTheme": "Visual Studio Light",
     "git.autofetch": true,
@@ -37,5 +36,8 @@
     "Lua.runtime.version": "LuaJIT",
     "Lua.telemetry.enable": false,
     "git.ignoreRebaseWarning": true,
-    "workbench.colorTheme": "Visual Studio Light"
+    "workbench.colorTheme": "Visual Studio Light",
+    "workbench.editor.wrapTabs": true,
+    "workbench.editor.titleScrollbarSizing": "large",
+    "workbench.editor.showTabs": false
 }
