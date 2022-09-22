@@ -6,7 +6,7 @@ local options = {
     -- completeopt    = "menu,menuone,noselect", --- Better autocompletion
     -- cursorline     = true,                    --- Highlight of current line
     -- emoji          = false,                   --- Fix emoji display
-    expandtab      = true,                    --- Use spaces instead of tabs
+    -- expandtab      = true,                    --- Use spaces instead of tabs
     -- foldcolumn     = "0",
     -- foldnestmax    = 0,
     -- foldlevel      = 99,                      --- Using ufo provider need a large value
@@ -22,8 +22,8 @@ local options = {
     shiftwidth     = 4,                       --- Change a number of space characeters inseted for indentation
     showtabline    = 2,                       --- Always show tabs
     signcolumn = "yes:1", --- Add extra sign column next to line number
-    ignorecase = true,
-    smartcase  = true, --- Uses case in search
+    ignorecase     = true,
+    smartcase      = true, --- Uses case in search
     smartindent    = true,                    --- Makes indenting smart
     smarttab       = true,                    --- Makes tabbing smarter will realize you have 2 vs 4
     softtabstop    = 4,                       --- Insert 2 spaces for a tab
@@ -32,7 +32,7 @@ local options = {
     tabstop        = 5,                       --- Insert 2 spaces for a tab
     termguicolors  = true,                    --- Correct terminal colors
     -- timeoutlen     = 200,                     --- Faster completion (cannot be lower than 200 because then commenting doesn't work)
-    undofile   = true, --- Sets undo to file
+    undofile       = true, --- Sets undo to file
     -- updatetime     = 100,                     --- Faster completion
     -- viminfo        = "'1000",                 --- Increase the size of file history
     -- wildignore     = "*node_modules/**",      --- Don't search inside Node.js modules (works for gutentag)
@@ -41,7 +41,7 @@ local options = {
 
     -- Neovim defaults
     autoindent     = true,                    --- Good auto indent
-    -- backspace      = "indent,eol,start",      --- Making sure backspace works
+    backspace      = "indent,eol,start",      --- Making sure backspace works
     backup         = false,                   --- Recommended by coc
     -- conceallevel   = 0,                       --- Show `` in markdown files
     encoding       = "utf-8",                 --- The encoding displayed
@@ -65,3 +65,4 @@ end
 for k, v in pairs(globals) do
     vim.g[k] = v
 end
+
