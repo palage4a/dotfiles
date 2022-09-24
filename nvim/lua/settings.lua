@@ -22,7 +22,6 @@ local options = {
 	shiftwidth     = 4,                       --- Change a number of space characeters inseted for indentation
 	showtabline    = 1,                       --- Always show tabs
 	signcolumn = "yes:1", --- Add extra sign column next to line number
-	ignorecase     = true,
 	smartcase      = true, --- Uses case in search
 	smartindent    = true,                    --- Makes indenting smart
 	smarttab       = true,                    --- Makes tabbing smarter will realize you have 2 vs 4
@@ -38,6 +37,7 @@ local options = {
 	-- wildignore     = "*node_modules/**",      --- Don't search inside Node.js modules (works for gutentag)
 	wrap           = false,                   --- Display long lines as just one line
 	writebackup    = false,                   --- Not needed
+	-- omnifunc       = 'true'
 
 	-- Neovim defaults
 	autoindent     = true,                    --- Good auto indent

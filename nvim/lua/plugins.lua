@@ -33,7 +33,7 @@ return require('packer').startup({
 					vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
 					vim.keymap.set('n', '<space>wl', function()
 						print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-						end, bufopts)
+					end, bufopts)
 					vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
 					vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
 					vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
@@ -46,7 +46,9 @@ return require('packer').startup({
 					debounce_text_changes = 150,
 				}
 
-				require('lspconfig').sumneko_lua.setup {
+				require('lspconfig')['sumneko_lua'].setup {
+					on_attach = on_attach,
+					flags = lsp_flags,
 					settings = {
 						Lua = {
 							runtime = {
@@ -73,19 +75,20 @@ return require('packer').startup({
 		use {'hrsh7th/nvim-cmp',
 			config = function()
 				local cmp = require('cmp')
+				if not cmp then return end
 				cmp.setup ({
 					snippet = {
 						-- REQUIRED - you must specify a snippet engine
-						expand = function(_)
+						expand = function(args)
 							-- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-							-- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+							require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
 							-- require('snippy').expand_snippet(args.body) -- For `snippy` users.
 							-- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
 						end,
 					},
 					window = {
-						-- completion = cmp.config.window.bordered(),
-						-- documentation = cmp.config.window.bordered(),
+						completion = cmp.config.window.bordered(),
+						documentation = cmp.config.window.bordered(),
 					},
 					mapping = cmp.mapping.preset.insert({
 						['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -97,7 +100,7 @@ return require('packer').startup({
 					sources = cmp.config.sources({
 						{ name = 'nvim_lsp' },
 						-- { name = 'vsnip' }, -- For vsnip users.
-						-- { name = 'luasnip' }, -- For luasnip users.
+						{ name = 'luasnip' }, -- For luasnip users.
 						-- { name = 'ultisnips' }, -- For ultisnips users.
 						-- { name = 'snippy' }, -- For snippy users.
 						}, { { name = 'buffer' } })
@@ -108,6 +111,8 @@ return require('packer').startup({
 		use 'hrsh7th/cmp-buffer'
 		use 'hrsh7th/cmp-path'
 		use 'hrsh7th/cmp-cmdline'
+
+		use 'L3MON4D3/LuaSnip'
 
 		use { 'nvim-treesitter/nvim-treesitter',
 			run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
@@ -143,6 +148,9 @@ return require('packer').startup({
 		use { 'nvim-telescope/telescope.nvim', tag = '0.1.0',
 			requires = { {'nvim-lua/plenary.nvim'} }
 		}
+		-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+		-- capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 	end
 })
+
 
