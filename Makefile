@@ -11,11 +11,13 @@ nvim:
 fzf:
 	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 	~/.fzf/install
+.PHONY: gitconfig
+gitconfig:
+	rm -rf ~/.gitconfig
+	ln -s $(PWD)/gitconfig ~/.gitconfig
 vim:
 	rm -rf ~/.vimrc
-	rm -rf ~/.gitconfig
 	ln -s $(PWD)/vimrc ~/.vimrc
-	ln -s $(PWD)/gitconfig.vim ~/.gitconfig
 tmux:
 	rm -rf ~/.tmux.conf
 	ln -s $(PWD)/tmux.conf ~/.tmux.conf
@@ -24,11 +26,9 @@ zsh:
 	curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sh
 	rm -rf ~/.zshrc
 	ln -s $(PWD)/zshrc ~/.zshrc
-code:
+codium:
 	mkdir -p "$(HOME)/Library/Applicasion Support/VSCodium/User" | true
 	rm -rf "$(HOME)/Library/Application Support/VSCodium/User/settings.json" "$(HOME)/Library/Application Support/VSCodium/User/keybindings.json" | true
 	ln -s "$(PWD)/settings.json" "$(HOME)/Library/Application Support/VSCodium/User/settings.json" | true
 	ln -s "$(PWD)/keybindings.json" "$(HOME)/Library/Application Support/VSCodium/User/keybindings.json" | true
 	ln -s "$(PWD)/snippets" "$(HOME)/Library/Application Support/VSCodium/User/snippets" | true
-	rm -rf ~/.gitconfig
-	ln -s $(PWD)/gitconfig.codium ~/.gitconfig
