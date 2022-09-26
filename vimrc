@@ -23,11 +23,12 @@ set timeoutlen=0
 set wildignore+=*/node_modules/*
 set wildignore+=*/sdk/*
 set wildignore+=*/tmp/*
+set wildmenu
 
 noremap <silent> k gk
 noremap <silent> j gj
 noremap <silent> 0 g0
 noremap <silent> $ g$
 
-" set bg=light
-" colorscheme ron
+set bg=light
+

@@ -9,6 +9,6 @@ export PATH=$PATH:$GOPATH/bin:/usr/local/go/bin
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 
-alias vim='nvim'
 alias code="codium"
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -18,7 +18,7 @@ return require('packer').startup(function(use)
 			-- after the language server attaches to the current buffer
 			local on_attach = function(client, bufnr)
 				-- Enable completion triggered by <c-x><c-o>
-				vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+				-- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
 				-- Mappings.
 				-- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -102,7 +102,7 @@ return require('packer').startup(function(use)
 					{ name = 'luasnip' }, -- For luasnip users.
 					-- { name = 'ultisnips' }, -- For ultisnips users.
 					-- { name = 'snippy' }, -- For snippy users.
-					}, { { name = 'buffer' } })
+				}, { { name = 'buffer' } })
 			})
 			for _, v in pairs({ '/', '?' }) do
 				cmp.setup.cmdline(v, {
@@ -117,8 +117,8 @@ return require('packer').startup(function(use)
 				mapping = cmp.mapping.preset.cmdline(),
 				sources = cmp.config.sources({
 					{ name = 'path' }
-					}, {
-						{ name = 'cmdline' }
+				}, {
+					{ name = 'cmdline' }
 				})
 			})
 
