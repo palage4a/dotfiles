@@ -1,1 +1,2 @@
-vim.cmd 'colorscheme sugarlily'
+vim.cmd 'colorscheme material'
+vim.g.material_style = "deep ocean"

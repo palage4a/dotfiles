@@ -42,7 +42,7 @@ return require('packer').startup(function(use)
 
 			local lsp_flags = {
 				-- This is the default in Nvim 0.7+
-				debounce_text_changes = 150,
+				-- debounce_text_changes = 300,
 			}
 
 			require('lspconfig')['sumneko_lua'].setup {
@@ -160,15 +160,29 @@ return require('packer').startup(function(use)
 	use { 'tpope/vim-surround' }
 
 	use 'habamax/vim-sugarlily'
+	use { 'marko-cerovac/material.nvim',
+		run = function()
+			require('material').setup {
+				lualine_style = 'stealth',
+			}
+		end
+	}
 
 	use { 'kyazdani42/nvim-web-devicons' }
-	use { 'feline-nvim/feline.nvim',
-		after = "nvim-web-devicons",
-		config = function() require('feline').setup {} end
+
+	use { 'nvim-lualine/lualine.nvim',
+		config = function()
+			require('lualine').setup {}
+		end
 	}
+	-- use { 'feline-nvim/feline.nvim',
+	-- 	after = "nvim-web-devicons",
+	-- 	config = function() require('feline').setup {} end
+	-- }
 	use { 'nvim-telescope/telescope.nvim', tag = '0.1.0',
 		requires = { { 'nvim-lua/plenary.nvim' } }
 	}
+
 	use({
 		"aserowy/tmux.nvim",
 		config = function() require("tmux").setup() end
