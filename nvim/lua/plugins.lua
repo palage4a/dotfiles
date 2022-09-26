@@ -42,7 +42,7 @@ return require('packer').startup(function(use)
 
 			local lsp_flags = {
 				-- This is the default in Nvim 0.7+
-				-- debounce_text_changes = 300,
+				debounce_text_changes = 150,
 			}
 
 			require('lspconfig')['sumneko_lua'].setup {
@@ -76,6 +76,9 @@ return require('packer').startup(function(use)
 			local cmp = require('cmp')
 			if not cmp then return end
 			cmp.setup({
+				performance = {
+					debounce = 150,
+				},
 				snippet = {
 					-- REQUIRED - you must specify a snippet engine
 					expand = function(args)
@@ -86,8 +89,8 @@ return require('packer').startup(function(use)
 					end,
 				},
 				window = {
-					completion = cmp.config.window.bordered(),
-					documentation = cmp.config.window.bordered(),
+					-- completion = cmp.config.window.bordered(),
+					-- documentation = cmp.config.window.bordered(),
 				},
 				mapping = cmp.mapping.preset.insert({
 					['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -151,12 +154,34 @@ return require('packer').startup(function(use)
 				indent = {
 					-- enable = true -- it's break indenting in lua
 				},
+				incremental_selection = {
+					enable = true,
+					keymaps = {
+						init_selection = "gnn",
+						node_incremental = "grn",
+						scope_incremental = "grc",
+						node_decremental = "grm",
+					},
+				},
 			}
 		end
 	}
 
-	use { 'cohama/lexima.vim' }
-	use { 'tpope/vim-commentary' }
+	use { 'windwp/nvim-autopairs',
+		config = function()
+			require('nvim-autopairs').setup {}
+		end }
+
+    use {
+      'numToStr/Comment.nvim',
+      config = function()
+        -- local ts_comment_integration = require('ts_context_commentstring.integrations.comment_nvim')
+        require('Comment').setup({
+          -- pre_hook = ts_comment_integration.create_pre_hook(),
+        })
+      end
+    }
+
 	use { 'tpope/vim-surround' }
 
 	use 'habamax/vim-sugarlily'
