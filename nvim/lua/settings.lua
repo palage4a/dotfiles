@@ -10,6 +10,7 @@ local options = {
 	number            = true,                    --- Shows current line number
 	shiftwidth        = 4,                       --- Change a number of space characeters inseted for indentation
 	showtabline       = 1,                       --- Always show tabs
+	expandtab         = true,                    --- Use spaces instead of tabs
 	smartindent       = true,                    --- Makes indenting smart
 	smarttab          = true,                    --- Makes tabbing smarter will realize you have 2 vs 4
 	splitright        = true,                    --- vertical splits will automatically be to the right
@@ -40,7 +41,6 @@ local options = {
 	-- modelines=1, -- dont now what is it
 
 	-- emoji             = false,                   --- Fix emoji display
-	-- expandtab         = true,                    --- Use spaces instead of tabs
 	-- foldcolumn        = "0",
 	-- foldnestmax       = 0,
 	-- foldlevel         = 99,                      --- Using ufo provider need a large value
