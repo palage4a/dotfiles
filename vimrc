@@ -1,6 +1,7 @@
 filetype plugin indent on
 syntax on
 set laststatus=2
+set exrc
 set path+=**
 set noswapfile
 set incsearch
@@ -29,6 +30,7 @@ noremap <silent> k gk
 noremap <silent> j gj
 noremap <silent> 0 g0
 noremap <silent> $ g$
+noremap ; :
 
 set bg=light
 
