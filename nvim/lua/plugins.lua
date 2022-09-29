@@ -243,6 +243,4 @@ return require('packer').startup(function(use)
 		config = function() require("tmux").setup() end
 	})
 
-	-- require("luasnip.loaders.from_snipmate").lazy_load()
-	-- print('test')
 end)
