@@ -1,6 +1,0 @@
--- require('functions')
--- require('autocmds')
-require('settings')
-require('plugins')
-require('keymappings')
-require('colorscheme')
