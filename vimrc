@@ -112,6 +112,7 @@ set clipboard="unnamed,unnamedplus"
 set completeopt="menu,menuone,noselect"
 set cursorline
 set expandtab
+set list
 set exrc
 set fileencoding="utf-8"
 set hlsearch
