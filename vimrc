@@ -1,44 +1,3 @@
-noremap ; :
-noremap <silent> $ g$
-noremap <silent> 0 g0
-noremap <silent> j gj
-noremap <silent> k gk
-
-set autoindent
-set autowrite
-set bg=light
-set clipboard="unnamed,unnamedplus" set completeopt="menu,menuone,noselect"
-set cursorline
-set expandtab
-set exrc
-set fileencoding="utf-8"
-set hlsearch
-set ignorecase
-set langmap="ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz"
-set lazyredraw
-set modelines=1
-set noswapfile
-set nowrap
-set nowritebackup
-set number
-set path+=**
-set shiftwidth=4
-set showmode
-set showtabline=1
-set smartcase
-set smartindent
-set softtabstop=4
-set spelllang="en_us,ru"
-set splitright
-set tabstop=4
-set termguicolors
-set timeoutlen=0
-set title
-" set undofile
-set wildignore+=*/node_modules/*
-set wildignore+=*/sdk/*
-set wildignore+=*/tmp/*
-
 " sensible.vim - Defaults everyone can agree on
 " Maintainer:   Tim Pope <http://tpo.pe/>
 " Version:      1.2
@@ -139,4 +98,47 @@ endif
 if empty(mapcheck('<C-W>', 'i'))
   inoremap <C-W> <C-G>u<C-W>
 endif
+
+noremap ; :
+noremap <silent> $ g$
+noremap <silent> 0 g0
+noremap <silent> j gj
+noremap <silent> k gk
+
+set autoindent
+set autowrite
+set bg=light
+set clipboard="unnamed,unnamedplus"
+set completeopt="menu,menuone,noselect"
+set cursorline
+set expandtab
+set exrc
+set fileencoding="utf-8"
+set hlsearch
+set ignorecase
+set langmap="ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz"
+set lazyredraw
+set modelines=1
+set noswapfile
+set nowrap
+set nowritebackup
+set number
+set path+=**
+set shiftwidth=4
+set showmode
+set showtabline=1
+set smartcase
+set smartindent
+set softtabstop=4
+set spelllang="en_us,ru"
+set splitright
+set tabstop=4
+set termguicolors
+set timeoutlen=0
+set title
+set wildignore+=*/node_modules/*
+set wildignore+=*/sdk/*
+set wildignore+=*/tmp/*
+
+autocmd FileType c,cpp,java,php,lua,md autocmd BufWritePre <buffer> %s/\s\+$//e
 
