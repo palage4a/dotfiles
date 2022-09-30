@@ -105,11 +105,15 @@ noremap <silent> 0 g0
 noremap <silent> j gj
 noremap <silent> k gk
 
+" esc in insert & visual mode
+inoremap kj <esc>
+vnoremap kj <esc>
+
 set autoindent
 set autowrite
 set bg=light
 set clipboard="unnamed,unnamedplus"
-set completeopt="menu,menuone,noselect"
+" set completeopt="menu,menuone,noselect"
 set cursorline
 set expandtab
 set list
@@ -135,7 +139,7 @@ set spelllang="en_us,ru"
 set splitright
 set tabstop=4
 set termguicolors
-set timeoutlen=0
+set timeoutlen=500
 set title
 set wildignore+=*/node_modules/*
 set wildignore+=*/sdk/*
