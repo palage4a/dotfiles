@@ -112,7 +112,7 @@ vnoremap kj <esc>
 set autoindent
 set autowrite
 set bg=light
-set clipboard="unnamed,unnamedplus"
+set clipboard=unnamed,unnamedplus
 " set completeopt="menu,menuone,noselect"
 set cursorline
 set expandtab
