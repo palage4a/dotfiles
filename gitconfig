@@ -5,9 +5,13 @@
 [pull]
     rebase = false
 [mergetool]
-    prompt = true
+    prompt = false
 [difftool]
-    prompt = true
+    prompt = false
+[merge]
+    tool = nvimdiff
+[diff]
+    tool = nvimdiff
 [commit]
     gpgsign = true
 [gpg]
@@ -15,4 +19,4 @@
 [init]
     defaultBranch = main
 [http]
-	sslVerify = true
+	sslVerify = false
