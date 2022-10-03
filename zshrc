@@ -12,5 +12,7 @@ export EDITOR="$VISUAL"
 alias vim="nvim"
 alias vi="nvim"
 alias code="codium"
+alias gdtl="git difftool"
+alias gmtl="git difftool"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
