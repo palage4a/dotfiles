@@ -113,14 +113,14 @@ set autoindent
 set autowrite
 set bg=light
 set clipboard=unnamed,unnamedplus
-" set completeopt="menu,menuone,noselect"
+set completeopt=menu,menuone,noselect
 set cursorline
 set expandtab
 set list
-set fileencoding="utf-8"
+set fileencoding=utf-8
 set hlsearch
 set ignorecase
-set langmap="ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz"
+set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 set lazyredraw
 set modelines=1
 set noswapfile
@@ -134,7 +134,7 @@ set showtabline=1
 set smartcase
 set smartindent
 set softtabstop=4
-set spelllang="en_us,ru"
+set spelllang=en_us,ru
 set splitright
 set tabstop=4
 set termguicolors
