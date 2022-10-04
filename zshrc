@@ -13,6 +13,6 @@ alias vim="nvim"
 alias vi="nvim"
 alias code="codium"
 alias gdtl="git difftool"
-alias gmtl="git difftool"
+alias gmtl="git mergetool"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
