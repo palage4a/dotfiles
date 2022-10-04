@@ -19,4 +19,4 @@
 [init]
     defaultBranch = main
 [http]
-	sslVerify = false
+	sslVerify = true
