@@ -41,10 +41,10 @@ set ruler
 set wildmenu
 
 if !&scrolloff
-  set scrolloff=1
+  set scrolloff=999
 endif
 if !&sidescrolloff
-  set sidescrolloff=5
+  set sidescrolloff=10
 endif
 set display+=lastline
 
@@ -129,7 +129,7 @@ set nowritebackup
 set number
 set path+=**
 set shiftwidth=4
-set showmode
+set noshowmode
 set showtabline=1
 set smartcase
 set smartindent
@@ -144,7 +144,7 @@ set wildignore+=*/node_modules/*
 set wildignore+=*/sdk/*
 set wildignore+=*/tmp/*
 
-autocmd FileType c,cpp,java,php,lua,md autocmd BufWritePre <buffer> %s/\s\+$//e
+autocmd FileType c,cpp,java,php,lua,md,typescript,javascript,python autocmd BufWritePre <buffer> %s/\s\+$//e
 
 " Tweaks for browsing
 let g:netrw_banner=0        " disable annoying banner

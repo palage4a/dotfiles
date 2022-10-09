@@ -15,4 +15,6 @@ alias code="codium"
 alias gdtl="git difftool"
 alias gmtl="git mergetool"
 
+ulimit -n 10240
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
