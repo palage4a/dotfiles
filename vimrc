@@ -99,11 +99,14 @@ if empty(mapcheck('<C-W>', 'i'))
   inoremap <C-W> <C-G>u<C-W>
 endif
 
-noremap ; :
+nnoremap ; :
 noremap <silent> $ g$
 noremap <silent> 0 g0
 noremap <silent> j gj
 noremap <silent> k gk
+
+noremap <leader>f :fin 
+noremap <leader>rw :vimgrep /<C-R><C-W>/ **<CR>:copen<CR>
 
 " esc in insert & visual mode
 inoremap kj <esc>
