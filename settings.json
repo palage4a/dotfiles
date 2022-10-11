@@ -39,6 +39,5 @@
     "workbench.colorTheme": "Visual Studio Light",
     "workbench.editor.wrapTabs": true,
     "workbench.editor.titleScrollbarSizing": "large",
-    "workbench.editor.showTabs": false,
-    "window.zoomLevel": 1
+    "editor.tabCompletion": "on"
 }

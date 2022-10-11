@@ -131,7 +131,7 @@ return packer.startup(function(use)
     use { 'hrsh7th/nvim-cmp',
         requires = {
             'L3MON4D3/LuaSnip',
-            'saadparwaiz1/cmp_luasnip/',
+            'saadparwaiz1/cmp_luasnip',
             'hrsh7th/cmp-nvim-lsp',
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-path',
@@ -231,4 +231,3 @@ return packer.startup(function(use)
         end
     }
 end)
-

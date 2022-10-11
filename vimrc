@@ -99,23 +99,21 @@ if empty(mapcheck('<C-W>', 'i'))
   inoremap <C-W> <C-G>u<C-W>
 endif
 
+let mapleader = '\<Space>'
+let maplocalleader = '\<Space>'
+
 nnoremap ; :
 noremap <silent> $ g$
 noremap <silent> 0 g0
 noremap <silent> j gj
 noremap <silent> k gk
 
-noremap <leader>f :fin 
-noremap <leader>rw :vimgrep /<C-R><C-W>/ **<CR>:copen<CR>
-
-" esc in insert & visual mode
-inoremap kj <esc>
-vnoremap kj <esc>
+noremap <leader>y "+y
+noremap <leader>p "+p
 
 set autoindent
 set autowrite
 set bg=light
-set clipboard=unnamed,unnamedplus
 set completeopt=menu,menuone,noselect
 set cursorline
 set expandtab
