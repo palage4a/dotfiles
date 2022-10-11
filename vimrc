@@ -99,17 +99,16 @@ if empty(mapcheck('<C-W>', 'i'))
   inoremap <C-W> <C-G>u<C-W>
 endif
 
-let mapleader = '\<Space>'
-let maplocalleader = '\<Space>'
-
 nnoremap ; :
 noremap <silent> $ g$
 noremap <silent> 0 g0
 noremap <silent> j gj
 noremap <silent> k gk
 
-noremap <leader>y "+y
-noremap <leader>p "+p
+nnoremap <Space>y "+y
+nnoremap <Space>p "+p
+vnoremap <Space>y "+y
+vnoremap <Space>p "+p
 
 set autoindent
 set autowrite
