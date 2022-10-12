@@ -15,7 +15,6 @@ return packer.startup(function(use)
             vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
             vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
             vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
-
             -- Use an on_attach function to only map the following keys
             -- after the language server attaches to the current buffer
             local on_attach = function(_, bufnr)
@@ -39,17 +38,20 @@ return packer.startup(function(use)
                 vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
                 vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
                 vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-                vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
+                vim.keymap.set('n', '<space>=', vim.lsp.buf.formatting, bufopts)
             end
 
             local lsp_flags = {
                 -- This is the default in Nvim 0.7+
                 -- debounce_text_changes = 150,
             }
+            -- Set up lspconfig.
+            local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
             require('lspconfig')['sumneko_lua'].setup {
                 on_attach = on_attach,
                 flags = lsp_flags,
+                capabilities = capabilities,
                 settings = {
                     Lua = {
                         runtime = {
@@ -222,12 +224,11 @@ return packer.startup(function(use)
                 })
             })
 
-            -- Set up lspconfig.
-            local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-            -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-            require('lspconfig')['<YOUR_LSP_SERVER>'].setup {
-                capabilities = capabilities
-            }
         end
+    }
+
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = { { 'nvim-lua/plenary.nvim' } }
     }
 end)
