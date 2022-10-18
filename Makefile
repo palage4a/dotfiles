@@ -2,6 +2,10 @@ fonts:
 	brew tap homebrew/cask-fonts
 	brew install --cask font-hack-nerd-font
 
+.PHONY: helix
+helix:
+	rm -rf ~/.config/helix
+	ln -s $(PWD)/helix ~/.config/helix
 .PHONY: nvim
 nvim:
 	rm -rf ~/.config/nvim
