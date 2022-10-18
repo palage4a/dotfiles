@@ -9,6 +9,8 @@ nnoremap <Space>p "+p
 vnoremap <Space>y "+y
 vnoremap <Space>p "+p
 
+nnoremap <Space>nn :Lexplore<CR>
+
 set autoindent
 set autowrite
 set bg=light
@@ -19,6 +21,7 @@ set list
 set fileencoding=utf-8
 set hlsearch
 set signcolumn=yes
+set colorcolumn=80
 set ignorecase
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 set lazyredraw
@@ -41,6 +44,7 @@ set tabstop=4
 set termguicolors
 set timeoutlen=500
 set title
+set mouse+=a
 set wildignore+=*/node_modules/*
 set wildignore+=*/sdk/*
 set wildignore+=*/tmp/*

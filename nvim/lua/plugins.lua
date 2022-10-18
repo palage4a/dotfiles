@@ -1,12 +1,17 @@
 vim.cmd [[packadd packer.nvim]]
+
 local packer = require('packer')
 
 packer.init({
     ensure_dependencies = true,
 })
 
-return packer.startup(function(use)
+packer.startup(function(use)
     use { 'wbthomason/packer.nvim' }
+
+    -- Is using a standard Neovim install, i.e. built from source or using a
+    -- provided appimage.
+    use 'lewis6991/impatient.nvim'
 
     use { 'neovim/nvim-lspconfig',
         config = function()
@@ -46,7 +51,7 @@ return packer.startup(function(use)
                 -- debounce_text_changes = 150,
             }
             -- Set up lspconfig.
-            local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+            local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
             require('lspconfig')['sumneko_lua'].setup {
                 on_attach = on_attach,
@@ -59,8 +64,7 @@ return packer.startup(function(use)
                             version = 'LuaJIT',
                         },
                         diagnostics = {
-                            -- Get the language server to recognize the `vim` global
-                            globals = { 'vim' },
+                            globals = { 'vim', 'box' },
                         },
                         workspace = {
                             -- Make the server aware of Neovim runtime files
@@ -108,6 +112,7 @@ return packer.startup(function(use)
         end
     }
 
+
     use 'tpope/vim-surround'
     use { 'nvim-lualine/lualine.nvim',
         config = function()
@@ -117,12 +122,23 @@ return packer.startup(function(use)
         end
     }
 
-    use({
-        "aserowy/tmux.nvim",
-        config = function() require("tmux").setup() end
+    use({ "aserowy/tmux.nvim",
+        config = function() require("tmux").setup({
+                navigation = {
+                    enable_default_keybindings = true,
+                },
+                resize = {
+                    enable_default_keybindings = false,
+                }
+            })
+        end
     })
 
-    use { 'habamax/vim-sugarlily' }
+    use { 'habamax/vim-sugarlily',
+        setup = function()
+            vim.cmd [[colorscheme sugarlily ]]
+        end
+    }
 
     use { 'numToStr/Comment.nvim',
         config = function()
@@ -227,8 +243,37 @@ return packer.startup(function(use)
         end
     }
 
-    use {
-        'nvim-telescope/telescope.nvim',
-        requires = { { 'nvim-lua/plenary.nvim' } }
+    use { 'nvim-telescope/telescope-project.nvim' }
+    use { 'nvim-telescope/telescope.nvim',
+        requires = { { 'nvim-lua/plenary.nvim' } },
+        config = function()
+            local telescope = require('telescope')
+            telescope.setup({
+                extensions = {
+                    project = {
+                        theme = 'dropdown',
+                    }
+                },
+                pickers = {
+                    find_files = {
+                        theme = "ivy",
+                    },
+                    buffers = {
+                        show_all_buffers = true,
+                        sort_lastused = true,
+                        theme = "dropdown",
+                        previewer = false,
+                        mappings = {
+                            n = {
+                                ["d"] = "delete_buffer",
+                            },
+                            i = {
+                                ["<c-d>"] = "delete_buffer",
+                            },
+                        }
+                    }
+                },
+            })
+        end,
     }
 end)
