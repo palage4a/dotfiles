@@ -2,9 +2,7 @@ vim.cmd [[packadd packer.nvim]]
 
 local packer = require('packer')
 
-packer.init({
-    ensure_dependencies = true,
-})
+packer.init({ ensure_dependencies = true })
 
 packer.startup(function(use)
     use { 'wbthomason/packer.nvim' }
@@ -24,7 +22,8 @@ packer.startup(function(use)
             -- after the language server attaches to the current buffer
             local on_attach = function(_, bufnr)
                 -- Enable completion triggered by <c-x><c-o>
-                -- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+                vim.g.omnifunc = true
+                vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
                 -- Mappings.
                 -- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -46,17 +45,8 @@ packer.startup(function(use)
                 vim.keymap.set('n', '<space>=', vim.lsp.buf.formatting, bufopts)
             end
 
-            local lsp_flags = {
-                -- This is the default in Nvim 0.7+
-                -- debounce_text_changes = 150,
-            }
-            -- Set up lspconfig.
-            local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-
             require('lspconfig')['sumneko_lua'].setup {
                 on_attach = on_attach,
-                flags = lsp_flags,
-                capabilities = capabilities,
                 settings = {
                     Lua = {
                         runtime = {
@@ -113,26 +103,15 @@ packer.startup(function(use)
     }
 
 
-    use 'tpope/vim-surround'
+    use { 'tpope/vim-surround' }
     use { 'nvim-lualine/lualine.nvim',
         config = function()
-            require('lualine').setup {
+            require('lualine').setup({
                 icons_enabled = false
-            }
+            })
         end
     }
 
-    use({ "aserowy/tmux.nvim",
-        config = function() require("tmux").setup({
-                navigation = {
-                    enable_default_keybindings = true,
-                },
-                resize = {
-                    enable_default_keybindings = false,
-                }
-            })
-        end
-    })
 
     use { 'habamax/vim-sugarlily',
         setup = function()
@@ -146,134 +125,20 @@ packer.startup(function(use)
         end
     }
 
-    use { 'hrsh7th/nvim-cmp',
-        requires = {
-            'L3MON4D3/LuaSnip',
-            'saadparwaiz1/cmp_luasnip',
-            'hrsh7th/cmp-nvim-lsp',
-            'hrsh7th/cmp-buffer',
-            'hrsh7th/cmp-path',
-            'hrsh7th/cmp-cmdline',
-        },
-        config = function()
-            local cmp = require('cmp')
-            if not cmp then return end
+    use { 'windwp/nvim-autopairs', config = function()
+        require('nvim-autopairs').setup {}
+    end
+    }
 
-            local luasnip = require('luasnip')
-            if not luasnip then return end
-
-            local has_words_before = function()
-                local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-                return col ~= 0 and
-                    vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-            end
-
-            cmp.setup({
-                snippet = {
-                    expand = function(args)
-                        require('luasnip').lsp_expand(args.body)
-                    end,
+    use({ "aserowy/tmux.nvim",
+        config = function() require("tmux").setup({
+                navigation = {
+                    enable_default_keybindings = true,
                 },
-                window = {
-                    completion = cmp.config.window.bordered(),
-                    documentation = cmp.config.window.bordered(),
-                },
-                mapping = {
-                    ["<Tab>"] = cmp.mapping(function(fallback)
-                        if cmp.visible() then
-                            cmp.select_next_item()
-                        elseif luasnip.expand_or_jumpable() then
-                            luasnip.expand_or_jump()
-                        elseif has_words_before() then
-                            cmp.complete()
-                        else
-                            fallback()
-                        end
-                    end, { "i", "s" }),
-                    ["<S-Tab>"] = cmp.mapping(function(fallback)
-                        if cmp.visible() then
-                            cmp.select_prev_item()
-                        elseif luasnip.jumpable(-1) then
-                            luasnip.jump(-1)
-                        else
-                            fallback()
-                        end
-                    end, { "i", "s" }),
-                    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-                    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-                    ['<C-Space>'] = cmp.mapping.complete(),
-                    ['<C-e>'] = cmp.mapping.abort(),
-                    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-                },
-                sources = cmp.config.sources({
-                    { name = 'nvim_lsp' },
-                    { name = 'luasnip' }, -- For luasnip users.
-                }, {
-                    { name = 'buffer' },
-                })
-            })
-
-            -- Set configuration for specific filetype.
-            cmp.setup.filetype('gitcommit', {
-                sources = cmp.config.sources({
-                    { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
-                }, {
-                    { name = 'buffer' },
-                })
-            })
-
-            -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-            cmp.setup.cmdline({ '/', '?' }, {
-                mapping = cmp.mapping.preset.cmdline(),
-                sources = {
-                    { name = 'buffer' }
+                resize = {
+                    enable_default_keybindings = false,
                 }
             })
-
-            -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-            cmp.setup.cmdline(':', {
-                mapping = cmp.mapping.preset.cmdline(),
-                sources = cmp.config.sources({
-                    { name = 'path' }
-                }, {
-                    { name = 'cmdline' }
-                })
-            })
-
         end
-    }
-
-    use { 'nvim-telescope/telescope-project.nvim' }
-    use { 'nvim-telescope/telescope.nvim',
-        requires = { { 'nvim-lua/plenary.nvim' } },
-        config = function()
-            local telescope = require('telescope')
-            telescope.setup({
-                extensions = {
-                    project = {
-                        theme = 'dropdown',
-                    }
-                },
-                pickers = {
-                    find_files = {
-                        theme = "ivy",
-                    },
-                    buffers = {
-                        show_all_buffers = true,
-                        sort_lastused = true,
-                        theme = "dropdown",
-                        previewer = false,
-                        mappings = {
-                            n = {
-                                ["d"] = "delete_buffer",
-                            },
-                            i = {
-                                ["<c-d>"] = "delete_buffer",
-                            },
-                        }
-                    }
-                },
-            })
-        end,
-    }
+    })
 end)

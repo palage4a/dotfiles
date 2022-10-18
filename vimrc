@@ -9,7 +9,7 @@ nnoremap <Space>p "+p
 vnoremap <Space>y "+y
 vnoremap <Space>p "+p
 
-nnoremap <Space>nn :Lexplore<CR>
+nnoremap <silent> <Space>nn :Lexplore<CR>
 
 set autoindent
 set autowrite
@@ -47,7 +47,9 @@ set title
 set mouse+=a
 set wildignore+=*/node_modules/*
 set wildignore+=*/sdk/*
-set wildignore+=*/tmp/*
+" max depth of search in tmp is 1
+set wildignore+=*/tmp/*/*
+set wildignore-=*/tmp/*
 
 autocmd FileType c,cpp,java,php,lua,md,typescript,javascript,python autocmd BufWritePre <buffer> %s/\s\+$//e
 
