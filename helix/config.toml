@@ -5,6 +5,13 @@ scrolloff=10
 mouse = false
 cursorline = true
 true-color = true
+color-modes = true
+line-number = "relative"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
 
 [editor.whitespace.render]
 space = "all"
