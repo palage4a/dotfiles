@@ -113,11 +113,10 @@ packer.startup(function(use)
     }
 
 
-    use { 'habamax/vim-sugarlily',
-        setup = function()
-            vim.cmd [[colorscheme sugarlily ]]
-        end
-    }
+    use { 'folke/tokyonight.nvim',
+        config = function()
+            vim.cmd [[ colorscheme tokyonight ]]
+        end }
 
     use { 'numToStr/Comment.nvim',
         config = function()
@@ -130,7 +129,7 @@ packer.startup(function(use)
     end
     }
 
-    use({ "aserowy/tmux.nvim",
+    use { "aserowy/tmux.nvim",
         config = function() require("tmux").setup({
                 navigation = {
                     enable_default_keybindings = true,
@@ -140,5 +139,14 @@ packer.startup(function(use)
                 }
             })
         end
-    })
+    }
+
+    use { 'nvim-telescope/telescope.nvim',
+        requires = { { 'nvim-lua/plenary.nvim' } },
+        config = function()
+            local builtin = require('telescope.builtin')
+            vim.keymap.set('n', '<space>f', builtin.find_files, {})
+            vim.keymap.set('n', '<space>/', builtin.live_grep, {})
+        end
+    }
 end)
