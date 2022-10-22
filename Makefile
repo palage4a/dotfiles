@@ -2,6 +2,10 @@ fonts:
 	brew tap homebrew/cask-fonts
 	brew install --cask font-hack-nerd-font
 
+emacs:
+	rm -rf ~/.emacs
+	ln -s $(PWD)/.emacs ~/.emacs
+
 .PHONY: helix
 helix:
 	rm -rf ~/.config/helix
