@@ -6,8 +6,16 @@
 (if (fboundp 'scroll-bar-mode)
     (scroll-bar-mode -1))
 
+
+
 (setq make-backup-files nil)
-(load-theme 'tango-dark)
+
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+
+(setq indent-line-function 'insert-tab)
+
+
 
 ;; setup package.el
 (require 'package)
@@ -32,24 +40,29 @@
 (delete-selection-mode 1)
 (global-auto-revert-mode t)
 
-(use-package evil
-  :init
-  (setq evil-want-keybinding nil)
-  :config
-  (evil-mode 1))
+;; (use-package evil
+;;   :init
+;;   (setq evil-want-keybinding nil)
+;;   :config
+;;   (evil-mode 1))
 
-(use-package evil-collection
-  :after evil
-  :config
-  (evil-collection-init))
+;; (use-package evil-collection
+;;   :after evil
+;;   :config
+;;   (evil-collection-init))
 
 
 (add-hook 'before-save-hook
 	  'delete-trailing-whitespace)
+
 (add-hook 'prog-mode-hook
 	  (if (and (fboundp 'display-line-numbers-mode) (display-graphic-p))
 	      #'display-line-numbers-mode
 	    #'linum-mode))
+(add-hook 'prog-mode-hook
+          (lambda ()
+            (setq show-trailing-whitespace t)))
+(add-hook 'prog-mode-hook 'electric-pair-mode)
 
 (use-package doom-themes
   :ensure t
@@ -75,7 +88,7 @@
   (global-set-key "\C-s" 'swiper)
   (global-set-key (kbd "M-x") 'counsel-M-x)
   (global-set-key (kbd "C-x C-f") 'counsel-find-file)
-  (global-set-key (kbd "C-c k") 'counsel-ag)
+  (global-set-key (kbd "C-c k") 'counsel-rg)
   (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history))
 
 ;; Company is for code auto-completion
@@ -86,8 +99,26 @@
   :config
   (setq company-idle-delay 0))
 
-(use-package expand-region
-  :bind ("C-;" . er/expand-region))
+(use-package lsp-mode
+  :ensure t)
+
+(use-package lsp-ui
+  :ensure t
+  :after lsp-mode
+  :commands lsp-ui-mode)
+
+(use-package lsp-ivy
+  :ensure t
+  :after lsp-mode
+  :commands lsp-ivy-workspace-symbol)
+
+
+
+
+(use-package lua-mode
+  :ensure t)
+
+
 
 
 (custom-set-variables
@@ -98,7 +129,7 @@
  '(custom-safe-themes
    '("60ada0ff6b91687f1a04cc17ad04119e59a7542644c7c59fc135909499400ab8" default))
  '(package-selected-packages
-   '(expand-region company evil-collection doom-themes use-package evil)))
+   '(lsp-ivy lsp-ui lsp-mode lua-mode expand-region company ivy-posframe counsel magit evil-collection doom-themes use-package evil)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
