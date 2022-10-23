@@ -10,6 +10,12 @@ emacs:
 helix:
 	rm -rf ~/.config/helix
 	ln -s $(PWD)/helix ~/.config/helix
+
+.PHONY:nvchad
+nvchad:
+	rm -rf ~/.config/nvim
+	ln -s $(PWD)/NvChad ~/.config/nvim
+
 .PHONY: nvim
 nvim:
 	rm -rf ~/.config/nvim
