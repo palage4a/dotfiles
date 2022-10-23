@@ -6,8 +6,6 @@
 (if (fboundp 'scroll-bar-mode)
     (scroll-bar-mode -1))
 
-
-
 (setq make-backup-files nil)
 
 (setq-default indent-tabs-mode nil)
@@ -119,16 +117,26 @@
 (use-package lua-mode
   :ensure t)
 
+(use-package lsp-mode
+  :ensure t)
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
+(use-package tree-sitter-langs
+  :ensure t
+  :after tree-sitter)
+
+(use-package tree-sitter
+  :ensure t
+  :config
+  (global-tree-sitter-mode))
+
+
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    '("60ada0ff6b91687f1a04cc17ad04119e59a7542644c7c59fc135909499400ab8" default))
  '(package-selected-packages
-   '(paredit c-mode lsp-ivy lsp-ui lsp-mode lua-mode expand-region company ivy-posframe counsel magit evil-collection doom-themes use-package evil)))
+   '(tree-sitter paredit c-mode lsp-ivy lsp-ui lsp-mode lua-mode expand-region company ivy-posframe counsel magit evil-collection doom-themes use-package evil)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
