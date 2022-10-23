@@ -40,16 +40,17 @@
 (delete-selection-mode 1)
 (global-auto-revert-mode t)
 
-;; (use-package evil
-;;   :init
-;;   (setq evil-want-keybinding nil)
-;;   :config
-;;   (evil-mode 1))
+(use-package evil
+  :init
+  (setq evil-want-keybinding nil)
+  :config
+  (evil-mode 1))
 
-;; (use-package evil-collection
-;;   :after evil
-;;   :config
-;;   (evil-collection-init))
+(use-package evil-collection
+  :after evil
+  :config
+  (evil-collection-init))
+
 
 
 (add-hook 'before-save-hook
@@ -119,8 +120,6 @@
   :ensure t)
 
 
-
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -129,7 +128,7 @@
  '(custom-safe-themes
    '("60ada0ff6b91687f1a04cc17ad04119e59a7542644c7c59fc135909499400ab8" default))
  '(package-selected-packages
-   '(lsp-ivy lsp-ui lsp-mode lua-mode expand-region company ivy-posframe counsel magit evil-collection doom-themes use-package evil)))
+   '(paredit c-mode lsp-ivy lsp-ui lsp-mode lua-mode expand-region company ivy-posframe counsel magit evil-collection doom-themes use-package evil)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
