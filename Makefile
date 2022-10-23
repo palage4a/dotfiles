@@ -11,13 +11,16 @@ helix:
 	rm -rf ~/.config/helix
 	ln -s $(PWD)/helix ~/.config/helix
 
-.PHONY:nvchad
-nvchad:
-	rm -rf ~/.config/nvim
-	ln -s $(PWD)/NvChad ~/.config/nvim
-
-.PHONY: nvim
+.PHONY:nvim
 nvim:
+	rm -rf ~/.config/nvim
+	rm -rf ~/.local/share/nvim
+	rm -rf ~/.cache/nvim
+	ln -s $(PWD)/NvChad ~/.config/nvim
+	ln -s $(PWD)/custom_nvchad ~/.config/nvim/lua/custom
+
+.PHONY: old_nvim
+old_nvim:
 	rm -rf ~/.config/nvim
 	git clone --depth 1 https://github.com/wbthomason/packer.nvim\
 		~/.local/share/nvim/site/pack/packer/start/packer.nvim | true
