@@ -2,14 +2,7 @@ return {
     ["folke/which-key.nvim"] = {
         disable = false,
     },
-    -- ["NvChad/ui"] = {
-    --     override_options = {
-    --         statusline = {
-    --             separator_style = "block", -- default/round/block/arrow
-    --         },
-    --     }
-    -- },
-    --
+
     ["nvim-treesitter/nvim-treesitter-textobjects"] = {},
 
     ["nvim-treesitter/nvim-treesitter"] = {
