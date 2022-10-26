@@ -36,7 +36,7 @@
     "Lua.runtime.version": "LuaJIT",
     "Lua.telemetry.enable": false,
     "git.ignoreRebaseWarning": true,
-    "workbench.colorTheme": "Visual Studio Light",
+    "workbench.colorTheme": "Visual Studio Dark",
     "workbench.editor.wrapTabs": true,
     "workbench.editor.titleScrollbarSizing": "large",
     "editor.tabCompletion": "on"

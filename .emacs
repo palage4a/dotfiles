@@ -38,18 +38,6 @@
 (delete-selection-mode 1)
 (global-auto-revert-mode t)
 
-(use-package evil
-  :init
-  (setq evil-want-keybinding nil)
-  :config
-  (evil-mode 1))
-
-(use-package evil-collection
-  :after evil
-  :config
-  (evil-collection-init))
-
-
 
 (add-hook 'before-save-hook
 	  'delete-trailing-whitespace)
@@ -63,17 +51,14 @@
             (setq show-trailing-whitespace t)))
 (add-hook 'prog-mode-hook 'electric-pair-mode)
 
-(use-package doom-themes
-  :ensure t
-  :config
-    (load-theme 'doom-tokyo-night t))
+(load-theme 'tango-dark t)
 
 (setq create-lockfiles nil)
 
 ;; git related packages
-(use-package magit
-  :config
-  (global-set-key (kbd "C-x g") 'magit-status))
+;; (use-package magit
+;;   :config
+;;   (global-set-key (kbd "C-x g") 'magit-status))
 
 (use-package counsel ;; ivy
   :config
@@ -98,26 +83,10 @@
   :config
   (setq company-idle-delay 0))
 
-(use-package lsp-mode
+(use-package eglot
   :ensure t)
-
-(use-package lsp-ui
-  :ensure t
-  :after lsp-mode
-  :commands lsp-ui-mode)
-
-(use-package lsp-ivy
-  :ensure t
-  :after lsp-mode
-  :commands lsp-ivy-workspace-symbol)
-
-
-
 
 (use-package lua-mode
-  :ensure t)
-
-(use-package lsp-mode
   :ensure t)
 
 (use-package tree-sitter-langs
@@ -128,18 +97,3 @@
   :ensure t
   :config
   (global-tree-sitter-mode))
-
-
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("60ada0ff6b91687f1a04cc17ad04119e59a7542644c7c59fc135909499400ab8" default))
- '(package-selected-packages
-   '(tree-sitter paredit c-mode lsp-ivy lsp-ui lsp-mode lua-mode expand-region company ivy-posframe counsel magit evil-collection doom-themes use-package evil)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
