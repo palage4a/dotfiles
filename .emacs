@@ -58,9 +58,9 @@
 (setq create-lockfiles nil)
 
 ;; git related packages
-;; (use-package magit
-;;   :config
-;;   (global-set-key (kbd "C-x g") 'magit-status))
+(use-package magit
+  :config
+  (global-set-key (kbd "C-x g") 'magit-status))
 
 (use-package counsel ;; ivy
   :config
@@ -102,3 +102,16 @@
   :ensure t
   :config
   (global-tree-sitter-mode))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(tree-sitter-langs eglot lua-mode company ivy-posframe counsel magit use-package)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
