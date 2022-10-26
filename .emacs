@@ -53,7 +53,7 @@
             (setq show-trailing-whitespace t)))
 (add-hook 'prog-mode-hook 'electric-pair-mode)
 
-(load-theme 'tango-dark t)
+(load-theme 'tango t)
 
 (setq create-lockfiles nil)
 
