@@ -1,3 +1,5 @@
+(setq gc-cons-threshold 100000000)
+
 ;;; Disable menu-bar, tool-bar, and scroll-bar.
 (if (fboundp 'menu-bar-mode)
     (menu-bar-mode -1))
@@ -83,11 +85,14 @@
   :config
   (setq company-idle-delay 0))
 
-(use-package eglot
-  :ensure t)
-
 (use-package lua-mode
   :ensure t)
+
+(use-package eglot
+  :ensure t
+  :config
+  (add-to-list 'eglot-server-programs
+               '(lua-mode . ("lua-language-server", "--stdio"))))
 
 (use-package tree-sitter-langs
   :ensure t
