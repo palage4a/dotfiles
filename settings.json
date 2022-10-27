@@ -39,5 +39,6 @@
     "workbench.colorTheme": "Visual Studio Dark",
     "workbench.editor.wrapTabs": true,
     "workbench.editor.titleScrollbarSizing": "large",
-    "editor.tabCompletion": "on"
+    "editor.tabCompletion": "on",
+    "Lua.completion.autoRequire": false,
 }

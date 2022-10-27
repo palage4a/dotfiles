@@ -13,9 +13,12 @@
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 
+(set-face-attribute 'default nil :height 130)
+
+
 (setq indent-line-function 'insert-tab)
 
-
+(setq delete-trailing-lines nil)
 
 ;; setup package.el
 (require 'package)
@@ -51,16 +54,18 @@
 (add-hook 'prog-mode-hook
           (lambda ()
             (setq show-trailing-whitespace t)))
-(add-hook 'prog-mode-hook 'electric-pair-mode)
 
-(load-theme 'tango t)
+(add-hook 'prog-mode-hook 'electric-pair-mode)
+(add-hook 'prog-mode-hook #'yas-minor-mode)
+
+(load-theme 'modus-operandi t)
 
 (setq create-lockfiles nil)
 
-;; git related packages
-(use-package magit
-  :config
-  (global-set-key (kbd "C-x g") 'magit-status))
+;; (use-package evil
+;;   :ensure t
+;;   :config
+;;   (evil-mode t))
 
 (use-package counsel ;; ivy
   :config
@@ -85,30 +90,40 @@
   :config
   (setq company-idle-delay 0))
 
-(use-package lua-mode
+(use-package yasnippet
   :ensure t)
+
+(use-package lua-mode
+  :ensure t
+  :config
+  (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
+  (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
+  (add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
+  (add-hook 'lua-mode-hook 'eglot-ensure))
 
 (use-package eglot
   :ensure t
   :config
   (add-to-list 'eglot-server-programs
-               '(lua-mode . ("lua-language-server", "--stdio"))))
+               '(lua-mode . ("lua-language-server"))))
 
-(use-package tree-sitter-langs
-  :ensure t
-  :after tree-sitter)
+;; (use-package tree-sitter-langs
+;;   :ensure t
+;;   :after tree-sitter)
 
-(use-package tree-sitter
-  :ensure t
-  :config
-  (global-tree-sitter-mode))
+;; (use-package tree-sitter
+;;   :ensure t
+;;   :config
+;;   (global-tree-sitter-mode))
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(tree-sitter-langs eglot lua-mode company ivy-posframe counsel magit use-package)))
+   '(yasnippet evil tree-sitter-langs eglot lua-mode company ivy-posframe counsel magit use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

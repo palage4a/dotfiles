@@ -215,8 +215,8 @@ packer.startup(function(use)
                 }
             }
             local builtin = require('telescope.builtin')
-            vim.keymap.set('n', '<space>f', builtin.find_files, {})
-            vim.keymap.set('n', '<space>/', builtin.live_grep, {})
+            vim.keymap.set('n', '<space>ff', builtin.find_files, {})
+            vim.keymap.set('n', '<space>fw', builtin.live_grep, {})
         end
     }
 end)
