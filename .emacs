@@ -20,6 +20,13 @@
 
 (setq delete-trailing-lines nil)
 
+;; key bindings
+(when (eq system-type 'darwin) ;; mac specific settings
+  (setq mac-option-modifier 'alt)
+  (setq mac-command-modifier 'meta)
+  (global-set-key [kp-delete] 'delete-char) ;; sets fn-delete to be right-delete
+  )
+
 ;; setup package.el
 (require 'package)
 (setq package-enable-at-startup nil)
@@ -99,6 +106,10 @@
   (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
   (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
   (add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
+  (setq lua-indent-level 4)
+  (setq lua-indent-string-contents nil)
+  (setq lua-indent-close-paren-align nil)
+  (setq lua-default-application "tarantool")
   (add-hook 'lua-mode-hook 'eglot-ensure))
 
 (use-package eglot

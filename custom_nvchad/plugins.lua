@@ -30,19 +30,16 @@ return {
                     set_jumps = true,
 
                     goto_next_start = {
-                        ["]p"] = "@parameter.inner",
+                        ["]a"] = "@parameter.inner",
                         ["]f"] = "@function.outer",
                         ["]]"] = "@block.outer",
-                        -- ["]b"] = "@block.outer",
                     },
                     goto_previous_start = {
-                        ["[p"] = "@parameter.inner",
+                        ["[a"] = "@parameter.inner",
                         ["[f"] = "@function.outer",
                         ["[["] = "@block.outer",
-                        -- ["[b"] = "@block.outer",
                     },
                 },
-
                 select = {
                     enable = true,
                     lookahed = true,
