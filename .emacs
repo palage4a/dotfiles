@@ -1,8 +1,8 @@
-(setq gc-cons-threshold 100000000)
-
-;;; Disable menu-bar, tool-bar, and scroll-bar.
 (if (fboundp 'menu-bar-mode)
     (menu-bar-mode -1))
+
+;;; Disable menu-bar, tool-bar, and scroll-bar.
+(setq gc-cons-threshold 100000000)
 (if (fboundp 'tool-bar-mode)
     (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode)
@@ -13,19 +13,20 @@
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 
-(set-face-attribute 'default nil :height 130)
+(global-hl-line-mode)
+(column-number-mode)
+(global-auto-revert-mode)
+(auto-save-visited-mode)
 
 
+(set-frame-font "Monaco 12" nil t)
 (setq indent-line-function 'insert-tab)
-
 (setq delete-trailing-lines nil)
 
 ;; key bindings
 (when (eq system-type 'darwin) ;; mac specific settings
-  (setq mac-option-modifier 'alt)
   (setq mac-command-modifier 'meta)
-  (global-set-key [kp-delete] 'delete-char) ;; sets fn-delete to be right-delete
-  )
+  (global-set-key [kp-delete] 'delete-char)) ;; sets fn-delete to be right-delete
 
 ;; setup package.el
 (require 'package)
@@ -50,7 +51,6 @@
 (delete-selection-mode 1)
 (global-auto-revert-mode t)
 
-
 (add-hook 'before-save-hook
 	  'delete-trailing-whitespace)
 
@@ -73,6 +73,12 @@
 ;;   :ensure t
 ;;   :config
 ;;   (evil-mode t))
+
+(use-package exec-path-from-shell
+  :ensure t
+  :config
+  (when (memq window-system '(mac ns))
+      (exec-path-from-shell-initialize)))
 
 (use-package counsel ;; ivy
   :config
@@ -118,23 +124,13 @@
   (add-to-list 'eglot-server-programs
                '(lua-mode . ("lua-language-server"))))
 
-;; (use-package tree-sitter-langs
-;;   :ensure t
-;;   :after tree-sitter)
-
-;; (use-package tree-sitter
-;;   :ensure t
-;;   :config
-;;   (global-tree-sitter-mode))
-
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(yasnippet evil tree-sitter-langs eglot lua-mode company ivy-posframe counsel magit use-package)))
+   '(exec-path-from-shell yasnippet evil tree-sitter-langs eglot lua-mode company ivy-posframe counsel magit use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
