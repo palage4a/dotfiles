@@ -13,10 +13,10 @@
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 
-(global-hl-line-mode)
-(column-number-mode)
-(global-auto-revert-mode)
-(auto-save-visited-mode)
+(global-hl-line-mode 1)
+(column-number-mode 1)
+(global-auto-revert-mode 1)
+(auto-save-visited-mode 1)
 
 
 (set-frame-font "Monaco 12" nil t)
@@ -106,6 +106,12 @@
 (use-package yasnippet
   :ensure t)
 
+
+(use-package yaml-mode
+  :ensure t
+  :config
+  (add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode)))
+
 (use-package lua-mode
   :ensure t
   :config
@@ -116,13 +122,15 @@
   (setq lua-indent-string-contents nil)
   (setq lua-indent-close-paren-align nil)
   (setq lua-default-application "tarantool")
-  (add-hook 'lua-mode-hook 'eglot-ensure))
 
 (use-package eglot
   :ensure t
+  :hook
+  (lua-mode . eglot-ensure)
   :config
   (add-to-list 'eglot-server-programs
                '(lua-mode . ("lua-language-server"))))
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -130,10 +138,12 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(exec-path-from-shell yasnippet evil tree-sitter-langs eglot lua-mode company ivy-posframe counsel magit use-package)))
+   '(yaml-mode exec-path-from-shell yasnippet evil tree-sitter-langs eglot lua-mode company ivy-posframe counsel magit use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(put 'upcase-region 'disabled nil)
