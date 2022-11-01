@@ -121,7 +121,16 @@
   (setq lua-indent-level 4)
   (setq lua-indent-string-contents nil)
   (setq lua-indent-close-paren-align nil)
-  (setq lua-default-application "tarantool")
+  (setq lua-default-application "tarantool"))
+
+
+
+(defun rgc-lua-at-most-one-indent (old-function &rest arguments)
+  (let ((old-res (apply old-function arguments)))
+    (if (> old-res 4) 4 old-res)))
+
+(advice-add #'lua-calculate-indentation-block-modifier
+            :around #'rgc-lua-at-most-one-indent)
 
 (use-package eglot
   :ensure t
