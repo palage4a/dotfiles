@@ -69,10 +69,9 @@
 
 (setq create-lockfiles nil)
 
-;; (use-package evil
-;;   :ensure t
-;;   :config
-;;   (evil-mode t))
+(use-package magit
+   :config
+   (global-set-key (kbd "C-x g") 'magit-status))
 
 (use-package exec-path-from-shell
   :ensure t

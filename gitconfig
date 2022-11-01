@@ -1,19 +1,13 @@
 [user]
     email = vvnvvplg@gmail.com
     name = palage4a
-    signingkey = 2CE656FB871A1BE16C4231DD411D7B559BE5B730
-[core]
-    editor = nvim
+    signingkey = 2BEF15FE14C928123230182DE3F51B9012EE13DD
 [pull]
     rebase = false
 [mergetool]
     prompt = false
 [difftool]
     prompt = false
-[merge]
-    tool = nvimdiff
-[diff]
-    tool = nvimdiff
 [commit]
     gpgsign = true
 [gpg]

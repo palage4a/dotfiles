@@ -7,11 +7,6 @@ export TERM=xterm-256color
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin:/usr/local/go/bin
 
-export VISUAL=nvim
-export EDITOR="$VISUAL"
-
-alias vim="nvim"
-alias vi="nvim"
 alias code="codium"
 alias gdtl="git difftool"
 alias gmtl="git mergetool"
