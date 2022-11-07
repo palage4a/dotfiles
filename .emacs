@@ -65,9 +65,13 @@
 (add-hook 'prog-mode-hook 'electric-pair-mode)
 (add-hook 'prog-mode-hook #'yas-minor-mode)
 
-(load-theme 'modus-operandi t)
 
 (setq create-lockfiles nil)
+
+(use-package doom-themes
+  :ensure t)
+
+(load-theme 'doom-acario-light t)
 
 (use-package magit
    :config
@@ -139,14 +143,15 @@
   (add-to-list 'eglot-server-programs
                '(lua-mode . ("lua-language-server"))))
 
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("a138ec18a6b926ea9d66e61aac28f5ce99739cf38566876dc31e29ec8757f6e2" "7e068da4ba88162324d9773ec066d93c447c76e9f4ae711ddd0c5d3863489c52" default))
  '(package-selected-packages
-   '(yaml-mode exec-path-from-shell yasnippet evil tree-sitter-langs eglot lua-mode company ivy-posframe counsel magit use-package)))
+   '(doom-themes yaml-mode exec-path-from-shell yasnippet evil tree-sitter-langs eglot lua-mode company ivy-posframe counsel magit use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
