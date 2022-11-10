@@ -3,8 +3,8 @@ fonts:
 	brew install --cask font-hack-nerd-font
 
 emacs:
-	rm -rf ~/.emacs
-	ln -s $(PWD)/.emacs ~/.emacs
+	rm -rf ~/.emacs.d/init.el ~/.emacs.d/snippets ~/.emacs.d/lisp
+	ln -s $(PWD)/emacs.d/* ~/.emacs.d/
 
 .PHONY: helix
 helix:
