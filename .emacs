@@ -24,7 +24,8 @@
 
 ;; key bindings
 (when (eq system-type 'darwin) ;; mac specific settings
-  (setq mac-command-modifier 'meta)
+  ;; (setq mac-command-modifier 'meta)
+  (setq mac-command-modifier 'super)
   (global-set-key [kp-delete] 'delete-char)) ;; sets fn-delete to be right-delete
 
 ;; setup package.el
