@@ -24,8 +24,8 @@
 
 ;; key bindings
 (when (eq system-type 'darwin) ;; mac specific settings
-  ;; (setq mac-command-modifier 'meta)
-  (setq mac-command-modifier 'super)
+  (setq mac-command-modifier 'meta)
+  ;; (setq mac-command-modifier 'super)
   (global-set-key [kp-delete] 'delete-char)) ;; sets fn-delete to be right-delete
 
 ;; setup package.el
@@ -106,10 +106,6 @@
   :ensure t
   :hook
   (prog-mode . yas-minor-mode)
-  :bind
-  (("C-c y n" . yas-new-snippet)
-   ("C-c y v" . yas-visit-snippet-file)
-   ("C-c y i" . yas-insert-snippet))
   :config
   (yas-reload-all)
   (setq yas-snippet-dirs
@@ -144,9 +140,12 @@
   :ensure t
   :hook
   (lua-mode . eglot-ensure)
+  (c++-mode . eglot-ensure)
+  (c-mode . eglot-ensure)
   :config
   (add-to-list 'eglot-server-programs
-               '(lua-mode . ("lua-language-server"))))
+               '(lua-mode . ("lua-language-server"))
+               '((c++-mode c-mode) . ("clangd"))))
 
 
 (defun plgc-available-fonts ()
@@ -173,6 +172,4 @@
  )
 
 (put 'upcase-region 'disabled nil)
-
-
-
+(put 'downcase-region 'disabled nil)

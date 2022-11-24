@@ -7,10 +7,12 @@ export TERM=xterm-256color
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin:/usr/local/go/bin
 
-alias code="codium"
 alias gdtl="git difftool"
 alias gmtl="git mergetool"
+alias emacs="emacsclient -n"
 
 ulimit -n 10240
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+
