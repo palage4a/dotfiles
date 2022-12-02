@@ -22,12 +22,6 @@
 (setq indent-line-function 'insert-tab)
 (setq delete-trailing-lines nil)
 
-;; key bindings
-;; (when (eq system-type 'darwin) ;; mac specific settings
-;;   (setq mac-command-modifier 'meta)
-;;   (setq mac-command-modifier 'super)
-;;   (global-set-key [kp-delete] 'delete-char)) ;; sets fn-delete to be right-delete
-
 ;; setup package.el
 (require 'package)
 (setq package-enable-at-startup nil)
@@ -88,11 +82,11 @@
   ;(ivy-posframe-mode 1)
   (setq ivy-use-virtual-buffers t)
   (setq enable-recursive-minibuffers t)
-  (global-set-key "\C-s" 'swiper)
-  (global-set-key (kbd "M-x") 'counsel-M-x)
+  ;; (global-set-key "\C-s" 'swiper)
+  ;; (global-set-key (kbd "M-x") 'counsel-M-x)
   (global-set-key (kbd "C-x C-f") 'counsel-find-file)
-  (global-set-key (kbd "C-c k") 'counsel-rg)
-  (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history))
+  ;; (global-set-key (kbd "C-c k") 'counsel-rg)
+  ;; (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history))
 
 ;; Company is for code auto-completion
 (use-package company
@@ -126,8 +120,6 @@
   (setq lua-indent-string-contents nil)
   (setq lua-indent-close-paren-align nil)
   (setq lua-default-application "tarantool"))
-
-
 
 (defun rgc-lua-at-most-one-indent (old-function &rest arguments)
   (let ((old-res (apply old-function arguments)))
