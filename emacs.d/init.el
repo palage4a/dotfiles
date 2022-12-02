@@ -87,6 +87,7 @@
   (global-set-key (kbd "C-x C-f") 'counsel-find-file)
   ;; (global-set-key (kbd "C-c k") 'counsel-rg)
   ;; (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history))
+  )
 
 ;; Company is for code auto-completion
 (use-package company
@@ -147,9 +148,13 @@
                   (string-match-p "spacing=100" (aref info 1))))
               (font-family-list)))
 
-(defun tarantool-run-test-case ()
+(defun tnt-run-test-file ()
   (interactive)
-  (call-interactively #'project-compile (format "source sdk/env.sh && .rocks/bin/luatest -v %s" buffer-file-truename)))
+  (let ((compile-command (format "source sdk/env.sh && .rocks/bin/luatest -v %s" (file-relative-name buffer-file-truename (project-root (project-current t))))))
+  (call-interactively #'project-compile )))
+
+(defun tnt-run-tests ()) ;; TODO
+(defun tnt-run-test-case ()) ;; TODO
 
 (defun org-past-screenshot ()
   "Take a screenshot into a time stamped unique-named file in the
