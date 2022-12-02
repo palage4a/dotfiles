@@ -82,8 +82,8 @@
   ;(ivy-posframe-mode 1)
   (setq ivy-use-virtual-buffers t)
   (setq enable-recursive-minibuffers t)
-  ;; (global-set-key "\C-s" 'swiper)
-  ;; (global-set-key (kbd "M-x") 'counsel-M-x)
+  (global-set-key "\C-s" 'swiper)
+  (global-set-key (kbd "M-x") 'counsel-M-x)
   (global-set-key (kbd "C-x C-f") 'counsel-find-file)
   ;; (global-set-key (kbd "C-c k") 'counsel-rg)
   ;; (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history))
@@ -150,7 +150,7 @@
 
 (defun tnt-run-test-file ()
   (interactive)
-  (let ((compile-command (format "source sdk/env.sh && .rocks/bin/luatest -v %s" (file-relative-name buffer-file-truename (project-root (project-current t))))))
+  (let ((compile-command (format "source sdk/env.sh && .rocks/bin/luatest -v %s" (file-relative-name buffer-file-truename (project-root (project-current t)))))) ;; FIXME refactor that
   (call-interactively #'project-compile )))
 
 (defun tnt-run-tests ()) ;; TODO
