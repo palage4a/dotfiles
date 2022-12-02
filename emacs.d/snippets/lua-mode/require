@@ -2,4 +2,4 @@
 # name: require
 # key: require
 # --
-local $1 = require "$2"
+local $1 = require("$1")

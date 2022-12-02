@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: debug
+# key: debug
+# --
+require('log').info('debug')
+require('log').info('debug')
+require('log').info($1)
+require('log').info('debug')
+require('log').info('debug')

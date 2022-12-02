@@ -23,10 +23,10 @@
 (setq delete-trailing-lines nil)
 
 ;; key bindings
-(when (eq system-type 'darwin) ;; mac specific settings
-  (setq mac-command-modifier 'meta)
-  ;; (setq mac-command-modifier 'super)
-  (global-set-key [kp-delete] 'delete-char)) ;; sets fn-delete to be right-delete
+;; (when (eq system-type 'darwin) ;; mac specific settings
+;;   (setq mac-command-modifier 'meta)
+;;   (setq mac-command-modifier 'super)
+;;   (global-set-key [kp-delete] 'delete-char)) ;; sets fn-delete to be right-delete
 
 ;; setup package.el
 (require 'package)
@@ -143,10 +143,10 @@
   (c++-mode . eglot-ensure)
   (c-mode . eglot-ensure)
   :config
-  (add-to-list 'eglot-server-programs
-               '(lua-mode . ("lua-language-server"))
-               '((c++-mode c-mode) . ("clangd"))))
-
+    (add-to-list 'eglot-server-programs
+                 '(lua-mode . ("lua-language-server")))
+    (add-to-list 'eglot-server-programs
+                 '((c++-mode c-mode) . ("clangd"))))
 
 (defun plgc-available-fonts ()
   (interactive "p")
@@ -154,6 +154,25 @@
                 (when-let ((info (font-info font)))
                   (string-match-p "spacing=100" (aref info 1))))
               (font-family-list)))
+
+(defun tarantool-run-test-case ()
+  (interactive)
+  (call-interactively #'project-compile (format "source sdk/env.sh && .rocks/bin/luatest -v %s" buffer-file-truename)))
+
+(defun my-org-screenshot ()
+  "Take a screenshot into a time stamped unique-named file in the
+same directory as the org-buffer and insert a link to this file."
+  (interactive)
+  (setq filename
+        (concat
+         (make-temp-name
+          (concat (buffer-file-name)
+                  "_"
+                  (format-time-string "%Y%m%d_%H%M%S_")) ) ".png"))
+  (call-process "pngpaste" nil nil nil filename)
+
+  (insert (concat "[[" filename "]]"))
+  (org-display-inline-images))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -173,3 +192,4 @@
 
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
+
