@@ -141,7 +141,7 @@
                  '((c++-mode c-mode) . ("clangd"))))
 
 (defun plgc-available-fonts ()
-  (interactive "p")
+  (interactive)
   (seq-filter (lambda (font)
                 (when-let ((info (font-info font)))
                   (string-match-p "spacing=100" (aref info 1))))
@@ -151,7 +151,7 @@
   (interactive)
   (call-interactively #'project-compile (format "source sdk/env.sh && .rocks/bin/luatest -v %s" buffer-file-truename)))
 
-(defun my-org-screenshot ()
+(defun org-past-screenshot ()
   "Take a screenshot into a time stamped unique-named file in the
 same directory as the org-buffer and insert a link to this file."
   (interactive)
