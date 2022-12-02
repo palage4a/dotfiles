@@ -9,7 +9,6 @@ export PATH=$PATH:$GOPATH/bin:/usr/local/go/bin
 
 alias gdtl="git difftool"
 alias gmtl="git mergetool"
-alias emacs="emacsclient -n"
 
 ulimit -n 10240
 
