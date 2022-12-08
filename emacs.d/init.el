@@ -37,6 +37,7 @@
 (setq use-package-always-ensure t)
 
 (setq-default cursor-type 'bar)
+(setq-default show-trailing-whitespace t)
 (setq inhibit-startup-screen t)
 (setq initial-scratch-message "")
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -45,19 +46,18 @@
 (delete-selection-mode 1)
 (global-auto-revert-mode t)
 
+;; deleting trailing whitespaces only in prog-modes
 (add-hook 'before-save-hook
-	  'delete-trailing-whitespace)
+          (when (or (not (eq major-mode 'text-mode))
+                    (not (eq major-mode 'fundamental-mode)))
+	                'delete-trailing-whitespace))
 
 (add-hook 'prog-mode-hook
 	  (if (and (fboundp 'display-line-numbers-mode) (display-graphic-p))
 	      #'display-line-numbers-mode
-	    #'linum-mode))
-(add-hook 'prog-mode-hook
-          (lambda ()
-            (setq show-trailing-whitespace t)))
-
-(add-hook 'prog-mode-hook 'electric-pair-mode)
-(add-hook 'prog-mode-hook #'yas-minor-mode)
+	    #'linum-mode)
+      'electric-pair-mode
+      #'yas-minor-mode)
 
 (setq create-lockfiles nil)
 
@@ -137,8 +137,7 @@
   (c-mode . eglot-ensure)
   :config
     (add-to-list 'eglot-server-programs
-                 '(lua-mode . ("lua-language-server")))
-    (add-to-list 'eglot-server-programs
+                 '(lua-mode . ("lua-language-server"))
                  '((c++-mode c-mode) . ("clangd"))))
 
 (defun plgc-available-fonts ()
@@ -150,11 +149,15 @@
 
 (defun tnt-run-test-file ()
   (interactive)
-  (let ((compile-command (format "source sdk/env.sh && .rocks/bin/luatest -v %s" (file-relative-name buffer-file-truename (project-root (project-current t)))))) ;; FIXME refactor that
+  (let ((compile-command (format "source sdk/env.sh && .rocks/bin/luatest %s -v" (file-relative-name buffer-file-truename (project-root (project-current t)))))) ;; FIXME refactor that
   (call-interactively #'project-compile )))
 
 (defun tnt-run-tests ()) ;; TODO
-(defun tnt-run-test-case ()) ;; TODO
+(defun tnt-run-test-case ()
+  (interactive)
+  (re-search-backward lua--beginning-of-defun-re nil t)
+  (message (match-string 0))
+  ) ;; TODO
 
 (defun org-past-screenshot ()
   "Take a screenshot into a time stamped unique-named file in the
