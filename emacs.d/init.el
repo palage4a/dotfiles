@@ -48,9 +48,10 @@
 
 ;; deleting trailing whitespaces only in prog-modes
 (add-hook 'before-save-hook
-          (when (or (not (eq major-mode 'text-mode))
-                    (not (eq major-mode 'fundamental-mode)))
-	                'delete-trailing-whitespace))
+          (lambda ()
+            (when (and (not (eq major-mode 'text-mode))
+                       (not (eq major-mode 'fundamental-mode)))
+	          (delete-trailing-whitespace))))
 
 (add-hook 'prog-mode-hook
 	  (if (and (fboundp 'display-line-numbers-mode) (display-graphic-p))
