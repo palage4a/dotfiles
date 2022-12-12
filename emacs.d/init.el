@@ -179,3 +179,8 @@ same directory as the org-buffer and insert a link to this file."
 (if (file-exists-p custom-file)
     (load custom-file))
 
+(defun kill-all-buffers ()
+  (interactive)
+  (mapcar 'kill-buffer (buffer-list))
+  (delete-other-windows))
+
