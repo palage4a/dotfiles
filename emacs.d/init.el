@@ -53,16 +53,13 @@
                        (not (eq major-mode 'fundamental-mode)))
 	          (delete-trailing-whitespace))))
 
-(add-hook 'prog-mode-hook
-	  (if (and (fboundp 'display-line-numbers-mode) (display-graphic-p))
-	      #'display-line-numbers-mode
-	    #'linum-mode)
-      'electric-pair-mode
-      #'yas-minor-mode)
+(add-hook 'prog-mode-hook 'linum-mode)
+(add-hook 'prog-mode-hook 'electric-pair-mode)
+(add-hook 'prog-mode-hook 'yas-minor-mode)
 
 (setq create-lockfiles nil)
 
-(load-theme 'modus-vivendi)
+(load-theme 'modus-operandi)
 
 (use-package magit
    :config
@@ -132,14 +129,15 @@
 
 (use-package eglot
   :ensure t
-  :hook
-  (lua-mode . eglot-ensure)
-  (c++-mode . eglot-ensure)
-  (c-mode . eglot-ensure)
+  :hook  ((lua-mode . eglot-ensure)
+          (c++-mode . eglot-ensure)
+          (c-mode . eglot-ensure))
   :config
-    (add-to-list 'eglot-server-programs
-                 '(lua-mode . ("lua-language-server"))
-                 '((c++-mode c-mode) . ("clangd"))))
+  (add-to-list 'eglot-server-programs
+               '(lua-mode . ("lua-language-server")))
+  (add-to-list 'eglot-server-programs
+               '((c++-mode c-mode) . ("clangd"))))
+
 
 (defun plgc-available-fonts ()
   (interactive)
