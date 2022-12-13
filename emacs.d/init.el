@@ -138,6 +138,13 @@
   (add-to-list 'eglot-server-programs
                '((c++-mode c-mode) . ("clangd"))))
 
+(use-package xterm-color
+  :ensure t
+  :config
+  (setq compilation-environment '("TERM=xterm-256color"))
+  (defun plgc-advice-compilation-filter (f proc string)
+    (funcall f proc (xterm-color-filter string)))
+  (advice-add 'compilation-filter :around #'plgc-advice-compilation-filter))
 
 (defun plgc-available-fonts ()
   (interactive)
