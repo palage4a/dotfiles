@@ -118,7 +118,47 @@
   (setq lua-indent-level 4)
   (setq lua-indent-string-contents nil)
   (setq lua-indent-close-paren-align nil)
-  (setq lua-default-application "tarantool"))
+  (setq lua-default-application "tarantool")
+  (defun tnt-run-tests (arg)
+  (let ((compile-command (format "source sdk/env.sh && .rocks/bin/luatest %s -v" arg)))
+    (call-interactively #'project-compile)))
+
+  (defun tnt-current-group ()
+    (save-excursion
+      (save-match-data
+        (goto-char (point-min))
+        (re-search-forward "t.group('")
+        (re-search-forward (lua-rx lua-name))
+        (match-string 0))))
+
+  ;; NOTE: work only with "g.test_debug = function()" functions headers
+  (defun tnt-current-test-case ()
+    (save-excursion
+      (save-match-data
+        (let ((name-patttern (lua-rx lua-name)))
+          (re-search-backward lua--beginning-of-defun-re nil t)
+          (lua-forward-sexp 2)
+          (re-search-backward name-patttern nil t)
+          (match-string 0)))))
+
+  (defun tnt-run-test-case ()
+    (interactive)
+    (let ((groupname (tnt-current-group))
+          (casename (tnt-current-test-case)))
+      (tnt-run-tests (format "%s.%s" groupname casename))))
+
+  (defun tnt-run-group ()
+    (interactive)
+    (let ((groupname (tnt-current-group)))
+      (tnt-run-tests groupname)))
+
+  (defun tnt-run-test-file ()
+    (interactive)
+    (tnt-run-tests (plgc-rel-filename)))
+
+  (global-set-key (kbd "C-c t t") 'tnt-run-test-case)
+  (global-set-key (kbd "C-c t g") 'tnt-run-group)
+  (global-set-key (kbd "C-c t f") 'tnt-run-test-file))
 
 (defun rgc-lua-at-most-one-indent (old-function &rest arguments)
   (let ((old-res (apply old-function arguments)))
@@ -153,17 +193,9 @@
                   (string-match-p "spacing=100" (aref info 1))))
               (font-family-list)))
 
-(defun tnt-run-test-file ()
-  (interactive)
-  (let ((compile-command (format "source sdk/env.sh && .rocks/bin/luatest %s -v" (file-relative-name buffer-file-truename (project-root (project-current t)))))) ;; FIXME refactor that
-  (call-interactively #'project-compile )))
-
-(defun tnt-run-tests ()) ;; TODO
-(defun tnt-run-test-case ()
-  (interactive)
-  (re-search-backward lua--beginning-of-defun-re nil t)
-  (message (match-string 0))
-  ) ;; TODO
+(defun plgc-rel-filename ()
+  (file-relative-name buffer-file-truename
+                      (project-root (project-current t))))
 
 (defun org-past-screenshot ()
   "Take a screenshot into a time stamped unique-named file in the
