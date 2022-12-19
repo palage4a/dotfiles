@@ -119,9 +119,21 @@
   (setq lua-indent-string-contents nil)
   (setq lua-indent-close-paren-align nil)
   (setq lua-default-application "tarantool")
+
+  (defconst tnt-env "source sdk/env.sh")
+  (defconst tnt-test ".rocks/bin/luatest")
+  (defconst tnt-lint ".rocks/bin/luacheck . --formatter plain")
+
+  (defun tnt-run (cmd arg)
+    (let ((compile-command (format "%s && %s %s" tnt-env cmd arg)))
+      (call-interactively #'project-compile)))
+
   (defun tnt-run-tests (arg)
-  (let ((compile-command (format "source sdk/env.sh && .rocks/bin/luatest %s -v" arg)))
-    (call-interactively #'project-compile)))
+    (tnt-run tnt-test arg))
+
+  (defun tnt-run-lint ()
+    (interactive)
+    (tnt-run tnt-lint ""))
 
   (defun tnt-current-group ()
     (save-excursion
@@ -155,10 +167,15 @@
   (defun tnt-run-test-file ()
     (interactive)
     (tnt-run-tests (plgc-rel-filename)))
+  (defun tnt-run-all-tests ()
+    (interactive)
+    (tnt-run-tests ""))
 
   (global-set-key (kbd "C-c t t") 'tnt-run-test-case)
   (global-set-key (kbd "C-c t g") 'tnt-run-group)
-  (global-set-key (kbd "C-c t f") 'tnt-run-test-file))
+  (global-set-key (kbd "C-c t f") 'tnt-run-test-file)
+  (global-set-key (kbd "C-c t a") 'tnt-run-all-tests)
+  (global-set-key (kbd "C-c t l") 'tnt-run-lint))
 
 (defun rgc-lua-at-most-one-indent (old-function &rest arguments)
   (let ((old-res (apply old-function arguments)))
@@ -197,19 +214,19 @@
   (file-relative-name buffer-file-truename
                       (project-root (project-current t))))
 
-(defun org-past-screenshot ()
+(defun plgc-org-screenshot ()
   "Take a screenshot into a time stamped unique-named file in the
 same directory as the org-buffer and insert a link to this file."
   (interactive)
   (setq filename
         (concat
          (make-temp-name
-          (concat (buffer-file-name)
+          (concat (buffer-name)
                   "_"
                   (format-time-string "%Y%m%d_%H%M%S_")) ) ".png"))
   (call-process "pngpaste" nil nil nil filename)
-
-  (insert (concat "[[" filename "]]"))
+  (insert "#+ATTR_ORG: :width 50%\n")
+  (org-insert-link nil (concat "./" filename))
   (org-display-inline-images))
 
 (setq custom-file (concat user-emacs-directory "custom.el"))
@@ -220,4 +237,6 @@ same directory as the org-buffer and insert a link to this file."
   (interactive)
   (mapcar 'kill-buffer (buffer-list))
   (delete-other-windows))
+
+(setq org-export-backends '(ascii html latex md))
 
