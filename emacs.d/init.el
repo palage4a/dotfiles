@@ -2,14 +2,14 @@
     (menu-bar-mode -1))
 
 ;;; Disable menu-bar, tool-bar, and scroll-bar.
-(setq gc-cons-threshold 100000000)
+
 (if (fboundp 'tool-bar-mode)
     (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode)
     (scroll-bar-mode -1))
 
 (setq make-backup-files nil)
-
+(setq gc-cons-threshold 100000000)
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 
@@ -170,12 +170,16 @@
   (defun tnt-run-all-tests ()
     (interactive)
     (tnt-run-tests ""))
+  (defun tnt-kill-all ()
+    (interactive)
+    (shell-command "pkill -9 tarantool"))
 
   (global-set-key (kbd "C-c t t") 'tnt-run-test-case)
   (global-set-key (kbd "C-c t g") 'tnt-run-group)
   (global-set-key (kbd "C-c t f") 'tnt-run-test-file)
   (global-set-key (kbd "C-c t a") 'tnt-run-all-tests)
-  (global-set-key (kbd "C-c t l") 'tnt-run-lint))
+  (global-set-key (kbd "C-c t l") 'tnt-run-lint)
+  (global-set-key (kbd "C-c t k") 'tnt-kill-all))
 
 (defun rgc-lua-at-most-one-indent (old-function &rest arguments)
   (let ((old-res (apply old-function arguments)))
@@ -202,6 +206,9 @@
   (defun plgc-advice-compilation-filter (f proc string)
     (funcall f proc (xterm-color-filter string)))
   (advice-add 'compilation-filter :around #'plgc-advice-compilation-filter))
+
+(use-package jsonnet-mode
+  :ensure t)
 
 (defun plgc-available-fonts ()
   (interactive)
@@ -239,4 +246,94 @@ same directory as the org-buffer and insert a link to this file."
   (delete-other-windows))
 
 (setq org-export-backends '(ascii html latex md))
+
+(put 'upcase-region 'disabled nil)
+
+(defun plgc-clone-repos (repos directory)
+  "Clone a list of repositories from a GitHub USER into DIRECTORY."
+  (let ((default-directory directory))
+    (dolist (repo repos)
+      (eshell-command (format "git clone https://cicd-git.megafon.ru/MFactory/apiration/%s.git" repo)))))
+
+(defun plg-multi-apply (dirs patch)
+(dolist (directory dirs)
+  (let ((default-directory directory))
+    (magit-run-git "apply" "--index" patch))))
+
+;; (let ((dir "~/code/MFactoryConf/apiration/"))
+;;   (seq-remove (lambda (d) (or (string= d ".") (string= d "..")))
+;;               (directory-files dir nil nil t)))
+
+
+(defun my-git-patch-diff-apply (source-dir target-dir)
+  "Create patch from last commit in the SOURCE-DIR directory and apply it to the TARGET-DIR directory."
+  (interactive "DDirectory with source repository: \nDDirectory with target repository: ")
+  (let ((default-directory source-dir)
+        (patch-file (concat (substring (shell-command-to-string "git rev-parse --show-toplevel") 0 -1) "last-commit.patch")))
+    (shell-command (concat "git format-patch -1 -o " patch-file))
+    (message (concat "Patch created: " patch-file))
+    (let ((default-directory target-dir))
+      (shell-command (concat "git am " patch-file))
+      (message "Patch applied.")))
+  patch-file)
+
+
+;; (defun git-pull-all-subdirs ()
+;;   "Perform git pull on all subdirectories of a interactively specified directory."
+;;   (interactive)
+;;   (setq directory (read-directory-name "Enter directory: "))
+;;   (setq subdirs (directory-files directory t "^[^.]" t))
+;;   (dolist (subdir subdirs)
+;;     (shell-command (concat "git -C " subdir " pull"))))
+
+(defun git-pull-all-subdirs-with-progress ()
+  "Perform git pull on all subdirectories of a interactively specified directory and display a progress bar and report."
+  (interactive)
+  (setq directory (read-directory-name "Enter directory: "))
+  (setq subdirs (directory-files directory t "^[^.]" t))
+  (setq total (length subdirs))
+  (setq count 0)
+  (with-current-buffer (get-buffer-create "*git-pull-progress*")
+    (erase-buffer)
+    (insert (format "Performing git pull on %d subdirectories...\n" total))
+    (progress-reporter-update (progress-reporter-update-bar nil))
+    (dolist (subdir subdirs)
+      (shell-command (concat "git -C " subdir " pull"))
+      (setq count (1+ count))
+      (progress-reporter-update (/ count total)))
+    (progress-reporter-done)
+    (insert (format "Finished git pull on %d subdirectories.\n" total)))
+  (display-buffer "*git-pull-progress*"))
+
+
+(defun git-pull-all-subdirs-with-progress ()
+  "Perform git pull on all subdirectories of a interactively specified directory and display a progress bar and report."
+  (interactive)
+  (setq directory (read-directory-name "Enter directory: "))
+  (setq subdirs (directory-files directory t "^[^.]" t))
+  (setq total (length subdirs))
+  (setq count 0)
+  (with-current-buffer (get-buffer-create "*git-pull-progress*")
+    (erase-buffer)
+    (insert (format "Performing git pull on %d subdirectories...\n" total))
+    (setq progress (make-progress-reporter "git-pull-all-subdirs" count total))
+    (dolist (subdir subdirs)
+      (shell-command (concat "git -C " subdir " pull"))
+      (setq count (1+ count))
+      (progress-reporter-update progress count))
+    (progress-reporter-done progress)
+    (insert (format "Finished git pull on %d subdirectories.\n" total)))
+  (display-buffer "*git-pull-progress*"))
+
+(defun get-git-statuses-in-directory ()
+    "Return a list of git statuses in subdirectories of a user-selected directory."
+    (interactive)
+    (let ((directory (read-directory-name "Select directory: ")))
+        (let ((subdirectories (seq-remove (lambda (x) (string-match-p "^\\.+$" x))
+                (directory-files directory t "^[^.].*" 'nosort))))
+            (dolist (subdirectory subdirectories)
+                (let ((result (condition-case nil
+                                (shell-command-to-string (concat "cd " subdirectory " && git status"))
+                                (error (concat "Error in " subdirectory)))))
+                    (message "Git status in %s: %s" subdirectory result))))))
 
