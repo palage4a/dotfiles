@@ -25,7 +25,7 @@
 ;; setup package.el
 (require 'package)
 (setq package-enable-at-startup nil)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (unless package--initialized (package-initialize))
 
 ;; setup use-package
@@ -35,6 +35,15 @@
 (eval-when-compile
   (require 'use-package))
 (setq use-package-always-ensure t)
+(setq use-package-compute-statistics t)
+
+;; Refresh package archives every package install
+;; see https://github.com/jwiegley/use-package/issues/256#issuecomment-263313693
+(defun my-package-install-refresh-contents (&rest args)
+  (package-refresh-contents)
+  (advice-remove 'package-install 'my-package-install-refresh-contents))
+
+(advice-add 'package-install :before 'my-package-install-refresh-contents)
 
 (setq-default cursor-type 'bar)
 (setq-default show-trailing-whitespace t)
@@ -51,7 +60,7 @@
           (lambda ()
             (when (and (not (eq major-mode 'text-mode))
                        (not (eq major-mode 'fundamental-mode)))
-	          (delete-trailing-whitespace))))
+              (delete-trailing-whitespace))))
 
 (add-hook 'prog-mode-hook 'linum-mode)
 (add-hook 'prog-mode-hook 'electric-pair-mode)
@@ -181,6 +190,9 @@
   (global-set-key (kbd "C-c t l") 'tnt-run-lint)
   (global-set-key (kbd "C-c t k") 'tnt-kill-all))
 
+(use-package go-mode
+  :ensure t)
+
 (defun rgc-lua-at-most-one-indent (old-function &rest arguments)
   (let ((old-res (apply old-function arguments)))
     (if (> old-res 4) 4 old-res)))
@@ -192,12 +204,15 @@
   :ensure t
   :hook  ((lua-mode . eglot-ensure)
           (c++-mode . eglot-ensure)
-          (c-mode . eglot-ensure))
+          (c-mode . eglot-ensure)
+          (go-mode . eglot-ensure))
   :config
   (add-to-list 'eglot-server-programs
                '(lua-mode . ("lua-language-server")))
   (add-to-list 'eglot-server-programs
-               '((c++-mode c-mode) . ("clangd"))))
+               '((c++-mode c-mode) . ("clangd")))
+  (add-to-list 'eglot-server-programs
+               '(go-mode . ("gopls"))))
 
 (use-package xterm-color
   :ensure t
