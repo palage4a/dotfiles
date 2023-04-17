@@ -1,0 +1,61 @@
+(provide 'general)
+
+;;; Disable menu-bar, tool-bar, and scroll-bar.
+(if (fboundp 'menu-bar-mode)
+    (menu-bar-mode -1))
+(if (fboundp 'tool-bar-mode)
+    (tool-bar-mode -1))
+(if (fboundp 'scroll-bar-mode)
+    (scroll-bar-mode -1))
+
+(setq inhibit-startup-screen t)
+(setq initial-scratch-message "")
+(fset 'yes-or-no-p 'y-or-n-p)
+
+(global-hl-line-mode 1)
+(column-number-mode 1)
+(global-auto-revert-mode 1)
+(auto-save-visited-mode 1)
+(global-auto-revert-mode t)
+
+(setq make-backup-files nil)
+(setq create-lockfiles nil)
+
+(setq gc-cons-threshold 100000000)
+
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+
+(setq indent-line-function 'insert-tab)
+(setq delete-trailing-lines nil)
+
+(load-theme 'modus-operandi)
+(set-frame-font "Terminus (TTF) 16" nil t)
+(setq-default cursor-type 'bar)
+(setq-default show-trailing-whitespace t)
+
+;; Refresh package archives with every package install
+;; see https://github.com/jwiegley/use-package/issues/256#issuecomment-263313693
+(defun my-package-install-refresh-contents (&rest args)
+  (package-refresh-contents)
+  (advice-remove 'package-install 'my-package-install-refresh-contents))
+(advice-add 'package-install :before 'my-package-install-refresh-contents)
+
+(show-paren-mode 1)
+(setq linum-format "%4d ")
+(delete-selection-mode 1)
+
+;; deleting trailing whitespaces only in prog-modes
+(add-hook 'before-save-hook
+          (lambda ()
+            (when (and (not (eq major-mode 'text-mode))
+                       (not (eq major-mode 'fundamental-mode)))
+              (delete-trailing-whitespace))))
+
+(add-hook 'prog-mode-hook 'linum-mode)
+(add-hook 'prog-mode-hook 'electric-pair-mode)
+
+(setq org-export-backends '(ascii html latex md))
+
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
