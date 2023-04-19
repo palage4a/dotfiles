@@ -151,6 +151,7 @@
   :config
   (setq org-export-backends '(ascii html latex md))
   (setq org-default-notes-file (concat org-directory "/notes.org"))
+  (setq org-startup-indented t)
   :bind (("C-c l" . org-store-link)
          ("C-c a" . org-agenda)
          ("C-c c" . org-capture)))
