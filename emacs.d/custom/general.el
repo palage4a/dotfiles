@@ -55,7 +55,8 @@
 (add-hook 'prog-mode-hook 'linum-mode)
 (add-hook 'prog-mode-hook 'electric-pair-mode)
 
-(setq org-export-backends '(ascii html latex md))
-
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
+
+(setq custom-file (expand-file-name "custom/variables.el" user-emacs-directory))
+

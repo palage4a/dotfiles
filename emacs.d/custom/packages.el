@@ -146,3 +146,11 @@
                '((c++-mode c-mode) . ("clangd")))
   (add-to-list 'eglot-server-programs
                '(go-mode . ("gopls"))))
+
+(use-package org
+  :config
+  (setq org-export-backends '(ascii html latex md))
+  (setq org-default-notes-file (concat org-directory "/notes.org"))
+  :bind (("C-c l" . org-store-link)
+         ("C-c a" . org-agenda)
+         ("C-c c" . org-capture)))
