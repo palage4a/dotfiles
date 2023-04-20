@@ -134,18 +134,20 @@
 
 (use-package jsonnet-mode)
 
+(defun eglot-format-buffer-on-save()
+  (add-hook 'before-save-hook #'eglot-format-buffer -10 t))
+
 (use-package eglot
   :hook  ((lua-mode . eglot-ensure)
           (c++-mode . eglot-ensure)
           (c-mode . eglot-ensure)
-          (go-mode . eglot-ensure))
+          (go-mode . eglot-ensure)
+          (go-mode-hook . eglot-format-buffer-on-save))
   :config
   (add-to-list 'eglot-server-programs
                '(lua-mode . ("lua-language-server")))
   (add-to-list 'eglot-server-programs
-               '((c++-mode c-mode) . ("clangd")))
-  (add-to-list 'eglot-server-programs
-               '(go-mode . ("gopls"))))
+               '((c++-mode c-mode) . ("clangd"))))
 
 (use-package org
   :config

@@ -108,11 +108,11 @@ same directory as the org-buffer and insert a link to this file."
                                 (error (concat "Error in " subdirectory)))))
                     (message "Git status in %s: %s" subdirectory result))))))
 
-(defun download-tarantool-sdk (arg)
-  (interactive "MEnter a string:")
+(defun download-tarantool-sdk (bundle-version branch revision)
+  (interactive "MEnter a string:\nMEnter a branch:\nMEnter a revision(release/dev):")
   (setq s3-endpoint-url "https://hb.bizmrg.com")
-  (setq tarantool-bundle-version arg)
-  (setq package-url (concat "s3://packages/enterprise/release/macos/x86_64/2.10/tarantool-enterprise-sdk-gc64-" tarantool-bundle-version ".macos.x86_64.tar.gz"))
+  (setq package-url (concat
+                     "s3://packages/enterprise/" revision "/macos/x86_64/" branch "/tarantool-enterprise-sdk-gc64-" bundle-version ".macos.x86_64.tar.gz"))
   (setq output-path (concat "tarantool-enterprise-bundle-" tarantool-bundle-version ".tar.gz" ))
   (setq cmd (concat "aws --endpoint-url " s3-endpoint-url " s3 cp " package-url " " output-path))
   (async-shell-command cmd))
