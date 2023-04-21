@@ -13,7 +13,7 @@
  '(org-agenda-files
    '("~/org/practice.org" "/Users/i.palagecha/org/session.org" "/Users/i.palagecha/org/notes.org"))
  '(package-selected-packages
-   '(org-mode multi-vterm go-mode eshell-vterm vterm jsonnet-mode xterm-color doom-themes yaml-mode exec-path-from-shell yasnippet evil tree-sitter-langs eglot lua-mode company ivy-posframe counsel magit use-package))
+   '(typescript-mode org-mode multi-vterm go-mode eshell-vterm vterm jsonnet-mode xterm-color doom-themes yaml-mode exec-path-from-shell yasnippet evil tree-sitter-langs eglot lua-mode company ivy-posframe counsel magit use-package))
  '(process-adaptive-read-buffering nil t)
  '(process-read-maximum-size 100000)
  '(whitespace-line-column 120))
