@@ -112,5 +112,3 @@ same directory as the org-buffer and insert a link to this file."
   (interactive)
   (mapcar 'kill-buffer (buffer-list))
   (delete-other-windows))
-
-

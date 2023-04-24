@@ -1,8 +1,8 @@
 (provide 'packages)
 
 (use-package magit
-   :config
-   (global-set-key (kbd "C-x g") 'magit-status))
+  :config
+  (global-set-key (kbd "C-x g") 'magit-status))
 
 (use-package exec-path-from-shell
   :config
@@ -66,16 +66,9 @@
   (defconst tnt-test ".rocks/bin/luatest")
   (defconst tnt-lint ".rocks/bin/luacheck . --formatter plain")
 
-  (defun tnt-run (cmd arg)
-    (let ((compile-command (format "%s && %s %s" tnt-env cmd arg)))
-      (call-interactively #'project-compile)))
-
-  (defun tnt-run-tests (arg)
-    (tnt-run tnt-test arg))
-
-  (defun tnt-run-lint ()
-    (interactive)
-    (tnt-run tnt-lint ""))
+  (defun concat-args (args &optional seporator)
+    (let ((seporator (or seporator " ")))
+      (mapconcat (function (lambda (x) (format "%s" x))) args seporator)))
 
   (defun tnt-current-group ()
     (save-excursion
@@ -83,7 +76,7 @@
         (goto-char (point-min))
         (re-search-forward "t.group('")
         (re-search-forward (lua-rx lua-name))
-        (match-string 0))))
+        (match-string-no-properties 0))))
 
   ;; NOTE: work only with "g.test_debug = function()" functions headers
   (defun tnt-current-test-case ()
@@ -93,35 +86,61 @@
           (re-search-backward lua--beginning-of-defun-re nil t)
           (lua-forward-sexp 2)
           (re-search-backward name-patttern nil t)
-          (match-string 0)))))
+          (match-string-no-properties 0)))))
 
-  (defun tnt-run-test-case ()
+  (defun tnt-run (action &optional args)
+    (let ((compile-command (format "%s && %s %s" tnt-env action
+                       (if args
+                           (concat-args args))))
+          (default-directory (project-root (project-current t))))
+      (compile compile-command)))
+
+  (defun tnt-run-tests (&optional args)
+    (tnt-run tnt-test args))
+
+  (defun tnt-run-lint ()
     (interactive)
+    (tnt-run tnt-lint ""))
+
+  (transient-define-prefix tnt-popup ()
+    "Tarantool"
+    ["Commands"
+     ("t" "Luatest" luatest-popup)
+     ("l" "Luacheck" tnt-run-lint)
+     ("k" "Kill all tnts" tnt-kill-all)])
+
+  (transient-define-prefix luatest-popup ()
+    "Luatest"
+    ["Arguments"
+     ("-v" "Verbose" "-v")
+     ("-c" "Capturing output" "-c")]
+    ["Commands"
+     ("t" "run test case" tnt-run-test-case)
+     ("g" "run test group" tnt-run-group)
+     ("a" "run all test" tnt-run-all-tests)])
+
+  (defun tnt-run-test-case (&optional args)
+    (interactive (list (transient-args 'luatest-popup)))
     (let ((groupname (tnt-current-group))
           (casename (tnt-current-test-case)))
-      (tnt-run-tests (format "%s.%s" groupname casename))))
+      (let ((testname (concat-args (list groupname casename) ".")))
+        (add-to-list 'args testname)
+        (tnt-run-tests args))))
 
-  (defun tnt-run-group ()
-    (interactive)
+  (defun tnt-run-all-tests (&optional args)
+    (interactive (list (transient-args 'luatest-popup)))
+    (tnt-run-tests args))
+
+  (defun tnt-run-group (&optional args)
+    (interactive (list (transient-args 'luatest-popup)))
     (let ((groupname (tnt-current-group)))
-      (tnt-run-tests groupname)))
+      (tnt-run-tests (add-to-list 'args groupname))))
 
-  (defun tnt-run-test-file ()
-    (interactive)
-    (tnt-run-tests (plgc-rel-filename)))
-  (defun tnt-run-all-tests ()
-    (interactive)
-    (tnt-run-tests ""))
   (defun tnt-kill-all ()
     (interactive)
     (shell-command "pkill -9 tarantool"))
 
-  (global-set-key (kbd "C-c t t") 'tnt-run-test-case)
-  (global-set-key (kbd "C-c t g") 'tnt-run-group)
-  (global-set-key (kbd "C-c t f") 'tnt-run-test-file)
-  (global-set-key (kbd "C-c t a") 'tnt-run-all-tests)
-  (global-set-key (kbd "C-c t l") 'tnt-run-lint)
-  (global-set-key (kbd "C-c t k") 'tnt-kill-all))
+  (global-set-key (kbd "C-c  t") 'tnt-popup))
 
 (use-package go-mode)
 
