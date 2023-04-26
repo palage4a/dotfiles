@@ -17,3 +17,5 @@
 (require 'packages)
 (require 'functions)
 (require 'variables)
+(put 'scroll-left 'disabled nil)
+(put 'magit-clean 'disabled nil)
