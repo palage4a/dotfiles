@@ -14,5 +14,5 @@ ulimit -n 10240
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="/usr/local/opt/llvm/bin:$PATH"
-
 export PATH="/usr/local/sbin:$PATH"
+export PATH="$HOME/bin:$PATH"

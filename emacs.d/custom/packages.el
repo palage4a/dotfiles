@@ -160,14 +160,17 @@
           (c++-mode . eglot-ensure)
           (c-mode . eglot-ensure)
           (go-mode . eglot-ensure)
-          (typescript-mode . eglot-ensure))
+          (typescript-mode . eglot-ensure)
+          (jsonnet-mode . eglot-ensure))
   :config
   (add-to-list 'eglot-server-programs
                '(lua-mode . ("lua-language-server")))
   (add-to-list 'eglot-server-programs
                '((c++-mode c-mode) . ("clangd")))
   (add-to-list 'eglot-server-programs
-               '((typescript-mode) . ("typescript-language-server" "--stdio"))))
+               '((typescript-mode) . ("typescript-language-server" "--stdio")))
+    (add-to-list 'eglot-server-programs
+               '((jsonnet-mode) . ("jsonnet-language-server"))))
 
 (use-package org
   :config
