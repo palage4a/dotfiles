@@ -17,7 +17,7 @@
  '(org-log-done 'note)
  '(org-log-done-with-time t)
  '(org-log-reschedule 'note)
- '(org-refile-targets '((nil :maxlevel . 2)))
+ '(org-refile-targets '((nil :maxlevel . 3)))
  '(package-selected-packages
    '(solarized-theme typescript-mode org-mode multi-vterm go-mode eshell-vterm vterm jsonnet-mode xterm-color doom-themes yaml-mode exec-path-from-shell yasnippet evil tree-sitter-langs eglot lua-mode company ivy-posframe counsel magit use-package))
  '(process-adaptive-read-buffering nil t)
