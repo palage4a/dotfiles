@@ -19,3 +19,4 @@
 (require 'variables)
 (put 'scroll-left 'disabled nil)
 (put 'magit-clean 'disabled nil)
+(put 'narrow-to-region 'disabled nil)
