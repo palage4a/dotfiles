@@ -60,3 +60,4 @@
 
 (setq custom-file (expand-file-name "custom/variables.el" user-emacs-directory))
 
+(savehist-mode)
