@@ -110,11 +110,19 @@
      ("l" "Luacheck" tnt-run-lint)
      ("k" "Kill all tnts" tnt-kill-all)])
 
+  (transient-define-argument luatest-repeat()
+    :description "Limit number of commits"
+    :class 'transient-option
+    :shortarg "-r"
+    :argument "-r "
+    :reader #'transient-read-number-N+)
+
   (transient-define-prefix luatest-popup ()
     "Luatest"
     ["Arguments"
      ("-v" "Verbose" "-v")
-     ("-c" "Capturing output" "-c")]
+     ("-c" "Capturing output" "-c")
+     ("-r" "Repeatition of each test case" luatest-repeat)]
     ["Commands"
      ("t" "run test case" tnt-run-test-case)
      ("g" "run test group" tnt-run-group)
