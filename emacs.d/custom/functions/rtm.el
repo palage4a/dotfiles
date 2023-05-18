@@ -5,9 +5,9 @@
 %s
 EOF")
 
-(defconst rtm/release-reviewers '("palage4a" "tecl1s" "runsfor"))
+(defconst rtm/release-pr-reviewers '("palage4a" "tecl1s" "runsfor"))
 
-(defconst rtm/release-description "Related to tarantool/megafon-rtm#%s
+(defconst rtm/release-pr-description "Related to tarantool/megafon-rtm#%s
 
 Я не забыл про:
 
@@ -17,25 +17,23 @@ EOF")
 - [x] Документацию
 - [x] Обновление CHANGELOG.md")
 
-(defun rtm/get-release-issue (date)
+(defun rtm/get-release-issue-number (date)
   (shell-command-to-string (format "gh issue list --search '[RELEASE] %s'  --repo tarantool/megafon-rtm --json number --jq '.[0].number' | tr -d '\n'" date)))
 
-;; NOTE: After execution this function you need to update CHANGLOG.md
-;; TODO: The changlog updating is very mechanical work. We should to automote it.
 (defun rtm/setup-release-branch (date)
-  (shell-command "git checkout dev")
-  (shell-command "git pull origin dev")
-  (shell-command (format "git checkout -b release-%s" date)))
+  "Creates a release branch at development branch"
+  (rtm/call-release-procedure "git checkout dev")
+  (rtm/call-release-procedure "git pull origin dev")
+  (rtm/call-release-procedure (format "git checkout -b release-%s" date)))
 
-;; NOTE: before ran this function you should update CHANGELOG.md
 (defun rtm/create-release-pr (date)
-  (shell-command "git add CHANGELOG.md")
-  (shell-command (format "git commit -m 'Wrap up %s release'" date))
-  (shell-command "git push origin HEAD")
-  (let ((issue-number (rtm/get-release-issue date)))
-    (let ((pr-description (format rtm/release-description issue-number))
-          (reviewers (mapconcat 'identity rtm/release-reviewers ",")))
-      (async-shell-command (format rtm/gh-pr-create-cmd
+  (rtm/call-release-procedure "git add CHANGELOG.md")
+  (rtm/call-release-procedure (format "git commit -m 'Wrap up %s release'" date))
+  (rtm/call-release-procedure "git push origin HEAD")
+  (let ((issue-number (rtm/get-release-issue-number date)))
+    (let ((pr-description (format rtm/release-pr-description issue-number))
+          (reviewers (mapconcat 'identity rtm/release-pr-reviewers ",")))
+      (rtm/call-release-procedure (format rtm/gh-pr-create-cmd
                                    date date reviewers pr-description)))))
 
 (defconst rtm/changelog-filename "CHANGELOG.md")
@@ -56,6 +54,7 @@ EOF")
 ")
 
 (defun rtm/update-changelog (date)
+  "TODO test it"
   (let ((changelog (concat default-directory rtm/changelog-filename)))
     (with-temp-file changelog
       (insert-file-contents changelog)
@@ -113,12 +112,12 @@ and ends before the next section or newline symbol."
 
 (defun rtm/gh-release-draft-create (project date changes)
   "TODO Add a verb to function name"
-  (async-shell-command (format "gh release create %s --draft --target main --title 'Release %s' --notes-file - <<- EOF
+  (rtm/call-release-procedure (format "gh release create %s --draft --target main --title 'Release %s' --notes-file - <<- EOF
 %s" date date (format rtm/release-notes-body-template changes project date))))
 
 (defun rtm/create-draft-release (project date)
-  (shell-command "git checkout main")
-  (shell-command "git pull")
+  (rtm/call-release-procedure "git checkout main")
+  (rtm/call-release-procedure "git pull")
   (let ((changes (rtm/extract-changes project date)))
     (rtm/gh-release-draft-create project date changes)))
 
@@ -128,18 +127,6 @@ and removes 'megafon-' prefix from it"
   (let ((dirname (car (last (split-string default-directory "/") 2))))
     (replace-regexp-in-string "megafon-" "" dirname)))
 
-(defun rtm/open-release (dir date)
-  "Creates draft release and does some preparation which is necessory
-in the release process:
-* creates release Pull Requests
-* updates changelog"
-  (interactive "DProject dir:\nMRelease date (eg 2023-05-04): ")
-  (let ((default-directory dir))
-    (let ((project (rtm/get-project-name)))
-      (rtm/setup-release-branch date)
-      (rtm/update-changelog date)
-      (rtm/create-release-pr date)
-      (rtm/create-draft-release project date))))
 
 (defun rtm/gh-release-pr-number (date)
   "TODO Add a verb to function name"
@@ -148,18 +135,44 @@ in the release process:
 (defun rtm/gh-pr-merge (date)
   "TODO Add a verb to function name"
   (let ((pr-number (rtm/gh-release-pr-number date)))
-    (shell-command (format "gh pr merge release-%s --delete-branch --merge --subject 'Release %s (#%s)'" date date pr-number))))
+    (rtm/call-release-procedure (format "gh pr merge release-%s --delete-branch --merge --subject 'Release %s (#%s)'" date date pr-number))))
 
 (defun rtm/undraft-release (date)
-  (shell-command (format "gh release edit %s --draft=false --latest" date)))
+  (insert "\nUndarfting release...\n")
+  (rtm/call-release-procedure (format "gh release edit %s --draft=false --latest" date)))
 
 (defun rtm/actualize-dev-branch ()
-  (shell-command "git checkout main")
-  (shell-command "git pull origin main")
-  (shell-command "git checkout dev")
-  (shell-command "git pull origin dev")
-  (shell-command "git merge main")
-  (shell-command "git push origin dev"))
+  (insert "\nActualizing development branch...\n")
+  (rtm/call-release-procedure "git checkout main")
+  (rtm/call-release-procedure "git pull origin main")
+  (rtm/call-release-procedure "git checkout dev")
+  (rtm/call-release-procedure "git pull origin dev")
+  (rtm/call-release-procedure "git merge main")
+  (rtm/call-release-procedure "git merge main"))
+
+(defconst rtm/output-buffer "*RTM Release Process*")
+
+(defun rtm/call-release-procedure (command)
+  (let ((programm (car (split-string command)))
+        (args (cdr (split-string command)))
+        (output-buffer (get-buffer-create rtm/output-buffer)))
+    (insert (format "Calling '%s':\n" command))
+    (apply 'call-process programm nil output-buffer t args)))
+
+(defun rtm/open-release (dir date)
+  "Creates draft release and does some preparation which is necessory
+in the release process:
+* creates release Pull Requests
+* updates changelog"
+  (interactive "DProject dir:\nMRelease date (eg 2023-05-04): ")
+  (let ((output-buffer (get-buffer-create rtm/output-buffer))
+        ((project (rtm/get-project-name))))
+    (with-current-buffer output-buffer
+      (let ((default-directory dir))
+        (rtm/setup-release-branch date)
+        (rtm/update-changelog date)
+        (rtm/create-release-pr date)
+        (rtm/create-draft-release project date)))))
 
 (defun rtm/close-release (dir date)
   "Finishes release cycle:
@@ -167,7 +180,13 @@ in the release process:
 * undrafts release
 * merges changes from main into development branch"
   (interactive "DProject dir:\nMRelease date (eg 2023-05-04): ")
-  (let ((default-directory dir))
-    (rtm/gh-pr-merge date)
-    (rtm/undraft-release date)
-    (rtm/actualize-dev-branch)))
+  (let ((output-buffer (get-buffer-create rtm/output-buffer)))
+    (with-current-buffer output-buffer
+      (let ((default-directory dir))
+        (erase-buffer)
+        (display-buffer output-buffer)
+        (insert "Starting closing release:\n")
+        ;; (rtm/gh-pr-merge date)
+        ;; (rtm/undraft-release date)
+        (rtm/actualize-dev-branch)))))
+
