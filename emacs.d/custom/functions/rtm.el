@@ -148,11 +148,9 @@ and removes 'megafon-' prefix from it"
 (defconst rtm/output-buffer "*RTM Release Process*")
 
 (defun rtm/call-release-procedure (command)
-  (let ((programm (car (split-string command)))
-        (args (cdr (split-string command)))
-        (output-buffer (get-buffer-create rtm/output-buffer)))
+  (let ((output-buffer (get-buffer-create rtm/output-buffer)))
     (insert (format "\nCalling '%s':\n" command))
-    (apply 'call-process programm nil output-buffer t args)))
+    (call-process-shell-command command nil output-buffer t)))
 
 (defun rtm/open-release (dir date)
   "Creates draft release and does some preparation which is necessory
