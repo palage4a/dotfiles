@@ -1,6 +1,6 @@
 (provide 'rtm)
 
-;; rtm/* functions require gh(github-cli) and js(for parsing json)
+;; rtm/* functions require gh(github-cli)
 (defconst rtm/gh-pr-create-cmd "gh pr create --assignee @me --base main --head 'release-%s' --title 'Release %s' --reviewer %s --body-file - <<- EOF
 %s
 EOF")
@@ -18,20 +18,20 @@ EOF")
 - [x] Обновление CHANGELOG.md")
 
 (defun rtm/get-release-issue (date)
-  (shell-command-to-string (format "gh issue list --search '[RELEASE] %s'  --repo tarantool/megafon-rtm --json number | jq '.[0].number'" date)))
+  (shell-command-to-string (format "gh issue list --search '[RELEASE] %s'  --repo tarantool/megafon-rtm --json number --jq '.[0].number' | tr -d '\n'" date)))
 
 ;; NOTE: After execution this function you need to update CHANGLOG.md
 ;; TODO: The changlog updating is very mechanical work. We should to automote it.
 (defun rtm/setup-release-branch (date)
-  (shell-command-to-string "git checkout dev")
-  (shell-command-to-string "git pull origin dev")
-  (shell-command-to-string (format "git checkout -b release-%s" date)))
+  (shell-command "git checkout dev")
+  (shell-command "git pull origin dev")
+  (shell-command (format "git checkout -b release-%s" date)))
 
 ;; NOTE: before ran this function you should update CHANGELOG.md
 (defun rtm/create-release-pr (date)
-  (shell-command-to-string "git add CHANGELOG.md")
-  (shell-command-to-string (format "git commit -m 'Wrap up %s release'" date))
-  (shell-command-to-string "git push origin HEAD")
+  (shell-command "git add CHANGELOG.md")
+  (shell-command (format "git commit -m 'Wrap up %s release'" date))
+  (shell-command "git push origin HEAD")
   (let ((issue-number (rtm/get-release-issue date)))
     (let ((pr-description (format rtm/release-description issue-number))
           (reviewers (mapconcat 'identity rtm/release-reviewers ",")))
@@ -75,22 +75,6 @@ EOF")
       (replace-match (concat rtm/changelog-template-section "
 ##")))))
 
-;; git checkout main
-;; git pull
-;; release="2023-04-06"
-;; project=$(gh repo view --json name | jq -r '.name')
-;; gh release create ${release} --draft --target main --title "Release ${release}" --notes-file - <<- EOF
-;; 	Изменения:
-
-;; 	- Рефакторинг интеграционных тестов api профиля абонента ([RTM-2464](https://jira.megafon.ru/browse/RTM-2464))
-;; 	- Улучшена стабильность CI. Исправлены flaky-тесты ([RTM-2464](https://jira.megafon.ru/browse/RTM-2464))
-;; 	- Возвращено тестирование маппинга атрибутов прямого загрузчика в модель данных ([RTM-2464](https://jira.megafon.ru/browse/RTM-2464))
-;; 	- Удалены упоминания домена scoring из кода ([RTM-2410](https://jira.megafon.ru/browse/RTM-2410))
-
-;; 	[Ссылка](https://github.com/tarantool/${project}/blob/main/CHANGELOG.md#${release}) на changelog
-;; EOF
-
-
 (defconst rtm/release-notes-entry-start-template "# %s\n")
 
 (defconst rtm/release-notes-entry-end "\n\n\\|# ")
@@ -103,9 +87,11 @@ EOF")
 [Ссылка](https://github.com/tarantool/megafon-%s/blob/main/CHANGELOG.md#%s) на changelog")
 
 (defun rtm/gh-issue-list-project-body (date)
-  (shell-command-to-string (format "gh issue list --search '[RELEASE] %s'  --repo tarantool/megafon-rtm --json body | jq '.[].body'" date)))
+  "TODO add a verb to function name"
+  (shell-command-to-string (format "gh issue list --search '[RELEASE] %s'  --repo tarantool/megafon-rtm --json body --jq '.[].body'" date)))
 
 (defun rtm/release-issue-body (date)
+  "TODO Add a verb to funciton name"
   (rtm/fix-special-chars
    (rtm/gh-issue-list-project-body date)))
 
@@ -113,9 +99,9 @@ EOF")
   (replace-regexp-in-string "\\\\r" ""
                             (replace-regexp-in-string "\\\\n" "\n" body)))
 
-;; Extract the section of text that starts after \"# <project name>\"
-;; and ends before the next section or newline symbol."
 (defun rtm/extract-changes (project date)
+  "Extract the section of text that starts after \"# <project>\"
+and ends before the next section or newline symbol."
   (with-temp-buffer
     (insert (rtm/release-issue-body date))
     (beginning-of-buffer)
@@ -126,35 +112,61 @@ EOF")
               (buffer-substring start (match-beginning 0)))))))
 
 (defun rtm/gh-release-draft-create (project date changes)
+  "TODO Add a verb to funciton name"
   (async-shell-command (format "gh release create %s --draft --target main --title 'Release %s' --notes-file - <<- EOF
 %s" date date (format rtm/release-notes-body-template changes project date))))
 
 (defun rtm/create-draft-release (project date)
-  (shell-command-to-string "git checkout main")
-  (shell-command-to-string "git pull")
+  (shell-command "git checkout main")
+  (shell-command "git pull")
   (let ((changes (rtm/extract-changes project date)))
     (rtm/gh-release-draft-create project date changes)))
 
-;; Extracts current directory name from default-directory
-;; and removes "megafon-" prefix from it
 (defun rtm/get-project-name ()
+  "Extracts current directory name from default-directory
+and removes 'megafon-' prefix from it"
   (let ((dirname (car (last (split-string default-directory "/") 2))))
     (replace-regexp-in-string "megafon-" "" dirname)))
 
-(defun rtm/create-release (dir date)
+(defun rtm/open-release (dir date)
+  "Creates draft release and does some preparation which is necessory
+in the release process:
+* creates release Pull Requests
+* updates changelog"
   (interactive "DProject dir:\nMRelease date (eg 2023-05-04): ")
   (let ((default-directory dir))
     (let ((project (rtm/get-project-name)))
-      ;; (rtm/setup-release-branch date)
-      ;; (rtm/update-changelog date)
+      (rtm/setup-release-branch date)
+      (rtm/update-changelog date)
       (rtm/create-release-pr date)
-      (rtm/create-draft-release project date))
-    ))
+      (rtm/create-draft-release project date))))
+
+(defun rtm/gh-release-pr-number (date)
+  "TODO Add a verb to funciton name"
+  (shell-command-to-string (format "gh pr list --search 'Release %s' --json number --jq '.[].number' | tr -d '\n'" date)))
 
 (defun rtm/gh-pr-merge (date)
-  (async-shell-command (format "gh pr merge release-%s --delete-branch" date)))
+  "TODO Add a verb to funciton name"
+  (let ((pr-number (rtm/gh-release-pr-number date)))
+    (async-shell-command (format "gh pr merge release-%s --delete-branch --merge --subject 'Release %s (#%s)'" date date pr-number))))
 
-(defun rtm/merge-release (dir date)
+(defun rtm/undraft-release (date)
+  (shell-command (format "gh release edit %s --draft=false --latest" date)))
+
+(defun rtm/actualize-dev-branch ()
+  (shell-command "git checkout dev")
+  (shell-command "git pull")
+  (shell-command "git merge main")
+  (shell-command "git push origin dev"))
+
+(defun rtm/close-release (dir date)
+  "Finishes release cycle:
+* merges release PR
+* undrafts release
+* merges changes from main into development branch"
   (interactive "DProject dir:\nMRelease date (eg 2023-05-04): ")
   (let ((default-directory dir))
-    (rtm/gh-pr-merge date)))
+    ;; (rtm/gh-pr-merge date)
+    (rtm/undraft-release date)
+    (rtm/actualize-dev-branch)
+    ))
