@@ -1,6 +1,5 @@
 (provide 'rtm)
 
-;; rtm/* functions require gh(github-cli)
 (defconst rtm/gh-pr-create-cmd "gh pr create --assignee @me --base main --head 'release-%s' --title 'Release %s' --reviewer %s --body-file - <<- EOF
 %s
 EOF")
@@ -21,7 +20,7 @@ EOF")
   (shell-command-to-string (format "gh issue list --search '[RELEASE] %s'  --repo tarantool/megafon-rtm --json number --jq '.[0].number' | tr -d '\n'" date)))
 
 (defun rtm/setup-release-branch (date)
-  "Creates a release branch at development branch"
+  "Creates a release branch at the development branch"
   (rtm/call-release-procedure "git checkout dev")
   (rtm/call-release-procedure "git pull origin dev")
   (rtm/call-release-procedure (format "git checkout -b release-%s" date)))
@@ -54,7 +53,6 @@ EOF")
 ")
 
 (defun rtm/update-changelog (date)
-  "TODO test it"
   (let ((changelog (concat default-directory rtm/changelog-filename)))
     (with-temp-file changelog
       (insert-file-contents changelog)
@@ -138,16 +136,13 @@ and removes 'megafon-' prefix from it"
     (rtm/call-release-procedure (format "gh pr merge release-%s --delete-branch --merge --subject 'Release %s (#%s)'" date date pr-number))))
 
 (defun rtm/undraft-release (date)
-  (insert "\nUndarfting release...\n")
   (rtm/call-release-procedure (format "gh release edit %s --draft=false --latest" date)))
 
 (defun rtm/actualize-dev-branch ()
-  (insert "\nActualizing development branch...\n")
   (rtm/call-release-procedure "git checkout main")
   (rtm/call-release-procedure "git pull origin main")
   (rtm/call-release-procedure "git checkout dev")
   (rtm/call-release-procedure "git pull origin dev")
-  (rtm/call-release-procedure "git merge main")
   (rtm/call-release-procedure "git merge main"))
 
 (defconst rtm/output-buffer "*RTM Release Process*")
@@ -156,19 +151,23 @@ and removes 'megafon-' prefix from it"
   (let ((programm (car (split-string command)))
         (args (cdr (split-string command)))
         (output-buffer (get-buffer-create rtm/output-buffer)))
-    (insert (format "Calling '%s':\n" command))
+    (insert (format "\nCalling '%s':\n" command))
     (apply 'call-process programm nil output-buffer t args)))
 
 (defun rtm/open-release (dir date)
   "Creates draft release and does some preparation which is necessory
 in the release process:
 * creates release Pull Requests
-* updates changelog"
+* updates changelog
+* creates release PR"
   (interactive "DProject dir:\nMRelease date (eg 2023-05-04): ")
   (let ((output-buffer (get-buffer-create rtm/output-buffer))
-        ((project (rtm/get-project-name))))
+        (project (rtm/get-project-name)))
     (with-current-buffer output-buffer
       (let ((default-directory dir))
+        (erase-buffer)
+        (display-buffer output-buffer)
+        (insert "Start opening release\n")
         (rtm/setup-release-branch date)
         (rtm/update-changelog date)
         (rtm/create-release-pr date)
@@ -185,8 +184,7 @@ in the release process:
       (let ((default-directory dir))
         (erase-buffer)
         (display-buffer output-buffer)
-        (insert "Starting closing release:\n")
-        ;; (rtm/gh-pr-merge date)
-        ;; (rtm/undraft-release date)
+        (insert "Start closing release\n")
+        (rtm/gh-pr-merge date)
+        (rtm/undraft-release date)
         (rtm/actualize-dev-branch)))))
-
