@@ -91,7 +91,7 @@ EOF")
   (shell-command-to-string (format "gh issue list --search '[RELEASE] %s'  --repo tarantool/megafon-rtm --json body --jq '.[].body'" date)))
 
 (defun rtm/release-issue-body (date)
-  "TODO Add a verb to funciton name"
+  "TODO Add a verb to function name"
   (rtm/fix-special-chars
    (rtm/gh-issue-list-project-body date)))
 
@@ -112,7 +112,7 @@ and ends before the next section or newline symbol."
               (buffer-substring start (match-beginning 0)))))))
 
 (defun rtm/gh-release-draft-create (project date changes)
-  "TODO Add a verb to funciton name"
+  "TODO Add a verb to function name"
   (async-shell-command (format "gh release create %s --draft --target main --title 'Release %s' --notes-file - <<- EOF
 %s" date date (format rtm/release-notes-body-template changes project date))))
 
@@ -142,20 +142,22 @@ in the release process:
       (rtm/create-draft-release project date))))
 
 (defun rtm/gh-release-pr-number (date)
-  "TODO Add a verb to funciton name"
+  "TODO Add a verb to function name"
   (shell-command-to-string (format "gh pr list --search 'Release %s' --json number --jq '.[].number' | tr -d '\n'" date)))
 
 (defun rtm/gh-pr-merge (date)
-  "TODO Add a verb to funciton name"
+  "TODO Add a verb to function name"
   (let ((pr-number (rtm/gh-release-pr-number date)))
-    (async-shell-command (format "gh pr merge release-%s --delete-branch --merge --subject 'Release %s (#%s)'" date date pr-number))))
+    (shell-command (format "gh pr merge release-%s --delete-branch --merge --subject 'Release %s (#%s)'" date date pr-number))))
 
 (defun rtm/undraft-release (date)
   (shell-command (format "gh release edit %s --draft=false --latest" date)))
 
 (defun rtm/actualize-dev-branch ()
+  (shell-command "git checkout main")
+  (shell-command "git pull origin main")
   (shell-command "git checkout dev")
-  (shell-command "git pull")
+  (shell-command "git pull origin dev")
   (shell-command "git merge main")
   (shell-command "git push origin dev"))
 
@@ -166,7 +168,6 @@ in the release process:
 * merges changes from main into development branch"
   (interactive "DProject dir:\nMRelease date (eg 2023-05-04): ")
   (let ((default-directory dir))
-    ;; (rtm/gh-pr-merge date)
+    (rtm/gh-pr-merge date)
     (rtm/undraft-release date)
-    (rtm/actualize-dev-branch)
-    ))
+    (rtm/actualize-dev-branch)))
