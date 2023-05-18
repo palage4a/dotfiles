@@ -5,27 +5,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(compilation-scroll-output 100)
  '(custom-safe-themes
-   '("830877f4aab227556548dc0a28bf395d0abe0e3a0ab95455731c9ea5ab5fe4e1" "7f1d414afda803f3244c6fb4c2c64bea44dac040ed3731ec9d75275b9e831fe5" "4c56af497ddf0e30f65a7232a8ee21b3d62a8c332c6b268c81e9ea99b11da0d3" "fee7287586b17efbfda432f05539b58e86e059e78006ce9237b8732fde991b4c" "443e2c3c4dd44510f0ea8247b438e834188dc1c6fb80785d83ad3628eadf9294" "944d52450c57b7cbba08f9b3d08095eb7a5541b0ecfb3a0a9ecd4a18f3c28948" "a138ec18a6b926ea9d66e61aac28f5ce99739cf38566876dc31e29ec8757f6e2" "7e068da4ba88162324d9773ec066d93c447c76e9f4ae711ddd0c5d3863489c52" default))
- '(ede-project-directories
-   '("/Users/i.palagecha/code/tarantool/tarantool-cluster-manager"))
- '(ediff-split-window-function 'split-window-horizontally)
- '(global-whitespace-mode nil)
- '(org-agenda-files '("/Users/i.palagecha/org/notes.org"))
- '(org-agenda-start-on-weekday 1)
- '(org-log-done 'note)
- '(org-log-done-with-time t)
- '(org-log-reschedule 'note)
- '(org-refile-targets '((org-agenda-files :maxlevel . 5)))
- '(package-selected-packages
-   '(org-gcal evli solarized-theme typescript-mode org-mode multi-vterm go-mode eshell-vterm vterm jsonnet-mode xterm-color doom-themes yaml-mode exec-path-from-shell yasnippet evil tree-sitter-langs eglot lua-mode company ivy-posframe counsel magit use-package))
- '(process-adaptive-read-buffering nil t)
- '(process-read-maximum-size 100000)
- '(whitespace-line-column 120))
+   '("d89e15a34261019eec9072575d8a924185c27d3da64899905f8548cbd9491a36" default)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((((class color) (min-colors 89)) (:foreground "#b9b9b9" :background "#181818")))))
