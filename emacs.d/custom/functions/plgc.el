@@ -1,17 +1,17 @@
-(provide 'functions)
+(provide 'plgc)
 
-(defun plgc-available-fonts ()
+(defun plgc/available-fonts ()
   (interactive)
   (seq-filter (lambda (font)
                 (when-let ((info (font-info font)))
                   (string-match-p "spacing=100" (aref info 1))))
               (font-family-list)))
 
-(defun plgc-rel-filename ()
+(defun plgc/rel-filename ()
   (file-relative-name buffer-file-truename
                       (project-root (project-current t))))
 
-(defun plgc-org-screenshot ()
+(defun plgc/org-screenshot ()
   "Take a screenshot into a time stamped unique-named file in the
 same directory as the org-buffer and insert a link to this file."
   (interactive)
@@ -26,13 +26,13 @@ same directory as the org-buffer and insert a link to this file."
   (org-insert-link nil (concat "./" filename))
   (org-display-inline-images))
 
-(defun plgc-clone-repos (repos directory)
+(defun plgc/clone-repos (repos directory)
   "Clone a list of repositories from a GitHub USER into DIRECTORY."
   (let ((default-directory directory))
     (dolist (repo repos)
       (eshell-command (format "git clone https://cicd-git.megafon.ru/MFactory/apiration/%s.git" repo)))))
 
-(defun plg-multi-apply (dirs patch)
+(defun plg/multi-apply (dirs patch)
   (dolist (directory dirs)
     (let ((default-directory directory))
       (magit-run-git "apply" "--index" patch))))
@@ -128,3 +128,11 @@ same directory as the org-buffer and insert a link to this file."
     (newline-and-indent)
     (insert str)
     ))
+
+(defun plgc/docker-stop-all ()
+  (interactive)
+  (async-shell-command "docker stop $(docker ps -a -q)"))
+
+(defun plgc/docker-ps ()
+  (interactive)
+  (async-shell-command "docker ps"))
