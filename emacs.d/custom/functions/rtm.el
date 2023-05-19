@@ -53,6 +53,7 @@ EOF")
 ")
 
 (defun rtm/update-changelog (date)
+  (insert "Updating changelog...\n")
   (let ((changelog (concat default-directory rtm/changelog-filename)))
     (with-temp-file changelog
       (insert-file-contents changelog)
@@ -114,8 +115,6 @@ and ends before the next section or newline symbol."
 %s" date date (format rtm/release-notes-body-template changes project date))))
 
 (defun rtm/create-draft-release (project date)
-  (rtm/call-release-procedure "git checkout main")
-  (rtm/call-release-procedure "git pull")
   (let ((changes (rtm/extract-changes project date)))
     (rtm/gh-release-draft-create project date changes)))
 
@@ -143,7 +142,7 @@ and removes 'megafon-' prefix from it"
   (rtm/call-release-procedure "git pull origin main")
   (rtm/call-release-procedure "git checkout dev")
   (rtm/call-release-procedure "git pull origin dev")
-  (rtm/call-release-procedure "git merge main"))
+  (rtm/call-release-procedure "git merge --ff-only main"))
 
 (defconst rtm/output-buffer "*RTM Release Process*")
 
