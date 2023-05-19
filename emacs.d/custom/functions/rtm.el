@@ -53,6 +53,7 @@ EOF")
 ")
 
 (defun rtm/update-changelog (date)
+  "TODO Test it"
   (insert "Updating changelog...\n")
   (let ((changelog (concat default-directory rtm/changelog-filename)))
     (with-temp-file changelog
@@ -135,14 +136,13 @@ and removes 'megafon-' prefix from it"
     (rtm/call-release-procedure (format "gh pr merge release-%s --delete-branch --merge --subject 'Release %s (#%s)'" date date pr-number))))
 
 (defun rtm/undraft-release (date)
+  "Edit previously created draft release
+* TODO check that current branch is always `main'"
   (rtm/call-release-procedure (format "gh release edit %s --draft=false --latest" date)))
 
-(defun rtm/actualize-dev-branch ()
-  (rtm/call-release-procedure "git checkout main")
-  (rtm/call-release-procedure "git pull origin main")
-  (rtm/call-release-procedure "git checkout dev")
-  (rtm/call-release-procedure "git pull origin dev")
-  (rtm/call-release-procedure "git merge --ff-only main"))
+(defun rtm/backport-to-dev ()
+  "WIP"
+  (insert "Not implemented\n"))
 
 (defconst rtm/output-buffer "*RTM Release Process*")
 
@@ -154,14 +154,13 @@ and removes 'megafon-' prefix from it"
 (defun rtm/open-release (dir date)
   "Creates draft release and does some preparation which is necessory
 in the release process:
-* creates release Pull Requests
 * updates changelog
 * creates release PR"
   (interactive "DProject dir:\nMRelease date (eg 2023-05-04): ")
-  (let ((output-buffer (get-buffer-create rtm/output-buffer))
-        (project (rtm/get-project-name)))
+  (let ((output-buffer (get-buffer-create rtm/output-buffer)))
     (with-current-buffer output-buffer
-      (let ((default-directory dir))
+      (let ((default-directory dir)
+            (project (rtm/get-project-name)))
         (erase-buffer)
         (display-buffer output-buffer)
         (insert "Start opening release\n")
@@ -184,4 +183,4 @@ in the release process:
         (insert "Start closing release\n")
         (rtm/gh-pr-merge date)
         (rtm/undraft-release date)
-        (rtm/actualize-dev-branch)))))
+        (rtm/backport-to-dev)))))
