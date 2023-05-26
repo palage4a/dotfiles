@@ -119,12 +119,13 @@ and ends before the next section or newline symbol."
   (let ((changes (rtm/extract-changes project date)))
     (rtm/gh-release-draft-create project date changes)))
 
-(defun rtm/get-project-name ()
-  "Extracts current directory name from default-directory
+(defun rtm/get-project-name (dir)
+  "NOTE: this function is broken
+Extracts current directory name from default-directory
 and removes 'megafon-' prefix from it"
-  (let ((dirname (car (last (split-string default-directory "/") 2))))
-    (replace-regexp-in-string "megafon-" "" dirname)))
-
+  (let ((dirname (car (last (split-string dir "/") 1))))
+    (cond ((string-equal dirname "megafon-rtm") "megafon-rtm")
+          (replace-regexp-in-string "megafon-" "" dirname))))
 
 (defun rtm/gh-release-pr-number (date)
   "TODO Add a verb to function name"
