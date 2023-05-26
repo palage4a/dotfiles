@@ -125,7 +125,7 @@ Extracts current directory name from default-directory
 and removes 'megafon-' prefix from it"
   (let ((dirname (car (last (split-string dir "/") 1))))
     (cond ((string-equal dirname "megafon-rtm") "megafon-rtm")
-          (replace-regexp-in-string "megafon-" "" dirname))))
+          ((replace-regexp-in-string "megafon-" "" dirname)))))
 
 (defun rtm/gh-release-pr-number (date)
   "TODO Add a verb to function name"
@@ -161,14 +161,15 @@ in the release process:
   (let ((output-buffer (get-buffer-create rtm/output-buffer)))
     (with-current-buffer output-buffer
       (let ((default-directory dir)
-            (project (rtm/get-project-name)))
+            (project (rtm/get-project-name dir)))
         (erase-buffer)
         (display-buffer output-buffer)
         (insert "Start opening release\n")
         (rtm/setup-release-branch date)
         (rtm/update-changelog date)
         (rtm/create-release-pr date)
-        (rtm/create-draft-release project date)))))
+        ;; (rtm/create-draft-release project date)
+        ))))
 
 (defun rtm/close-release (dir date)
   "Finishes release cycle:
@@ -185,3 +186,25 @@ in the release process:
         (rtm/gh-pr-merge date)
         (rtm/undraft-release date)
         (rtm/backport-to-dev)))))
+
+
+(defun rtm/sync-repositories(source target date)
+  "WORK IN PROGRESS
+TODO: gitlab integration (for creating MR)
+Rsyncs from github repo to gitlab (MF) repo"
+  (let ((default-directory target))
+    (rtm/call-release-procedure "git checkout master")
+    (rtm/call-release-procedure "git pull origin master")
+    (rtm/call-release-procedure (format "git checkout -b release-%s" date))
+    (rtm/call-release-procedure (format "rsync -r --delete %s/app ." source))
+    (rtm/call-release-procedure (format "rsync -r --delete %s/scripts ." source))
+    (rtm/call-release-procedure (format "rsync -r --delete %s/test ." source))
+    (rtm/call-release-procedure (format "rsync -r --delete %s/docs ." source))
+    (rtm/call-release-procedure (format "rsync -r --delete %s/cartridge.yml ." source))
+    (rtm/call-release-procedure (format "rsync -r --delete %s/init.lua ." source))
+    (rtm/call-release-procedure (format "rsync -r --delete %s/*.rockspec ." source))
+    (rtm/call-release-procedure (format "rsync -r --delete %s/grafana ." source))
+    (rtm/call-release-procedure (format "rsync -r --delete %s/docs ." source))
+    (rtm/call-release-procedure "git add .")
+    (rtm/call-release-procedure (format "git commit -m 'Release %s'" date))
+    (rtm/call-release-procedure "git push origin HEAD")))
