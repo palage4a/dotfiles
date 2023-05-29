@@ -74,9 +74,9 @@ EOF")
       (replace-match (concat rtm/changelog-template-section "
 ##")))))
 
-(defconst rtm/release-notes-entry-start-template "# %s\n")
+(defconst rtm/release-notes-entry-start-template "# %s\r\n")
 
-(defconst rtm/release-notes-entry-end "\n\n\\|# ")
+(defconst rtm/release-notes-entry-end "\r\n\\|# ")
 
 (defconst rtm/release-notes-body-template "
 Изменения:
