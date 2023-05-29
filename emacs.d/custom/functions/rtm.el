@@ -122,10 +122,9 @@ and ends before the next section or newline symbol."
     (rtm/gh-release-draft-create project date changes)))
 
 (defun rtm/get-project-name (dir)
-  "NOTE: this function is broken
-Extracts current directory name from default-directory
+  "Extracts current directory name from default-directory
 and removes 'megafon-' prefix from it"
-  (let ((dirname (car (last (split-string dir "/") 1))))
+  (let ((dirname (car (last (split-string dir "/") 2))))
     (cond ((string-equal dirname "megafon-rtm") "rtm-megafon")
           ((replace-regexp-in-string "megafon-" "" dirname)))))
 
