@@ -90,11 +90,13 @@ EOF")
   (shell-command-to-string (format "gh issue list --search '[RELEASE] %s'  --repo tarantool/megafon-rtm --json body --jq '.[].body'" date)))
 
 (defun rtm/release-issue-body (date)
-  "TODO Add a verb to function name"
+  "TODO Add a verb to function name
+TODO reformat date from year-month-day -> day.month.year"
   (rtm/fix-special-chars
    (rtm/gh-issue-list-project-body date)))
 
 (defun rtm/fix-special-chars (body)
+  "FIXME this "
   (replace-regexp-in-string "\\\\r" ""
                             (replace-regexp-in-string "\\\\n" "\n" body)))
 
