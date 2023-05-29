@@ -114,7 +114,7 @@ and ends before the next section or newline symbol."
 
 (defun rtm/gh-release-draft-create (project date changes)
   "TODO Add a verb to function name"
-  (rtm/call-release-procedure (format "gh release create %s --draft --target main --title 'Release %s' --notes-file - <<- EOF
+  (rtm/call-release-procedure (format "gh release create %s --draft --prerelease --target main --title 'Release %s' --notes-file - <<- EOF
 %s" date date (format rtm/release-notes-body-template changes project date))))
 
 (defun rtm/create-draft-release (project date)
@@ -140,7 +140,7 @@ and removes 'megafon-' prefix from it"
 (defun rtm/undraft-release (date)
   "Edit previously created draft release
 * TODO check that current branch is always `main'"
-  (rtm/call-release-procedure (format "gh release edit %s --draft=false --latest" date)))
+  (rtm/call-release-procedure (format "gh release edit %s --draft=false --prerelease=false --latest" date)))
 
 (defun rtm/backport-to-dev ()
   "WIP"
