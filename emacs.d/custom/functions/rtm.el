@@ -96,7 +96,7 @@ TODO reformat date from year-month-day -> day.month.year"
    (rtm/gh-issue-list-project-body date)))
 
 (defun rtm/fix-special-chars (body)
-  "FIXME this "
+  "FIXME this is broken"
   (replace-regexp-in-string "\\\\r" ""
                             (replace-regexp-in-string "\\\\n" "\n" body)))
 
@@ -126,7 +126,7 @@ and ends before the next section or newline symbol."
 Extracts current directory name from default-directory
 and removes 'megafon-' prefix from it"
   (let ((dirname (car (last (split-string dir "/") 1))))
-    (cond ((string-equal dirname "megafon-rtm") "megafon-rtm")
+    (cond ((string-equal dirname "megafon-rtm") "rtm-megafon")
           ((replace-regexp-in-string "megafon-" "" dirname)))))
 
 (defun rtm/gh-release-pr-number (date)
