@@ -1,10 +1,14 @@
 (provide 'rtm)
 
-(defconst rtm/gh-pr-create-cmd "gh pr create --assignee @me --base main --head 'release-%s' --title 'Release %s' --reviewer %s --body-file - <<- EOF
+(defconst rtm/gh-pr-create-cmd "gh pr create --assignee @me --title '%s' --base '%s' --head '%s' --reviewer '%s' --body-file - <<- EOF
 %s
 EOF")
 
-(defconst rtm/release-pr-reviewers '("palage4a" "tecl1s" "runsfor"))
+(defconst rtm/reviewers '("palage4a" "tecl1s" "runsfor"))
+
+(defun rtm/create-pr (title base head body)
+  (let ((reviewers (mapconcat 'identity rtm/release-pr-reviewers ",")))
+    (rtm/call-release-procedure (format rtm/gh-pr-create-cmd title base head reviewers body))))
 
 (defconst rtm/release-pr-description "Related to tarantool/megafon-rtm#%s
 
@@ -44,10 +48,8 @@ Explanation: Command exit code will be non-zero when Release does not exist"
     (rtm/call-release-procedure (format "git commit -m 'Wrap up %s release'" date))
     (rtm/call-release-procedure "git push origin HEAD")
     (let ((issue-number (rtm/get-release-issue-number date)))
-      (let ((pr-description (format rtm/release-pr-description issue-number))
-            (reviewers (mapconcat 'identity rtm/release-pr-reviewers ",")))
-        (rtm/call-release-procedure (format rtm/gh-pr-create-cmd
-                                            date date reviewers pr-description))))))
+      (let ((pr-description (format rtm/release-pr-description issue-number)))
+        (rtm/create-pr (format "Release %s" date) "main" (format "release-%s" date) pr-description)))))
 
 (defconst rtm/changelog-filename "CHANGELOG.md")
 
@@ -126,7 +128,7 @@ and ends before the next section or newline symbol."
     (let ((start (re-search-forward (format rtm/release-notes-entry-start-template project) nil)))
       (when start
         (let ((end (re-search-forward rtm/release-notes-entry-end nil)))
-              (buffer-substring start (match-beginning 0)))))))
+          (buffer-substring start (match-beginning 0)))))))
 
 (defun rtm/gh-release-draft-create (project date changes)
   "TODO Add a verb to function name"
@@ -152,8 +154,8 @@ and removes 'megafon-' prefix from it"
   "TODO Add a verb to function name"
   (shell-command-to-string (format "gh pr list --search 'Release %s' --json number --jq '.[].number' | tr -d '\n'" date)))
 
-(defun rtm/gh-pr-merge (date)
-  "TODO Add a verb to function name"
+(defun rtm/merge-release-pr (date)
+  "Merges Release Pull Request"
   (let ((pr-number (rtm/gh-release-pr-number date)))
     (rtm/call-release-procedure (format "gh pr merge release-%s --delete-branch --merge --subject 'Release %s (#%s)'" date date pr-number))))
 
@@ -163,9 +165,19 @@ and removes 'megafon-' prefix from it"
   (rtm/call-release-procedure "git pull origin main")
   (rtm/call-release-procedure (format "gh release edit %s --draft=false --prerelease=false --latest" date)))
 
-(defun rtm/backport-to-dev ()
-  "WIP"
-  (insert "Not implemented\n"))
+
+(defun rtm/backport-pr-description (date)
+  (let ((issue-number (rtm/get-release-issue-number date)))
+    (format "Related to tarantool/megafon-rtm#%s" issue-number)))
+
+(defun rtm/create-backport-pr (date)
+  "Create Backport Pull Request"
+  (rtm/call-release-procedure "git checkout main")
+  (rtm/call-release-procedure "git pull origin main")
+  (rtm/call-release-procedure (format "git branch backport-release-%s" date))
+  (rtm/call-release-procedure (format "git checkout backport-release-%s" date))
+  (rtm/call-release-procedure "git push origin HEAD")
+  (rtm/create-pr (format "Backport Release %s" date) "dev" (format "backport-release-%s" date) (rtm/backport-pr-description date)))
 
 (defconst rtm/output-buffer "*RTM Release Process*")
 
@@ -208,10 +220,9 @@ in the release process:
         (erase-buffer)
         (display-buffer output-buffer)
         (rtm/log "Start closing release")
-        (rtm/gh-pr-merge date)
+        (rtm/merge-release-pr date)
         (rtm/undraft-release date)
-        (rtm/backport-to-dev)))))
-
+        (rtm/create-backport-pr date)))))
 
 (defun rtm/sync-repositories(source target date)
   "WORK IN PROGRESS
