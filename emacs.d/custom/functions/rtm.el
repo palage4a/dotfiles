@@ -19,21 +19,35 @@ EOF")
 (defun rtm/get-release-issue-number (date)
   (shell-command-to-string (format "gh issue list --search '[RELEASE] %s'  --repo tarantool/megafon-rtm --json number --jq '.[0].number' | tr -d '\n'" date)))
 
+(defun rtm/release-pr-is-existed (date)
+  "Return true is release pull request was finded otherwise returns nil
+Explanation: Command exit code will be non-zero when Pull Request does not exist"
+  (when (eq (rtm/call-release-procedure (format "gh pr view release-%s" date)) 0) t))
+
+(defun rtm/release-is-existed (date)
+  "Return true is release was finded otherwise returns nil
+Explanation: Command exit code will be non-zero when Release does not exist"
+  (when (eq (rtm/call-release-procedure (format "gh release view %s" date)) 0) t))
+
 (defun rtm/setup-release-branch (date)
   "Creates a release branch at the development branch"
   (rtm/call-release-procedure "git checkout dev")
   (rtm/call-release-procedure "git pull origin dev")
-  (rtm/call-release-procedure (format "git checkout -b release-%s" date)))
+  (rtm/call-release-procedure (format "git branch release-%s" date))
+  (rtm/call-release-procedure (format "git checkout release-%s" date)))
 
 (defun rtm/create-release-pr (date)
-  (rtm/call-release-procedure "git add CHANGELOG.md")
-  (rtm/call-release-procedure (format "git commit -m 'Wrap up %s release'" date))
-  (rtm/call-release-procedure "git push origin HEAD")
-  (let ((issue-number (rtm/get-release-issue-number date)))
-    (let ((pr-description (format rtm/release-pr-description issue-number))
-          (reviewers (mapconcat 'identity rtm/release-pr-reviewers ",")))
-      (rtm/call-release-procedure (format rtm/gh-pr-create-cmd
-                                   date date reviewers pr-description)))))
+  "Creates release Pull Request, if it does not exist"
+  (if (rtm/release-pr-is-existed date)
+      (rtm/log "Release Pull Request is existed, noop")
+    (rtm/call-release-procedure "git add CHANGELOG.md")
+    (rtm/call-release-procedure (format "git commit -m 'Wrap up %s release'" date))
+    (rtm/call-release-procedure "git push origin HEAD")
+    (let ((issue-number (rtm/get-release-issue-number date)))
+      (let ((pr-description (format rtm/release-pr-description issue-number))
+            (reviewers (mapconcat 'identity rtm/release-pr-reviewers ",")))
+        (rtm/call-release-procedure (format rtm/gh-pr-create-cmd
+                                            date date reviewers pr-description))))))
 
 (defconst rtm/changelog-filename "CHANGELOG.md")
 
@@ -54,25 +68,27 @@ EOF")
 
 (defun rtm/update-changelog (date)
   "TODO Test it"
-  (insert "Updating changelog...\n")
+  (rtm/log "Updating changelog...")
   (let ((changelog (concat default-directory rtm/changelog-filename)))
     (with-temp-file changelog
       (insert-file-contents changelog)
-      (beginning-of-buffer)
-      (re-search-forward "Unreleased" nil t 1)
-      (replace-match date)
-      ;; removes empty subsections in the middle of section
-      (while (re-search-forward rtm/empty-section-pattern nil t 1)
-        (replace-match "#"))
-      ;; removes the last subsecton if it is empty
-      (while (re-search-forward rtm/empty-section-pattern-two nil t 1)
-        (replace-match "
+      (if (re-search-forward date nil t)
+          (rtm/log "Changelog was updated earlier, noop")
+        (beginning-of-buffer)
+        (re-search-forward "Unreleased" nil t 1)
+        (replace-match date)
+        ;; removes empty subsections in the middle of section
+        (while (re-search-forward rtm/empty-section-pattern nil t 1)
+          (replace-match "#"))
+        ;; removes the last subsecton if it is empty
+        (while (re-search-forward rtm/empty-section-pattern-two nil t 1)
+          (replace-match "
 "))
-      (beginning-of-buffer)
-      ;; places new empty section
-      (re-search-forward "##" nil t 1)
-      (replace-match (concat rtm/changelog-template-section "
-##")))))
+        (beginning-of-buffer)
+        ;; places new empty section
+        (re-search-forward "##" nil t 1)
+        (replace-match (concat rtm/changelog-template-section "
+##"))))))
 
 (defconst rtm/release-notes-entry-start-template "# %s\r\n")
 
@@ -118,15 +134,19 @@ and ends before the next section or newline symbol."
 %s" date date (format rtm/release-notes-body-template changes project date))))
 
 (defun rtm/create-draft-release (project date)
-  (let ((changes (rtm/extract-changes project date)))
-    (rtm/gh-release-draft-create project date changes)))
+  "Creates draft release, if it does not exist"
+  (if (rtm/release-is-existed date)
+      (rtm/log "Release is existed, noop")
+    (let ((changes (rtm/extract-changes project date)))
+      (rtm/gh-release-draft-create project date changes))))
 
 (defun rtm/get-project-name (dir)
   "Extracts current directory name from default-directory
 and removes 'megafon-' prefix from it"
   (let ((dirname (car (last (split-string dir "/") 2))))
-    (cond ((string-equal dirname "megafon-rtm") "rtm-megafon")
-          ((replace-regexp-in-string "megafon-" "" dirname)))))
+    (if (string-equal dirname "megafon-rtm")
+        "rtm-megafon"
+      (replace-regexp-in-string "megafon-" "" dirname))))
 
 (defun rtm/gh-release-pr-number (date)
   "TODO Add a verb to function name"
@@ -138,8 +158,9 @@ and removes 'megafon-' prefix from it"
     (rtm/call-release-procedure (format "gh pr merge release-%s --delete-branch --merge --subject 'Release %s (#%s)'" date date pr-number))))
 
 (defun rtm/undraft-release (date)
-  "Edit previously created draft release
-* TODO check that current branch is always `main'"
+  "Edit previously created draft release"
+  (rtm/call-release-procedure "git checkout main")
+  (rtm/call-release-procedure "git pull origin main")
   (rtm/call-release-procedure (format "gh release edit %s --draft=false --prerelease=false --latest" date)))
 
 (defun rtm/backport-to-dev ()
@@ -148,9 +169,13 @@ and removes 'megafon-' prefix from it"
 
 (defconst rtm/output-buffer "*RTM Release Process*")
 
+(defun rtm/log (message)
+  (with-current-buffer (get-buffer-create rtm/output-buffer)
+    (insert (concat message "\n"))))
+
 (defun rtm/call-release-procedure (command)
   (let ((output-buffer (get-buffer-create rtm/output-buffer)))
-    (insert (format "\nCalling '%s':\n" command))
+    (rtm/log (format "Calling '%s':" command))
     (call-process-shell-command command nil output-buffer t)))
 
 (defun rtm/open-release (dir date)
@@ -165,12 +190,11 @@ in the release process:
             (project (rtm/get-project-name dir)))
         (erase-buffer)
         (display-buffer output-buffer)
-        (insert "Start opening release\n")
+        (rtm/log "Start opening release")
         (rtm/setup-release-branch date)
         (rtm/update-changelog date)
         (rtm/create-release-pr date)
-        ;; (rtm/create-draft-release project date)
-        ))))
+        (rtm/create-draft-release project date)))))
 
 (defun rtm/close-release (dir date)
   "Finishes release cycle:
@@ -183,7 +207,7 @@ in the release process:
       (let ((default-directory dir))
         (erase-buffer)
         (display-buffer output-buffer)
-        (insert "Start closing release\n")
+        (rtm/log "Start closing release")
         (rtm/gh-pr-merge date)
         (rtm/undraft-release date)
         (rtm/backport-to-dev)))))
