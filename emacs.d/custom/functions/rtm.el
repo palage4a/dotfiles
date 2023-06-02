@@ -94,7 +94,7 @@ Explanation: Command exit code will be non-zero when Release does not exist"
 
 (defconst rtm/release-notes-entry-start-template "# %s\r\n")
 
-(defconst rtm/release-notes-entry-end "\r\n\\|# ")
+(defconst rtm/release-notes-entry-end "\r\n\r\n\\|# ")
 
 (defconst rtm/release-notes-body-template "
 Изменения:
