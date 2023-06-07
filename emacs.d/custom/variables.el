@@ -16,6 +16,8 @@
  '(org-log-done-with-time t)
  '(org-log-reschedule 'note)
  '(org-refile-targets '((org-agenda-files :maxlevel . 5)))
+ '(process-adaptive-read-buffering nil t)
+ '(process-read-maximum-size 100000)
  '(package-selected-packages
    '(markdown-mode yasnippet yaml-mode xterm-color use-package typescript-mode solarized-theme org-gcal magit lua-mode jsonnet-mode js2-mode ivy-posframe go-mode exec-path-from-shell evil eglot counsel company))
  '(whitespace-line-column 120))
