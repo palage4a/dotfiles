@@ -7,7 +7,7 @@ EOF")
 (defconst rtm/reviewers '("palage4a" "tecl1s" "runsfor"))
 
 (defun rtm/create-pr (title base head body)
-  (let ((reviewers (mapconcat 'identity rtm/release-pr-reviewers ",")))
+  (let ((reviewers (mapconcat 'identity rtm/reviewers ",")))
     (rtm/call-release-procedure (format rtm/gh-pr-create-cmd title base head reviewers body))))
 
 (defconst rtm/release-pr-description "Related to tarantool/megafon-rtm#%s
@@ -94,7 +94,7 @@ Explanation: Command exit code will be non-zero when Release does not exist"
 
 (defconst rtm/release-notes-entry-start-template "# %s\r\n")
 
-(defconst rtm/release-notes-entry-end "\r\n\r\n\\|# ")
+(defconst rtm/release-notes-entry-end "\r\n\r\n\\|\r\n# \\|\r\n```")
 
 (defconst rtm/release-notes-body-template "
 Изменения:
@@ -133,7 +133,8 @@ and ends before the next section or newline symbol."
 (defun rtm/gh-release-draft-create (project date changes)
   "TODO Add a verb to function name"
   (rtm/call-release-procedure (format "gh release create %s --draft --prerelease --target main --title 'Release %s' --notes-file - <<- EOF
-%s" date date (format rtm/release-notes-body-template changes project date))))
+%s
+EOF" date date (format rtm/release-notes-body-template changes project date))))
 
 (defun rtm/create-draft-release (project date)
   "Creates draft release, if it does not exist"
