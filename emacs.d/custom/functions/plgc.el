@@ -136,3 +136,10 @@ same directory as the org-buffer and insert a link to this file."
 (defun plgc/docker-ps ()
   (interactive)
   (async-shell-command "docker ps"))
+
+(defun plgc/insert-commas ()
+  "This is helpful function when you need to add comma after multiple json-objects to comply json-format"
+  (while (re-search-forward "}
+{")
+    (replace-match "},
+{")))
