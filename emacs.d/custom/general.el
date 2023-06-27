@@ -29,7 +29,6 @@
 (setq indent-line-function 'insert-tab)
 (setq delete-trailing-lines nil)
 
-(load-theme 'solarized-selenized-black t)
 (set-frame-font "Terminus (TTF) 16" nil t)
 (setq-default cursor-type 'bar)
 (setq-default show-trailing-whitespace t)
