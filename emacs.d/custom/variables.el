@@ -13,9 +13,19 @@
  '(org-log-done 'note)
  '(org-log-done-with-time t)
  '(org-log-reschedule 'note)
- '(org-refile-targets '((org-agenda-files :maxlevel . 5)))
+ '(org-outline-path-complete-in-steps nil)
+ '(org-refile-allow-creating-parent-nodes 'confirm)
+ '(org-refile-targets '((org-agenda-files :maxlevel . 3)))
+ '(org-refile-use-outline-path 'file)
  '(package-selected-packages
    '(markdown-mode yasnippet yaml-mode xterm-color use-package typescript-mode solarized-theme org-gcal magit lua-mode jsonnet-mode js2-mode ivy-posframe go-mode exec-path-from-shell evil eglot counsel company))
  '(process-adaptive-read-buffering nil t)
  '(process-read-maximum-size 100000)
+ '(server-mode t)
  '(whitespace-line-column 120))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
