@@ -60,3 +60,10 @@
 (setq custom-file (expand-file-name "custom/variables.el" user-emacs-directory))
 
 (savehist-mode)
+
+(setq org-capture-templates
+      '(("n" "Note" entry (file+datetree "~/org/notes.org")
+         "* %?\nEntered on %U\n  %i")))
+
+(define-key global-map (kbd "C-c c")
+  (lambda () (interactive) (org-capture nil "n")))
