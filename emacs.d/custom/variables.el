@@ -20,7 +20,6 @@
  '(org-refile-allow-creating-parent-nodes 'confirm)
  '(org-refile-targets '((org-agenda-files :maxlevel . 3)))
  '(org-refile-use-outline-path 'file)
- '(org-todo-keywords '((sequence "TODO" "DONE" "NEXT" "CANCELD")))
  '(org-use-tag-inheritance nil)
  '(package-selected-packages
    '(org-journal org-mac-iCal markdown-mode yasnippet yaml-mode xterm-color use-package typescript-mode solarized-theme org-gcal magit lua-mode jsonnet-mode js2-mode ivy-posframe go-mode exec-path-from-shell evil eglot counsel company))
