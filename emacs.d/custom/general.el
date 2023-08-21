@@ -66,3 +66,5 @@
 
 (define-key global-map (kbd "C-c c")
   (lambda () (interactive) (org-capture nil "n")))
+
+(load-theme 'modus-vivendi)
