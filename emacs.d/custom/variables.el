@@ -22,7 +22,7 @@
  '(org-refile-use-outline-path 'file)
  '(org-use-tag-inheritance nil)
  '(package-selected-packages
-   '(org-journal org-mac-iCal markdown-mode yasnippet yaml-mode xterm-color use-package typescript-mode solarized-theme org-gcal magit lua-mode jsonnet-mode js2-mode ivy-posframe go-mode exec-path-from-shell evil eglot counsel company))
+   '(rust-mode org-journal org-mac-iCal markdown-mode yasnippet yaml-mode xterm-color use-package typescript-mode solarized-theme org-gcal magit lua-mode jsonnet-mode js2-mode ivy-posframe go-mode exec-path-from-shell evil eglot counsel company))
  '(process-adaptive-read-buffering nil t)
  '(process-read-maximum-size 100000)
  '(server-mode t)

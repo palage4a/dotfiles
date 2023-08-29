@@ -163,6 +163,7 @@
 (use-package jsonnet-mode)
 (use-package js2-mode)
 (use-package typescript-mode)
+(use-package rust-mode)
 
 (use-package eglot
   :hook  ((lua-mode . eglot-ensure)
@@ -170,7 +171,8 @@
           (c-mode . eglot-ensure)
           (go-mode . eglot-ensure)
           (typescript-mode . eglot-ensure)
-          (jsonnet-mode . eglot-ensure))
+          (jsonnet-mode . eglot-ensure)
+          (rust-mode . eglot-ensure))
   :config
   (add-to-list 'eglot-server-programs
                '(lua-mode . ("lua-language-server")))
