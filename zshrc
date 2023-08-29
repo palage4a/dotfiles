@@ -26,3 +26,4 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
 export CPPFLAGS="-I/usr/local/opt/openjdk/include"
+export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
