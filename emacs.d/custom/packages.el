@@ -151,7 +151,14 @@
 
   (global-set-key (kbd "C-c  t") 'tnt-popup))
 
-(use-package go-mode)
+(use-package go-mode
+  :config
+  (defun project-find-go-module (dir)
+    (when-let ((root (locate-dominating-file dir "go.mod")))
+      (cons 'go-module root)))
+  (cl-defmethod project-root ((project (head go-module)))
+    (cdr project))
+  (add-hook 'project-find-functions #'project-find-go-module))
 
 (use-package xterm-color
   :config
@@ -163,7 +170,14 @@
 (use-package jsonnet-mode)
 (use-package js2-mode)
 (use-package typescript-mode)
-(use-package rust-mode)
+(use-package rust-mode
+    :config
+    (defun project-find-cargo-config (dir)
+      (when-let ((root (locate-dominating-file dir "Cargo.toml")))
+        (cons 'cargo-config root)))
+    (cl-defmethod project-root ((project (head cargo-config)))
+      (cdr project))
+    (add-hook 'project-find-functions #'project-find-cargo-config))
 
 (use-package eglot
   :hook  ((lua-mode . eglot-ensure)
@@ -180,7 +194,7 @@
                '((c++-mode c-mode) . ("clangd")))
   (add-to-list 'eglot-server-programs
                '((typescript-mode) . ("typescript-language-server" "--stdio")))
-    (add-to-list 'eglot-server-programs
+  (add-to-list 'eglot-server-programs
                '((jsonnet-mode) . ("jsonnet-language-server"))))
 
 (use-package org
