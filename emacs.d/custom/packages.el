@@ -192,4 +192,13 @@
          ("C-c a" . org-agenda)
          ("C-c c" . org-capture)))
 
+(use-package org-roam
+  :config
+  (org-roam-db-autosync-mode)
+  :bind(("C-c o c" . org-roam-capture)
+        ("C-c o f" . org-roam-node-find)
+        ("C-c o i" . org-roam-node-insert)))
+
+(use-package org-roam-ui)
+
 (use-package markdown-mode)
