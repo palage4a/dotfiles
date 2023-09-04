@@ -7,8 +7,7 @@
 (use-package exec-path-from-shell
   :config
   (when (memq window-system '(mac ns))
-    (exec-path-from-shell-initialize)
-    (exec-path-from-shell-copy-env "HISTFILE")))
+    (exec-path-from-shell-initialize)))
 
 (use-package counsel ;; ivy
   :config
@@ -188,6 +187,8 @@
           (jsonnet-mode . eglot-ensure)
           (rust-mode . eglot-ensure))
   :config
+  (setq-default eglot-workspace-configuration
+                '(:rust-analyzer (:files (:excludeDirs ("target")))))
   (add-to-list 'eglot-server-programs
                '(lua-mode . ("lua-language-server")))
   (add-to-list 'eglot-server-programs
@@ -208,6 +209,7 @@
 
 (use-package org-roam
   :config
+  (setq org-roam-directory "~/org/roam/")
   (org-roam-db-autosync-mode)
   :bind(("C-c o c" . org-roam-capture)
         ("C-c o f" . org-roam-node-find)
