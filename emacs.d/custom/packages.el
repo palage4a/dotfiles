@@ -55,6 +55,15 @@
   (setq lua-indent-close-paren-align nil)
   (setq lua-default-application "tarantool")
 
+  (defun is-rockspec (filename)
+    (string-suffix-p ".rockspec" filename))
+  (defun project-find-lua-config (dir)
+      (when-let ((root (locate-dominating-file dir #'is-rockspec)))
+        (cons 'lua-config root)))
+    (cl-defmethod project-root ((project (head lua-config)))
+      (cdr project))
+    (add-hook 'project-find-functions #'project-find-lua-config)
+
   (defun rgc-lua-at-most-one-indent (old-function &rest arguments)
     (let ((old-res (apply old-function arguments)))
       (if (> old-res 4) 4 old-res)))
