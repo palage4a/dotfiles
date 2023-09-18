@@ -227,3 +227,5 @@
 (use-package org-roam-ui)
 
 (use-package markdown-mode)
+
+(use-package dockerfile-mode)
