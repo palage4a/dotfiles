@@ -40,7 +40,7 @@
 (advice-add 'package-install :before 'my-package-install-refresh-contents)
 
 (show-paren-mode 1)
-(setq linum-format "%4d ")
+(global-display-line-numbers-mode)
 (delete-selection-mode 1)
 
 ;; deleting trailing whitespaces only in prog-modes
@@ -50,7 +50,6 @@
                        (not (eq major-mode 'fundamental-mode)))
               (delete-trailing-whitespace))))
 
-(add-hook 'prog-mode-hook 'linum-mode)
 (add-hook 'prog-mode-hook 'electric-pair-mode)
 
 (put 'upcase-region 'disabled nil)

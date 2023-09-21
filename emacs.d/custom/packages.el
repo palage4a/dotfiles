@@ -14,8 +14,6 @@
   (ivy-mode 1)
   (setq ivy-height 25)
   (use-package ivy-posframe)
-  ;(setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
-  ;(ivy-posframe-mode 1)
   (setq ivy-use-virtual-buffers t)
   (setq enable-recursive-minibuffers t)
   (global-set-key "\C-s" 'swiper)
@@ -54,15 +52,6 @@
   (setq lua-indent-string-contents nil)
   (setq lua-indent-close-paren-align nil)
   (setq lua-default-application "tarantool")
-
-  (defun is-rockspec (filename)
-    (string-suffix-p ".rockspec" filename))
-  (defun project-find-lua-config (dir)
-      (when-let ((root (locate-dominating-file dir #'is-rockspec)))
-        (cons 'lua-config root)))
-    (cl-defmethod project-root ((project (head lua-config)))
-      (cdr project))
-    (add-hook 'project-find-functions #'project-find-lua-config)
 
   (defun rgc-lua-at-most-one-indent (old-function &rest arguments)
     (let ((old-res (apply old-function arguments)))
@@ -159,14 +148,7 @@
 
   (global-set-key (kbd "C-c  t") 'tnt-popup))
 
-(use-package go-mode
-  :config
-  (defun project-find-go-module (dir)
-    (when-let ((root (locate-dominating-file dir "go.mod")))
-      (cons 'go-module root)))
-  (cl-defmethod project-root ((project (head go-module)))
-    (cdr project))
-  (add-hook 'project-find-functions #'project-find-go-module))
+(use-package go-mode)
 
 (use-package xterm-color
   :config
@@ -178,14 +160,7 @@
 (use-package jsonnet-mode)
 (use-package js2-mode)
 (use-package typescript-mode)
-(use-package rust-mode
-    :config
-    (defun project-find-cargo-config (dir)
-      (when-let ((root (locate-dominating-file dir "Cargo.toml")))
-        (cons 'cargo-config root)))
-    (cl-defmethod project-root ((project (head cargo-config)))
-      (cdr project))
-    (add-hook 'project-find-functions #'project-find-cargo-config))
+(use-package rust-mode)
 
 (use-package eglot
   :hook  ((lua-mode . eglot-ensure)
@@ -205,7 +180,9 @@
   (add-to-list 'eglot-server-programs
                '((typescript-mode) . ("typescript-language-server" "--stdio")))
   (add-to-list 'eglot-server-programs
-               '((jsonnet-mode) . ("jsonnet-language-server"))))
+               '((jsonnet-mode) . ("jsonnet-language-server")))
+  (global-set-key (kbd "C-c e o") 'eglot-code-action-organize-imports)
+  (global-set-key (kbd "C-c e f") 'eglot-format-buffer))
 
 (use-package org
   :config
