@@ -1,7 +1,7 @@
 [user]
     email = vvnvvplg@gmail.com
     name = palage4a
-    signingkey = 2BEF15FE14C928123230182DE3F51B9012EE13DD
+	signingkey = 71246226D754EB24C6340D5A6C1A348ADC5013E9
 [pull]
     rebase = false
 [mergetool]
