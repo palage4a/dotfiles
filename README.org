@@ -1,0 +1,10 @@
+* Dotfiles
+See =Makefile= for install
+** Dependencies
+*** Emacs 29.1
+**** Installation
+#+begin_src shell
+  brew tap railwaycat/emacsmacport;
+  brew install emacs-mac --with-emacs-sexy-icon --with-librsvg --with-mac-metal --with-native-compilation --with-starter
+#+end_src
+
