@@ -40,7 +40,7 @@
 (advice-add 'package-install :before 'my-package-install-refresh-contents)
 
 (show-paren-mode 1)
-(global-display-line-numbers-mode)
+
 (delete-selection-mode 1)
 
 ;; deleting trailing whitespaces only in prog-modes
@@ -51,6 +51,7 @@
               (delete-trailing-whitespace))))
 
 (add-hook 'prog-mode-hook 'electric-pair-mode)
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
@@ -63,7 +64,7 @@
       '(("n" "Note" entry (file+datetree "~/org/notes.org")
          "* %?\nEntered on %U\n  %i")))
 
-(define-key global-map (kbd "C-c c")
-  (lambda () (interactive) (org-capture nil "n")))
-
 (load-theme 'modus-operandi)
+
+(setq mac-command-modifier 'nil)
+(setq mac-option-modifier 'meta)
