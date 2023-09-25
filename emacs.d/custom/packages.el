@@ -182,7 +182,8 @@
   (add-to-list 'eglot-server-programs
                '((jsonnet-mode) . ("jsonnet-language-server")))
   (global-set-key (kbd "C-c e o") 'eglot-code-action-organize-imports)
-  (global-set-key (kbd "C-c e f") 'eglot-format-buffer))
+  (global-set-key (kbd "C-c e f") 'eglot-format-buffer)
+  (global-set-key (kbd "C-c e a") 'eglot-code-actions))
 
 (use-package org
   :config
@@ -209,3 +210,5 @@
 (use-package markdown-mode)
 
 (use-package dockerfile-mode)
+
+(use-package protobuf-mode)

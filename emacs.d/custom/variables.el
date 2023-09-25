@@ -38,7 +38,7 @@
  '(org-roam-directory "/Users/i.palagecha/org/roam/")
  '(org-use-tag-inheritance nil)
  '(package-selected-packages
-   '(dockerfile-mode org-pomodoro org-pomorodo org-pomorodor org-roam-ui org-roam rust-mode org-journal org-mac-iCal markdown-mode yasnippet yaml-mode xterm-color use-package typescript-mode solarized-theme org-gcal magit lua-mode jsonnet-mode js2-mode ivy-posframe go-mode exec-path-from-shell evil eglot counsel company))
+   '(protobuf-mode dockerfile-mode org-pomodoro org-pomorodo org-pomorodor org-roam-ui org-roam rust-mode org-journal org-mac-iCal markdown-mode yasnippet yaml-mode xterm-color use-package typescript-mode solarized-theme org-gcal magit lua-mode jsonnet-mode js2-mode ivy-posframe go-mode exec-path-from-shell evil eglot counsel company))
  '(process-adaptive-read-buffering nil t)
  '(process-read-maximum-size 100000)
  '(server-mode t)
