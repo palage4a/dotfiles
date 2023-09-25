@@ -39,10 +39,48 @@
         '("~/.emacs.d/custom/snippets"))
   (yas-reload-all))
 
+(use-package xterm-color
+  :config
+  (setq compilation-environment '("TERM=xterm-256color"))
+  (defun plgc-advice-compilation-filter (f proc string)
+    (funcall f proc (xterm-color-filter string)))
+  (advice-add 'compilation-filter :around #'plgc-advice-compilation-filter))
+
+(use-package org
+  :config
+  (setq org-export-backends '(ascii html latex md))
+  (setq org-default-notes-file (concat org-directory "/notes.org"))
+  (setq org-startup-indented t)
+  (setq org-todo-keywords
+        '((sequence "TODO(t)" "|" "DONE(d)")
+          (sequence "|" "CANCELED(c)")))
+  :bind (("C-c l" . org-store-link)
+         ("C-c a" . org-agenda)
+         ("C-c c" . org-capture)))
+
+(use-package org-roam
+  :config
+  (setq org-roam-directory "~/org/roam/")
+  (org-roam-db-autosync-mode)
+  :bind(("C-c o c" . org-roam-capture)
+        ("C-c o f" . org-roam-node-find)
+        ("C-c o i" . org-roam-node-insert)))
+
+(use-package org-roam-ui)
+
+
+;; Languages
+(use-package markdown-mode)
+(use-package dockerfile-mode)
+(use-package protobuf-mode)
+(use-package jsonnet-mode)
+(use-package js2-mode)
+(use-package typescript-mode)
+(use-package rust-mode)
+(use-package go-mode)
 (use-package yaml-mode
   :config
   (add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode)))
-
 (use-package lua-mode
   :config
   (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
@@ -148,20 +186,6 @@
 
   (global-set-key (kbd "C-c  t") 'tnt-popup))
 
-(use-package go-mode)
-
-(use-package xterm-color
-  :config
-  (setq compilation-environment '("TERM=xterm-256color"))
-  (defun plgc-advice-compilation-filter (f proc string)
-    (funcall f proc (xterm-color-filter string)))
-  (advice-add 'compilation-filter :around #'plgc-advice-compilation-filter))
-
-(use-package jsonnet-mode)
-(use-package js2-mode)
-(use-package typescript-mode)
-(use-package rust-mode)
-
 (use-package eglot
   :hook  ((lua-mode . eglot-ensure)
           (c++-mode . eglot-ensure)
@@ -184,31 +208,3 @@
   (global-set-key (kbd "C-c e o") 'eglot-code-action-organize-imports)
   (global-set-key (kbd "C-c e f") 'eglot-format-buffer)
   (global-set-key (kbd "C-c e a") 'eglot-code-actions))
-
-(use-package org
-  :config
-  (setq org-export-backends '(ascii html latex md))
-  (setq org-default-notes-file (concat org-directory "/notes.org"))
-  (setq org-startup-indented t)
-  (setq org-todo-keywords
-        '((sequence "TODO(t)" "|" "DONE(d)")
-          (sequence "|" "CANCELED(c)")))
-  :bind (("C-c l" . org-store-link)
-         ("C-c a" . org-agenda)
-         ("C-c c" . org-capture)))
-
-(use-package org-roam
-  :config
-  (setq org-roam-directory "~/org/roam/")
-  (org-roam-db-autosync-mode)
-  :bind(("C-c o c" . org-roam-capture)
-        ("C-c o f" . org-roam-node-find)
-        ("C-c o i" . org-roam-node-insert)))
-
-(use-package org-roam-ui)
-
-(use-package markdown-mode)
-
-(use-package dockerfile-mode)
-
-(use-package protobuf-mode)
