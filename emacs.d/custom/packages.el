@@ -189,6 +189,9 @@
   (setq org-export-backends '(ascii html latex md))
   (setq org-default-notes-file (concat org-directory "/notes.org"))
   (setq org-startup-indented t)
+  (setq org-todo-keywords
+        '((sequence "TODO(t)" "|" "DONE(d)")
+          (sequence "|" "CANCELED(c)")))
   :bind (("C-c l" . org-store-link)
          ("C-c a" . org-agenda)
          ("C-c c" . org-capture)))
