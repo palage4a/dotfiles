@@ -39,13 +39,6 @@
         '("~/.emacs.d/custom/snippets"))
   (yas-reload-all))
 
-(use-package xterm-color
-  :config
-  (setq compilation-environment '("TERM=xterm-256color"))
-  (defun plgc-advice-compilation-filter (f proc string)
-    (funcall f proc (xterm-color-filter string)))
-  (advice-add 'compilation-filter :around #'plgc-advice-compilation-filter))
-
 (use-package org
   :config
   (setq org-export-backends '(ascii html latex md))
