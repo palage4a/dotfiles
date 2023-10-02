@@ -2,6 +2,7 @@
 
 (use-package magit
   :config
+  (setq magit-auto-revert-mode nil)
   (global-set-key (kbd "C-x g") 'magit-status))
 
 (use-package exec-path-from-shell
