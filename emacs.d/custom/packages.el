@@ -113,3 +113,7 @@
   (global-set-key (kbd "C-c e f") 'eglot-format-buffer)
   (global-set-key (kbd "C-c e a") 'eglot-code-actions)
   (global-set-key (kbd "C-c e r") 'eglot-rename))
+
+(use-package flymake
+  :config
+  (global-set-key (kbd "C-x `") 'flymake-goto-next-error))
