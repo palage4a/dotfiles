@@ -64,7 +64,7 @@
       '(("n" "Note" entry (file+datetree "~/org/notes.org")
          "* %?\nEntered on %U\n  %i")))
 
-(load-theme 'modus-operandi)
+(load-theme 'leuven)
 
 (setq mac-command-modifier 'nil)
 (setq mac-option-modifier 'meta)
