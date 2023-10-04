@@ -16,12 +16,11 @@
 (column-number-mode 1)
 (global-auto-revert-mode 1)
 (auto-save-visited-mode 1)
-(global-auto-revert-mode t)
 
 (setq make-backup-files nil)
 (setq create-lockfiles nil)
 
-(setq gc-cons-threshold 100000000)
+;; (setq gc-cons-threshold (* 1024 1024 100)) ; 100 MiB
 
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
@@ -63,8 +62,6 @@
 (setq org-capture-templates
       '(("n" "Note" entry (file+datetree "~/org/notes.org")
          "* %?\nEntered on %U\n  %i")))
-
-(load-theme 'leuven)
 
 (setq mac-command-modifier 'nil)
 (setq mac-option-modifier 'meta)
