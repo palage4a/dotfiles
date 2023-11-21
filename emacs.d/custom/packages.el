@@ -3,10 +3,10 @@
 (use-package magit
   :config
   ;; Performance tricks (idk is it working or not)
-  ;; (setq magit-auto-revert-mode nil)
-  ;; (remove-hook 'magit-refs-sections-hook 'magit-insert-tags)
-  ;; (remove-hook 'server-switch-hook 'magit-commit-diff)
-  ;; (remove-hook 'with-editor-filter-visit-hook 'magit-commit-diff)
+  (setq magit-auto-revert-mode nil)
+  (remove-hook 'magit-refs-sections-hook 'magit-insert-tags)
+  (remove-hook 'server-switch-hook 'magit-commit-diff)
+  (remove-hook 'with-editor-filter-visit-hook 'magit-commit-diff)
   (global-set-key (kbd "C-x g") 'magit-status))
 
 (use-package exec-path-from-shell
