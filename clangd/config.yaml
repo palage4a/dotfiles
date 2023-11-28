@@ -1,2 +1,2 @@
 CompileFlags:
-    Add: ["-I/Users/i.palagecha/sdk/macos/2.10/include", "-I/Users/i.palagecha/sdk/macos/2.10/include/tarantool"]
+    Add: ["-I/Users/i.palagecha/sdk/macos/2.11.0/include", "-I/Users/i.palagecha/sdk/macos/2.11.0/include/tarantool"]

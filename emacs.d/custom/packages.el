@@ -113,8 +113,8 @@
                 '(:rust-analyzer (:files (:excludeDirs ("target")))))
   (add-to-list 'eglot-server-programs
                '(lua-mode . ("lua-language-server")))
-  (add-to-list 'eglot-server-programs
-               '((c++-mode c-mode) . ("clangd")))
+  ;; (add-to-list 'eglot-server-programs
+               ;; '((c++-mode c-mode) . ("clangd")))
   (add-to-list 'eglot-server-programs
                '((typescript-mode) . ("typescript-language-server" "--stdio")))
   (add-to-list 'eglot-server-programs
