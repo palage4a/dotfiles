@@ -20,8 +20,6 @@
 (setq make-backup-files nil)
 (setq create-lockfiles nil)
 
-;; (setq gc-cons-threshold (* 1024 1024 100)) ; 100 MiB
-
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 
@@ -58,10 +56,6 @@
 (setq custom-file (expand-file-name "custom/variables.el" user-emacs-directory))
 
 (savehist-mode)
-
-(setq org-capture-templates
-      '(("n" "Note" entry (file+datetree "~/org/notes.org")
-         "* %?\nEntered on %U\n  %i")))
 
 (setq mac-command-modifier 'nil)
 (setq mac-option-modifier 'meta)

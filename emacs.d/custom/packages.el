@@ -31,7 +31,6 @@
 ;; Company is for code auto-completion
 (use-package company
   :hook (after-init . global-company-mode)
-  :bind ("M-/" . company-idle-delay-complete)
   :bind ("C-x C-/" . dabbrev-expand)
   :config
   (setq company-idle-delay 0))
@@ -50,28 +49,6 @@
   (defun plgc-advice-compilation-filter (f proc string)
     (funcall f proc (xterm-color-filter string)))
   (advice-add 'compilation-filter :around #'plgc-advice-compilation-filter))
-
-(use-package org
-  :config
-  (setq org-export-backends '(ascii html latex md))
-  (setq org-default-notes-file (concat org-directory "/notes.org"))
-  (setq org-startup-indented t)
-  (setq org-todo-keywords
-        '((sequence "TODO(t)" "|" "DONE(d)")
-          (sequence "|" "CANCELED(c)")))
-  :bind (("C-c l" . org-store-link)
-         ("C-c a" . org-agenda)
-         ("C-c c" . org-capture)))
-
-(use-package org-roam
-  :config
-  (setq org-roam-directory "~/org/roam/")
-  (org-roam-db-autosync-mode)
-  :bind(("C-c o c" . org-roam-capture)
-        ("C-c o f" . org-roam-node-find)
-        ("C-c o i" . org-roam-node-insert)))
-
-(use-package org-roam-ui)
 
 ;; Languages
 (use-package markdown-mode)
@@ -99,31 +76,6 @@
       (if (> old-res 4) 4 old-res)))
   (advice-add #'lua-calculate-indentation-block-modifier
               :around #'rgc-lua-at-most-one-indent))
-
-(use-package eglot
-  :hook  ((lua-mode . eglot-ensure)
-          (c++-mode . eglot-ensure)
-          (c-mode . eglot-ensure)
-          (go-mode . eglot-ensure)
-          (typescript-mode . eglot-ensure)
-          (jsonnet-mode . eglot-ensure)
-          (rust-mode . eglot-ensure))
-  :config
-  (setq-default eglot-workspace-configuration
-                '(:rust-analyzer (:files (:excludeDirs ("target")))))
-  (add-to-list 'eglot-server-programs
-               '(lua-mode . ("lua-language-server")))
-  ;; (add-to-list 'eglot-server-programs
-               ;; '((c++-mode c-mode) . ("clangd")))
-  (add-to-list 'eglot-server-programs
-               '((typescript-mode) . ("typescript-language-server" "--stdio")))
-  (add-to-list 'eglot-server-programs
-               '((jsonnet-mode) . ("jsonnet-language-server")))
-
-  (global-set-key (kbd "C-c e o") 'eglot-code-action-organize-imports)
-  (global-set-key (kbd "C-c e f") 'eglot-format-buffer)
-  (global-set-key (kbd "C-c e a") 'eglot-code-actions)
-  (global-set-key (kbd "C-c e r") 'eglot-rename))
 
 (use-package flymake
   :config
