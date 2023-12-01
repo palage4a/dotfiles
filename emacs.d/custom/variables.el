@@ -12,6 +12,7 @@
  '(exec-path-from-shell-arguments '("-l"))
  '(exec-path-from-shell-variables '("HISTFILE" "PATH" "MANPATH"))
  '(flymake-no-changes-timeout 1)
+ '(grep-command "grep --color=auto -nH --null -I -r -e ")
  '(package-selected-packages
    '(protobuf-mode dockerfile-mode org-pomodoro org-pomorodo org-pomorodor org-roam-ui org-roam rust-mode org-journal org-mac-iCal markdown-mode yasnippet yaml-mode xterm-color use-package typescript-mode solarized-theme org-gcal magit lua-mode jsonnet-mode js2-mode ivy-posframe go-mode exec-path-from-shell evil eglot counsel company))
  '(process-adaptive-read-buffering nil t)
