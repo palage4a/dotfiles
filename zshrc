@@ -28,4 +28,4 @@ export PATH="/usr/local/opt/openjdk/bin:$PATH"
 export CPPFLAGS="-I/usr/local/opt/openjdk/include"
 export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
 
-export PATH="$PATH:$HOME/sdk/macos/2.11.0"
+export PATH="$PATH:$HOME/sdk/macos/2.11.1"
