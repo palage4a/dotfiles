@@ -57,5 +57,9 @@
 
 (savehist-mode)
 
+(setq org-capture-templates
+      '(("n" "Note" entry (file+datetree "~/org/notes.org")
+         "* %?\nEntered on %U\n  %i")))
+
 (setq mac-command-modifier 'nil)
 (setq mac-option-modifier 'meta)
