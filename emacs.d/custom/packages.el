@@ -31,7 +31,6 @@
 ;; Company is for code auto-completion
 (use-package company
   :hook (after-init . global-company-mode)
-  :bind ("M-/" . company-idle-delay-complete)
   :bind ("C-x C-/" . dabbrev-expand)
   :config
   (setq company-idle-delay 0))
@@ -61,7 +60,8 @@
           (sequence "|" "CANCELED(c)")))
   :bind (("C-c l" . org-store-link)
          ("C-c a" . org-agenda)
-         ("C-c c" . org-capture)))
+         ("C-c c" . org-capture)
+         ("C-c e" . org-edit-src-code)))
 
 (use-package org-roam
   :config
@@ -81,7 +81,10 @@
 (use-package js2-mode)
 (use-package typescript-mode)
 (use-package rust-mode)
-(use-package go-mode)
+(use-package go-mode
+  :config
+  (setq gofmt-command "goimports")
+  (add-hook 'before-save-hook 'gofmt-before-save))
 (use-package yaml-mode
   :config
   (add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode)))
@@ -99,31 +102,6 @@
       (if (> old-res 4) 4 old-res)))
   (advice-add #'lua-calculate-indentation-block-modifier
               :around #'rgc-lua-at-most-one-indent))
-
-(use-package eglot
-  :hook  ((lua-mode . eglot-ensure)
-          (c++-mode . eglot-ensure)
-          (c-mode . eglot-ensure)
-          (go-mode . eglot-ensure)
-          (typescript-mode . eglot-ensure)
-          (jsonnet-mode . eglot-ensure)
-          (rust-mode . eglot-ensure))
-  :config
-  (setq-default eglot-workspace-configuration
-                '(:rust-analyzer (:files (:excludeDirs ("target")))))
-  (add-to-list 'eglot-server-programs
-               '(lua-mode . ("lua-language-server")))
-  ;; (add-to-list 'eglot-server-programs
-               ;; '((c++-mode c-mode) . ("clangd")))
-  (add-to-list 'eglot-server-programs
-               '((typescript-mode) . ("typescript-language-server" "--stdio")))
-  (add-to-list 'eglot-server-programs
-               '((jsonnet-mode) . ("jsonnet-language-server")))
-
-  (global-set-key (kbd "C-c e o") 'eglot-code-action-organize-imports)
-  (global-set-key (kbd "C-c e f") 'eglot-format-buffer)
-  (global-set-key (kbd "C-c e a") 'eglot-code-actions)
-  (global-set-key (kbd "C-c e r") 'eglot-rename))
 
 (use-package flymake
   :config

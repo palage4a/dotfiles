@@ -20,8 +20,6 @@
 (setq make-backup-files nil)
 (setq create-lockfiles nil)
 
-;; (setq gc-cons-threshold (* 1024 1024 100)) ; 100 MiB
-
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 

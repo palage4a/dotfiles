@@ -12,6 +12,7 @@
  '(exec-path-from-shell-arguments '("-l"))
  '(exec-path-from-shell-variables '("HISTFILE" "PATH" "MANPATH"))
  '(flymake-no-changes-timeout 1)
+ '(grep-command "grep --color=auto -nH --null -I -r -e ")
  '(org-agenda-files '("/Users/i.palagecha/org/"))
  '(org-agenda-start-on-weekday 1)
  '(org-agenda-use-tag-inheritance nil)
