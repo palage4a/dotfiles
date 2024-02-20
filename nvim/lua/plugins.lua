@@ -163,8 +163,8 @@ packer.startup(function(use)
         end
     }
 
-
     use { 'tpope/vim-surround' }
+
     use { 'nvim-lualine/lualine.nvim',
         config = function()
             require('lualine').setup({
@@ -173,10 +173,9 @@ packer.startup(function(use)
         end
     }
 
-
     use { 'folke/tokyonight.nvim',
         config = function()
-            vim.cmd [[ colorscheme tokyonight ]]
+            vim.cmd [[ colorscheme tokyonight-day ]]
         end }
 
     use { 'numToStr/Comment.nvim',
@@ -188,18 +187,6 @@ packer.startup(function(use)
     use { 'windwp/nvim-autopairs', config = function()
         require('nvim-autopairs').setup {}
     end
-    }
-
-    use { "aserowy/tmux.nvim",
-        config = function() require("tmux").setup({
-                navigation = {
-                    enable_default_keybindings = true,
-                },
-                resize = {
-                    enable_default_keybindings = false,
-                }
-            })
-        end
     }
 
     use { 'nvim-telescope/telescope.nvim',
@@ -214,9 +201,6 @@ packer.startup(function(use)
                     }
                 }
             }
-            local builtin = require('telescope.builtin')
-            vim.keymap.set('n', '<space>ff', builtin.find_files, {})
-            vim.keymap.set('n', '<space>fw', builtin.live_grep, {})
         end
     }
 end)
