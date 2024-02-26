@@ -85,8 +85,8 @@
 (use-package rust-mode)
 (use-package go-mode
   :config
-  (setq gofmt-command "goimports")
   (add-hook 'before-save-hook 'gofmt-before-save))
+
 (use-package yaml-mode
   :config
   (add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode)))
