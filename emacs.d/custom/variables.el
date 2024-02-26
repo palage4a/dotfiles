@@ -13,6 +13,10 @@
  '(exec-path-from-shell-variables '("HISTFILE" "PATH" "MANPATH"))
  '(flymake-no-changes-timeout 1)
  '(grep-command "grep --color=auto -nH --null -I -r -e ")
+ '(markdown-css-paths
+   '("https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/3.0.1/github-markdown.min.css"))
+ '(markdown-xhtml-body-preamble
+   "<article class=\"markdown-body\" style=\"box-sizing: border-box;min-width: 200px;max-width: 980px;margin: 0 auto;padding: 45px;\">")
  '(org-agenda-files '("/Users/i.palagecha/org/"))
  '(org-agenda-start-on-weekday 1)
  '(org-agenda-use-tag-inheritance nil)

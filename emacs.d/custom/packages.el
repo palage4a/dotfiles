@@ -74,7 +74,9 @@
 (use-package org-roam-ui)
 
 ;; Languages
-(use-package markdown-mode)
+(use-package markdown-mode
+  :mode ("\\.md\\'" . gfm-mode)
+  :commands (markdown-mode gfm-mode))
 (use-package dockerfile-mode)
 (use-package protobuf-mode)
 (use-package jsonnet-mode)
