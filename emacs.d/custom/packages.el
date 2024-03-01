@@ -129,7 +129,8 @@
   (add-to-list 'eglot-server-programs
                '((jsonnet-mode) . ("jsonnet-language-server")))
 
-  (global-set-key (kbd "C-c e o") 'eglot-code-action-organize-imports)
-  (global-set-key (kbd "C-c e f") 'eglot-format-buffer)
-  (global-set-key (kbd "C-c e a") 'eglot-code-actions)
-  (global-set-key (kbd "C-c e r") 'eglot-rename))
+  ;; (global-set-key (kbd "C-c e o") 'eglot-code-action-organize-imports)
+  ;; (global-set-key (kbd "C-c e f") 'eglot-format-buffer)
+  ;; (global-set-key (kbd "C-c e a") 'eglot-code-actions)
+  ;; (global-set-key (kbd "C-c e r") 'eglot-rename)
+  )
