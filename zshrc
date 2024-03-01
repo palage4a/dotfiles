@@ -31,3 +31,5 @@ export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
 export PATH="$PATH:$HOME/sdk/macos/2.11.1"
 export VISUAL=nvim
 export EDITOR="$VISUAL"
+
+export PATH="$PATH:$HOME/bin/scripts"

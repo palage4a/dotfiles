@@ -1,0 +1,5 @@
+repo_url=$1
+after_host=${repo_url#*:}
+path=${after_host%*.git}
+$(mkdir -p $path)
+git clone $1 ~/code/$path
