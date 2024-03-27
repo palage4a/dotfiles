@@ -1,0 +1,6 @@
+project=$(basename `git rev-parse --show-toplevel`)
+branch=$1
+wt_path=../${project}-${branch}
+git worktree add -b ${branch} ${wt_path}
+cd ${wt_path}
+$SHELL
