@@ -11,6 +11,8 @@ packer.startup(function(use)
     -- provided appimage.
     use 'lewis6991/impatient.nvim'
 
+    use 'williamboman/mason.nvim'
+
     use { 'neovim/nvim-lspconfig',
         config = function()
             local opts = { noremap = true, silent = true }
@@ -175,7 +177,7 @@ packer.startup(function(use)
 
     use { 'folke/tokyonight.nvim',
         config = function()
-            vim.cmd [[ colorscheme tokyonight-day ]]
+            vim.cmd [[ colorscheme tokyonight ]]
         end }
 
     use { 'numToStr/Comment.nvim',
