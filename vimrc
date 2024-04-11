@@ -17,7 +17,7 @@ set bg=dark
 set completeopt=menu,menuone,noselect
 set cursorline
 set expandtab
-set list
+" set list
 set fileencoding=utf-8
 set hlsearch
 set signcolumn=yes
