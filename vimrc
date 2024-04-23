@@ -44,7 +44,7 @@ set tabstop=4
 set termguicolors
 set timeoutlen=500
 set title
-set mouse+=a
+set mouse=n
 set wildignore+=*/node_modules/*
 set wildignore+=*/sdk/*
 " max depth of search in tmp is 1
