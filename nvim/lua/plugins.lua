@@ -47,7 +47,7 @@ packer.startup(function(use)
                 vim.keymap.set('n', '<space>=', vim.lsp.buf.formatting, bufopts)
             end
 
-            require('lspconfig')['sumneko_lua'].setup {
+            require('lspconfig')['lua_ls'].setup {
                 on_attach = on_attach,
                 settings = {
                     Lua = {
@@ -72,108 +72,8 @@ packer.startup(function(use)
         end
     }
 
-    use { 'nvim-treesitter/nvim-treesitter',
-        requires = { 'nvim-treesitter/nvim-treesitter-textobjects' },
-        run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
-        config = function()
-            require('nvim-treesitter.configs').setup {
-                ensure_installed = { "c", "lua", "go", "javascript", "typescript" },
-                auto_install = true,
-                context_commentstring = {
-                    enable = true,
-                    enable_autocmd = false,
-                },
-                matchup = {
-                    enable = true
-                },
-                highlight = {
-                    enable = true, -- false will disable the whole extension
-                },
-                indent = {
-                    -- enable = true -- it's break indenting in lua
-                },
-                -- incremental_selection = {
-                --     enable = true,
-                --     keymaps = {
-                --         init_selection = "gnn",
-                --         node_incremental = "grn",
-                --         scope_incremental = "grc",
-                --         node_decremental = "grm",
-                --     },
-                -- },
-                textobjects = {
-                    select = {
-                        enable = true,
-
-                        -- Automatically jump forward to textobj, similar to targets.vim
-                        lookahead = true,
-
-                        keymaps = {
-                            -- You can use the capture groups defined in textobjects.scm
-                            ["af"] = "@function.outer",
-                            ["if"] = "@function.inner",
-                            ["ab"] = "@block.outer",
-                            ["ib"] = "@block.inner",
-                            -- You can optionally set descriptions to the mappings (used in the desc parameter of
-                            -- nvim_buf_set_keymap) which plugins like which-key display
-                            ["aC"] = "@class.outer",
-                            ["iC"] = "@class.inner",
-                            ["ac"] = "@conditional.outer",
-                            ["ic"] = "@conditional.inner",
-                            ["aü"] = "@conditional.outer",
-                            ["iü"] = "@conditional.inner",
-                            ["ae"] = "@block.outer",
-                            ["ie"] = "@block.inner",
-                            ["al"] = "@loop.outer",
-                            ["il"] = "@loop.inner",
-                            ["is"] = "@statement.inner",
-                            ["as"] = "@statement.outer",
-                            ["ad"] = "@lhs.inner",
-                            ["id"] = "@rhs.inner",
-                            ["am"] = "@call.outer",
-                            ["im"] = "@call.inner",
-                            ["iM"] = "@frame.inner",
-                            ["aM"] = "@frame.outer",
-                            ["ai"] = "@parameter.outer",
-                            ["ii"] = "@parameter.inner"
-                        },
-                        -- You can choose the select mode (default is charwise 'v')
-                        --
-                        -- Can also be a function which gets passed a table with the keys
-                        -- * query_string: eg '@function.inner'
-                        -- * method: eg 'v' or 'o'
-                        -- and should return the mode ('v', 'V', or '<c-v>') or a table
-                        -- mapping query_strings to modes.
-                        selection_modes = {
-                            ['@parameter.outer'] = 'v', -- charwise
-                            ['@function.outer'] = 'V', -- linewise
-                            ['@class.outer'] = '<c-v>', -- blockwise
-                        },
-                        -- If you set this to `true` (default is `false`) then any textobject is
-                        -- extended to include preceding or succeeding whitespace. Succeeding
-                        -- whitespace has priority in order to act similarly to eg the built-in
-                        -- `ap`.
-                        --
-                        -- Can also be a function which gets passed a table with the keys
-                        -- * query_string: eg '@function.inner'
-                        -- * selection_mode: eg 'v'
-                        -- and should return true of false
-                        include_surrounding_whitespace = true,
-                    },
-                },
-            }
-        end
-    }
-
     use { 'tpope/vim-surround' }
 
-    use { 'nvim-lualine/lualine.nvim',
-        config = function()
-            require('lualine').setup({
-                icons_enabled = false
-            })
-        end
-    }
 
     use { 'folke/tokyonight.nvim',
         config = function()
