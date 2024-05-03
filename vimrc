@@ -13,7 +13,7 @@ nnoremap <silent> <Space>nn :Lexplore<CR>
 
 set autoindent
 set autowrite
-set bg=dark
+set bg=light
 set completeopt=menu,menuone,noselect
 set cursorline
 set expandtab
