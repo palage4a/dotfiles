@@ -3,7 +3,6 @@ ZSH_THEME="robbyrussell"
 plugins=(git z)
 source $ZSH/oh-my-zsh.sh
 
-export TERM=xterm-256color
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin:/usr/local/go/bin
 
