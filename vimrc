@@ -14,16 +14,13 @@ nnoremap <silent> <Space>nn :Lexplore<CR>
 set autoindent
 set autowrite
 set bg=light
-set completeopt=menu,menuone,noselect
 set cursorline
 set expandtab
 " set list
 set fileencoding=utf-8
 set hlsearch
-set signcolumn=yes
 set colorcolumn=80
 set ignorecase
-set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 set lazyredraw
 set modelines=1
 set noswapfile
@@ -41,7 +38,6 @@ set softtabstop=4
 set spelllang=en_us,ru
 set splitright
 set tabstop=4
-set termguicolors
 set timeoutlen=500
 set title
 set mouse=n
@@ -58,6 +54,9 @@ let g:netrw_banner=0        " disable annoying banner
 let g:netrw_browse_split=4  " open in prior window
 let g:netrw_altv=1          " open splits to the right
 let g:netrw_liststyle=3     " tree view
-let g:netrw_list_hide=netrw_gitignore#Hide()
-let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 
+set fileencoding=utf-8
+set encoding=utf-8
+set termencoding=utf-8
+
+colorscheme delek
