@@ -30,27 +30,34 @@ jobs:
         uses: actions/checkout@v4
       - run: |
           echo "TEST" $(git describe --tags)
-  pack:
+  publish:
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
     timeout-minutes: 15
+    outputs:
+      DEST_PATH: ${{steps.set-environment.outputs.DEST_PATH}}
     needs:
       - test
     steps:
+      - name: Set dev/release environment
+        id: set-environment
+        run: |
+          if ${{ github.ref_type == 'tag' }}; then
+            echo "DEST_PATH="release_path">> $GITHUB_OUTPUT
+          else
+            echo "DEST_PATH="dev_path" >> $GITHUB_OUTPUT
+          fi
       - name: Checkout sources
         id: checkout
         uses: actions/checkout@v4
       - run: |
-          echo "PACK" $(git describe --tags)
-  release:
+          echo "PUBLISH TO ${{ steps.set-environment.outputs.DEST_PATH}}" $(git describe --tags)
+  validate:
     runs-on: ubuntu-latest
-    if: github.ref_type == 'tag'
-    needs: 
-      - pack
-    timeout-minutes: 50
+    if: github.event_name == 'push'
+    timeout-minutes: 15
+    needs: publish
     steps:
-      - name: Checkout sources
-        id: checkout
-        uses: actions/checkout@v4
       - run: |
-          echo "RELEASE" $(git describe --tags)
+          echo "VALIDATE FROM ${{needs.publish.outputs.DEST_PATH}}"
+
