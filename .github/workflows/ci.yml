@@ -9,12 +9,12 @@ on:
     tags:
       - '[0-9]+.[0-9]+.[0-9]+'
 
-# concurrency:
-#   # Interrupt this workflow for new launches from the development branch.
-#   # For launches from the main branch, wait until previous instances complete.
-#   # @SEE: https://github.com/tarantool/message-queue-ee/pull/239
-#   group: ${{ github.workflow }}-${{ github.ref }}
-#   cancel-in-progress: ${{ github.ref != 'refs/heads/master' }}
+concurrency:
+  # Interrupt this workflow for new launches from the development branch.
+  # For launches from the main branch, wait until previous instances complete.
+  # @SEE: https://github.com/tarantool/message-queue-ee/pull/239
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/master' }}
 
 jobs:
   debug:
@@ -22,7 +22,6 @@ jobs:
     steps:
     - uses: hmarr/debug-action@v3
   test:
-    # pr + main + release
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
