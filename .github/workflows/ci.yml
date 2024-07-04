@@ -3,11 +3,11 @@ name: Continuous Integration
 on:
   pull_request:
   push:
-    # branches:
-    #   - master
-    #   - 'release-**'
-    # tags:
-    #   - '[0-9]+.[0-9]+.[0-9]+'
+    branches:
+      - master
+      - 'release-**'
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+'
 
 # concurrency:
 #   # Interrupt this workflow for new launches from the development branch.
