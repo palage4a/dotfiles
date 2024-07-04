@@ -43,15 +43,15 @@ jobs:
         id: set-environment
         run: |
           if ${{ github.ref_type == 'tag' }}; then
-            echo "DEST_PATH="release_path">> $GITHUB_OUTPUT
+            echo 'DEST_PATH="release_path"' >> $GITHUB_OUTPUT
           else
-            echo "DEST_PATH="dev_path" >> $GITHUB_OUTPUT
+            echo 'DEST_PATH="dev_path"' >> $GITHUB_OUTPUT
           fi
       - name: Checkout sources
         id: checkout
         uses: actions/checkout@v4
       - run: |
-          echo "PUBLISH TO ${{ steps.set-environment.outputs.DEST_PATH}}" $(git describe --tags)
+          echo "PUBLISH TO ${{ steps.set-environment.outputs.DEST_PATH}}"
   validate:
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
