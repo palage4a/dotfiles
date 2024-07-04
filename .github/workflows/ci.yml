@@ -32,7 +32,6 @@ jobs:
       - run: |
           echo "TEST" $(git describe --tags)
   pack:
-    # main + release
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
     timeout-minutes: 15
@@ -45,7 +44,6 @@ jobs:
       - run: |
           echo "PACK" $(git describe --tags)
   release:
-    # release
     runs-on: ubuntu-latest
     if: github.ref_type == 'tag'
     needs: 
