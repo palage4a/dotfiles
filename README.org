@@ -7,8 +7,3 @@ See =Makefile= for install
   brew tap railwaycat/emacsmacport;
   brew install emacs-mac --with-emacs-sexy-icon --with-librsvg --with-mac-metal --with-native-compilation --with-starter
 #+end_src
-
-
-
-
-
