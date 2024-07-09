@@ -70,9 +70,13 @@ jobs:
         with:
           endpoint: buildx-context
           platforms: linux/amd64
-      # - name: Login to Delivery Container Registry
-        # id: docker-registry-login
-        # uses: docker/login-action@v3
+      - name: Login to Delivery Container Registry
+        id: docker-registry-login
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build docker image
         id: build-docker-image
         uses: docker/build-push-action@v5
@@ -80,8 +84,6 @@ jobs:
           context: .
           push: true
           tags: ghcr.io/${{ github.repository }}:latest
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
   validate:
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
