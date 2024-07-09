@@ -43,15 +43,54 @@ jobs:
         id: set-environment
         run: |
           if ${{ github.ref_type == 'tag' }}; then
-            echo 'DEST_PATH="release_path"' >> $GITHUB_OUTPUT
+            echo "DEST_PATH=release_path" >> $GITHUB_OUTPUT
           else
-            echo 'DEST_PATH="dev_path"' >> $GITHUB_OUTPUT
+            echo "DEST_PATH=dev_path" >> $GITHUB_OUTPUT
           fi
       - name: Checkout sources
         id: checkout
         uses: actions/checkout@v4
       - run: |
           echo "PUBLISH TO ${{ steps.set-environment.outputs.DEST_PATH}}"
+  # docker:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - run: git config --global --add safe.directory ${GITHUB_WORKSPACE}
+  #     - name: Checkout sources
+  #       id: checkout
+  #       uses: actions/checkout@v4
+  #       with:
+  #         fetch-tags: true
+  #         fetch-depth: 0
+  #     - name: Set up Docker Context for Buildx
+  #       id: docker-context
+  #       run: docker context create buildx-context
+  #     - uses: docker/setup-buildx-action@v3
+  #       with:
+  #         endpoint: buildx-context
+  #         platforms: linux/amd64
+  #     - name: Login to Delivery Container Registry
+  #       id: docker-registry-login
+  #       uses: docker/login-action@v3
+  #     - name: Build docker image
+  #       id: build-docker-image
+  #       uses: docker/build-push-action@v5
+  #       env:
+  #         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  #         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  #       with:
+  #         context: .
+  #         push: true
+  #         tags: ghcr.io/<username>/<repository>:latest
+  #         username: ${{ github.actor }}
+  #         password: ${{ secrets.GITHUB_TOKEN }}
+  #     - name: Send VK Teams notification on failure
+  #       if: failure()
+  #       uses: tarantool/actions/report-job-status@master
+  #       with:
+  #         bot-token: ${{ secrets.VKTEAMS_TARANTOOLBOT_TOKEN }}
+  #         chat-id: ${{ secrets.VKTEAMS_CHAT_ID }}
+  #         job-steps: ${{ ToJson(steps) }}
   validate:
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
