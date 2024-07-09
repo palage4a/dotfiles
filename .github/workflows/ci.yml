@@ -84,6 +84,11 @@ jobs:
           context: .
           push: true
           tags: ghcr.io/${{ github.repository }}:latest
+      - name: Save to tarball
+        id: save-image-tarball
+        run: |
+          docker save ghcr.io/${{ github.repository }}:latest | gzip > dotfiles.latest.tar.gz
+
   validate:
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
