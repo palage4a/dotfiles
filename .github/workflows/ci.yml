@@ -19,6 +19,7 @@ concurrency:
 env:
   DEBUG_PATH: /opt/test/debug/
   RELEASE_PATH: /opt/test/release/
+  DEV_PATH: $DEBUG_PATH/$RELEASE_PATH
 
 jobs:
   debug:
@@ -36,6 +37,7 @@ jobs:
           echo "TEST" $(git describe --tags)
           echo ${{ env.DEBUG_PATH}}
           echo ${{ env.RELEASE_PATH}}
+          echo ${{ env.DEV_PATH}}
   publish:
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
