@@ -74,7 +74,6 @@ packer.startup(function(use)
 
     use { 'tpope/vim-surround' }
 
-
     use { 'folke/tokyonight.nvim',
         config = function()
             vim.cmd [[ colorscheme tokyonight ]]
