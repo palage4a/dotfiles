@@ -1,3 +1,5 @@
+language en_US
+
 nnoremap ; :
 noremap <silent> $ g$
 noremap <silent> 0 g0
@@ -11,6 +13,7 @@ vnoremap <Space>p "+p
 
 nnoremap <silent> <Space>nn :Lexplore<CR>
 
+syntax off
 set autoindent
 set autowrite
 set bg=light
@@ -19,6 +22,7 @@ set expandtab
 " set list
 set fileencoding=utf-8
 set hlsearch
+set incsearch
 set colorcolumn=80
 set ignorecase
 set lazyredraw
@@ -40,7 +44,7 @@ set splitright
 set tabstop=4
 set timeoutlen=500
 set title
-set mouse=n
+set mouse=
 set wildignore+=*/node_modules/*
 set wildignore+=*/sdk/*
 " max depth of search in tmp is 1

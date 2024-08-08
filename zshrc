@@ -28,6 +28,9 @@ export CPPFLAGS="-I/usr/local/opt/openjdk/include"
 export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
 
 export PATH="$PATH:$HOME/sdk/macos/current"
+
+alias vi=nvim
+alias vim=nvim
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 

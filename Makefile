@@ -12,9 +12,11 @@ helix:
 .PHONY: nvim
 nvim:
 	rm -rf ~/.config/nvim
-	git clone --depth 1 https://github.com/wbthomason/packer.nvim\
-		~/.local/share/nvim/site/pack/packer/start/packer.nvim | true
-	ln -s $(PWD)/nvim ~/.config/nvim
+	# git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+	#	~/.local/share/nvim/site/pack/packer/start/packer.nvim | true
+	# ln -s $(PWD)/nvim ~/.config/nvim
+	mkdir -p ~/.config/nvim
+	ln -s $(PWD)/vimrc ~/.config/nvim/init.vim
 fzf:
 	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 	~/.fzf/install
