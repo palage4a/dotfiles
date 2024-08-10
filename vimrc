@@ -29,7 +29,7 @@ set lazyredraw
 set modelines=1
 set noswapfile
 set nowrap
-set scrolloff=25
+set scrolloff=10
 set nowritebackup
 set number
 set path+=**
@@ -45,6 +45,7 @@ set tabstop=4
 set timeoutlen=500
 set title
 set mouse=
+
 set wildignore+=*/node_modules/*
 set wildignore+=*/sdk/*
 " max depth of search in tmp is 1
