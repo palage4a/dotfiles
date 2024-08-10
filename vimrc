@@ -16,7 +16,9 @@ nnoremap <silent> <Space>nn :Lexplore<CR>
 syntax off
 set autoindent
 set autowrite
-set bg=light
+" set bg=light
+set bg=dark
+colorscheme default
 set cursorline
 set expandtab
 " set list
@@ -64,4 +66,3 @@ set fileencoding=utf-8
 set encoding=utf-8
 set termencoding=utf-8
 
-colorscheme delek
