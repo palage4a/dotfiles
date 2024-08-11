@@ -1,3 +1,6 @@
+.PHONY: alacritty
+alacritty:
+	ln -s $(PWD)/alacritty.toml ~/.config/alacritty/alacritty.toml
 .PHONY: clangd
 clangd:
 	rm -rf ~/Library/Preferences/clangd;
