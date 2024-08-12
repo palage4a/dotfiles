@@ -1,7 +1,7 @@
 [user]
     email = vvnvvplg@gmail.com
     name = palage4a
-	signingkey = 71246226D754EB24C6340D5A6C1A348ADC5013E9
+	signingkey = 29DA8215C240BE0E
 [pull]
     rebase = false
 [mergetool]
@@ -17,4 +17,4 @@
 [http]
 	sslVerify = true
 [url "git@github.com:"]
-	insteadOf = https://github.com/
+    insteadOf = https://github.com/
