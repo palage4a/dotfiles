@@ -60,4 +60,5 @@ codium:
 .PHONY: scripts
 scripts:
 	rm -rf $(HOME)/bin/scripts
+	mkdir -p $(HOME)/bin
 	ln -s $(PWD)/scripts $(HOME)/bin/scripts
