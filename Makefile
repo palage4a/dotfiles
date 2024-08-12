@@ -1,3 +1,4 @@
+
 .PHONY: alacritty
 alacritty:
 	rm -rf ~/.config/alacritty
