@@ -46,13 +46,6 @@ zsh:
 	rm -rf ~/.zshrc
 	ln -s $(PWD)/zshrc ~/.zshrc
 
-codium:
-	mkdir -p "$(HOME)/Library/Applicasion Support/VSCodium/User" | true
-	rm -rf "$(HOME)/Library/Application Support/VSCodium/User/settings.json" "$(HOME)/Library/Application Support/VSCodium/User/keybindings.json" | true
-	ln -s "$(PWD)/settings.json" "$(HOME)/Library/Application Support/VSCodium/User/settings.json" | true
-	ln -s "$(PWD)/keybindings.json" "$(HOME)/Library/Application Support/VSCodium/User/keybindings.json" | true
-	ln -s "$(PWD)/snippets" "$(HOME)/Library/Application Support/VSCodium/User/snippets" | true
-
 .PHONY: scripts
 scripts:
 	rm -rf $(HOME)/bin/scripts
