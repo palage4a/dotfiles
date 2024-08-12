@@ -1,5 +1,7 @@
 .PHONY: alacritty
 alacritty:
+	rm -rf ~/.config/alacritty
+	mkdir -p ~/.config/alacritty
 	ln -s $(PWD)/alacritty.toml ~/.config/alacritty/alacritty.toml
 
 .PHONY: clangd
