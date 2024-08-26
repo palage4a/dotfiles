@@ -50,9 +50,6 @@ set mouse=
 
 set wildignore+=*/node_modules/*
 set wildignore+=*/sdk/*
-" max depth of search in tmp is 1
-set wildignore+=*/tmp/*/*
-set wildignore-=*/tmp/*
 
 autocmd FileType c,cpp,java,php,lua,md,typescript,javascript,python autocmd BufWritePre <buffer> %s/\s\+$//e
 
