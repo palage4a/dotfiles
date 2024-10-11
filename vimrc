@@ -18,7 +18,7 @@ set autoindent
 set autowrite
 " set bg=light
 set bg=dark
-colorscheme default
+colorscheme vim
 set cursorline
 set expandtab
 " set list

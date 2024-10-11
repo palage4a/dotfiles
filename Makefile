@@ -4,6 +4,9 @@ alacritty:
 	rm -rf ~/.config/alacritty
 	mkdir -p ~/.config/alacritty
 	ln -s $(PWD)/alacritty.toml ~/.config/alacritty/alacritty.toml
+	# Alacritty themes
+	mkdir -p ~/.config/alacritty/themes
+	git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
 
 .PHONY: clangd
 clangd:
