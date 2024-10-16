@@ -13,6 +13,10 @@ clangd:
 	rm -rf ~/Library/Preferences/clangd;
 	ln -s $(PWD)/clangd/ ~/Library/Preferences/;
 
+emacs:
+	rm -rf ~/.emacs.d/init.el ~/.emacs.d/custom ~/.emacs.d/projects ~/.emacs.d/history
+	ln -s $(PWD)/emacs.d/* ~/.emacs.d/
+
 .PHONY: helix
 helix:
 	rm -rf ~/.config/helix
