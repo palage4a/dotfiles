@@ -1,4 +1,3 @@
-
 .PHONY: alacritty
 alacritty:
 	rm -rf ~/.config/alacritty
@@ -59,3 +58,12 @@ scripts:
 	rm -rf $(HOME)/bin/scripts
 	mkdir -p $(HOME)/bin
 	ln -s $(PWD)/scripts $(HOME)/bin/scripts
+
+.PHONY: code	
+code:
+	mkdir -p "$(HOME)/Library/Applicasion Support/Code/User" | true
+	rm -rf "$(HOME)/Library/Application Support/Code/User/settings.json" "$(HOME)/Library/Application Support/Code/User/keybindings.json" | true
+	ln -s "$(PWD)/settings.json" "$(HOME)/Library/Application Support/Code/User/settings.json" | true
+	ln -s "$(PWD)/keybindings.json" "$(HOME)/Library/Application Support/Code/User/keybindings.json" | true
+	ln -s "$(PWD)/snippets" "$(HOME)/Library/Application Support/Code/User/snippets" | true
+

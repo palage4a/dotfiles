@@ -1,44 +1,8 @@
 {
-    "files.autoSave": "onFocusChange",
-    "editor.suggestSelection": "first",
-    "editor.minimap.enabled": false,
-    "workbench.editor.highlightModifiedTabs": true,
-    "security.workspace.trust.untrustedFiles": "open",
-    "search.searchEditor.defaultNumberOfContextLines": 3,
-    "workbench.editor.tabSizing": "shrink",
-    "window.autoDetectColorScheme": true,
-    "git.allowForcePush": true,
-    "gitlens.views.searchAndCompare.files.layout": "tree",
-    "workbench.preferredDarkColorTheme": "Visual Studio Dark",
-    "workbench.preferredLightColorTheme": "Visual Studio Light",
+    "workbench.colorTheme": "Default Light Modern",
     "git.autofetch": true,
-    "task.problemMatchers.neverPrompt": {
-        "shell": true
-    },
-    "terminal.external.osxExec": "ITerm.app",
-    "extensions.ignoreRecommendations": true,
-    "terminal.integrated.macOptionIsMeta": true,
-    "javascript.updateImportsOnFileMove.enabled": "always",
-    "emmet.triggerExpansionOnTab": true,
-    "workbench.startupEditor": "none",
-    "diffEditor.ignoreTrimWhitespace": false,
-    "Lua.hint.enable": true,
-    "Lua.hint.setType": true,
-    "Lua.workspace.ignoreSubmodules": false,
-    "Lua.workspace.library": [
-        ".rocks/share/tarantool"
-    ],
-    "Lua.workspace.useGitIgnore": false,
-    "Lua.completion.displayContext": 10,
-    "Lua.completion.workspaceWord": false,
-    "editor.unicodeHighlight.ambiguousCharacters": false,
-    "git.confirmSync": false,
-    "Lua.runtime.version": "LuaJIT",
-    "Lua.telemetry.enable": false,
-    "git.ignoreRebaseWarning": true,
-    "workbench.colorTheme": "Visual Studio Dark",
-    "workbench.editor.wrapTabs": true,
-    "workbench.editor.titleScrollbarSizing": "large",
-    "editor.tabCompletion": "on",
-    "Lua.completion.autoRequire": false,
+    "cSpell.language": "en,ru-RU,ru",
+    "cSpell.userWords": [
+        "luatest"
+    ]
 }
