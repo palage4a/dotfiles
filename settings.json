@@ -4,5 +4,6 @@
     "cSpell.language": "en,ru-RU,ru",
     "cSpell.userWords": [
         "luatest"
-    ]
+    ],
+    "git.allowForcePush": true
 }
