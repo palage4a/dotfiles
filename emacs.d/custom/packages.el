@@ -109,28 +109,28 @@
   :config
   (global-set-key (kbd "C-x `") 'flymake-goto-next-error))
 
-;; (use-package eglot
-;;   :hook  ((lua-mode . eglot-ensure)
-;;           (c++-mode . eglot-ensure)
-;;           (c-mode . eglot-ensure)
-;;           (go-mode . eglot-ensure)
-;;           (typescript-mode . eglot-ensure)
-;;           (jsonnet-mode . eglot-ensure)
-;;           (rust-mode . eglot-ensure))
-;;   :config
-;;   (setq-default eglot-workspace-configuration
-;;                 '(:rust-analyzer (:files (:excludeDirs ("target")))))
-;;   (add-to-list 'eglot-server-programs
-;;                '(lua-mode . ("lua-language-server")))
-;;   (add-to-list 'eglot-server-programs
-;;                '((c++-mode c-mode) . ("clangd")))
-;;   (add-to-list 'eglot-server-programs
-;;                '((typescript-mode) . ("typescript-language-server" "--stdio")))
-;;   (add-to-list 'eglot-server-programs
-;;                '((jsonnet-mode) . ("jsonnet-language-server")))
+(use-package eglot
+  :hook  ((lua-mode . eglot-ensure)
+          (c++-mode . eglot-ensure)
+          (c-mode . eglot-ensure)
+          (go-mode . eglot-ensure)
+          (typescript-mode . eglot-ensure)
+          (jsonnet-mode . eglot-ensure)
+          (rust-mode . eglot-ensure))
+  :config
+  (setq-default eglot-workspace-configuration
+                '(:rust-analyzer (:files (:excludeDirs ("target")))))
+  (add-to-list 'eglot-server-programs
+               '(lua-mode . ("lua-language-server")))
+  (add-to-list 'eglot-server-programs
+               '((c++-mode c-mode) . ("clangd")))
+  (add-to-list 'eglot-server-programs
+               '((typescript-mode) . ("typescript-language-server" "--stdio")))
+  (add-to-list 'eglot-server-programs
+               '((jsonnet-mode) . ("jsonnet-language-server")))
 
-  ;; (global-set-key (kbd "C-c e o") 'eglot-code-action-organize-imports)
-  ;; (global-set-key (kbd "C-c e f") 'eglot-format-buffer)
-  ;; (global-set-key (kbd "C-c e a") 'eglot-code-actions)
-  ;; (global-set-key (kbd "C-c e r") 'eglot-rename)
-  ;; )
+  (global-set-key (kbd "C-c e o") 'eglot-code-action-organize-imports)
+  (global-set-key (kbd "C-c e f") 'eglot-format-buffer)
+  (global-set-key (kbd "C-c e a") 'eglot-code-actions)
+  (global-set-key (kbd "C-c e r") 'eglot-rename)
+  )
