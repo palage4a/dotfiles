@@ -31,7 +31,8 @@ export PATH="$PATH:$HOME/sdk/macos/current"
 
 alias vi=nvim
 alias vim=nvim
-export VISUAL=nvim
+
+export VISUAL='code -w'
 export EDITOR="$VISUAL"
 
 export PATH="$PATH:$HOME/bin/scripts"
