@@ -18,3 +18,5 @@
 	sslVerify = true
 [url "git@github.com:"]
     insteadOf = https://github.com/
+[github]
+	user = palage4a
